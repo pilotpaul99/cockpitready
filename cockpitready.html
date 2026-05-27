@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CockpitReady — ATPL Theorievorbereitung</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --w:#fff;--bg:#f9f8f6;--bg2:#f2f1ef;--bg3:#eae9e6;
+  --bd:#e4e3e0;--bd2:#d0ceca;
+  --t:#18171a;--t2:#5c5a60;--t3:#9a98a0;
+  --navy:#0f172a;--navy2:#1e293b;
+  --blue:#2563eb;--blue-l:#eff4ff;--blue-d:#1a47b8;--blue-m:#dbeafe;
+  --amber:#d97706;--amber-l:#fef3c7;--amber-d:#b45309;
+  --sky:#0ea5e9;--sky-l:#e0f2fe;
+  --r:10px;--rl:14px;--rxl:20px;
+  --sh:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shm:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
+  --shl:0 8px 32px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{background:var(--w);color:var(--t);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;}
+.hidden{display:none!important;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{0%{transform:scale(.95);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes xpFloat{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-56px);opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em;}
+.serif-it{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:var(--r);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .18s;text-decoration:none;letter-spacing:-.01em;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-primary:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:var(--shm);}
+.btn-blue{background:var(--blue);color:#fff;}
+.btn-blue:hover{background:var(--blue-d);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.3);}
+.btn-outline{background:transparent;color:var(--t);border:1.5px solid var(--bd2);}
+.btn-outline:hover{background:var(--bg);border-color:var(--bd2);}
+.btn-ghost{background:transparent;color:var(--t2);border:1.5px solid var(--bd);}
+.btn-ghost:hover{background:var(--bg2);}
+.btn-amber{background:var(--amber);color:#fff;}
+.btn-amber:hover{background:var(--amber-d);}
+.btn-lg{padding:15px 30px;font-size:16px;border-radius:var(--rl);}
+.btn-sm{padding:8px 16px;font-size:13px;}
+.btn-full{width:100%;}
+.btn:active{transform:scale(.98);}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);}
+.nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--t);text-decoration:none;display:flex;align-items:center;gap:9px;letter-spacing:-.03em;}
+.nav-logo-mark{width:30px;height:30px;background:var(--navy);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.nav-acts{display:flex;gap:8px;}
+
+/* LANDING */
+#page-landing{padding-top:62px;}
+.hero{padding:80px 5% 72px;background:#fff;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 60% -10%,rgba(37,99,235,.04),transparent),radial-gradient(ellipse 40% 40% at 90% 60%,rgba(217,119,6,.04),transparent);pointer-events:none;}
+.hero-inner{max-width:680px;}
+.hero-kicker{display:inline-flex;align-items:center;gap:7px;background:var(--blue-l);color:var(--blue-d);font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;margin-bottom:24px;border:1px solid rgba(37,99,235,.15);letter-spacing:.01em;}
+.hero-kicker .pulse{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite;}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.08;margin-bottom:20px;color:var(--navy);}
+.hero h1 .ital{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;color:var(--blue);}
+.hero-sub{font-size:1.1rem;color:var(--t2);max-width:480px;margin-bottom:36px;font-weight:400;line-height:1.7;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-trust{display:flex;align-items:center;gap:16px;margin-top:40px;padding-top:32px;border-top:1px solid var(--bd);flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--t3);font-weight:600;}
+.trust-dot{width:4px;height:4px;border-radius:50%;background:var(--bd2);}
+.metrics-row{background:var(--bg);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:24px 5%;display:flex;justify-content:center;gap:0;}
+.metric-item{flex:1;max-width:220px;text-align:center;padding:0 20px;border-right:1px solid var(--bd);}
+.metric-item:last-child{border-right:none;}
+.metric-num{font-size:1.8rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;}
+.metric-label{font-size:12px;color:var(--t3);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.05em;}
+.section{padding:80px 5%;}
+.section-alt{padding:80px 5%;background:var(--bg);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.sec-eye{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin-bottom:12px;}
+.sec-h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-.03em;margin-bottom:12px;line-height:1.1;}
+.sec-sub{font-size:.98rem;color:var(--t2);margin-bottom:44px;max-width:440px;font-weight:400;line-height:1.7;}
+.sbj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;}
+.sc{background:#fff;border:1px solid var(--bd);border-radius:var(--rl);padding:18px 16px;cursor:pointer;transition:all .2s;box-shadow:var(--sh);position:relative;}
+.sc:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:var(--shm);}
+.sc.lk{background:var(--bg);cursor:default;}
+.sc.lk:hover{transform:none;border-color:var(--bd);box-shadow:var(--sh);}
+.sc-ico{font-size:22px;display:block;margin-bottom:10px;}
+.sc-num{font-size:10px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.sc-name{font-size:13px;font-weight:600;color:var(--t);line-height:1.3;}
+.sc.lk .sc-name{color:var(--t3);}
+.sc-pill{position:absolute;top:12px;right:12px;background:var(--blue-l);color:var(--blue-d);font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;letter-spacing:.02em;}
+.sc-lock{position:absolute;top:12px;right:12px;font-size:11px;color:var(--t3);}
+.sc-prog{height:2px;background:var(--bg3);border-radius:2px;margin-top:12px;overflow:hidden;}
+.sc-fill{height:100%;border-radius:2px;background:var(--blue);}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.fc{background:#fff;border:1px solid var(--bd);border-radius:var(--rl);padding:26px;box-shadow:var(--sh);}
+.fc-mark{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px;}
+.fc-mark.navy{background:var(--navy);color:#fff;}
+.fc-mark.blue{background:var(--blue-l);}
+.fc-mark.amber{background:var(--amber-l);}
+.fc-mark.sky{background:var(--sky-l);}
+.fc-ttl{font-size:15px;font-weight:800;margin-bottom:7px;color:var(--navy);}
+.fc-desc{font-size:13px;color:var(--t2);line-height:1.65;font-weight:400;}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:800px;margin:0 auto;}
+.pc{background:#fff;border:1px solid var(--bd);border-radius:var(--rxl);padding:30px;box-shadow:var(--sh);position:relative;}
+.pc.feat{border-color:var(--navy);border-width:1.5px;box-shadow:var(--shm);}
+.pc-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;white-space:nowrap;letter-spacing:.02em;}
+.pc-tier{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:10px;}
+.pc-amt{font-size:3rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.04em;margin-bottom:4px;}
+.pc-amt sup{font-size:1.1rem;vertical-align:super;}
+.pc-per{font-size:12px;color:var(--t3);margin-bottom:22px;font-weight:600;}
+.pc-list{list-style:none;margin-bottom:24px;}
+.pc-list li{font-size:13px;color:var(--t2);padding:7px 0;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:9px;font-weight:400;}
+.pc-list li:last-child{border-bottom:none;}
+.pc-list .y{color:var(--blue);font-weight:600;}
+.pc-list .n{color:var(--t3);}
+.cta-band{margin:0 5% 72px;background:var(--navy);border-radius:var(--rxl);padding:56px 48px;position:relative;overflow:hidden;}
+.cta-band::after{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(37,99,235,.12);pointer-events:none;}
+.cta-band::before{content:'';position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:rgba(217,119,6,.08);pointer-events:none;}
+.cta-band h2{font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;margin-bottom:12px;position:relative;z-index:1;}
+.cta-band p{color:rgba(255,255,255,.65);margin-bottom:28px;font-size:.98rem;font-weight:400;position:relative;z-index:1;max-width:420px;}
+.cta-band-acts{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1;}
+.footer{background:var(--bg);border-top:1px solid var(--bd);padding:28px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-weight:800;font-size:15px;color:var(--t);letter-spacing:-.02em;}
+.footer-txt{font-size:12px;color:var(--t3);font-weight:500;}
+
+/* AUTH */
+#page-auth{min-height:100vh;padding-top:62px;display:flex;align-items:center;justify-content:center;background:var(--bg);}
+.auth-wrap{width:100%;max-width:400px;padding:20px;}
+.auth-card{background:#fff;border:1px solid var(--bd);border-radius:var(--rxl);padding:40px;box-shadow:var(--shl);animation:popIn .28s ease;}
+.auth-hd{text-align:center;margin-bottom:28px;}
+.auth-mark{width:44px;height:44px;background:var(--navy);border-radius:11px;display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;}
+.auth-ttl{font-size:20px;font-weight:800;margin-bottom:4px;color:var(--navy);}
+.auth-sub{font-size:13px;color:var(--t2);font-weight:400;}
+.fg{margin-bottom:14px;}
+.fl{display:block;font-size:11px;font-weight:700;color:var(--t2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.07em;}
+.fi{width:100%;background:var(--bg);border:1.5px solid var(--bd2);border-radius:var(--r);padding:12px 14px;color:var(--t);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:400;outline:none;transition:all .15s;}
+.fi:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.1);}
+.fi::placeholder{color:var(--t3);}
+.ferr{background:#fef2f2;border:1px solid #fca5a5;border-radius:var(--r);padding:10px 14px;font-size:13px;color:#dc2626;margin-bottom:14px;font-weight:600;display:none;animation:shake .3s ease;}
+.f-switch{text-align:center;font-size:13px;color:var(--t2);margin-top:18px;font-weight:400;}
+.f-switch a{color:var(--blue);cursor:pointer;font-weight:700;}
+.f-demo{text-align:center;margin-top:10px;}
+.f-demo a{font-size:12px;color:var(--t3);cursor:pointer;text-decoration:underline;}
+.divider{display:flex;align-items:center;gap:10px;margin:18px 0;}
+.div-l{flex:1;height:1px;background:var(--bd);}
+.div-t{font-size:12px;color:var(--t3);font-weight:600;}
+
+/* DASHBOARD */
+#page-dashboard{padding-top:62px;min-height:100vh;background:var(--bg);}
+.dash-lay{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 62px);}
+.dsb{background:#fff;border-right:1px solid var(--bd);padding:20px 10px;display:flex;flex-direction:column;gap:2px;}
+.dsb-grp{margin-bottom:8px;}
+.dsb-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--t3);padding:4px 12px 7px;}
+.dsi{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:var(--r);font-size:13px;font-weight:600;color:var(--t2);cursor:pointer;transition:all .15s;border:1px solid transparent;}
+.dsi:hover{background:var(--bg);color:var(--t);}
+.dsi.act{background:var(--blue-l);color:var(--blue-d);border-color:rgba(37,99,235,.15);}
+.dsi.dim{opacity:.4;cursor:not-allowed;}
+.dsi-ico{font-size:15px;width:18px;text-align:center;}
+.dsb-user{margin-top:auto;padding:14px 10px 0;border-top:1px solid var(--bd);display:flex;align-items:center;gap:9px;}
+.dsb-av{width:32px;height:32px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;}
+.dsb-nm{font-size:13px;font-weight:700;color:var(--t);}
+.dsb-pl{font-size:11px;color:var(--t3);font-weight:400;}
+.dash-main{padding:32px 36px;overflow-y:auto;}
+.dash-hi{font-size:22px;font-weight:800;margin-bottom:24px;color:var(--navy);}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+.stc{background:#fff;border:1px solid var(--bd);border-radius:var(--rl);padding:16px 18px;box-shadow:var(--sh);}
+.stc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:6px;}
+.stc-val{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.03em;}
+.stc-sub{font-size:11px;color:var(--t3);font-weight:400;margin-top:3px;}
+.stc.amber .stc-val{color:var(--amber);}
+.stc.blue .stc-val{color:var(--blue);}
+.ds-ttl{font-size:15px;font-weight:800;margin-bottom:14px;color:var(--navy);}
+.sj-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:28px;}
+.sji{background:#fff;border:1px solid var(--bd);border-radius:var(--rl);padding:16px;cursor:pointer;transition:all .2s;box-shadow:var(--sh);}
+.sji:hover{transform:translateY(-2px);box-shadow:var(--shm);border-color:var(--blue-d);}
+.sji.lk{opacity:.5;cursor:not-allowed;}
+.sji.lk:hover{transform:none;border-color:var(--bd);box-shadow:var(--sh);}
+.sji-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px;}
+.sji-ico{font-size:22px;}
+.sji-avl{font-size:10px;background:var(--blue-l);color:var(--blue-d);font-weight:700;padding:3px 8px;border-radius:100px;letter-spacing:.02em;}
+.sji-nm{font-size:13px;font-weight:700;color:var(--navy);}
+.sji-num{font-size:10px;color:var(--t3);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.05em;}
+.sji-bar{height:3px;background:var(--bg3);border-radius:3px;margin-top:10px;overflow:hidden;}
+.sji-fill{height:100%;border-radius:3px;background:var(--blue);transition:width .8s ease;}
+.streak-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:28px;}
+.sd{width:36px;height:36px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--t3);}
+.sd.dn{background:var(--amber-l);border-color:rgba(217,119,6,.3);color:var(--amber-d);}
+.sd.td{background:var(--amber);border-color:var(--amber-d);color:#fff;}
+.nxt{background:#fff;border:1px solid var(--bd);border-radius:var(--rl);padding:20px 22px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.nxt-l{display:flex;align-items:center;gap:14px;}
+.nxt-ico{width:44px;height:44px;background:var(--blue-l);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:20px;}
+.nxt-tag{font-size:10px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.07em;}
+.nxt-ttl{font-size:15px;font-weight:700;color:var(--navy);}
+
+/* LEARN */
+#page-learn{padding-top:62px;min-height:100vh;background:var(--bg);}
+.learn-lay{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 62px);}
+.lsb{background:#fff;border-right:1px solid var(--bd);padding:20px 0;overflow-y:auto;}
+.lsb-hd{padding:0 18px 16px;border-bottom:1px solid var(--bd);margin-bottom:10px;}
+.lsb-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin-bottom:4px;}
+.lsb-ttl{font-size:15px;font-weight:800;color:var(--navy);}
+.lsb-bar{height:4px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-top:10px;}
+.lsb-fill{height:100%;border-radius:4px;background:var(--blue);transition:width .5s;}
+.lsb-pct{font-size:11px;font-weight:600;color:var(--t3);margin-top:5px;}
+.lni{display:flex;align-items:center;gap:11px;padding:11px 18px;cursor:pointer;transition:all .15s;border-right:2px solid transparent;}
+.lni:hover{background:var(--bg);}
+.lni.act{background:var(--blue-l);border-right-color:var(--blue);}
+.lni.done{border-right-color:var(--blue);}
+.lni-bub{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--t3);flex-shrink:0;}
+.lni.act .lni-bub{border-color:var(--blue);background:var(--blue);color:#fff;}
+.lni.done .lni-bub{border-color:var(--blue);background:var(--blue);color:#fff;}
+.lni-txt{font-size:12px;font-weight:600;color:var(--t2);line-height:1.35;}
+.lni.act .lni-txt{color:var(--blue-d);}
+.lni.done .lni-txt{color:var(--blue-d);}
+.lni-xp{margin-left:auto;font-size:10px;font-weight:700;background:var(--amber-l);color:var(--amber-d);padding:2px 7px;border-radius:100px;white-space:nowrap;}
+
+/* LEARN MAIN */
+.lmain{padding:40px 48px;max-width:800px;overflow-y:auto;}
+.lcrumb{font-size:12px;color:var(--t3);font-weight:600;margin-bottom:8px;}
+.lcrumb span{color:var(--blue-d);}
+.lunit-ttl{font-size:28px;font-weight:800;margin-bottom:8px;color:var(--navy);line-height:1.1;}
+.lmeta{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;}
+.lchip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:.02em;}
+.ch-bl{background:var(--blue-l);color:var(--blue-d);}
+.ch-am{background:var(--amber-l);color:var(--amber-d);}
+.ch-sk{background:var(--sky-l);color:#0369a1;}
+
+/* CONTENT COMPONENTS */
+.prose{font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:18px;font-weight:400;}
+.prose strong{color:var(--navy);font-weight:700;}
+.prose em{font-style:italic;color:var(--t2);}
+
+.def-box{background:var(--blue-l);border:1px solid rgba(37,99,235,.18);border-left:3px solid var(--blue);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin:18px 0;}
+.def-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue-d);margin-bottom:5px;}
+.def-box p{font-size:14px;color:var(--navy);font-weight:500;line-height:1.7;}
+.def-box ul{font-size:14px;color:var(--navy);font-weight:500;line-height:1.7;padding-left:16px;margin-top:6px;}
+.def-box ul li{margin-bottom:4px;}
+
+.tip-box{background:var(--amber-l);border:1px solid rgba(217,119,6,.2);border-radius:var(--r);padding:14px 18px;margin:18px 0;}
+.tip-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-d);margin-bottom:5px;}
+.tip-box p{font-size:14px;color:#78350f;font-weight:400;line-height:1.7;}
+.tip-box strong{color:#431407;font-weight:700;}
+
+.warn-box{background:#fff1f2;border:1px solid rgba(225,29,72,.2);border-left:3px solid #e11d48;border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin:18px 0;}
+.warn-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#be123c;margin-bottom:5px;}
+.warn-box p{font-size:14px;color:#881337;font-weight:500;line-height:1.7;}
+
+.key-list{display:flex;flex-direction:column;gap:8px;margin:18px 0;}
+.ki{display:flex;gap:13px;background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:13px 15px;box-shadow:var(--sh);}
+.ki-ico{font-size:18px;flex-shrink:0;margin-top:1px;}
+.ki-body{font-size:14px;color:var(--t2);line-height:1.65;font-weight:400;}
+.ki-body strong{color:var(--navy);font-weight:700;}
+.ki-body ul{padding-left:16px;margin-top:6px;}
+.ki-body ul li{margin-bottom:3px;font-size:13px;}
+
+.dtbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;}
+.dtbl th{background:var(--bg);color:var(--t2);font-weight:700;padding:9px 12px;text-align:left;border-bottom:1px solid var(--bd2);font-size:11px;text-transform:uppercase;letter-spacing:.06em;}
+.dtbl td{padding:9px 12px;border-bottom:1px solid var(--bd);color:var(--t2);font-weight:400;vertical-align:top;line-height:1.5;}
+.dtbl td strong{color:var(--navy);font-weight:700;}
+.dtbl tr:last-child td{border-bottom:none;}
+.dtbl tr:hover td{background:var(--bg);}
+.dtbl td.good{color:#166534;background:#f0fdf4;}
+.dtbl td.warn{color:#92400e;background:#fffbeb;}
+
+.h3-section{font-size:17px;font-weight:800;color:var(--navy);margin:28px 0 12px;display:flex;align-items:center;gap:10px;}
+.h3-section::after{content:'';flex:1;height:1px;background:var(--bd);}
+.h4-section{font-size:14px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 10px;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0;}
+.info-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:14px 16px;box-shadow:var(--sh);}
+.info-card-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:6px;}
+.info-card-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.info-card-body{font-size:13px;color:var(--t2);line-height:1.6;font-weight:400;}
+
+.freedoms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:18px 0;}
+.freedom-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:14px;box-shadow:var(--sh);}
+.freedom-num{font-size:24px;font-weight:800;color:var(--blue);letter-spacing:-.02em;margin-bottom:4px;}
+.freedom-name{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.freedom-desc{font-size:12px;color:var(--t2);line-height:1.5;font-weight:400;}
+.freedom-exam{font-size:10px;font-weight:700;color:var(--amber-d);background:var(--amber-l);padding:2px 7px;border-radius:100px;margin-top:8px;display:inline-block;}
+
+.airspace-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:18px 0;}
+.as-card{border-radius:8px;padding:10px 8px;text-align:center;}
+.as-card.a{background:#1e3a5f;color:#fff;}
+.as-card.b{background:#1a56a8;color:#fff;}
+.as-card.c{background:#2563eb;color:#fff;}
+.as-card.d{background:#3b82f6;color:#fff;}
+.as-card.e{background:#60a5fa;color:#1e3a5f;}
+.as-card.f{background:#93c5fd;color:#1e3a5f;}
+.as-card.g{background:#dbeafe;color:#1e3a5f;}
+.as-letter{font-size:20px;font-weight:800;margin-bottom:4px;}
+.as-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.8;margin-bottom:6px;}
+.as-detail{font-size:9px;line-height:1.4;opacity:.85;}
+
+.license-timeline{display:flex;flex-direction:column;gap:0;margin:18px 0;position:relative;}
+.license-timeline::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--bd2);}
+.lt-item{display:flex;gap:16px;padding-bottom:20px;position:relative;z-index:1;}
+.lt-item:last-child{padding-bottom:0;}
+.lt-dot{width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--blue);flex-shrink:0;}
+.lt-dot.goal{background:var(--navy);border-color:var(--navy);color:#fff;}
+.lt-content{flex:1;padding-top:4px;}
+.lt-name{font-size:14px;font-weight:800;color:var(--navy);}
+.lt-details{font-size:12px;color:var(--t2);margin-top:3px;line-height:1.5;}
+.lt-tag{font-size:10px;font-weight:700;background:var(--blue-l);color:var(--blue-d);padding:2px 8px;border-radius:100px;margin-left:8px;vertical-align:middle;}
+.lt-tag.goal-tag{background:var(--navy);color:#fff;}
+
+.uf{display:flex;gap:10px;align-items:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--bd);flex-wrap:wrap;}
+.done-badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-l);color:var(--blue-d);font-size:12px;font-weight:700;padding:7px 14px;border-radius:100px;border:1px solid rgba(37,99,235,.2);}
+
+/* QUIZ */
+.qprog{display:flex;gap:5px;margin-bottom:24px;}
+.qpd{height:4px;flex:1;border-radius:4px;background:var(--bg3);}
+.qpd.dn{background:var(--blue);}
+.qpd.cr{background:var(--navy);}
+.qnum{font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.qtxt{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:18px;line-height:1.4;letter-spacing:-.01em;}
+.qopts{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+.qopt{padding:14px 18px;background:#fff;border:1.5px solid var(--bd2);border-radius:var(--rl);font-size:15px;font-weight:600;color:var(--t);cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;box-shadow:var(--sh);}
+.qopt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-l);color:var(--navy);}
+.qopt.correct{background:var(--blue-l);border-color:var(--blue);color:var(--blue-d);}
+.qopt.wrong{background:#fef2f2;border-color:#fca5a5;color:#dc2626;animation:shake .3s ease;}
+.qexpl{background:var(--bg);border:1px solid var(--bd);border-radius:var(--r);padding:14px 18px;font-size:14px;color:var(--t2);line-height:1.7;display:none;font-weight:400;}
+.qexpl.show{display:block;animation:fadeUp .25s ease;}
+.qexpl strong{color:var(--navy);font-weight:700;}
+.qres{text-align:center;padding:40px 16px;}
+.qres-ring{width:100px;height:100px;border-radius:50%;background:var(--blue-l);border:3px solid var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;animation:popIn .4s ease;}
+.qres-pct{font-size:2rem;font-weight:800;color:var(--blue-d);letter-spacing:-.04em;}
+.qres-ttl{font-size:18px;font-weight:800;margin-bottom:6px;color:var(--navy);}
+.qres-sub{font-size:13px;color:var(--t2);font-weight:400;margin-bottom:24px;}
+
+.xp-pop{position:fixed;top:74px;right:20px;z-index:999;background:var(--amber);color:#fff;font-size:13px;font-weight:700;padding:8px 18px;border-radius:100px;box-shadow:0 4px 16px rgba(217,119,6,.3);animation:xpFloat 1.8s ease forwards;pointer-events:none;}
+
+@media(max-width:820px){
+  .dash-lay,.learn-lay{grid-template-columns:1fr;}
+  .dsb,.lsb{display:none;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .dash-main,.lmain{padding:20px;}
+  .metrics-row{flex-wrap:wrap;}
+  .two-col{grid-template-columns:1fr;}
+  .airspace-grid{grid-template-columns:repeat(4,1fr);}
+  .freedoms-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="#" onclick="goTo('landing')">
+    <div class="nav-logo-mark">✈</div>CockpitReady
+  </a>
+  <div class="nav-acts" id="nav-g">
+    <button class="btn btn-ghost btn-sm" onclick="goTo('auth','login')">Anmelden</button>
+    <button class="btn btn-primary btn-sm" onclick="goTo('auth','register')">Kostenlos starten</button>
+  </div>
+  <div class="nav-acts hidden" id="nav-u">
+    <span id="nav-nm" style="font-size:13px;font-weight:600;color:var(--t2)"></span>
+    <button class="btn btn-ghost btn-sm" onclick="logout()">Abmelden</button>
+  </div>
+</nav>
+
+<!-- LANDING -->
+<div id="page-landing">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-kicker"><span class="pulse"></span>ECQB 2026 · Austro Control · DACH-Markt</div>
+      <h1>ATPL Theorie lernen,<br>wie <span class="ital">Fliegen</span> sich<br>anfühlen sollte.</h1>
+      <p class="hero-sub">Die erste strukturierte Lernplattform für CPL/ATPL-Kandidaten im DACH-Raum — mit Erklärungen die wirklich Sinn ergeben, nicht nur Antworten die man auswendig lernt.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" onclick="goTo('auth','register')">Kostenlos starten →</button>
+        <button class="btn btn-outline btn-lg" onclick="goTo('auth','login')">Anmelden</button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">✓ Air Law kostenlos</div>
+        <div class="trust-dot"></div>
+        <div class="trust-item">✓ ECQB 2026 aktuell</div>
+        <div class="trust-dot"></div>
+        <div class="trust-item">✓ Kein Risiko</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="metrics-row">
+    <div class="metric-item"><div class="metric-num">14</div><div class="metric-label">Subjects</div></div>
+    <div class="metric-item"><div class="metric-num">1.200+</div><div class="metric-label">Lernfragen</div></div>
+    <div class="metric-item"><div class="metric-num">ECQB 2026</div><div class="metric-label">Aktuell</div></div>
+    <div class="metric-item"><div class="metric-num">AT · DE · CH</div><div class="metric-label">DACH</div></div>
+  </div>
+
+  <section class="section">
+    <div class="sec-eye">Lerninhalt</div>
+    <h2 class="sec-h2">Alle 14 ATPL-Subjects.</h2>
+    <p class="sec-sub">Strukturiert nach EASA-Syllabus. Aktuell nach ECQB 2026.</p>
+    <div class="sbj-grid">
+      <div class="sc" onclick="goTo('auth','register')"><span class="sc-ico">⚖️</span><div class="sc-pill">Kostenlos</div><div class="sc-num">010</div><div class="sc-name">Air Law</div><div class="sc-prog"><div class="sc-fill" style="width:100%"></div></div></div>
+      <div class="sc lk"><span class="sc-ico">✈️</span><div class="sc-lock">🔒</div><div class="sc-num">021</div><div class="sc-name">Aircraft General Knowledge</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">⚡</span><div class="sc-lock">🔒</div><div class="sc-num">022</div><div class="sc-name">Instrumentation</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🌡️</span><div class="sc-lock">🔒</div><div class="sc-num">050</div><div class="sc-name">Meteorology</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🗺️</span><div class="sc-lock">🔒</div><div class="sc-num">061</div><div class="sc-name">General Navigation</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">📡</span><div class="sc-lock">🔒</div><div class="sc-num">062</div><div class="sc-name">Radio Navigation</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">📋</span><div class="sc-lock">🔒</div><div class="sc-num">031</div><div class="sc-name">Mass &amp; Balance</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">📊</span><div class="sc-lock">🔒</div><div class="sc-num">032</div><div class="sc-name">Performance</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🗒️</span><div class="sc-lock">🔒</div><div class="sc-num">033</div><div class="sc-name">Flight Planning</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🧠</span><div class="sc-lock">🔒</div><div class="sc-num">040</div><div class="sc-name">Human Performance</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🛫</span><div class="sc-lock">🔒</div><div class="sc-num">070</div><div class="sc-name">Operational Procedures</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🔧</span><div class="sc-lock">🔒</div><div class="sc-num">071</div><div class="sc-name">Principles of Flight</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">📻</span><div class="sc-lock">🔒</div><div class="sc-num">091</div><div class="sc-name">VFR Communications</div><div class="sc-prog"></div></div>
+      <div class="sc lk"><span class="sc-ico">🎙️</span><div class="sc-lock">🔒</div><div class="sc-num">092</div><div class="sc-name">IFR Communications</div><div class="sc-prog"></div></div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="sec-eye">Warum CockpitReady</div>
+    <h2 class="sec-h2">Nicht nur Fragen —<br><span class="serif-it">echtes Verstehen.</span></h2>
+    <p class="sec-sub" style="margin-bottom:40px;">Entwickelt von einem Piloten mit Ingenieurs-Hintergrund, der gerade selbst das ATPL macht.</p>
+    <div class="feats">
+      <div class="fc"><div class="fc-mark navy">🧭</div><div class="fc-ttl">Ingenieur-Erklärungen</div><div class="fc-desc">Jede Antwort hat ein Warum. Konzepte werden physikalisch und systemisch erklärt — kein blindes Auswendiglernen.</div></div>
+      <div class="fc"><div class="fc-mark amber">🔥</div><div class="fc-ttl">Streak &amp; XP-System</div><div class="fc-desc">Tägliches Lernen wird belohnt. Dein Fortschritt wird sichtbar gemacht — motivierend ohne kindlich zu sein.</div></div>
+      <div class="fc"><div class="fc-mark blue">🎯</div><div class="fc-ttl">DACH-Fokus</div><div class="fc-desc">Optimiert für Austro Control, LBA und BAZL. Auf Deutsch. Prüfungsrelevant für deinen Markt.</div></div>
+      <div class="fc"><div class="fc-mark sky">📈</div><div class="fc-ttl">Schwächenanalyse</div><div class="fc-desc">Das System erkennt wo du unsicher bist und priorisiert die richtigen Themen — automatisch.</div></div>
+    </div>
+  </section>
+
+  <section class="section" style="text-align:center;">
+    <div class="sec-eye" style="text-align:center">Preise</div>
+    <h2 class="sec-h2" style="text-align:center">Einfach. Transparent.</h2>
+    <p class="sec-sub" style="margin:0 auto 44px;text-align:center;">Starte kostenlos — upgrade wenn du bereit bist.</p>
+    <div class="price-grid">
+      <div class="pc">
+        <div class="pc-tier">Free</div><div class="pc-amt">0<sup>€</sup></div><div class="pc-per">für immer kostenlos</div>
+        <ul class="pc-list"><li><span class="y">✓</span>Air Law komplett</li><li><span class="y">✓</span>50 Übungsfragen</li><li><span class="y">✓</span>Streak &amp; XP</li><li><span class="n">—</span>Alle 14 Subjects</li><li><span class="n">—</span>Mock Exams</li></ul>
+        <button class="btn btn-ghost btn-full" onclick="goTo('auth','register')">Kostenlos starten</button>
+      </div>
+      <div class="pc feat">
+        <div class="pc-badge">Beliebteste Wahl</div>
+        <div class="pc-tier">Pro</div><div class="pc-amt">19<sup>€</sup></div><div class="pc-per">/ Monat · oder 149 € / Jahr</div>
+        <ul class="pc-list"><li><span class="y">✓</span>Alle 14 Subjects</li><li><span class="y">✓</span>1.200+ Fragen</li><li><span class="y">✓</span>Mock Exams</li><li><span class="y">✓</span>Schwächenanalyse</li><li><span class="y">✓</span>ECQB-Updates</li></ul>
+        <button class="btn btn-primary btn-full" onclick="goTo('auth','register')">Jetzt starten →</button>
+      </div>
+      <div class="pc">
+        <div class="pc-tier">ATO-Lizenz</div><div class="pc-amt">299<sup>€</sup></div><div class="pc-per">/ Monat · bis 25 Schüler</div>
+        <ul class="pc-list"><li><span class="y">✓</span>Alles aus Pro</li><li><span class="y">✓</span>Admin-Dashboard</li><li><span class="y">✓</span>Schülerfortschritt</li><li><span class="y">✓</span>Priority Support</li><li><span class="y">✓</span>Custom Branding</li></ul>
+        <button class="btn btn-ghost btn-full">Kontakt aufnehmen</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Dein Frozen ATPL<br>wartet <span class="serif-it">nicht.</span></h2>
+    <p>Starte heute mit Air Law — kostenlos, sofort, ohne Kreditkarte.</p>
+    <div class="cta-band-acts">
+      <button class="btn btn-lg" style="background:#fff;color:var(--navy);" onclick="goTo('auth','register')">Jetzt kostenlos registrieren →</button>
+      <button class="btn btn-lg btn-outline" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75);" onclick="goTo('auth','login')">Anmelden</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">✈ CockpitReady</div>
+    <div class="footer-txt">© 2026 cockpitready.at · ATPL-Vorbereitung für den DACH-Raum</div>
+  </footer>
+</div>
+
+<!-- AUTH -->
+<div id="page-auth" class="hidden">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-hd"><div class="auth-mark">✈</div><div style="font-weight:800;font-size:18px;color:var(--navy);">CockpitReady</div></div>
+      <div id="aerr" class="ferr"></div>
+      <div id="frm-li">
+        <h2 class="auth-ttl">Willkommen zurück</h2>
+        <p class="auth-sub">Lerne weiter wo du aufgehört hast.</p>
+        <div style="height:20px"></div>
+        <div class="fg"><label class="fl">E-Mail</label><input class="fi" type="email" id="li-em" placeholder="pilot@example.at"></div>
+        <div class="fg"><label class="fl">Passwort</label><input class="fi" type="password" id="li-pw" placeholder="••••••••"></div>
+        <div style="height:6px"></div>
+        <button class="btn btn-primary btn-full btn-lg" onclick="doLogin()">Anmelden</button>
+        <div class="divider"><div class="div-l"></div><div class="div-t">oder</div><div class="div-l"></div></div>
+        <div class="f-switch">Noch kein Konto? <a onclick="swAuth('register')">Kostenlos registrieren</a></div>
+        <div class="f-demo"><a onclick="demoIn()">Demo: direkt einloggen →</a></div>
+      </div>
+      <div id="frm-rg" class="hidden">
+        <h2 class="auth-ttl">Konto erstellen</h2>
+        <p class="auth-sub">Air Law sofort kostenlos verfügbar.</p>
+        <div style="height:20px"></div>
+        <div class="fg"><label class="fl">Name</label><input class="fi" type="text" id="rg-nm" placeholder="Max Mustermann"></div>
+        <div class="fg"><label class="fl">E-Mail</label><input class="fi" type="email" id="rg-em" placeholder="pilot@example.at"></div>
+        <div class="fg"><label class="fl">Passwort</label><input class="fi" type="password" id="rg-pw" placeholder="Min. 6 Zeichen"></div>
+        <div style="height:6px"></div>
+        <button class="btn btn-primary btn-full btn-lg" onclick="doReg()">Konto erstellen →</button>
+        <div class="divider"><div class="div-l"></div><div class="div-t">oder</div><div class="div-l"></div></div>
+        <div class="f-switch">Bereits registriert? <a onclick="swAuth('login')">Anmelden</a></div>
+        <div class="f-demo"><a onclick="demoIn()">Demo: direkt einloggen →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="page-dashboard" class="hidden" style="padding-top:62px;min-height:100vh;background:var(--bg);">
+  <div class="dash-lay">
+    <aside class="dsb">
+      <div class="dsb-grp"><div class="dsb-lbl">Navigation</div>
+        <div class="dsi act"><span class="dsi-ico">⬛</span>Übersicht</div>
+        <div class="dsi" onclick="goTo('learn')"><span class="dsi-ico">📖</span>Lernen</div>
+        <div class="dsi dim"><span class="dsi-ico">📊</span>Fortschritt</div>
+      </div>
+      <div class="dsb-grp"><div class="dsb-lbl">Subjects</div>
+        <div class="dsi act" onclick="goTo('learn')"><span class="dsi-ico">⚖️</span>Air Law</div>
+        <div class="dsi dim"><span class="dsi-ico">🔒</span>Meteorology</div>
+        <div class="dsi dim"><span class="dsi-ico">🔒</span>Navigation</div>
+      </div>
+      <div class="dsb-user">
+        <div class="dsb-av" id="sb-av">P</div>
+        <div><div class="dsb-nm" id="sb-nm">Pilot</div><div class="dsb-pl">Free Plan</div></div>
+      </div>
+    </aside>
+    <main class="dash-main">
+      <div class="dash-hi" id="dash-hi">Guten Tag, Pilot</div>
+      <div class="stats-row">
+        <div class="stc amber"><div class="stc-lbl">Streak</div><div class="stc-val" id="s-st">1</div><div class="stc-sub">Tag in Folge</div></div>
+        <div class="stc blue"><div class="stc-lbl">XP Total</div><div class="stc-val" id="s-xp">0</div><div class="stc-sub">Punkte</div></div>
+        <div class="stc"><div class="stc-lbl">Abgeschlossen</div><div class="stc-val" id="s-dn">0</div><div class="stc-sub">Einheiten</div></div>
+        <div class="stc"><div class="stc-lbl">Genauigkeit</div><div class="stc-val" id="s-ac">—</div><div class="stc-sub">Quiz</div></div>
+      </div>
+      <div class="ds-ttl">Deine Subjects</div>
+      <div class="sj-list">
+        <div class="sji" onclick="goTo('learn')">
+          <div class="sji-top"><span class="sji-ico">⚖️</span><span class="sji-avl">Verfügbar</span></div>
+          <div class="sji-nm">Air Law</div><div class="sji-num">Subject 010</div>
+          <div class="sji-bar"><div class="sji-fill" id="dp" style="width:0%"></div></div>
+        </div>
+        <div class="sji lk"><div class="sji-top"><span class="sji-ico">🌡️</span><span style="font-size:12px;color:var(--t3)">🔒</span></div><div class="sji-nm">Meteorology</div><div class="sji-num">Subject 050 · Pro</div><div class="sji-bar"></div></div>
+        <div class="sji lk"><div class="sji-top"><span class="sji-ico">🗺️</span><span style="font-size:12px;color:var(--t3)">🔒</span></div><div class="sji-nm">General Navigation</div><div class="sji-num">Subject 061 · Pro</div><div class="sji-bar"></div></div>
+        <div class="sji lk"><div class="sji-top"><span class="sji-ico">✈️</span><span style="font-size:12px;color:var(--t3)">🔒</span></div><div class="sji-nm">Aircraft General</div><div class="sji-num">Subject 021 · Pro</div><div class="sji-bar"></div></div>
+      </div>
+      <div class="ds-ttl">Diese Woche</div>
+      <div class="streak-row" id="sk-row"></div>
+      <div class="nxt">
+        <div class="nxt-l"><div class="nxt-ico">✈️</div><div><div class="nxt-tag">Weiter lernen</div><div class="nxt-ttl">Air Law — Bereit zum Starten</div></div></div>
+        <button class="btn btn-primary" onclick="goTo('learn')">Starten →</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- LEARN -->
+<div id="page-learn" class="hidden" style="padding-top:62px;min-height:100vh;background:var(--bg);">
+  <div class="learn-lay">
+    <aside class="lsb">
+      <div class="lsb-hd">
+        <div class="lsb-tag">Subject 010</div>
+        <div class="lsb-ttl">Air Law</div>
+        <div class="lsb-bar"><div class="lsb-fill" id="lsb-f" style="width:0%"></div></div>
+        <div class="lsb-pct" id="lsb-p">0 % abgeschlossen</div>
+      </div>
+      <div id="lnav"></div>
+    </aside>
+    <main class="lmain" id="lmain"></main>
+  </div>
+</div>
+
+<script>
+const UNITS = [
+  {title:'ICAO & Regulierungsstruktur', xp:60, meta:['10 min','4 Kapitel'], type:'icao'},
+  {title:'Hoheitlichkeit & Chicagoer Abkommen', xp:60, meta:['10 min','5 Kapitel'], type:'chicago'},
+  {title:'Freiheiten der Luft', xp:50, meta:['8 min','9 Freiheiten'], type:'freedoms'},
+  {title:'Luftraumstruktur & Klassen A–G', xp:75, meta:['12 min','Tabelle + Visualisierung'], type:'airspace'},
+  {title:'Luftfahrzeugregister & Dokumente', xp:50, meta:['8 min','4 Pflichtdokumente'], type:'docs'},
+  {title:'Pilotenlizenzierung Part-FCL', xp:75, meta:['12 min','LAPL bis ATPL'], type:'licenses'},
+  {title:'Medical & Currency', xp:50, meta:['8 min','Class 1–3'], type:'medical'},
+  {title:'Haftungsrecht & Abkommen', xp:40, meta:['6 min','Montréal & Warschau'], type:'liability'},
+  {title:'Wissenscheck Air Law', xp:150, meta:['10 Fragen','~15 min'], type:'quiz'}
+];
+
+const QZ = [
+  {q:'Welche Organisation ist für die Herausgabe internationaler Standards (SARPs) in der Zivilluftfahrt zuständig?',opts:['EASA','Eurocontrol','ICAO','Austro Control'],c:2,w:'ICAO (International Civil Aviation Organization) ist die UN-Sonderorganisation für internationale Zivilluftfahrt. Sie gibt SARPs in 19 Annexen heraus. EASA ist nur die europäische Behörde, die ICAO-Standards in EU-Recht umsetzt.'},
+  {q:'Welches Grundprinzip legt Art. 1 des Chicagoer Abkommens fest?',opts:['Freier Überflug für alle Vertragsstaaten','Vollständige und ausschließliche Hoheit jedes Staates über seinen Luftraum','Pflicht zur gegenseitigen Anerkennung von Pilotenlizenzen','Verbot von Militärflügen über fremdem Staatsgebiet'],c:1,w:'Art. 1 Chicagoer Abkommen: Jeder Vertragsstaat hat vollständige und ausschließliche Hoheit über den Luftraum über seinem Hoheitsgebiet. Dies ist das fundamentale Prinzip des internationalen Luftrechts.'},
+  {q:'Was beschreibt die 5. Freiheit der Luft?',opts:['Das Recht, über ein fremdes Land zu fliegen ohne zu landen','Das Recht, Passagiere zwischen zwei Drittstaaten zu befördern','Das Recht, Passagiere in einem Drittstaat aufzunehmen und in einem weiteren Drittstaat abzuliefern','Das Recht, im Transitstaat technisch zu stoppen'],c:2,w:'Die 5. Freiheit erlaubt einer Airline, Passagiere/Fracht in einem Drittland aufzunehmen und in einem anderen Drittland abzusetzen, sofern der Flug im Heimatland beginnt oder endet. Beispiel: Austrian Vienna–Bangkok–Sydney.'},
+  {q:'In welcher Luftraumklasse werden sowohl IFR- als auch VFR-Flüge vollständig voneinander separiert?',opts:['Klasse C','Klasse D','Klasse B','Klasse E'],c:2,w:'Nur in Klasse B erhalten alle Flüge (IFR und VFR) vollständige Separation voneinander. In Klasse C werden IFR von allen separiert, VFR aber nur von IFR — nicht untereinander.'},
+  {q:'Welche vier Pflichtdokumente müssen laut Chicagoer Abkommen an Bord eines Luftfahrzeugs mitgeführt werden?',opts:['Flugplan, Wetterbericht, Navigationskarte, Handbuch','CofA, Noise Certificate, Versicherungsnachweis, Flugplan','CofA, Certificate of Registration, Radio Licence, Crew Licences','Handbuch, Crew-Liste, Crewlizenzen, Flugdaten-Aufzeichnung'],c:2,w:'Die vier Pflichtdokumente nach Chicagoer Abkommen Art. 29: (1) Certificate of Airworthiness (CofA), (2) Certificate of Registration, (3) Radio Licence (wenn Funk verbaut), (4) Crew Licences & Medical Certificates.'},
+  {q:'Welches Mindestalter gilt für die Ausstellung einer ATPL(A)?',opts:['18 Jahre','17 Jahre','21 Jahre','23 Jahre'],c:2,w:'EASA Part-FCL.505: Mindestalter ATPL(A) = 21 Jahre. CPL ab 18, PPL und LAPL ab 17 Jahren möglich.'},
+  {q:'Was bedeutet "Frozen ATPL"?',opts:['ATPL ohne IR-Rating','ATPL-Theorie bestanden, Erfahrungsanforderung 1.500 h noch nicht erfüllt','ATPL nur gültig in Österreich','ATPL-Theorie nicht bestanden, CPL bereits vorhanden'],c:1,w:'Frozen ATPL = ATPL-Theorie bestanden + CPL + IR + MCC, aber die Erfahrungsanforderung von 1.500 h Gesamtflugerfahrung noch nicht erreicht. Danach automatisch Full ATPL. Mit Frozen ATPL ist man berechtigt als Co-Pilot auf Airlines zu fliegen.'},
+  {q:'Welche Gültigkeitsdauer hat ein Medical Class 1 für einen 38-jährigen Piloten?',opts:['6 Monate','24 Monate','12 Monate','3 Monate'],c:2,w:'Medical Class 1: Unter 40 Jahre = 12 Monate Gültigkeitsdauer. Über 40 Jahre = 6 Monate. Bei Single-Pilot-Airline-Operations (Part-ORO.FC) unter 60 Jahren gilt ebenfalls 6 Monate.'},
+  {q:'Welche Lufträume gibt es in Österreich NICHT?',opts:['Klasse C und D','Klasse B und F','Klasse E und G','Klasse A und G'],c:1,w:'In Österreich existieren die Luftraumklassen B und F nicht. Der österreichische Luftraum besteht aus: Klasse C (kontrollierter Hochluftverkehr), D (kontrollierter Niederluftverkehr), E und G (unkontrollierter Luftraum).'},
+  {q:'Was regelt das Montréaler Abkommen 1999?',opts:['Die technischen Standards für Lufttüchtigkeit','Haftungsregeln für Tod und Körperschäden im internationalen Luftverkehr','Die Überflugrechte zwischen Vertragsstaaten','Die Anforderungen an Pilotenlizenzen weltweit'],c:1,w:'Das Montréaler Abkommen (MÜ 1999) ersetzt das Warschauer System und regelt die Haftung von Luftfrachtführern bei Tod, Körperschäden und Gepäckverlust im internationalen Luftverkehr. Unbeschränkte Haftung bis SDR 113.100 pro Passagier bei Tod/Körperschäden.'}
+];
+
+let S={user:null,page:'landing',unit:0,done:[],xp:0,streak:1,qa:0,qc:0};
+let QS={i:0,sc:0,ans:false};
+function save(){try{localStorage.setItem('cr6',JSON.stringify(S));}catch(e){}}
+function load(){try{const d=localStorage.getItem('cr6');if(d)S={...S,...JSON.parse(d)};}catch(e){}}
+
+function goTo(pg,sub){
+  ['landing','auth','dashboard','learn'].forEach(p=>{const e=document.getElementById('page-'+p);if(e)e.classList.add('hidden');});
+  const el=document.getElementById('page-'+pg);if(el)el.classList.remove('hidden');
+  S.page=pg;
+  const ng=document.getElementById('nav-g'),nu=document.getElementById('nav-u');
+  if(S.user){ng.classList.add('hidden');nu.classList.remove('hidden');document.getElementById('nav-nm').textContent=S.user.name.split(' ')[0];}
+  else{ng.classList.remove('hidden');nu.classList.add('hidden');}
+  if(pg==='auth')swAuth(sub||'login');
+  if(pg==='dashboard'){if(!S.user){goTo('auth','login');return;}rDash();}
+  if(pg==='learn'){if(!S.user){goTo('auth','login');return;}rLearn();}
+  window.scrollTo(0,0);
+}
+function swAuth(m){document.getElementById('frm-li').classList.toggle('hidden',m!=='login');document.getElementById('frm-rg').classList.toggle('hidden',m!=='register');document.getElementById('aerr').style.display='none';}
+function showErr(m){const e=document.getElementById('aerr');e.textContent=m;e.style.display='block';}
+function doLogin(){
+  const em=document.getElementById('li-em').value.trim(),pw=document.getElementById('li-pw').value;
+  if(!em||!pw){showErr('Bitte alle Felder ausfüllen.');return;}
+  const s=localStorage.getItem('cr_u_'+em);if(!s){showErr('Kein Konto mit dieser E-Mail.');return;}
+  const u=JSON.parse(s);if(u.password!==pw){showErr('Falsches Passwort.');return;}
+  S.user={name:u.name,email:u.email};save();goTo('dashboard');
+}
+function doReg(){
+  const n=document.getElementById('rg-nm').value.trim(),em=document.getElementById('rg-em').value.trim(),pw=document.getElementById('rg-pw').value;
+  if(!n||!em||!pw){showErr('Bitte alle Felder ausfüllen.');return;}
+  if(pw.length<6){showErr('Passwort min. 6 Zeichen.');return;}
+  localStorage.setItem('cr_u_'+em,JSON.stringify({name:n,email:em,password:pw}));
+  S.user={name:n,email:em};S.xp=0;S.done=[];S.streak=1;save();goTo('dashboard');
+}
+function demoIn(){S.user={name:'Paul',email:'paul@demo.at'};save();goTo('dashboard');}
+function logout(){S.user=null;save();goTo('landing');}
+
+function rDash(){
+  const nm=S.user?S.user.name.split(' ')[0]:'Pilot';
+  const h=new Date().getHours(),g=h<12?'Guten Morgen':h<18?'Guten Tag':'Guten Abend';
+  document.getElementById('dash-hi').textContent=g+', '+nm;
+  document.getElementById('sb-nm').textContent=nm;
+  document.getElementById('sb-av').textContent=nm[0].toUpperCase();
+  document.getElementById('s-st').textContent=S.streak;
+  document.getElementById('s-xp').textContent=S.xp;
+  document.getElementById('s-dn').textContent=S.done.length;
+  document.getElementById('s-ac').textContent=S.qa>0?Math.round(S.qc/S.qa*100)+'%':'—';
+  document.getElementById('dp').style.width=Math.round(S.done.length/UNITS.length*100)+'%';
+  const days=['Mo','Di','Mi','Do','Fr','Sa','So'],td=new Date().getDay(),ti=td===0?6:td-1;
+  document.getElementById('sk-row').innerHTML=days.map((d,i)=>`<div class="sd ${i<ti?'dn':i===ti?'td':''}">${d}</div>`).join('');
+}
+
+function rLearn(){rNav();rUnit(S.unit);}
+function rNav(){
+  const pct=Math.round(S.done.length/UNITS.length*100);
+  document.getElementById('lsb-f').style.width=pct+'%';
+  document.getElementById('lsb-p').textContent=pct+' % abgeschlossen';
+  document.getElementById('lnav').innerHTML=UNITS.map((u,i)=>{
+    const d=S.done.includes(i),a=S.unit===i;
+    return`<div class="lni ${a?'act':''} ${d?'done':''}" onclick="rUnit(${i})"><div class="lni-bub">${d?'✓':i+1}</div><div class="lni-txt">${u.title}</div><div class="lni-xp">+${u.xp}</div></div>`;
+  }).join('');
+}
+function rUnit(idx){
+  S.unit=idx;rNav();
+  const u=UNITS[idx],m=document.getElementById('lmain');
+  if(u.type==='quiz'){QS={i:0,sc:0,ans:false};m.innerHTML=qShell();rQ();return;}
+  const d=S.done.includes(idx);
+  m.innerHTML=`<div class="lcrumb">Air Law <span>› ${u.title}</span></div>
+    <h1 class="lunit-ttl">${u.title}</h1>
+    <div class="lmeta">${u.meta.map(x=>`<span class="lchip ch-bl">⏱ ${x}</span>`).join('')}<span class="lchip ch-am">⚡ +${u.xp} XP</span></div>
+    ${getCon(u.type)}
+    <div class="uf">
+      ${idx>0?`<button class="btn btn-ghost" onclick="rUnit(${idx-1})">← Zurück</button>`:''}
+      ${d?`<button class="btn btn-blue" onclick="rUnit(${Math.min(idx+1,UNITS.length-1)})">Weiter →</button><div class="done-badge">✓ Abgeschlossen</div>`
+        :`<button class="btn btn-primary" onclick="mkDone(${idx})">Verstanden — +${u.xp} XP →</button>`}
+    </div>`;
+  m.scrollTop=0;window.scrollTo(0,0);
+}
+function mkDone(idx){
+  if(!S.done.includes(idx)){S.done.push(idx);S.xp+=UNITS[idx].xp;save();popXP('+'+UNITS[idx].xp+' XP');}
+  rUnit(idx+1<UNITS.length?idx+1:idx);
+}
+function popXP(t){const e=document.createElement('div');e.className='xp-pop';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),1900);}
+
+function qShell(){return`<div class="lcrumb">Air Law <span>› Wissenscheck</span></div><h1 class="lunit-ttl">Wissenscheck Air Law</h1><div class="lmeta"><span class="lchip ch-bl">⏱ ~15 min</span><span class="lchip ch-bl">10 Fragen</span><span class="lchip ch-am">⚡ +150 XP</span></div><div id="qw"></div>`;}
+function rQ(){
+  const w=document.getElementById('qw');if(!w)return;
+  if(QS.i>=QZ.length){
+    const pct=Math.round(QS.sc/QZ.length*100);
+    S.qa+=QZ.length;S.qc+=QS.sc;
+    const lastIdx=UNITS.length-1;
+    if(!S.done.includes(lastIdx)){S.done.push(lastIdx);S.xp+=150;popXP('+150 XP');}
+    save();
+    w.innerHTML=`<div class="qres"><div class="qres-ring"><div class="qres-pct">${pct}%</div></div>
+      <div class="qres-ttl">${QS.sc} von ${QZ.length} richtig</div>
+      <div class="qres-sub">${pct>=75?'Ausgezeichnet — Air Law abgeschlossen!':'Weiter üben — du schaffst das.'}</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-ghost" onclick="QS={i:0,sc:0,ans:false};rQ()">Nochmal</button>
+        <button class="btn btn-primary" onclick="goTo('dashboard')">Zum Dashboard →</button>
+      </div></div>`;
+    return;
+  }
+  const q=QZ[QS.i];QS.ans=false;
+  w.innerHTML=`<div class="qprog">${QZ.map((_,i)=>`<div class="qpd ${i<QS.i?'dn':i===QS.i?'cr':''}"></div>`).join('')}</div>
+    <div class="qnum">Frage ${QS.i+1} von ${QZ.length}</div>
+    <div class="qtxt">${q.q}</div>
+    <div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" id="o${i}" onclick="ansQ(${i})">${o}</button>`).join('')}</div>
+    <div class="qexpl" id="qex"><strong>Erklärung:</strong> ${q.w}</div>`;
+}
+function ansQ(idx){
+  if(QS.ans)return;QS.ans=true;
+  const q=QZ[QS.i];
+  document.querySelectorAll('.qopt').forEach(o=>o.disabled=true);
+  document.getElementById('o'+idx).classList.add(idx===q.c?'correct':'wrong');
+  if(idx!==q.c)document.getElementById('o'+q.c).classList.add('correct');
+  if(idx===q.c)QS.sc++;
+  document.getElementById('qex').classList.add('show');
+  const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.marginTop='14px';
+  btn.textContent=QS.i<QZ.length-1?'Nächste Frage →':'Auswertung →';
+  btn.onclick=()=>{QS.i++;rQ();};
+  document.getElementById('qw').appendChild(btn);
+}
+
+function getCon(type){
+  const c = {
+    icao: `
+      <div class="prose">Die internationale Zivilluftfahrt basiert auf einem <strong>dreistufigen Regulierungsrahmen</strong>: ICAO auf globaler Ebene, EASA auf europäischer Ebene, und nationale Behörden wie Austro Control auf nationaler Ebene. Ohne dieses System wäre internationaler Luftverkehr unmöglich.</div>
+
+      <div class="h3-section">ICAO</div>
+      <div class="def-box"><div class="def-tag">Definition</div><p><strong>ICAO</strong> — International Civil Aviation Organization. UN-Sonderorganisation, gegründet 1944 durch das Chicagoer Abkommen (Convention on International Civil Aviation). Sitz: Montréal, Kanada. 193 Mitgliedstaaten.</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🎯</div><div class="ki-body"><strong>Aufgabe:</strong> Sichere, geordnete und wirtschaftliche Entwicklung der internationalen Zivilluftfahrt. Gibt <strong>Standards and Recommended Practices (SARPs)</strong> heraus.</div></div>
+        <div class="ki"><div class="ki-ico">📚</div><div class="ki-body"><strong>Die 19 ICAO-Annexe:</strong> Annex 1 = Personnel Licensing, Annex 2 = Rules of the Air, Annex 6 = Operation of Aircraft, Annex 11 = ATS, Annex 15 = AIS, Annex 17 = Security. Für Air Law besonders prüfungsrelevant: <strong>Annex 1, 2, 6, 11</strong>.</div></div>
+        <div class="ki"><div class="ki-ico">⚠️</div><div class="ki-body"><strong>Standards vs. Recommended Practices:</strong> Standards sind verbindlich — Abweichungen müssen ICAO gemeldet werden. Recommended Practices sind empfohlen aber nicht zwingend.</div></div>
+      </div>
+      <div class="tip-box"><div class="tip-tag">Prüfungstipp</div><p>ICAO gibt Standards heraus — Mitgliedstaaten müssen bei Abweichung eine <strong>Difference Notification</strong> einreichen. Diese Unterschiede werden im AIP des jeweiligen Landes veröffentlicht.</p></div>
+
+      <div class="h3-section">EASA</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🇪🇺</div><div class="ki-body"><strong>European Union Aviation Safety Agency</strong> — Sitz Köln. Zuständig für Lufttüchtigkeit, Betrieb, Lizenzierung und Lufttüchtigkeitszertifizierung innerhalb der EU. EASA-Verordnungen gelten direkt in allen EU-Mitgliedstaaten ohne nationale Umsetzung.</div></div>
+        <div class="ki"><div class="ki-ico">📋</div><div class="ki-body"><strong>Wichtigste Verordnungen:</strong> EU 1178/2011 (Part-FCL — Pilotenlizenzen), EU 965/2012 (Part-OPS — Flugbetrieb), EU 748/2012 (Part-21 — Lufttüchtigkeit), EU 1321/2014 (Part-M — Aufrechterhaltung der Lufttüchtigkeit).</div></div>
+        <div class="ki"><div class="ki-ico">📏</div><div class="ki-body"><strong>AMC &amp; GM:</strong> Acceptable Means of Compliance und Guidance Material — nicht rechtlich bindend, zeigen aber wie Anforderungen erfüllt werden können. Vergleichbar mit ICAO Recommended Practices.</div></div>
+      </div>
+
+      <div class="h3-section">Nationale Behörden (NCA)</div>
+      <div class="two-col">
+        <div class="info-card"><div class="info-card-tag">Österreich</div><div class="info-card-title">Austro Control GmbH</div><div class="info-card-body">Zuständig für Lizenzausstellung, Prüfungsabnahme (ECQB), Flugsicherung, Luftraummanagement und Aufsicht über ATOs.</div></div>
+        <div class="info-card"><div class="info-card-tag">Deutschland</div><div class="info-card-title">Luftfahrt-Bundesamt (LBA)</div><div class="info-card-body">Bundesbehörde für Luftfahrt in Deutschland. Zuständig für Musterzulassungen, Lizenzen und Betriebsgenehmigungen.</div></div>
+        <div class="info-card"><div class="info-card-tag">Schweiz</div><div class="info-card-title">BAZL / OFAC</div><div class="info-card-body">Bundesamt für Zivilluftfahrt. Schweiz ist kein EU-Mitglied aber hat ein Luftverkehrsabkommen mit der EU und wendet EASA-Regeln an.</div></div>
+        <div class="info-card"><div class="info-card-tag">Hierarchie</div><div class="info-card-title">ICAO → EASA → NCA</div><div class="info-card-body">Bei Konflikten gilt immer die strengere Regelung. NCAs können nationale Zusatzanforderungen auferlegen, nicht aber EASA-Mindeststandards unterschreiten.</div></div>
+      </div>`,
+
+    chicago: `
+      <div class="prose">Das Chicagoer Abkommen vom <strong>7. Dezember 1944</strong> ist das rechtliche Fundament der internationalen Zivilluftfahrt. Es wurde von 52 Staaten unterzeichnet und trat 1947 in Kraft — gleichzeitig mit der Gründung der ICAO.</div>
+
+      <div class="h3-section">Grundprinzipien</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🏴</div><div class="ki-body"><strong>Art. 1 — Lufthoheit:</strong> Jeder Vertragsstaat besitzt vollständige und ausschließliche Hoheit über den Luftraum über seinem Hoheitsgebiet. Gilt auch für Territorialgewässer (12 Seemeilen).</div></div>
+        <div class="ki"><div class="ki-ico">🗺️</div><div class="ki-body"><strong>Art. 2 — Hoheitsgebiet:</strong> Umfasst das Landgebiet und die daran angrenzenden Territorialgewässer unter der Souveränität des Staates. Hohe See ist internationaler Luftraum — keine staatliche Hoheit.</div></div>
+        <div class="ki"><div class="ki-ico">✈️</div><div class="ki-body"><strong>Art. 3 — Nur Zivilluftfahrt:</strong> Das Abkommen gilt nur für zivile Luftfahrzeuge. Staatsluftfahrzeuge (Militär, Zoll, Polizei) sind ausgenommen und dürfen nicht ohne besondere Genehmigung über fremdes Hoheitsgebiet fliegen.</div></div>
+        <div class="ki"><div class="ki-ico">🎫</div><div class="ki-body"><strong>Art. 5 — Nichtlinienflüge:</strong> Luftfahrzeuge von Vertragsstaaten dürfen nichtgewerbliche Linienflüge ohne vorherige Genehmigung ins/durch das Hoheitsgebiet anderer Vertragsstaaten durchführen.</div></div>
+        <div class="ki"><div class="ki-ico">📝</div><div class="ki-body"><strong>Art. 6 — Linienluftverkehr:</strong> Gewerblicher Linienluftverkehr über oder ins Hoheitsgebiet eines Vertragsstaates benötigt dessen besondere Genehmigung oder andere Erlaubnis.</div></div>
+      </div>
+
+      <div class="h3-section">Pflichtdokumente an Bord (Art. 29)</div>
+      <div class="warn-box"><div class="warn-tag">⚠️ Prüfungsrelevant</div><p>Diese vier Dokumente müssen nach Art. 29 des Chicagoer Abkommens bei jedem Flug im internationalen Luftverkehr <strong>physisch an Bord</strong> mitgeführt werden.</p></div>
+      <table class="dtbl">
+        <tr><th>#</th><th>Dokument</th><th>Inhalt / Bedeutung</th></tr>
+        <tr><td><strong>1</strong></td><td><strong>Certificate of Airworthiness (CofA)</strong></td><td>Vom Registrierungsstaat ausgestellt. Bestätigt Lufttüchtigkeit. Muss gültig sein.</td></tr>
+        <tr><td><strong>2</strong></td><td><strong>Certificate of Registration</strong></td><td>Nachweis der Staatszugehörigkeit und Registrierung. Enthält Nationalitäts- und Eintragungszeichen.</td></tr>
+        <tr><td><strong>3</strong></td><td><strong>Radio Station Licence</strong></td><td>Nur wenn Funk an Bord. Ausgestellt von nationaler Fernmeldebehörde. Enthält Rufzeichen.</td></tr>
+        <tr><td><strong>4</strong></td><td><strong>Crew Licences &amp; Medical Certificates</strong></td><td>Gültige Lizenzen und Medical für alle aktiven Crewmitglieder.</td></tr>
+      </table>
+      <div class="tip-box"><div class="tip-tag">Merkhilfe</div><p>Eselsbrücke: <strong>"CofA, Reg, Radio, Crew"</strong> — oder: <strong>CRRC</strong> (Certificate, Registration, Radio, Crew). Diese vier kommen regelmäßig im Examen.</p></div>
+
+      <div class="h3-section">Luftfahrzeugregister</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📋</div><div class="ki-body"><strong>Registrierungspflicht (Art. 17–21):</strong> Jedes Luftfahrzeug muss in einem Vertragsstaat registriert sein. Kein Luftfahrzeug darf in mehr als einem Staat gleichzeitig registriert sein.</div></div>
+        <div class="ki"><div class="ki-ico">🔤</div><div class="ki-body"><strong>Nationalitäts- und Eintragungszeichen:</strong> Österreich = <strong>OE</strong>, Deutschland = <strong>D</strong>, Schweiz = <strong>HB</strong>. Das Nationalitätszeichen wird durch die ICAO zugewiesen (Doc 9946).</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Umregistrierung:</strong> Bei Eigentümerwechsel in einen anderen Staat muss das Luftfahrzeug umregistriert werden. Bisherige Registrierung erlischt.</div></div>
+      </div>`,
+
+    freedoms: `
+      <div class="prose">ICAO definiert die <strong>kommerziellen Überflugrechte</strong> (Freedoms of the Air) als Grundlage für internationale Luftverkehrsabkommen. Die ersten fünf sind die klassischen "technischen und kommerziellen Freiheiten", die weiteren gelten als abgeleitet.</div>
+      <div class="tip-box"><div class="tip-tag">Prüfungsstrategie</div><p>Im ATPL-Examen kommen fast immer die <strong>Freiheiten 1–5</strong> dran. Freiheiten 6–9 sind seltener aber möglich. Lerne die ersten 5 auswendig — die weiteren als Konzept.</p></div>
+
+      <div class="h3-section">Die 9 Freiheiten der Luft</div>
+      <div class="freedoms-grid">
+        <div class="freedom-card"><div class="freedom-num">1.</div><div class="freedom-name">Technischer Überflug</div><div class="freedom-desc">Das Recht, ohne Zwischenlandung über das Hoheitsgebiet eines anderen Staates zu fliegen.</div><div class="freedom-exam">Prüfungsrelevant ★★★</div></div>
+        <div class="freedom-card"><div class="freedom-num">2.</div><div class="freedom-name">Technischer Stopp</div><div class="freedom-desc">Das Recht, in einem anderen Staat für nicht-kommerzielle Zwecke zu landen (Treibstoff, Reparatur) — ohne Passagiere aufzunehmen oder abzusetzen.</div><div class="freedom-exam">Prüfungsrelevant ★★★</div></div>
+        <div class="freedom-card"><div class="freedom-num">3.</div><div class="freedom-name">Export-Freiheit</div><div class="freedom-desc">Das Recht, Passagiere/Fracht aus dem Heimatstaat in einen anderen Vertragsstaat zu befördern.</div><div class="freedom-exam">Prüfungsrelevant ★★★</div></div>
+        <div class="freedom-card"><div class="freedom-num">4.</div><div class="freedom-name">Import-Freiheit</div><div class="freedom-desc">Das Recht, Passagiere/Fracht aus einem anderen Vertragsstaat in den Heimatstaat zu befördern.</div><div class="freedom-exam">Prüfungsrelevant ★★★</div></div>
+        <div class="freedom-card"><div class="freedom-num">5.</div><div class="freedom-name">Drittstaaten-Freiheit</div><div class="freedom-desc">Das Recht, Passagiere/Fracht zwischen zwei Drittstaaten zu befördern, wenn der Flug im Heimatstaat beginnt oder endet. Beispiel: AUA Wien–Bangkok–Sydney.</div><div class="freedom-exam">Prüfungsrelevant ★★★</div></div>
+        <div class="freedom-card"><div class="freedom-num">6.</div><div class="freedom-name">Heimatland-Transit</div><div class="freedom-desc">Das Recht, Passagiere zwischen zwei Drittstaaten via Heimatstaat zu befördern. Kombination aus 3. und 4. Freiheit.</div><div class="freedom-exam">Prüfungsrelevant ★★</div></div>
+        <div class="freedom-card"><div class="freedom-num">7.</div><div class="freedom-name">Drittland-Betrieb</div><div class="freedom-desc">Das Recht, ausschließlich zwischen zwei Drittstaaten zu operieren, ohne den Heimatstaat zu berühren.</div><div class="freedom-exam">Prüfungsrelevant ★</div></div>
+        <div class="freedom-card"><div class="freedom-num">8.</div><div class="freedom-name">Kabotage (intern)</div><div class="freedom-desc">Das Recht, Passagiere innerhalb eines Fremdstaates zu befördern, auf einem Flug der im Heimatstaat beginnt oder endet.</div><div class="freedom-exam">Prüfungsrelevant ★</div></div>
+        <div class="freedom-card"><div class="freedom-num">9.</div><div class="freedom-name">Vollkabotage</div><div class="freedom-desc">Das Recht, vollständig innerhalb eines fremden Staates Passagiere zu befördern, ohne Heimatstaat-Bezug. Innerhalb der EU durch EU-Recht möglich.</div><div class="freedom-exam">Prüfungsrelevant ★</div></div>
+      </div>
+      <div class="tip-box"><div class="tip-tag">Merkhilfe 1–5</div><p><strong>1 = Überflug, 2 = Tankstopp, 3 = Export, 4 = Import, 5 = Weiterladen.</strong> Stell dir vor du bist Austrian Airlines: 3 = du fliegst Paxe von Wien nach Bangkok, 4 = du holst Paxe aus Bangkok nach Wien, 5 = du nimmst Paxe Bangkok–Sydney mit wenn du sowieso dort durchfliegst.</p></div>`,
+
+    airspace: `
+      <div class="prose">ICAO teilt den kontrollierten und unkontrollierten Luftraum in <strong>7 Klassen (A–G)</strong> ein. Jede Klasse definiert welche Flüge erlaubt sind, ob eine ATC-Freigabe erforderlich ist, und welchen Service der Pilot erhält.</div>
+
+      <div class="h3-section">Luftraumklassen Visualisierung</div>
+      <div class="airspace-grid">
+        <div class="as-card a"><div class="as-letter">A</div><div class="as-type">Kontrolliert</div><div class="as-detail">Nur IFR<br>Freigabe: Ja<br>Sep: Alle</div></div>
+        <div class="as-card b"><div class="as-letter">B</div><div class="as-type">Kontrolliert</div><div class="as-detail">IFR+VFR<br>Freigabe: Ja<br>Sep: Alle</div></div>
+        <div class="as-card c"><div class="as-letter">C</div><div class="as-type">Kontrolliert</div><div class="as-detail">IFR+VFR<br>Freigabe: Ja<br>Sep: IFR/alle</div></div>
+        <div class="as-card d"><div class="as-letter">D</div><div class="as-type">Kontrolliert</div><div class="as-detail">IFR+VFR<br>Freigabe: Ja<br>Sep: IFR/IFR</div></div>
+        <div class="as-card e"><div class="as-letter">E</div><div class="as-type">Kontrolliert</div><div class="as-detail">IFR+VFR<br>Freigabe: IFR<br>Sep: IFR/IFR</div></div>
+        <div class="as-card f"><div class="as-letter">F</div><div class="as-type">Unkontrolliert</div><div class="as-detail">IFR+VFR<br>Keine Pflicht<br>Sep: wenn mögl.</div></div>
+        <div class="as-card g"><div class="as-letter">G</div><div class="as-type">Unkontrolliert</div><div class="as-detail">IFR+VFR<br>Keine Pflicht<br>FIS only</div></div>
+      </div>
+
+      <div class="h3-section">Detailtabelle</div>
+      <table class="dtbl">
+        <tr><th>Klasse</th><th>Flüge</th><th>Freigabe</th><th>ATC-Service</th><th>VMC-Minima</th></tr>
+        <tr><td><strong>A</strong></td><td>Nur IFR</td><td>Ja</td><td>Separation aller Flüge</td><td>— (nur IFR)</td></tr>
+        <tr><td><strong>B</strong></td><td>IFR + VFR</td><td>Ja</td><td>Separation aller Flüge</td><td>3 km, clear of cloud</td></tr>
+        <tr><td><strong>C</strong></td><td>IFR + VFR</td><td>Ja</td><td>IFR sep. von IFR+VFR; VFR Traffic-Info</td><td>5 km / 1500 m h / 1000 ft v</td></tr>
+        <tr><td><strong>D</strong></td><td>IFR + VFR</td><td>Ja</td><td>IFR sep. von IFR; Traffic-Info für alle</td><td>5 km / 1500 m h / 1000 ft v</td></tr>
+        <tr><td><strong>E</strong></td><td>IFR + VFR</td><td>Nur IFR</td><td>IFR sep. von IFR; VFR Traffic-Info wenn mögl.</td><td>5 km / 1500 m h / 1000 ft v</td></tr>
+        <tr><td><strong>F</strong></td><td>IFR + VFR</td><td>Nein</td><td>IFR Separation wenn möglich, FIS</td><td>5 km / 1500 m h / 1000 ft v</td></tr>
+        <tr><td><strong>G</strong></td><td>IFR + VFR</td><td>Nein</td><td>FIS (Flight Info Service) only</td><td>5 km &gt;3000ft / 1500m u.3000ft / clear of cloud u.3000ft</td></tr>
+      </table>
+
+      <div class="tip-box"><div class="tip-tag">Merkhilfe Luftraumklassen</div><p><strong>A = Ausschließlich IFR, G = Geh einfach rein (unkontrolliert).</strong> Von A nach G: Kontrolle nimmt ab, Eigenverantwortung nimmt zu. In <strong>Österreich gibt es kein Class B und kein Class F</strong> — nur C, D, E und G.</p></div>
+
+      <div class="h3-section">ATS-Einheiten</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🗼</div><div class="ki-body"><strong>ACC — Area Control Centre:</strong> Zuständig für En-route IFR-Flüge im kontrollierten Luftraum (FL 95 aufwärts in Österreich). In Österreich: Wien ACC.</div></div>
+        <div class="ki"><div class="ki-ico">📡</div><div class="ki-body"><strong>APP — Approach Control:</strong> Zuständig für An- und Abflüge im Terminal-Bereich (TMA). Koordiniert Übergabe zwischen ACC und TWR.</div></div>
+        <div class="ki"><div class="ki-ico">🏙️</div><div class="ki-body"><strong>TWR — Aerodrome Control:</strong> Zuständig für Platzverkehr, Starts und Landungen. Reicht bis zur Kontrollzone (CTR) oder TMA-Untergrenze.</div></div>
+        <div class="ki"><div class="ki-ico">ℹ️</div><div class="ki-body"><strong>FIS — Flight Information Service:</strong> Im unkontrollierten Luftraum (Class F und G). Informationsdienst ohne Separationsverantwortung. In Österreich: Wien Information (133.875 MHz).</div></div>
+        <div class="ki"><div class="ki-ico">🚨</div><div class="ki-body"><strong>AFIS — Aerodrome Flight Information Service:</strong> An unkontrollierten Flugplätzen. Kein ATC, nur Information. Pilot trägt volle Verantwortung für Separation.</div></div>
+      </div>
+
+      <div class="h3-section">Sonderlufträume</div>
+      <div class="two-col">
+        <div class="info-card"><div class="info-card-tag">Prohibited Area (P)</div><div class="info-card-title">Gesperrtes Gebiet</div><div class="info-card-body">Absolutes Überflugverbot. Kein Flug erlaubt, auch nicht mit Genehmigung. Beispiel: Atomkraftwerk, bestimmte Regierungsgebäude.</div></div>
+        <div class="info-card"><div class="info-card-tag">Restricted Area (R)</div><div class="info-card-title">Beschränktes Gebiet</div><div class="info-card-body">Flüge nur mit besonderer Genehmigung der zuständigen Behörde. Kann zeitweise oder dauerhaft aktiv sein.</div></div>
+        <div class="info-card"><div class="info-card-tag">Danger Area (D)</div><div class="info-card-title">Gefahrengebiet</div><div class="info-card-body">Gefährliche Aktivitäten (Schießübungen, Fallschirmspringen). Kein generelles Verbot — Pilot informiert sich über Aktivierungszeiten.</div></div>
+        <div class="info-card"><div class="info-card-tag">TFR / NOTAM</div><div class="info-card-title">Temporäre Beschränkungen</div><div class="info-card-body">Kurzfristige Luftraumbeschränkungen. Veröffentlicht per NOTAM. Beispiel: VIP-Flüge, Großveranstaltungen, Rettungseinsätze.</div></div>
+      </div>`,
+
+    docs: `
+      <div class="prose">Jedes Luftfahrzeug muss bestimmte <strong>Pflichtdokumente</strong> mitführen. Diese sind teils im Chicagoer Abkommen, teils in EASA-Verordnungen und nationalen Vorschriften festgelegt. Bei Kontrollen durch Behörden müssen diese unverzüglich vorgezeigt werden können.</div>
+
+      <div class="h3-section">Dokumente nach Chicagoer Abkommen Art. 29</div>
+      <table class="dtbl">
+        <tr><th>Dokument</th><th>Ausgestellt von</th><th>Gültigkeit</th><th>Inhalt</th></tr>
+        <tr><td><strong>Certificate of Airworthiness (CofA)</strong></td><td>Registrierungsstaat / zugelassene Org.</td><td>Solange Lufttüchtigkeit aufrechterhalten</td><td>Bestätigt, dass das LFZ den Lufttüchtigkeitsanforderungen entspricht</td></tr>
+        <tr><td><strong>Certificate of Registration</strong></td><td>Registrierungsstaat</td><td>Unbefristet (bis Löschung)</td><td>Nationalitäts- und Eintragungszeichen, Eigentümer, Hersteller, Seriennummer</td></tr>
+        <tr><td><strong>Radio Station Licence</strong></td><td>Fernmeldebehörde (z.B. RTR in AT)</td><td>Periodisch zu erneuern</td><td>Rufzeichen, Frequenzen, Betriebsart</td></tr>
+        <tr><td><strong>Crew Licences &amp; Medicals</strong></td><td>Zuständige Luftfahrtbehörde (NCA)</td><td>Gemäß Part-FCL / Part-MED</td><td>Berechtigung zum Führen des jeweiligen LFZ-Typs</td></tr>
+      </table>
+
+      <div class="h3-section">Lufttüchtigkeit (Airworthiness)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🔧</div><div class="ki-body"><strong>CofA vs. Airworthiness Review Certificate (ARC):</strong> Das CofA ist das grundlegende Dokument. Das ARC (nach Part-M) bestätigt die regelmäßige Überprüfung der Aufrechterhaltung der Lufttüchtigkeit — in der Regel jährlich.</div></div>
+        <div class="ki"><div class="ki-ico">📊</div><div class="ki-body"><strong>Permit to Fly:</strong> Für Luftfahrzeuge, die kein normales CofA haben (z.B. experimentelle LFZ, nach Reparatur vor neuem CofA). Zeitlich und örtlich begrenzt.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Noise Certificate:</strong> Für größere Luftfahrzeuge Pflicht. Bestätigt Einhaltung der Lärmvorschriften (ICAO Annex 16). Nicht in Art. 29 enthalten — aber oft zusätzlich gefordert.</div></div>
+      </div>
+
+      <div class="h3-section">Flugzeughandbuch (AFM)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📖</div><div class="ki-body"><strong>Approved Flight Manual (AFM):</strong> Pflichtdokument nach EASA Part-21. Enthält alle vom Hersteller genehmigten Betriebsgrenzen, Notfallverfahren und Leistungsdaten. Muss an Bord oder als zugelassene Alternative verfügbar sein.</div></div>
+        <div class="ki"><div class="ki-ico">⚠️</div><div class="ki-body"><strong>Minimum Equipment List (MEL):</strong> Definiert, mit welchen defekten Systemen ein Flug noch zulässig ist. Basiert auf der Master MEL (MMEL) des Herstellers, muss von der Behörde genehmigt werden.</div></div>
+      </div>`,
+
+    licenses: `
+      <div class="prose">EASA <strong>Part-FCL</strong> (Flight Crew Licensing) regelt alle Pilotenlizenzen in Europa einheitlich. Von der LAPL für Freizeitpiloten bis zum ATPL für Verkehrspiloten — alle Anforderungen sind europaweit standardisiert.</div>
+
+      <div class="h3-section">Lizenz-Hierarchie</div>
+      <div class="license-timeline">
+        <div class="lt-item">
+          <div class="lt-dot">L</div>
+          <div class="lt-content">
+            <div class="lt-name">LAPL(A) — Light Aircraft Pilot Licence</div>
+            <div class="lt-details">Mindestalter: 17 Jahre · Medical: LAPL Medical · 30 h Gesamtflugerfahrung (inkl. 15 h dual) · Nur in Europa gültig · Nur für Flugzeuge bis 2.000 kg MTOM, max. 3 Passagiere · Nicht kommerziell</div>
+          </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot">P</div>
+          <div class="lt-content">
+            <div class="lt-name">PPL(A) — Private Pilot Licence</div>
+            <div class="lt-details">Mindestalter: 17 Jahre · Medical: Class 2 · 45 h Gesamtflugerfahrung (inkl. 25 h dual, 10 h allein) · Weltweit gültig (ICAO-konform) · Nicht kommerziell · Theorie: 9 Fächer</div>
+          </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot">C</div>
+          <div class="lt-content">
+            <div class="lt-name">CPL(A) — Commercial Pilot Licence</div>
+            <div class="lt-details">Mindestalter: 18 Jahre · Medical: Class 1 · Modular: mind. 150 h (inkl. 100 h PIC) · Integriert: mind. 200 h · Berechtigt zur gewerblichen Tätigkeit als PIC auf einmotorigen Flugzeugen und als Co-Pilot auf mehrmotorigen · Theorie: 14 ATPL-Fächer (Frozen ATPL)</div>
+          </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot" style="background:var(--amber);border-color:var(--amber);">F</div>
+          <div class="lt-content">
+            <div class="lt-name">Frozen ATPL <span class="lt-tag">Dein Ziel jetzt</span></div>
+            <div class="lt-details">ATPL-Theorie bestanden + CPL + IR + MCC · Berechtigt als Co-Pilot (First Officer) auf Verkehrsflugzeugen · 1.500 h Gesamterfahrung fehlt noch · Wird automatisch zum Full ATPL wenn Erfahrungsanforderungen erfüllt</div>
+          </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot goal">A</div>
+          <div class="lt-content">
+            <div class="lt-name">ATPL(A) — Airline Transport Pilot Licence <span class="lt-tag goal-tag">Langzeitziel</span></div>
+            <div class="lt-details">Mindestalter: 21 Jahre · Medical: Class 1 · 1.500 h Gesamterfahrung (inkl. 500 h Multi-Pilot, 200 h im Streckenflug, 100 h Nacht, 75 h Instrument) · Höchste Pilotenlizenz · Berechtigt als PIC auf Verkehrsflugzeugen · Theorie: 14 ATPL-Fächer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h3-section">Ratings & Berechtigungen</div>
+      <table class="dtbl">
+        <tr><th>Rating</th><th>Gültigkeit</th><th>Verlängerung</th><th>Voraussetzung</th></tr>
+        <tr><td><strong>SEP(land) Rating</strong></td><td>24 Monate</td><td>Revalidierung: 1 h mit FI oder Skilltest</td><td>12 h in letzten 12 Monaten inkl. 6 h PIC, 12 Starts/Ldg., 1 h dual</td></tr>
+        <tr><td><strong>MEP(land) Rating</strong></td><td>12 Monate</td><td>Skilltest beim ATO</td><td>Skilltest + theoretische Prüfung</td></tr>
+        <tr><td><strong>IR(A) — Instrument Rating</strong></td><td>12 Monate</td><td>Proficiency Check</td><td>50 h PIC Cross-Country, Theorieprüfung, Skilltest</td></tr>
+        <tr><td><strong>Type Rating</strong></td><td>12 Monate (erst. Verlg.)</td><td>Proficiency Check alle 6 od. 12 Mon.</td><td>Type Rating Course an genehmigtem ATO</td></tr>
+      </table>
+
+      <div class="h3-section">Currency Anforderungen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🗓️</div><div class="ki-body"><strong>Passagierbeförderung (FCL.060):</strong> 3 Starts und 3 Landungen in den letzten <strong>90 Tagen</strong> als PIC oder unter Aufsicht. Gilt pro Luftfahrzeugkategorie.</div></div>
+        <div class="ki"><div class="ki-ico">🌙</div><div class="ki-body"><strong>Nachtflug mit Passagieren:</strong> 3 Starts und 3 Landungen <strong>bei Nacht</strong> in den letzten 90 Tagen als PIC. Tagsflüge zählen nicht!</div></div>
+        <div class="ki"><div class="ki-ico">⏰</div><div class="ki-body"><strong>Rezenzzeit (SEP):</strong> Mindestens <strong>12 Flugstunden</strong> im relevanten Zeitraum (inkl. 6 h als PIC, 12 Starts und Landungen, 1 h dual mit FI) für Revalidierung.</div></div>
+      </div>
+      <div class="warn-box"><div class="warn-tag">Wichtig</div><p>Wenn die Currency abgelaufen ist, darf der Pilot <strong>keine Passagiere</strong> befördern. Er darf zwar solo fliegen (wenn Lizenz gültig), aber muss erst wieder die nötige Anzahl an Starts/Landungen absolvieren.</p></div>`,
+
+    medical: `
+      <div class="prose">Das Medical Certificate (Tauglichkeitszeugnis) bestätigt die <strong>medizinische Tauglichkeit</strong> des Piloten zum Führen von Luftfahrzeugen. Es wird nach EASA Part-MED von zugelassenen Ärzten (AME — Aeromedical Examiner) oder medizinischen Zentren (AeMC) ausgestellt.</div>
+
+      <div class="h3-section">Medical-Klassen</div>
+      <table class="dtbl">
+        <tr><th>Klasse</th><th>Erforderlich für</th><th>Gültigkeit &lt;40 J.</th><th>Gültigkeit ≥40 J.</th></tr>
+        <tr><td><strong>Class 1</strong></td><td>CPL, ATPL, IR (gewerblich)</td><td>12 Monate</td><td>6 Monate</td></tr>
+        <tr><td><strong>Class 2</strong></td><td>PPL, LAPL (als Alternative), SPL, BPL</td><td>60 Monate (bis 40 J.)</td><td>24 Monate</td></tr>
+        <tr><td><strong>LAPL Medical</strong></td><td>LAPL(A), LAPL(H), LAPL(S), LAPL(B)</td><td>60 Monate (bis 40 J.)</td><td>24 Monate</td></tr>
+      </table>
+
+      <div class="warn-box"><div class="warn-tag">Sonderregel Class 1</div><p>Für Single-Pilot-Airline-Operationen (Part-ORO.FC.105) gilt für Piloten <strong>unter 60 Jahren</strong>: Medical Class 1 nur <strong>6 Monate</strong> gültig — unabhängig vom Alter.</p></div>
+
+      <div class="h3-section">Medizinische Anforderungen Class 1</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">👁️</div><div class="ki-body"><strong>Sehvermögen:</strong> Korrigiertes Sehvermögen ≥ 6/9 (0,7) auf jedem Auge. Unkorrigiertes Sehvermögen ≥ 6/60. Brillen/Kontaktlinsen erlaubt bei bestimmten Werten. Ersatzbrille muss an Bord mitgeführt werden.</div></div>
+        <div class="ki"><div class="ki-ico">❤️</div><div class="ki-body"><strong>Herz-Kreislauf:</strong> EKG bei Erstuntersuchung und danach regelmäßig. Ruhepuls 45–100/min. Blutdruck ≤145/90 mmHg. Keine signifikanten kardialen Erkrankungen.</div></div>
+        <div class="ki"><div class="ki-ico">👂</div><div class="ki-body"><strong>Gehör:</strong> Sprachgehör 2 Meter in beiden Ohren. Audiometrie beim Ersttest und periodisch. Hörgerät unter bestimmten Umständen erlaubt.</div></div>
+        <div class="ki"><div class="ki-ico">🧠</div><div class="ki-body"><strong>Neurologisch/Psychiatrisch:</strong> Keine Epilepsie, keine schwerwiegenden psychiatrischen Erkrankungen. Psychologische Beurteilung beim Ersttest. Bestimmte Medikamente können zur Untauglichkeit führen.</div></div>
+      </div>
+
+      <div class="h3-section">Self-Declaring Medical für LAPL</div>
+      <div class="tip-box"><div class="tip-tag">LAPL-Besonderheit</div><p>Für das LAPL Medical kann unter bestimmten Voraussetzungen der eigene Hausarzt (als GP — General Practitioner) die Untersuchung durchführen. Er muss aber in die LAPL-Medical-Anforderungen eingewiesen sein. Für Class 1 und 2 ist immer ein AME oder AeMC erforderlich.</p></div>`,
+
+    liability: `
+      <div class="prose">Das internationale Haftungsrecht in der Luftfahrt regelt, wer bei Schäden an Passagieren, Gepäck, Fracht und Dritten haftet. Die wichtigsten Instrumente sind das <strong>Warschauer Abkommen</strong> (1929) und das <strong>Montréaler Abkommen</strong> (1999), das das Warschauer System ersetzt hat.</div>
+
+      <div class="h3-section">Montréaler Abkommen 1999</div>
+      <div class="def-box"><div class="def-tag">Definition</div><p>Das Montréaler Übereinkommen (MÜ 1999) gilt für internationalen Luftverkehr und regelt die Haftung des Luftfrachtführers (Airline) bei:<br>• Tod und Körperverletzung von Passagieren<br>• Beschädigung, Verlust oder Verspätung von Gepäck<br>• Beschädigung oder Verlust von Fracht<br>• Verspätung von Passagieren</p></div>
+
+      <div class="h3-section">Haftungsgrenzen</div>
+      <table class="dtbl">
+        <tr><th>Schadensereignis</th><th>Haftungsgrenze</th><th>Verschulden nötig?</th></tr>
+        <tr><td><strong>Tod / Körperverletzung (Passagier)</strong></td><td>Bis SDR 113.100: unbeschränkte verschuldensunabhängige Haftung. Darüber: Haftung wenn Airline kein Verschulden beweist.</td><td>Nein (bis 113.100 SDR)</td></tr>
+        <tr><td><strong>Verspätung (Passagier)</strong></td><td>Bis SDR 4.694 pro Passagier</td><td>Ja (Airline muss alle Maßnahmen getroffen haben)</td></tr>
+        <tr><td><strong>Gepäck (Verlust/Beschädigung)</strong></td><td>Bis SDR 1.131 pro Passagier</td><td>Nein (prima facie Haftung)</td></tr>
+        <tr><td><strong>Fracht (Verlust/Beschädigung)</strong></td><td>Bis SDR 19 pro kg</td><td>Nein</td></tr>
+      </table>
+
+      <div class="tip-box"><div class="tip-tag">Was ist SDR?</div><p><strong>SDR = Special Drawing Rights</strong> (Sonderziehungsrechte) — eine internationale Recheneinheit des IWF. 1 SDR ≈ 1,30 USD (variiert). SDR 113.100 ≈ ca. 147.000 USD. Die Werte werden alle 5 Jahre vom IWF angepasst.</p></div>
+
+      <div class="h3-section">Warschauer Abkommen (historisch)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📜</div><div class="ki-body"><strong>Warschauer Abkommen 1929:</strong> Erstes internationales Haftungsabkommen in der Luftfahrt. Galt für internationalen Personenverkehr, Gepäck und Fracht. Setzte damals noch sehr niedrige Haftungsgrenzen.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Haager Protokoll 1955:</strong> Änderte das Warschauer Abkommen, verdoppelte Haftungsgrenzen. Danach weitere Änderungen (Montreal-Protokolle 1975). Das gesamte System wurde als <strong>"Warschauer System"</strong> bekannt.</div></div>
+        <div class="ki"><div class="ki-ico">✅</div><div class="ki-body"><strong>Ablösung durch Montréal 1999:</strong> Das MÜ 1999 ist heute für fast alle bedeutenden Luftfahrtnationen verbindlich und hat das Warschauer System praktisch vollständig ersetzt. In der EU gilt zusätzlich die EU-Verordnung 889/2002.</div></div>
+      </div>
+
+      <div class="h3-section">Dritthaftung (Schäden an Dritten am Boden)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🏠</div><div class="ki-body"><strong>Rom-Abkommen 1952:</strong> Regelt die Haftung für Schäden, die Luftfahrzeuge Dritten auf der Erdoberfläche zufügen. Verschuldensunabhängige Haftung des Betreibers, begrenzt nach Gewicht des Luftfahrzeugs.</div></div>
+        <div class="ki"><div class="ki-ico">💶</div><div class="ki-body"><strong>Pflichtversicherung:</strong> EU-Verordnung 785/2004 schreibt Mindestversicherung für Luftfahrzeuge vor. Deckung je nach MTOM des Luftfahrzeugs. Gilt für alle in der EU operierende Luftfahrzeuge.</div></div>
+      </div>`
+  };
+  return c[type] || '';
+}
+
+load();
+if(S.user&&S.page==='learn')goTo('learn');
+else if(S.user&&S.page==='dashboard')goTo('dashboard');
+else goTo('landing');
+</script>
+</body>
+</html>
