@@ -397,13 +397,13 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-sp
       <div class="sc" onclick="goTo('auth','register')"><span class="sc-ico">⚖️</span><div class="sc-pill">Kostenlos</div><div class="sc-num">010</div><div class="sc-name">Air Law</div><div class="sc-prog"><div class="sc-fill" style="width:100%"></div></div></div>
       <div class="sc lk"><span class="sc-ico">✈️</span><div class="sc-lock">🔒</div><div class="sc-num">021</div><div class="sc-name">Aircraft General Knowledge</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">⚡</span><div class="sc-lock">🔒</div><div class="sc-num">022</div><div class="sc-name">Instrumentation</div><div class="sc-prog"></div></div>
-      <div class="sc lk"><span class="sc-ico">🌡️</span><div class="sc-lock">🔒</div><div class="sc-num">050</div><div class="sc-name">Meteorology</div><div class="sc-prog"></div></div>
+      <div class="sc" onclick="goTo('auth','register')"><span class="sc-ico">🌡️</span><div class="sc-pill">Kostenlos</div><div class="sc-num">050</div><div class="sc-name">Meteorologie</div><div class="sc-prog"><div class="sc-fill" style="width:0%"></div></div></div>
       <div class="sc lk"><span class="sc-ico">🗺️</span><div class="sc-lock">🔒</div><div class="sc-num">061</div><div class="sc-name">General Navigation</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">📡</span><div class="sc-lock">🔒</div><div class="sc-num">062</div><div class="sc-name">Radio Navigation</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">📋</span><div class="sc-lock">🔒</div><div class="sc-num">031</div><div class="sc-name">Mass &amp; Balance</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">📊</span><div class="sc-lock">🔒</div><div class="sc-num">032</div><div class="sc-name">Performance</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">🗒️</span><div class="sc-lock">🔒</div><div class="sc-num">033</div><div class="sc-name">Flight Planning</div><div class="sc-prog"></div></div>
-      <div class="sc lk"><span class="sc-ico">🧠</span><div class="sc-lock">🔒</div><div class="sc-num">040</div><div class="sc-name">Human Performance</div><div class="sc-prog"></div></div>
+      <div class="sc" onclick="goTo('auth','register')"><span class="sc-ico">🧠</span><div class="sc-pill">Kostenlos</div><div class="sc-num">040</div><div class="sc-name">Human Performance</div><div class="sc-prog"><div class="sc-fill" style="width:0%"></div></div></div>
       <div class="sc lk"><span class="sc-ico">🛫</span><div class="sc-lock">🔒</div><div class="sc-num">070</div><div class="sc-name">Operational Procedures</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">🔧</span><div class="sc-lock">🔒</div><div class="sc-num">071</div><div class="sc-name">Principles of Flight</div><div class="sc-prog"></div></div>
       <div class="sc lk"><span class="sc-ico">📻</span><div class="sc-lock">🔒</div><div class="sc-num">091</div><div class="sc-name">VFR Communications</div><div class="sc-prog"></div></div>
@@ -508,8 +508,8 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-sp
       </div>
       <div class="dsb-grp"><div class="dsb-lbl">Subjects</div>
         <div class="dsi act" onclick="goTo('learn')"><span class="dsi-ico">⚖️</span>Air Law</div>
-        <div class="dsi dim"><span class="dsi-ico">🔒</span>Meteorology</div>
-        <div class="dsi dim"><span class="dsi-ico">🔒</span>Navigation</div>
+        <div class="dsi" onclick="goToMet()"><span class="dsi-ico">🌡️</span>Meteorologie</div>
+        <div class="dsi" onclick="goToHP()"><span class="dsi-ico">🧠</span>Human Performance</div>
       </div>
       <div class="dsb-user">
         <div class="dsb-av" id="sb-av">P</div>
@@ -531,15 +531,24 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-sp
           <div class="sji-nm">Air Law</div><div class="sji-num">Subject 010</div>
           <div class="sji-bar"><div class="sji-fill" id="dp" style="width:0%"></div></div>
         </div>
-        <div class="sji lk"><div class="sji-top"><span class="sji-ico">🌡️</span><span style="font-size:12px;color:var(--t3)">🔒</span></div><div class="sji-nm">Meteorology</div><div class="sji-num">Subject 050 · Pro</div><div class="sji-bar"></div></div>
-        <div class="sji lk"><div class="sji-top"><span class="sji-ico">🗺️</span><span style="font-size:12px;color:var(--t3)">🔒</span></div><div class="sji-nm">General Navigation</div><div class="sji-num">Subject 061 · Pro</div><div class="sji-bar"></div></div>
+        <div class="sji" onclick="goToMet()">
+          <div class="sji-top"><span class="sji-ico">🌡️</span><span class="sji-avl">Verfügbar</span></div>
+          <div class="sji-nm">Meteorologie</div><div class="sji-num">Subject 050</div>
+          <div class="sji-bar"><div class="sji-fill" id="dp-met" style="width:0%"></div></div>
+        </div>
+        <div class="sji" onclick="goToHP()">
+          <div class="sji-top"><span class="sji-ico">🧠</span><span class="sji-avl">Verfügbar</span></div>
+          <div class="sji-nm">Human Performance</div><div class="sji-num">Subject 040</div>
+          <div class="sji-bar"><div class="sji-fill" id="dp-hp" style="width:0%"></div></div>
+        </div>
         <div class="sji lk"><div class="sji-top"><span class="sji-ico">✈️</span><span style="font-size:12px;color:var(--t3)">🔒</span></div><div class="sji-nm">Aircraft General</div><div class="sji-num">Subject 021 · Pro</div><div class="sji-bar"></div></div>
       </div>
       <div class="ds-ttl">Diese Woche</div>
       <div class="streak-row" id="sk-row"></div>
       <div class="nxt">
-        <div class="nxt-l"><div class="nxt-ico">✈️</div><div><div class="nxt-tag">Weiter lernen</div><div class="nxt-ttl">Air Law — Bereit zum Starten</div></div></div>
-        <button class="btn btn-primary" onclick="goTo('learn')">Starten →</button>
+        <div class="nxt-l"><div class="nxt-ico">✈️</div><div><div class="nxt-tag">Weiter lernen</div><div class="nxt-ttl" id="nxt-title">Air Law — Bereit zum Starten</div></div></div>
+        <button class="btn btn-primary" onclick="goTo('learn')">Air Law →</button>
+        <button class="btn btn-outline" onclick="goToMet()" style="margin-left:8px">Meteorologie →</button>
       </div>
     </main>
   </div>
@@ -634,6 +643,10 @@ function rDash(){
   document.getElementById('s-dn').textContent=S.done.length;
   document.getElementById('s-ac').textContent=S.qa>0?Math.round(S.qc/S.qa*100)+'%':'—';
   document.getElementById('dp').style.width=Math.round(S.done.length/UNITS.length*100)+'%';
+  const dpMet = document.getElementById('dp-met');
+  if(dpMet) dpMet.style.width=Math.round((S.metDone||[]).length/MET_UNITS.length*100)+'%';
+  const dpHP = document.getElementById('dp-hp');
+  if(dpHP) dpHP.style.width=Math.round((S.hpDone||[]).length/HP_UNITS.length*100)+'%';
   const days=['Mo','Di','Mi','Do','Fr','Sa','So'],td=new Date().getDay(),ti=td===0?6:td-1;
   document.getElementById('sk-row').innerHTML=days.map((d,i)=>`<div class="sd ${i<ti?'dn':i===ti?'td':''}">${d}</div>`).join('');
 }
@@ -972,10 +985,777 @@ function getCon(type){
   return c[type] || '';
 }
 
+function goToMet() {
+  if(!S.user){goTo('auth','login');return;}
+  S.page='learn';
+  const lsbTag = document.querySelector('.lsb-tag');
+  const lsbTtl = document.querySelector('.lsb-ttl');
+  if(lsbTag) lsbTag.textContent = 'Subject 050';
+  if(lsbTtl) lsbTtl.textContent = 'Meteorologie';
+  window._currentSubject = 'met';
+  window._metUnit = window._metUnit || 0;
+  ['landing','auth','dashboard'].forEach(p=>{const e=document.getElementById('page-'+p);if(e)e.classList.add('hidden');});
+  document.getElementById('page-learn').classList.remove('hidden');
+  if(!S.metDone) S.metDone = [];
+  renderMetNav();
+  renderMetUnit(window._metUnit || 0);
+  window.scrollTo(0,0);
+}
+
 load();
 if(S.user&&S.page==='learn')goTo('learn');
 else if(S.user&&S.page==='dashboard')goTo('dashboard');
 else goTo('landing');
 </script>
+
+<script>
+// HUMAN PERFORMANCE MODULE
+const HP_UNITS = [
+  {title:'Informationsverarbeitung & Gedächtnis', xp:60, meta:['12 min','4 Kapitel'], type:'info'},
+  {title:'Wahrnehmung & Sinnesorgane', xp:60, meta:['10 min','5 Sinne'], type:'perception'},
+  {title:'Aufmerksamkeit & Workload', xp:60, meta:['10 min','Modelle'], type:'attention'},
+  {title:'Fehlermodelle — SHELL & Reason', xp:70, meta:['12 min','Swiss Cheese'], type:'errors'},
+  {title:'Stress, Fatigue & Schlaf', xp:65, meta:['12 min','Fatigue-Mgmt'], type:'stress'},
+  {title:'Physiologie — Hypoxie & Druckluft', xp:75, meta:['14 min','Hypoxie, TUC'], type:'physio'},
+  {title:'Raumorientierung & Illusionen', xp:70, meta:['12 min','8 Illusionen'], type:'spatial'},
+  {title:'CRM — Crew Resource Management', xp:65, meta:['10 min','5 Komponenten'], type:'crm'},
+  {title:'Entscheidung & TEM', xp:65, meta:['10 min','FORDEC, TEM'], type:'decision'},
+  {title:'Wissenscheck Human Performance', xp:150, meta:['15 Fragen','~20 min'], type:'hpquiz'}
+];
+
+const HP_QZ = [
+  {q:'Welches Gedächtnissystem hat die kürzeste Kapazität und Dauer?',opts:['Langzeitgedächtnis','Arbeitsgedächtnis (KZG)','Sensorisches Gedächtnis','Prozedurales Gedächtnis'],c:2,w:'Das sensorische Gedächtnis (auch Ultra-Kurzzeit-Gedächtnis) hält Sinneseindrücke nur 0.25–4 Sekunden. Kapazität: sehr groß aber nur wenige Millisekunden verfügbar. Das Arbeitsgedächtnis (KZG) hält 7±2 Chunks für ~30 Sekunden. Das Langzeitgedächtnis ist praktisch unbegrenzt.'},
+  {q:'Was beschreibt das SHELL-Modell?',opts:['Checkliste für Notfallverfahren','Modell der menschlichen Faktoren mit 5 Komponenten: Software, Hardware, Environment, Liveware (Mensch)','Stufen der Stressreaktion','Framework für CRM-Training'],c:1,w:'SHELL: Software (Verfahren, Checklisten), Hardware (Ausrüstung, Cockpit), Environment (physische und soziale Umgebung), Liveware-Centre (der Pilot selbst), Liveware-Other (andere Personen). Fehler entstehen an den Schnittstellen zwischen L (Mensch) und den anderen Komponenten.'},
+  {q:'Ab welcher Kabinenaltitude beginnt bei einem nicht akklimatierten Piloten merkliche kognitive Beeinträchtigung?',opts:['5.000 ft','8.000 ft','10.000 ft','15.000 ft'],c:2,w:'Merkliche kognitive Beeinträchtigung beginnt bei ca. 10.000–12.000 ft Kabinenaltitude (ohne Sauerstoff). Die FAR/EASA-Vorschriften für kommerzielle Luftfahrt begrenzen die Kabinendruckhöhe auf maximal 8.000 ft. Über 10.000 ft: Pflicht zu Sauerstoff für Besatzung nach spätestens 30 Minuten.'},
+  {q:'Was ist Time of Useful Consciousness (TUC)?',opts:['Zeit bis zur vollständigen Bewusstlosigkeit bei Hypoxie','Zeit in der ein Pilot nach Druckverlust noch sinnvolle Handlungen ausführen kann','Maximale Dienstzeit ohne Pause','Reaktionszeit bei hohem Workload'],c:1,w:'TUC ist die Zeit nach plötzlichem Druckverlust, in der ein Pilot noch sinnvolle, koordinierte Handlungen ausführen kann. Auf FL350: ~30–60 Sekunden. Auf FL450: ~9–15 Sekunden. Danach Bewusstsein vorhanden aber Handlungen nicht mehr sinnvoll koordiniert. Sofortige Sauerstoffmaske ist überlebenswichtig.'},
+  {q:'Was beschreibt das "Swiss Cheese Model" nach James Reason?',opts:['Modell für Käse-Produktion in der Luftfahrtversorgung','Unfälle entstehen wenn Löcher mehrerer Abwehrebenen zufällig übereinanderliegen','Checkliste für Systemfehler','Modell für Kommunikationsfehler im Cockpit'],c:1,w:'James Reasons Swiss Cheese Model: Jede Schutzebene (Käsescheibe) hat Schwachstellen (Löcher). Normalerweise schützen die anderen Ebenen. Wenn alle Löcher zufällig ausgerichtet sind, gibt es eine durchgehende Fehlertrajektorie → Unfall. Zeigt dass Unfälle selten eine einzelne Ursache haben.'},
+  {q:'Welche der folgenden ist eine vestibuläre Illusion?',opts:['Autokinesis','The Leans','Black Hole Approach','Fascination/Fixation'],c:1,w:'"The Leans" ist eine vestibuläre Illusion: Nach langsamer Rollbewegung unter der Wahrnehmungsschwelle kehrt das Gleichgewichtsorgan zur Ausgangslage zurück. Der Pilot spürt eine Schräglage und lehnt sich entgegen der tatsächlichen Horizontalen. Autokinesis ist visuell, Black Hole Approach ist visuell-räumlich.'},
+  {q:'Was ist der "Tunnel-Effekt" bei hohem Stress?',opts:['Verbessertes Tunnelsehen bei Nacht','Verengung der Aufmerksamkeit auf eine Aufgabe, andere wichtige Informationen werden ignoriert','Akustische Wahrnehmungsstörung durch Cockpit-Lärm','Erhöhte Reaktionsgeschwindigkeit bei Notfällen'],c:1,w:'Bei hohem Stress/Workload verengt sich die Aufmerksamkeit ("Tunnelblick"): Der Pilot fixiert ein Problem und übersieht kritische andere Informationen (z.B. sinkende Kraftstoffanzeige). Auch bekannt als "Perceptual Narrowing". Gegenmittel: strukturiertes Scan-Pattern, CRM.'},
+  {q:'Welche Aussage zum zirkadianen Rhythmus ist korrekt?',opts:['Der zirkadiane Rhythmus passt sich innerhalb eines Tages vollständig an neue Zeitzonen an','Körperliche und mentale Leistungsfähigkeit ist zwischen 03:00-05:00 Uhr am niedrigsten','Schlafdeprivation hat keine Auswirkung auf die Entscheidungsfindung','Koffein eliminiert die negativen Effekte von Schlafmangel'],c:1,w:'Der zirkadiane Tiefpunkt liegt zwischen 03:00-05:00 Uhr (circadian trough): geringste Körpertemperatur, höchste Schläfrigkeit, niedrigste Reaktionsfähigkeit. Anpassung an neue Zeitzone: ca. 1 Tag pro Stunde Zeitdifferenz. Schlafmangel beeinträchtigt besonders höhere kognitive Funktionen und Risikoeinschätzung.'},
+  {q:'Was sind die 5 Kernkomponenten von CRM?',opts:['Planung, Briefing, Execution, Debriefing, Reporting','Situational Awareness, Workload Management, Decision Making, Communication, Leadership/Teamwork','Technical Skills, Non-Technical Skills, SOPs, Checklisten, Briefings','Captain Authority, First Officer Monitoring, ATC Compliance, Passenger Management, Safety'],c:1,w:'CRM-Kernkomponenten (nach JAA/EASA): 1. Situational Awareness (SA), 2. Workload Management, 3. Decision Making, 4. Communication, 5. Leadership & Teamwork. Ziel: Optimale Nutzung aller verfügbaren Ressourcen (Menschen, Information, Ausrüstung) zur sicheren Durchführung des Fluges.'},
+  {q:'Was ist "Continuation Bias" (Plan Continuation Error)?',opts:['Tendenz zu viele Checklisten zu verwenden','Tendenz einen ursprünglichen Plan fortzuführen auch wenn sich Bedingungen geändert haben','Systematischer Fehler bei der Navigation','Überoptimistische Einschätzung der eigenen Fähigkeiten'],c:1,w:'Continuation Bias: Piloten setzen einen Plan fort (z.B. Landeanflug trotz Schlechtwetter) obwohl sich die Bedingungen verändert haben und ein Go-Around die bessere Entscheidung wäre. Besonders gefährlich weil psychologische und wirtschaftliche Faktoren (Zeit, Kosten, Passagiererwartung) den Bias verstärken.'},
+  {q:'Was beschreibt FORDEC als Entscheidungsmodell?',opts:['Fuel, Operations, Route, Distance, Endurance, Crew','Facts, Options, Risks & Benefits, Decision, Execution, Check','Flight Operations Risk Decision Emergency Checklist','Forces, Obstacles, Runway, Distance, Environment, Ceiling'],c:1,w:'FORDEC: Facts (Fakten sammeln), Options (Optionen identifizieren), Risks & Benefits (Risiken/Nutzen abwägen), Decision (Entscheidung treffen), Execution (ausführen), Check (überprüfen ob Entscheidung wirksam). Strukturiertes Entscheidungsmodell für Piloten bei unerwarteten Situationen.'},
+  {q:'Was ist der Unterschied zwischen aktivem und latentem Fehler nach Reason?',opts:['Aktive Fehler sind schwerwiegender als latente','Aktive Fehler entstehen direkt durch Handlungen von Operatoren; latente Fehler sind systemische Schwachstellen die bereits vor dem Unfall bestehen','Latente Fehler sind immer vermeidbar, aktive Fehler nicht','Es gibt keinen Unterschied — beide Begriffe sind synonym'],c:1,w:'Nach Reasons Modell: Aktive Fehler (Active Failures) = direkte Handlungen von Frontline-Operatoren (Piloten) mit sofortiger Wirkung. Latente Fehler (Latent Conditions) = systemische Schwachstellen durch Management-Entscheidungen, Design-Fehler, schlechte Verfahren — existieren lange vor dem Unfall und "schlummern" im System.'},
+  {q:'Was ist Hyperventilation und wie unterscheidet sie sich von Hypoxie?',opts:['Hyperventilation = zu viel O2; Hypoxie = zu wenig O2','Hyperventilation = zu schnelles Atmen → CO2 sinkt → Symptome ähnlich Hypoxie aber durch andere Ursache','Hyperventilation und Hypoxie sind dasselbe','Hyperventilation = zu langsames Atmen → O2 sinkt'],c:1,w:'Hyperventilation: Zu schnelles/tiefes Atmen → CO2 wird abgeatmet → Alkalose → Kribbeln in Händen/Gesicht, Schwindel, Muskelzuckungen, ähnliche Symptome wie Hypoxie. Behandlung: Bewusst langsamer atmen oder in eine Tüte atmen. Hypoxie: Sauerstoffmangel im Gewebe. Beide können im Flug auftreten, Behandlung ist verschieden.'},
+  {q:'Was versteht man unter "Situational Awareness" (SA) nach Endsley?',opts:['Das Bewusstsein über eigene Fehler und Grenzen','3-stufiges Modell: Wahrnehmung von Elementen, Verstehen ihrer Bedeutung, Vorhersage zukünftiger Zustände','Die Fähigkeit alle Instrumente gleichzeitig zu überwachen','Teamkommunikation im Cockpit'],c:1,w:'Endsley SA-Modell (1988): Level 1 = Perception (Wahrnehmung von Elementen der Umgebung), Level 2 = Comprehension (Verstehen der Bedeutung dieser Elemente), Level 3 = Projection (Vorhersage des zukünftigen Zustands). SA-Verlust (Loss of SA) ist häufige Unfallursache. Gegenmittel: regelmäßige Updates, Cross-Checks, CRM.'},
+  {q:'Welche physiologischen Effekte hat eine schnelle Druckkabinenentlüftung (Rapid Decompression)?',opts:['Keine gefährlichen Effekte wenn Sauerstoffmasken innerhalb von 5 Minuten angelegt werden','Nebelbildung, Lärm, plötzliche Kälte, Expansion von Körpergasen (Bolucht, Ohren), TUC je nach Höhe wenige Sekunden bis Minuten','Nur Druckschmerz in den Ohren, keine weiteren Effekte','Hypoxie tritt erst nach 30 Minuten ohne Sauerstoff auf'],c:1,w:'Rapid Decompression Effekte: Knall und Nebel (Feuchtigkeitskondensation), Kälte (adiabatische Abkühlung), Expansion von Körpergasen (Ohren, Sinus, Darm), sofortiger Abfall des pO2 → TUC je nach Höhe 9-90 Sekunden. Sofortige Reaktion: Sauerstoffmaske anlegen (Priorität 1), Notabstieg auf ≤10.000 ft, Squawk 7700.'}
+];
+
+function goToHP() {
+  if(!S.user){goTo('auth','login');return;}
+  S.page='learn';
+  const lsbTag = document.querySelector('.lsb-tag');
+  const lsbTtl = document.querySelector('.lsb-ttl');
+  if(lsbTag) lsbTag.textContent = 'Subject 040';
+  if(lsbTtl) lsbTtl.textContent = 'Human Performance';
+  window._currentSubject = 'hp';
+  window._hpUnit = window._hpUnit || 0;
+  ['landing','auth','dashboard'].forEach(p=>{const e=document.getElementById('page-'+p);if(e)e.classList.add('hidden');});
+  document.getElementById('page-learn').classList.remove('hidden');
+  if(!S.hpDone) S.hpDone = [];
+  renderHPNav();
+  renderHPUnit(window._hpUnit || 0);
+  window.scrollTo(0,0);
+}
+
+function renderHPNav() {
+  const pct = Math.round((S.hpDone||[]).length / HP_UNITS.length * 100);
+  const fill = document.getElementById('lsb-f');
+  const pctEl = document.getElementById('lsb-p');
+  if(fill) fill.style.width = pct+'%';
+  if(pctEl) pctEl.textContent = pct+' % abgeschlossen';
+  const nav = document.getElementById('lnav');
+  if(!nav) return;
+  nav.innerHTML = HP_UNITS.map((u,i) => {
+    const d=(S.hpDone||[]).includes(i), a=(window._hpUnit||0)===i;
+    return `<div class="lni ${a?'act':''} ${d?'done':''}" onclick="renderHPUnit(${i})"><div class="lni-bub">${d?'✓':i+1}</div><div class="lni-txt">${u.title}</div><div class="lni-xp">+${u.xp}</div></div>`;
+  }).join('');
+}
+
+function renderHPUnit(idx) {
+  window._hpUnit = idx; renderHPNav();
+  const u = HP_UNITS[idx], m = document.getElementById('lmain');
+  if(!m) return;
+  if(u.type === 'hpquiz') {
+    window._hpqState = {i:0,sc:0,ans:false};
+    m.innerHTML = `<div class="lcrumb">Human Performance <span>› Wissenscheck</span></div><h1 class="lunit-ttl">Wissenscheck Human Performance</h1><div class="lmeta"><span class="lchip ch-bl">⏱ ~20 min</span><span class="lchip ch-bl">15 Fragen</span><span class="lchip ch-am">⚡ +150 XP</span></div><div id="qw"></div>`;
+    renderHPQ(); return;
+  }
+  const done = (S.hpDone||[]).includes(idx);
+  m.innerHTML = `<div class="lcrumb">Human Performance <span>› ${u.title}</span></div>
+    <h1 class="lunit-ttl">${u.title}</h1>
+    <div class="lmeta">${u.meta.map(x=>`<span class="lchip ch-bl">⏱ ${x}</span>`).join('')}<span class="lchip ch-am">⚡ +${u.xp} XP</span></div>
+    ${getHPCon(u.type)}
+    <div class="uf">
+      ${idx>0?`<button class="btn btn-ghost" onclick="renderHPUnit(${idx-1})">← Zurück</button>`:''}
+      ${done?`<button class="btn btn-blue" onclick="renderHPUnit(${Math.min(idx+1,HP_UNITS.length-1)})">Weiter →</button><div class="done-badge">✓ Abgeschlossen</div>`
+            :`<button class="btn btn-primary" onclick="mkHPDone(${idx})">Verstanden — +${u.xp} XP →</button>`}
+    </div>`;
+  m.scrollTop=0; window.scrollTo(0,0);
+}
+
+function mkHPDone(idx) {
+  if(!S.hpDone) S.hpDone=[];
+  if(!S.hpDone.includes(idx)){S.hpDone.push(idx);S.xp+=HP_UNITS[idx].xp;save();popXP('+'+HP_UNITS[idx].xp+' XP');}
+  renderHPUnit(idx+1<HP_UNITS.length?idx+1:idx);
+}
+
+function renderHPQ() {
+  const w=document.getElementById('qw'); if(!w) return;
+  const qs=window._hpqState;
+  if(qs.i>=HP_QZ.length){
+    const pct=Math.round(qs.sc/HP_QZ.length*100);
+    S.qa+=HP_QZ.length; S.qc+=qs.sc;
+    if(!S.hpDone) S.hpDone=[];
+    const li=HP_UNITS.length-1;
+    if(!S.hpDone.includes(li)){S.hpDone.push(li);S.xp+=150;popXP('+150 XP');}
+    save();
+    w.innerHTML=`<div class="qres"><div class="qres-ring"><div class="qres-pct">${pct}%</div></div><div class="qres-ttl">${qs.sc} von ${HP_QZ.length} richtig</div><div class="qres-sub">${pct>=75?'Ausgezeichnet — Human Performance abgeschlossen!':'Weiter üben — du schaffst das.'}</div><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;"><button class="btn btn-ghost" onclick="window._hpqState={i:0,sc:0,ans:false};renderHPQ()">Nochmal</button><button class="btn btn-primary" onclick="goTo('dashboard')">Zum Dashboard →</button></div></div>`;
+    return;
+  }
+  const q=HP_QZ[qs.i]; qs.ans=false;
+  w.innerHTML=`<div class="qprog">${HP_QZ.map((_,i)=>`<div class="qpd ${i<qs.i?'dn':i===qs.i?'cr':''}"></div>`).join('')}</div>
+    <div class="qnum">Frage ${qs.i+1} von ${HP_QZ.length}</div>
+    <div class="qtxt">${q.q}</div>
+    <div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" id="hpq${i}" onclick="ansHPQ(${i})">${o}</button>`).join('')}</div>
+    <div class="qexpl" id="qex"><strong>Erklärung:</strong> ${q.w}</div>`;
+}
+
+function ansHPQ(idx) {
+  const qs=window._hpqState; if(qs.ans)return; qs.ans=true;
+  const q=HP_QZ[qs.i];
+  document.querySelectorAll('.qopt').forEach(o=>o.disabled=true);
+  document.getElementById('hpq'+idx).classList.add(idx===q.c?'correct':'wrong');
+  if(idx!==q.c) document.getElementById('hpq'+q.c).classList.add('correct');
+  if(idx===q.c) qs.sc++;
+  document.getElementById('qex').classList.add('show');
+  const btn=document.createElement('button'); btn.className='btn btn-primary'; btn.style.marginTop='14px';
+  btn.textContent=qs.i<HP_QZ.length-1?'Nächste Frage →':'Auswertung →';
+  btn.onclick=()=>{qs.i++;renderHPQ();};
+  document.getElementById('qw').appendChild(btn);
+}
+
+function getHPCon(type) {
+  const c = {
+    info: `
+      <div class="prose">Das menschliche Informationsverarbeitungssystem ist ein <strong>begrenztes Kapazitätssystem</strong>. Das Verständnis seiner Grenzen ist entscheidend für sicheres Fliegen — viele Unfälle entstehen durch Überschreitung dieser Grenzen.</div>
+      <div class="h3-section">Das Drei-Speicher-Modell</div>
+      <table class="dtbl">
+        <tr><th>Gedächtnistyp</th><th>Dauer</th><th>Kapazität</th><th>Bedeutung im Cockpit</th></tr>
+        <tr><td><strong>Sensorisches Gedächtnis</strong></td><td>0.25–4 Sekunden</td><td>Sehr groß, aber flüchtig</td><td>Erster Filter — nur bewusst Wahrgenommenes gelangt weiter</td></tr>
+        <tr><td><strong>Arbeitsgedächtnis (KZG)</strong></td><td>15–30 Sekunden</td><td>7 ± 2 Chunks</td><td>Aktives Denken, Berechnungen, Kommunikation — leicht überlastet</td></tr>
+        <tr><td><strong>Langzeitgedächtnis (LZG)</strong></td><td>Praktisch unbegrenzt</td><td>Praktisch unbegrenzt</td><td>Verfahren, Checklisten, Wissen — abrufbar aber nicht immer fehlerfrei</td></tr>
+      </table>
+      <div class="tip-box"><div class="tip-tag">Prüfungsrelevant</div><p>Das Arbeitsgedächtnis mit <strong>7±2 Chunks</strong> ist der kritische Engpass. Unter Stress sinkt die Kapazität auf 3–4 Chunks. Deshalb: Checklisten statt Gedächtnis, Read-back bei ATC-Freigaben, Briefings vor kritischen Phasen.</p></div>
+      <div class="h3-section">Informationsverarbeitungsmodell</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">👁️</div><div class="ki-body"><strong>Input (Wahrnehmung):</strong> Sinnesorgane nehmen Reize auf → Sensorisches Gedächtnis filtert → Nur relevante Information gelangt ins Arbeitsgedächtnis. Problem: Selektive Wahrnehmung kann kritische Reize ausblenden.</div></div>
+        <div class="ki"><div class="ki-ico">⚙️</div><div class="ki-body"><strong>Verarbeitung (Kognition):</strong> Im Arbeitsgedächtnis: Mustervergleich mit LZG, Bewertung, Entscheidung. Zeitkritisch und kapazitätsbegrenzt. Bei hohem Workload: Priorisierung notwendig (Aviate, Navigate, Communicate).</div></div>
+        <div class="ki"><div class="ki-ico">🎯</div><div class="ki-body"><strong>Output (Handlung):</strong> Motorische Ausführung. Kann automatisiert sein (Routine) oder kontrolliert (neue Situation). Automatisierte Handlungen: schnell aber fehleranfällig bei Umgebungsänderungen ("Habit Intrusion").</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Feedback:</strong> Ergebnis der Handlung wird wahrgenommen und bewertet → Anpassung. Verzögertes Feedback erschwert Lernen und Fehlerkorrektur erheblich.</div></div>
+      </div>
+      <div class="h3-section">Gedächtnisfehler im Cockpit</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">❌</div><div class="ki-body"><strong>Prospektives Vergessen:</strong> Geplante Handlung wird vergessen ("Ich wollte doch noch das Fahrwerk ausfahren"). Häufigste Ursache für vergessene Checklisten-Items. Gegenmittel: Trigger-Punkte definieren.</div></div>
+        <div class="ki"><div class="ki-ico">🔀</div><div class="ki-body"><strong>Habit Intrusion:</strong> Automatisierte Routine überschreibt bewusste Handlung. Klassisch: Pilot fährt routinemäßig auf Heimatflughafen an statt umzuleiten. Besonders gefährlich nach Verfahrensänderungen.</div></div>
+        <div class="ki"><div class="ki-ico">💭</div><div class="ki-body"><strong>Confirmation Bias:</strong> Information wird so interpretiert dass sie bestehende Erwartungen bestätigt. Warnzeichen werden übersehen oder uminterpretiert. Gegenmittel: aktiv nach gegenteiliger Information suchen.</div></div>
+      </div>`,
+
+    perception: `
+      <div class="prose">Wahrnehmung ist keine passive Aufnahme der Realität — sie ist ein <strong>aktiver Konstruktionsprozess</strong> bei dem das Gehirn aus unvollständigen Sinneseindrücken eine plausible Interpretation erstellt. Diese Konstruktionen können falsch sein — mit fatalen Konsequenzen.</div>
+      <div class="h3-section">Die 5 Sinne und ihre Relevanz</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">👁️</div><div class="ki-body"><strong>Visuell (primär):</strong> 80-90% aller Informationen kommen visuell. Zentrales Sehen (Fovea): scharf, detailreich, langsam. Peripheres Sehen: unscharf, aber sehr sensitiv für Bewegung. Nachts: Zapfen inaktiv → nur Stäbchen → kein Farbsehen, kein scharfes Zentrum.</div></div>
+        <div class="ki"><div class="ki-ico">👂</div><div class="ki-body"><strong>Auditiv:</strong> Cockpit-Kommunikation, Warnungen, Triebwerksgeräusche. Lärm im Cockpit kann Maskierung verursachen. Frequenzen über 4000 Hz werden mit Alter schlechter wahrgenommen.</div></div>
+        <div class="ki"><div class="ki-ico">🌀</div><div class="ki-body"><strong>Vestibuläres System (Gleichgewicht):</strong> Bogengänge = Drehbeschleunigung, Otolithen = lineare Beschleunigung und Gravitation. Problem: Bogengänge reagieren nur auf Beschleunigungsänderungen, nicht auf konstante Rotation → Grundlage vieler Illusionen.</div></div>
+        <div class="ki"><div class="ki-ico">💪</div><div class="ki-body"><strong>Propriozeptiv ("Seat-of-the-pants"):</strong> Druckgefühl durch Sitz/Gurte. Kann Beschleunigungen und Lageänderungen anzeigen — aber auch täuschen (z.B. Phantomgefühl bei Beschleunigung als Steigen interpretiert).</div></div>
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>Somato-sensorisch:</strong> Schmerz, Temperatur, Druck. Kältegefühl bei Hypoxie, Kopfschmerzen als Symptom. Relevant bei Druckkabinenausfall.</div></div>
+      </div>
+      <div class="h3-section">Visuelle Illusionen im Landeanflug</div>
+      <table class="dtbl">
+        <tr><th>Illusion</th><th>Ursache</th><th>Fehler</th><th>Gegenmittel</th></tr>
+        <tr><td><strong>Runway Slope</strong></td><td>Aufwärts geneigte Piste</td><td>Pilot glaubt zu hoch zu sein → fliegt zu tief</td><td>PAPI/VASI verwenden</td></tr>
+        <tr><td><strong>Runway Width</strong></td><td>Schmalere Piste als gewohnt</td><td>Glaubt zu hoch → fliegt zu tief</td><td>PAPI/VASI, Approach Charts</td></tr>
+        <tr><td><strong>Black Hole Approach</strong></td><td>Kein Terrain sichtbar vor Piste (Wasser, Dunkel)</td><td>Zu steiler/zu flacher Anflug, CFIT</td><td>ILS/PAPI, minimale Sinkrate</td></tr>
+        <tr><td><strong>Featureless Terrain</strong></td><td>Schneeboden, Wasser, Dunst</td><td>Kein Höhengefühl, Kontrolle verloren</td><td>Instrumente primär</td></tr>
+        <tr><td><strong>Rain on Windshield</strong></td><td>Regen verzerrt Sichtbild</td><td>Unterschätzung der Sinkrate</td><td>Instrumente, Wipers</td></tr>
+      </table>`,
+
+    attention: `
+      <div class="prose"><strong>Aufmerksamkeit</strong> ist die kognitive Ressource mit der größten Auswirkung auf Sicherheit. Sie ist begrenzt, selektiv und kann durch viele Faktoren beeinträchtigt werden. Workload-Management ist eine der Kernkompetenzen im CRM.</div>
+      <div class="h3-section">Aufmerksamkeitstypen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🎯</div><div class="ki-body"><strong>Fokussierte Aufmerksamkeit:</strong> Konzentration auf eine Aufgabe. Gut bei einfachen Aufgaben. Problem: anderes wird übersehen ("Tunnel-Effekt"). Im Cockpit: Priorität Aviate → Navigate → Communicate.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Geteilte Aufmerksamkeit:</strong> Gleichzeitig mehrere Aufgaben überwachen. Limitiert durch Arbeitsgedächtniskapazität. Automatisierung (z.B. Autopilot) reduziert Aufmerksamkeitsbedarf für Routine → mehr Kapazität für Monitoring.</div></div>
+        <div class="ki"><div class="ki-ico">📡</div><div class="ki-body"><strong>Vigilanz (Dauerwachsamkeit):</strong> Aufmerksamkeit über lange Zeit auf seltene Ereignisse aufrechterhalten. Nimmt nach 20–30 Minuten stark ab. Problem bei langen Reiseflügen im Autopilot-Betrieb: "Out-of-the-loop"-Syndrom.</div></div>
+      </div>
+      <div class="h3-section">Workload-Modell</div>
+      <div class="def-box"><div class="def-tag">Inverted-U-Modell (Yerkes-Dodson)</div><p>Optimale Performance bei mittlerem Arousal/Workload. Zu wenig (Boredom, Vigilanz): schlechte Performance. Zu viel (Stress, Überlastung): schlechte Performance. Ziel: im optimalen Bereich bleiben durch Workload-Management.</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⚡</div><div class="ki-body"><strong>Workload-Quellen:</strong> Physisch (Steuern, Checklisten lesen), Mental (Navigieren, Entscheiden), Kommunikation (ATC, Cabin), Monitoring (Instrumente, Systeme), Situational Awareness aufrechterhalten.</div></div>
+        <div class="ki"><div class="ki-ico">🛡️</div><div class="ki-body"><strong>Workload-Reduktion:</strong> Autopilot nutzen, Aufgaben vorausplanen (Briefings), Nicht-kritische Aufgaben verschieben (Sterile Cockpit Rule unter 10.000 ft), Priorisieren (Aviate, Navigate, Communicate), Delegation an PF/PM.</div></div>
+        <div class="ki"><div class="ki-ico">⚠️</div><div class="ki-body"><strong>Fixation / Fascination:</strong> Extremform der fokussierten Aufmerksamkeit — Pilot ist so auf ein Problem fixiert dass er alle anderen Warnungen ignoriert. Klassisches Beispiel: Eastern Airlines 401 (1972) — gesamte Crew fixiert auf Fahrwerk-Warnlicht, niemand bemerkt sinkenden Autopiloten.</div></div>
+      </div>`,
+
+    errors: `
+      <div class="prose">Menschliche Fehler sind unvermeidlich — das Ziel moderner Sicherheitssysteme ist nicht die Elimination von Fehlern, sondern das <strong>Abfangen von Fehlerkonsequenzen</strong> bevor sie zum Unfall führen.</div>
+      <div class="h3-section">SHELL-Modell (Hawkins/Edwards)</div>
+      <div class="def-box"><div class="def-tag">SHELL Komponenten</div><p><strong>S</strong>oftware — Verfahren, Checklisten, SOPs, Schulungsunterlagen<br><strong>H</strong>ardware — Ausrüstung, Flugzeug, Instrumente, Cockpit-Design<br><strong>E</strong>nvironment — Physische Umgebung (Wetter, Lärm, Vibration) + Organisationskultur<br><strong>L</strong>iveware (Centre) — Der Pilot selbst: Fähigkeiten, Wissen, Einstellungen<br><strong>L</strong>iveware (Other) — Andere Personen: Co-Pilot, Kabine, ATC, Maintenance</p></div>
+      <div class="prose">Fehler entstehen an den <strong>Schnittstellen</strong> zwischen dem zentralen Liveware (Pilot) und den anderen Komponenten. Design-Ziel: Schnittstellen so gestalten dass Fehler schwer zu machen und leicht zu erkennen sind.</div>
+      <div class="h3-section">Swiss Cheese Model (Reason)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🧀</div><div class="ki-body"><strong>Grundprinzip:</strong> Jedes Sicherheitssystem hat Schwachstellen ("Löcher"). Normalerweise schützen mehrere Ebenen (Ausbildung, Verfahren, Technik, Aufsicht). Ein Unfall entsteht wenn alle Löcher zufällig ausgerichtet sind.</div></div>
+        <div class="ki"><div class="ki-ico">⚡</div><div class="ki-body"><strong>Aktive Fehler (Active Failures):</strong> Direkte Handlungen von Frontline-Operatoren (Piloten, ATC) mit sofortiger Auswirkung. Slips (Ausrutscher), Lapses (Unterlassungen), Mistakes (Irrtümer), Violations (Regelverstöße).</div></div>
+        <div class="ki"><div class="ki-ico">💤</div><div class="ki-body"><strong>Latente Bedingungen (Latent Conditions):</strong> Systemische Schwachstellen durch Management-Entscheidungen, schlechtes Design, unzureichende Verfahren. Existieren lange vor dem Unfall. Beispiel: chronische Personalunterbesetzung → Fatigue → Fehler.</div></div>
+      </div>
+      <div class="h3-section">Fehlerklassifikation nach Reason</div>
+      <table class="dtbl">
+        <tr><th>Fehlertyp</th><th>Definition</th><th>Beispiel Cockpit</th></tr>
+        <tr><td><strong>Slip</strong></td><td>Richtige Absicht, falsche Ausführung (motorisch)</td><td>Falschen Schalter betätigt</td></tr>
+        <tr><td><strong>Lapse</strong></td><td>Richtige Absicht, vergessen auszuführen</td><td>Fahrwerk vergessen auszufahren</td></tr>
+        <tr><td><strong>Mistake</strong></td><td>Falsche Absicht (regelbasiert oder wissensbasiert)</td><td>Falsche Verfahren angewendet weil Situation falsch eingeschätzt</td></tr>
+        <tr><td><strong>Violation</strong></td><td>Bewusste Abweichung von Regeln/Verfahren</td><td>Wetterminima unterschritten "weil es immer gut geht"</td></tr>
+      </table>
+      <div class="h3-section">Threat and Error Management (TEM)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🎯</div><div class="ki-body"><strong>TEM-Framework (LOSA):</strong> Threats = externe Gefahren (schlechtes Wetter, ATC-Fehler, technische Probleme). Errors = Crew-Fehler (Slips, Mistakes). Undesired Aircraft States (UAS) = gefährliche Flugzeugzustände. Ziel: Threats managen → Errors vermeiden → UAS verhindern → Recovery.</div></div>
+        <div class="ki"><div class="ki-ico">🛡️</div><div class="ki-body"><strong>Error Countermeasures:</strong> Briefings (antizipieren), SOPs (standardisieren), Cross-checking (erkennen), Callouts (kommunizieren), Challenge-Response (verifizieren). Nicht Fehler eliminieren sondern Konsequenzen abfangen.</div></div>
+      </div>`,
+
+    stress: `
+      <div class="prose"><strong>Stress und Fatigue</strong> sind zwei der häufigsten Ursachen für reduzierte Pilotenperformance. Beide beeinträchtigen kognitive Funktionen, Entscheidungsfindung und Situational Awareness — oft ohne dass der Betroffene es selbst bemerkt.</div>
+      <div class="h3-section">Stress</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⚡</div><div class="ki-body"><strong>Akuter Stress (positiv):</strong> Kurzfristige Alarmreaktion. Adrenalin, erhöhte Herzfrequenz, Muskeln aktiviert. Kann Performance kurz verbessern (Eustress). Problem: Tunnel-Effekt, eingeschränktes Denken, Impulsivität.</div></div>
+        <div class="ki"><div class="ki-ico">🔥</div><div class="ki-body"><strong>Chronischer Stress (negativ):</strong> Anhaltende Belastung → Cortisol → Immunsystem geschwächt, Schlafstörungen, Burnout. Beeinträchtigt langfristig kognitive Funktionen und Gesundheit.</div></div>
+        <div class="ki"><div class="ki-ico">🎭</div><div class="ki-body"><strong>Stress-Stressoren im Cockpit:</strong> Zeitdruck, Notfälle, schlechtes Wetter, Kommunikationsprobleme, Konflikte im Crew, private Probleme, Fatigue, Gesundheit, finanzielle Sorgen.</div></div>
+      </div>
+      <div class="tip-box"><div class="tip-tag">Yerkes-Dodson Kurve</div><p>Optimale Performance bei mittlerem Stress. Unter-Arousal (Boredom, Vigilanz): schlechte Performance. Über-Arousal (Panik, extremer Stress): schlechte Performance. Gegenmittel bei zu hohem Stress: Workload reduzieren, Autopilot, Kommunikation mit Co-Pilot.</p></div>
+      <div class="h3-section">Fatigue (Ermüdung)</div>
+      <div class="warn-box"><div class="warn-tag">Kritisches Sicherheitsthema</div><p>Fatigue beeinträchtigt Urteilsvermögen, Reaktionszeit und Entscheidungsfindung ähnlich wie Alkohol — aber der Betroffene unterschätzt seine eigene Beeinträchtigung. 17 Stunden ohne Schlaf ≈ 0.05‰ BAC. 24 Stunden ≈ 0.10‰ BAC.</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">😴</div><div class="ki-body"><strong>Zirkadianer Rhythmus:</strong> ~24h Zyklus der Körperfunktionen. Tiefpunkt: 03:00-05:00 Uhr (circadian trough) — niedrigste Körpertemperatur, höchste Schläfrigkeit. Zweiter Tiefpunkt: 14:00-16:00 Uhr. Anpassung an neue Zeitzone: ~1 Tag pro Stunde Zeitdifferenz.</div></div>
+        <div class="ki"><div class="ki-ico">🌙</div><div class="ki-body"><strong>Schlafphasen:</strong> NREM (Non-REM) Phasen 1-4 + REM-Schlaf. Tiefschlaf (NREM 3-4) = physische Erholung. REM-Schlaf = kognitive Erholung, Gedächtniskonsolidierung. Wird durch Alkohol und Sedativa unterdrückt.</div></div>
+        <div class="ki"><div class="ki-ico">⚖️</div><div class="ki-body"><strong>FRMS — Fatigue Risk Management System:</strong> Systematischer Ansatz zur Erkennung und Minimierung von Fatigue-Risiken. Beinhaltet: Dienstzeit-Begrenzungen (FTL — Flight Time Limitations), Ruhezeiten, Schlafplanung, Fitness-for-Duty Assessment.</div></div>
+        <div class="ki"><div class="ki-ico">☕</div><div class="ki-body"><strong>Koffein:</strong> Kann kurzfristig Vigilanz verbessern aber löst das Schlafdefizit nicht. Halbwertszeit ~5 Stunden. Nach Einnahme 6h vor Schlaf: signifikante Schlafstörung. Entzugssymptome bei regelmäßiger Einnahme.</div></div>
+      </div>`,
+
+    physio: `
+      <div class="prose">Die Physiologie des Fliegens stellt den menschlichen Körper vor Herausforderungen die am Boden nicht existieren: sinkender Sauerstoffgehalt, Druckveränderungen, G-Kräfte und kosmische Strahlung. Das Verständnis dieser Effekte ist überlebenswichtig.</div>
+      <div class="h3-section">Hypoxie</div>
+      <div class="def-box"><div class="def-tag">Definition Hypoxie</div><p>Hypoxie = unzureichende Sauerstoffversorgung des Gewebes. Vier Typen: <strong>Hypoxic</strong> (zu wenig O2 in der Luft — häufigste in der Luftfahrt), <strong>Hypemic</strong> (Hämoglobin kann kein O2 transportieren — CO-Vergiftung), <strong>Stagnant</strong> (Kreislaufproblem — G-Kräfte), <strong>Histotoxic</strong> (Zellen können O2 nicht nutzen — Alkohol, Drogen).</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>Höhe und O2-Partialdruck:</strong> Auf MSL: pO2 = 159 mmHg → ausreichend. Auf FL100 (10.000ft): pO2 = 110 mmHg → beginnende Beeinträchtigung. Auf FL250: pO2 = 56 mmHg → rapid incapacitation. Auf FL400: pO2 = 37 mmHg → TUC wenige Sekunden.</div></div>
+        <div class="ki"><div class="ki-ico">⚠️</div><div class="ki-body"><strong>Hypoxie-Symptome:</strong> Euphorie, Kribbeln in Finger/Lippen, blauer Fingernägel (Zyanose), Kopfschmerzen, Sehstörungen (Tunnelblick), Beeinträchtigung der Urteilsfähigkeit — oft OHNE dass der Pilot es selbst merkt! Tückisch: Euphorie verhindert Selbsteinschätzung.</div></div>
+        <div class="ki"><div class="ki-ico">⏱️</div><div class="ki-body"><strong>Time of Useful Consciousness (TUC):</strong> FL180: ~30 min. FL250: 3-5 min. FL300: 1-2 min. FL350: 30-60 sec. FL400: 15-20 sec. FL450: 9-15 sec. Bei körperlicher Anstrengung halbiert sich die TUC nochmals!</div></div>
+      </div>
+      <div class="h3-section">Druckausgleich & Barotrauma</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">👂</div><div class="ki-body"><strong>Ohren (Barotitis media):</strong> Eustachische Röhre muss Druckausgleich ermöglichen. Beim Steigen: kein Problem (Luft entweicht). Beim Sinken: aktives Öffnen nötig (Valsalva, Schlucken). Bei Schnupfen/Entzündung: keine Druckluftflüge empfohlen.</div></div>
+        <div class="ki"><div class="ki-ico">😬</div><div class="ki-body"><strong>Sinus Barotrauma:</strong> Ähnlich wie Ohren — Nasennebenhöhlen müssen Druckausgleich herstellen. Starke Schmerzen bei Verstopfung. Kann zu Bewusstlosigkeit führen.</div></div>
+        <div class="ki"><div class="ki-ico">💨</div><div class="ki-body"><strong>Dekompressionskrankheit (Caisson-Krankheit):</strong> Bei Tauchern die nach dem Tauchen fliegen: Stickstoff-Blasen im Gewebe können durch Druckabfall im Flugzeug expandieren → starke Schmerzen (Bends), ZNS-Symptome. Mindestwartezeit nach Tauchen: 12-24h.</div></div>
+      </div>
+      <div class="h3-section">G-Kräfte</div>
+      <table class="dtbl">
+        <tr><th>G-Wert</th><th>Effekt</th><th>Relevanz</th></tr>
+        <tr><td>+1 G</td><td>Normal am Boden</td><td>Referenz</td></tr>
+        <tr><td>+2–3 G</td><td>Körper wirkt doppelt/dreifach so schwer</td><td>Enge Kurven</td></tr>
+        <tr><td>+4–5 G</td><td>Grey-out (Grauschleier), reduziertes Sehfeld</td><td>Kunstflug</td></tr>
+        <tr><td>+5–6 G</td><td>Black-out (Bewusstsein weg), GLOC</td><td>Militär, Extremkunstflug</td></tr>
+        <tr><td>-1 bis -3 G</td><td>Red-out (Blut im Kopf), Rote Sicht</td><td>Negatives G</td></tr>
+      </table>`,
+
+    spatial: `
+      <div class="prose"><strong>Raumdesorientierung (Spatial Disorientation)</strong> ist eine der gefährlichsten Situationen im Cockpit — der Pilot "fühlt" eine Lage die nicht der tatsächlichen entspricht. Ursache: Das Gleichgewichtsorgan ist nicht für das Fliegen ausgelegt und liefert falsche Signale.</div>
+      <div class="h3-section">Vestibuläre Illusionen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌀</div><div class="ki-body"><strong>The Leans:</strong> Nach langsamer Rollbewegung unter der Wahrnehmungsschwelle (unter ~2°/sec) kehrt das Gleichgewichtsorgan zur scheinbaren Normallage zurück. Beim Aufrichten in die echte Horizontale fühlt sich der Pilot schräg. Reaktion: Lehnen zur Seite → gefährlich.</div></div>
+        <div class="ki"><div class="ki-ico">🎢</div><div class="ki-body"><strong>Graveyard Spiral:</strong> Im Spiralsturz nimmt der Pilot nur die G-Belastung wahr, nicht die Schräglage. Beim Hochziehen steigt die G-Kraft aber der Pilot zieht weiter → Spirale wird steiler → Strukturversagen.</div></div>
+        <div class="ki"><div class="ki-ico">🚀</div><div class="ki-body"><strong>Somatogravic Illusion:</strong> Starke Vorwärtsbeschleunigung (Start) wird als Nase-hoch interpretiert → Pilot drückt nach vorne → CFIT. Besonders gefährlich beim Start im Dunkeln oder IMC.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Coriolis Illusion:</strong> Beim Drehen des Kopfes während einer Kreisbewegung: Stimulation in zwei Ebenen gleichzeitig → Eindruck einer Bewegung in dritter Ebene. Kann starke Desorientierung auslösen. Gegenmittel: Kopf ruhig halten in engen Kurven.</div></div>
+        <div class="ki"><div class="ki-ico">💫</div><div class="ki-body"><strong>The Graveyard Spin:</strong> Pilot gewöhnt sich an Drehbewegung (Anpassung der Bogengänge). Beim Ausleiten fühlt sich Gegendrehung an → Pilot dreht zurück in den Spin.</div></div>
+      </div>
+      <div class="h3-section">Visuelle Illusionen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⭐</div><div class="ki-body"><strong>Autokinesis:</strong> Stationäres Licht im Dunkeln scheint sich zu bewegen. Pilot kann Licht für anderes Flugzeug halten und beginnt zu folgen. Gegenmittel: regelmäßige Instrumentencheck, mindestens 10 Sekunden ohne Fixierung.</div></div>
+        <div class="ki"><div class="ki-ico">🌑</div><div class="ki-body"><strong>Black Hole Approach:</strong> Anflug über dunkles Terrain (Wasser, Wüste) ohne Referenzpunkte. Pilot sieht nur Pistenlichtring → neigt zu flachem Anflug → CFIT. Zwingend PAPI/ILS verwenden.</div></div>
+        <div class="ki"><div class="ki-ico">🌟</div><div class="ki-body"><strong>False Horizon:</strong> Lichter am Boden (Stadtbeleuchtung) werden als Horizont interpretiert. Besonders bei Banklage oder in bergigem Gelände. Instrument-Referenz ist Pflicht.</div></div>
+      </div>
+      <div class="warn-box"><div class="warn-tag">Goldene Regel</div><p>Bei Desorientierung: <strong>Instrumente vertrauen, nicht dem Körpergefühl.</strong> Das Gleichgewichtsorgan lügt im Flug. "Trust your instruments" ist keine Empfehlung — es ist überlebenswichtig.</p></div>`,
+
+    crm: `
+      <div class="prose"><strong>Crew Resource Management (CRM)</strong> ist die optimale Nutzung aller verfügbaren Ressourcen — Menschen, Information, Ausrüstung — zur sicheren und effizienten Durchführung eines Fluges. CRM hat die Luftfahrtsicherheit seit seiner Einführung in den 1980ern revolutioniert.</div>
+      <div class="h3-section">Geschichte des CRM</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📜</div><div class="ki-body"><strong>Generation 1 (1979):</strong> Nach United Airlines DC-8 Unfall 1978 (Portland — Crew ignorierte Co-Pilot-Warnungen bis Treibstoff leer). NASA-Workshop → "Cockpit Resource Management". Fokus: Kommunikation und Leadership.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Generation 2-5:</strong> Erweiterung auf Situational Awareness, Decision Making, Error Management. Heute: "Crew" umfasst gesamte Operation (Kabine, Dispatch, Maintenance, ATC). LOSA (Line Operations Safety Audit) als Bewertungsinstrument.</div></div>
+      </div>
+      <div class="h3-section">Die 5 CRM-Kernkomponenten</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🗺️</div><div class="ki-body"><strong>1. Situational Awareness (SA):</strong> Wissen was gerade passiert, was es bedeutet, und was als nächstes passieren wird (Endsley Level 1-2-3). SA-Verlust ist häufigste Unfallursache. Aufrechterhalten durch: regelmäßige Updates, Scan-Pattern, Cross-Checking, Briefings.</div></div>
+        <div class="ki"><div class="ki-ico">⚖️</div><div class="ki-body"><strong>2. Workload Management:</strong> Aufgaben priorisieren, delegieren, vorausplanen. "Sterile Cockpit" unter 10.000 ft. Automation nutzen. Workload antizipieren und Kapazität aufsparen für kritische Phasen.</div></div>
+        <div class="ki"><div class="ki-ico">🧠</div><div class="ki-body"><strong>3. Decision Making:</strong> Strukturierte Entscheidungsprozesse (FORDEC, FOR-DEC). Biases erkennen. Im Zweifel: sicherere Option wählen. "When in doubt, don't."</div></div>
+        <div class="ki"><div class="ki-ico">💬</div><div class="ki-body"><strong>4. Communication:</strong> Klare, präzise Kommunikation. Standard Callouts. Assertiveness — auch als Junior-Pilot Bedenken äußern. Active Listening. Closed-Loop Communication (Bestätigung).</div></div>
+        <div class="ki"><div class="ki-ico">👥</div><div class="ki-body"><strong>5. Leadership & Teamwork:</strong> PIC-Autorität mit offener Kommunikationskultur. "Authority Gradient": zu steil → Junior traut sich nicht zu sprechen. Zu flach → kein klares Command. Mutual Monitoring und Backup.</div></div>
+      </div>
+      <div class="h3-section">Kommunikationsmodell</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📢</div><div class="ki-body"><strong>Assertiveness:</strong> Bedenken klar und direkt äußern auch wenn es unangenehm ist. "Captain, I'm concerned about..." Nicht passiv bleiben. PACE-Modell: Probe → Alert → Challenge → Emergency.</div></div>
+        <div class="ki"><div class="ki-ico">🔒</div><div class="ki-body"><strong>Closed-Loop Communication:</strong> Sender → Nachricht → Empfänger wiederholt → Sender bestätigt. Kritisch bei ATC-Freigaben, Checklist-Items, Kursänderungen. Read-back ist Pflicht!</div></div>
+      </div>`,
+
+    decision: `
+      <div class="prose"><strong>Entscheidungsfindung</strong> unter Druck, Unsicherheit und Zeitlimit ist eine der anspruchsvollsten kognitiven Aufgaben im Cockpit. Strukturierte Modelle helfen, Biases zu reduzieren und systematisch zu denken.</div>
+      <div class="h3-section">FORDEC-Modell</div>
+      <div class="def-box"><div class="def-tag">FORDEC</div><p><strong>F</strong>acts — Fakten sammeln: Was ist passiert? Was weiß ich sicher?<br><strong>O</strong>ptions — Optionen identifizieren: Welche Handlungsmöglichkeiten gibt es?<br><strong>R</strong>isks & Benefits — Risiken und Nutzen jeder Option abwägen<br><strong>D</strong>ecision — Entscheidung treffen<br><strong>E</strong>xecution — Ausführen (klare Aufgabenverteilung)<br><strong>C</strong>heck — Überprüfen ob Entscheidung die gewünschte Wirkung hat</p></div>
+      <div class="h3-section">Kognitive Biases in der Entscheidung</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🎯</div><div class="ki-body"><strong>Confirmation Bias:</strong> Suche nach Information die bestehende Überzeugung bestätigt. Warnzeichen werden uminterpretiert. Gegenmittel: aktiv nach Gegeninformation suchen, zweite Meinung einholen.</div></div>
+        <div class="ki"><div class="ki-ico">✈️</div><div class="ki-body"><strong>Plan Continuation Bias:</strong> Fortführen eines Plans trotz Änderung der Ausgangsbedingungen. "Get-there-itis": Wunsch anzukommen übertrumpft Sicherheitsbedenken. Häufigste Ursache für Wetterunfälle der GA.</div></div>
+        <div class="ki"><div class="ki-ico">🦁</div><div class="ki-body"><strong>Overconfidence:</strong> Überschätzung der eigenen Fähigkeiten. "It won't happen to me." Besonders gefährlich bei erfahrenen Piloten die Routine mit Kompetenz verwechseln.</div></div>
+        <div class="ki"><div class="ki-ico">👥</div><div class="ki-body"><strong>Social Pressure / Peer Pressure:</strong> Entscheidungen um sozialen Druck zu vermeiden (Passagiere warten, Chef erwartet pünktliche Landung). Eine der häufigsten Ursachen für Wetterunfälle.</div></div>
+      </div>
+      <div class="h3-section">Threat and Error Management (TEM)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🛡️</div><div class="ki-body"><strong>Threat Management:</strong> Threats identifizieren und Countermeasures anwenden BEVOR Fehler entstehen. Briefing ist primäres Threat-Management-Tool: "Was könnte heute schiefgehen? Wie reagieren wir?"</div></div>
+        <div class="ki"><div class="ki-ico">🔧</div><div class="ki-body"><strong>Error Management:</strong> Fehler erkennen (Monitoring, Cross-Checking), ansprechen (Assertiveness), korrigieren (SOPs), lernen (Debriefing, Reporting). Fehler sind normal — das Nicht-Erkennen ist das Problem.</div></div>
+        <div class="ki"><div class="ki-ico">🚁</div><div class="ki-body"><strong>Undesired Aircraft State (UAS) Recovery:</strong> Wenn trotz allem ein gefährlicher Zustand erreicht wird: sofortige Handlung (Aviate), dann Navigate, dann Communicate. Keine Diskussion in der akuten Phase.</div></div>
+      </div>`
+  };
+  return c[type] || '';
+}
+</script>
+
 </body>
 </html>
+<script>
+// METEOROLOGIE MODULE - injected after main script
+const MET_UNITS = [
+  {title:'Atmosphäre & Aufbau', xp:60, meta:['12 min','5 Schichten'], type:'atmo'},
+  {title:'Temperatur & Thermodynamik', xp:70, meta:['12 min','Lapserate, ISA'], type:'temp'},
+  {title:'Druck & Höhenmessung', xp:70, meta:['12 min','QNH, QFE, QNE'], type:'pressure'},
+  {title:'Wind & Zirkulation', xp:65, meta:['10 min','Jetstream, Winde'], type:'wind'},
+  {title:'Feuchtigkeit & Niederschlag', xp:55, meta:['10 min','Taupunkt, RH'], type:'humidity'},
+  {title:'Wolken & Klassifikation', xp:65, meta:['12 min','10 Gattungen'], type:'clouds'},
+  {title:'Luftmassen & Fronten', xp:70, meta:['12 min','4 Fronttypen'], type:'fronts'},
+  {title:'Gefahren für die Luftfahrt', xp:80, meta:['14 min','Icing, Turb, CB'], type:'hazards'},
+  {title:'METAR & TAF lesen', xp:75, meta:['12 min','Praxis-Beispiele'], type:'metar'},
+  {title:'Wissenscheck Meteorologie', xp:150, meta:['15 Fragen','~20 min'], type:'metquiz'}
+];
+
+const MET_QZ = [
+  {q:'In welcher Atmosphärenschicht findet das gesamte Wettergeschehen statt?',opts:['Stratosphäre','Troposphäre','Mesosphäre','Thermosphäre'],c:1,w:'Die Troposphäre reicht von 0 bis ca. 11 km (Tropopause). Sie enthält 75% der Luftmasse und fast den gesamten Wasserdampf. Alle Wetterphänomene — Wolken, Regen, Gewitter — entstehen hier.'},
+  {q:'Was ist die ISA-Standardtemperatur auf Meereshöhe (MSL)?',opts:['+10°C','+20°C','+15°C','+5°C'],c:2,w:'ISA (International Standard Atmosphere): 15°C auf MSL, Luftdruck 1013.25 hPa, Dichte 1.225 kg/m³. Temperaturabnahme in der Troposphäre: 2°C pro 1000 ft (Environmental Lapse Rate ISA = 1.98°C/1000ft).'},
+  {q:'Welches Altimeter-Setting wird für den Flug auf Flugflächen (Flight Levels) verwendet?',opts:['QNH','QFE','QNE (1013.25 hPa)','QFF'],c:2,w:'QNE = 1013.25 hPa (Standarddruck). Wird ab der Transition Altitude eingestellt. Alle Flugzeuge fliegen dann auf derselben Referenz — Separation ist gewährleistet. QNH zeigt die tatsächliche Höhe über MSL.'},
+  {q:'Wie verändert sich der Luftdruck mit zunehmender Höhe?',opts:['Nimmt zu','Bleibt gleich','Nimmt ab','Nimmt erst zu dann ab'],c:2,w:'Luftdruck nimmt mit Höhe ab, da weniger Luftmasse darüber lastet. Faustregel: ca. 1 hPa pro 30 ft (unterhalb 5000 ft). Auf FL180 (ca. 18.000 ft) beträgt der Druck nur noch ca. 500 hPa — die Hälfte des Bodendrucks.'},
+  {q:'Was ist der Taupunkt?',opts:['Die Temperatur bei der Eis entsteht','Die Temperatur bei der Wasser gefriert','Die Temperatur bei der Luft mit Wasserdampf gesättigt ist','Die minimale Temperatur eines Tages'],c:2,w:'Der Taupunkt (Dew Point) ist die Temperatur, auf die Luft abgekühlt werden muss, damit der enthaltene Wasserdampf zu kondensieren beginnt (relative Feuchte = 100%). Je kleiner der Abstand zwischen Temperatur und Taupunkt, desto höher die relative Feuchte.'},
+  {q:'Welche Wolkengattung ist für Vereisung und schwere Turbulenz am gefährlichsten?',opts:['Cirrus','Stratus','Cumulonimbus (Cb)','Altocumulus'],c:2,w:'Cumulonimbus (Cb) ist die gefährlichste Wolkengattung. Enthält: starke Aufwinde (bis 50 m/s), Hagel, Blitze, schwere Turbulenz, Vereisung (supercooled droplets), Windscherung, Mikroburst. Cb muss immer umflogen werden — niemals durchfliegen!'},
+  {q:'Was versteht man unter einer Warmfront?',opts:['Kalte Luft schiebt sich unter warme Luft','Warme Luft schiebt sich über kalte Luft und verdrängt diese langsam','Warme und kalte Luft treffen frontal aufeinander','Zwei Luftmassen gleicher Temperatur treffen aufeinander'],c:1,w:'An einer Warmfront schiebt sich warme Luft über die schwerere kalte Luft und verdrängt diese langsam. Flache Gleitfläche (1:100 bis 1:200). Typisches Wetter: langsam aufziehende Schichtbewölkung (Ci→Cs→As→Ns), anhaltender Regen, schlechte Sicht.'},
+  {q:'Was ist strukturelle Vereisung (Structural Icing) und ab welcher Temperatur tritt sie auf?',opts:['Vereisung der Triebwerke unter -20°C','Eisablagerung an Flugzeugoberflächen durch supercooled water droplets, typisch 0°C bis -20°C','Vereisung nur in Cirruswolken über FL300','Vereisung ausschließlich bei Schneefall'],c:1,w:'Strukturelle Vereisung entsteht wenn supercooled water droplets (unterkühlte Wassertropfen, flüssig obwohl unter 0°C) auf Flugzeugoberflächen treffen und sofort gefrieren. Gefährlichster Bereich: 0°C bis -20°C. Über -20°C sind Tropfen meist bereits gefroren und weniger adhäsiv.'},
+  {q:'Welche Windrichtung hat ein Geostrophischer Wind auf der Nordhalbkugel?',opts:['Wind weht vom Hoch zum Tief','Wind weht parallel zu den Isobaren, Tief links','Wind weht senkrecht zu den Isobaren','Wind weht vom Tief zum Hoch'],c:1,w:'Buys-Ballot\'sche Regel (Nordhalbkugel): Stehst du mit dem Rücken zum Wind, ist das Tief links vor dir. Geostrophischer Wind weht parallel zu den Isobaren — Resultat aus Druckgradientkraft und Corioliskraft. Auf der Südhalbkugel umgekehrt.'},
+  {q:'Was bedeutet CAVOK in einem METAR?',opts:['Ceiling And Visibility OK — Sicht unter 10 km, keine signifikanten Wolken','Ceiling And Visibility OK — Sicht mind. 10 km, keine Wolken unter 5000 ft, kein signifikantes Wetter','Completely Adverse Visual Operations Konditions','Clear Air, Visibility OK — wolkenloser Himmel'],c:1,w:'CAVOK steht für Ceiling And Visibility OK und bedeutet: Sicht ≥ 10 km, keine Wolken unter 5.000 ft (oder MSA wenn höher), keine CB oder TCU, kein signifikantes Wetter (kein Regen, Schnee, Gewitter etc.). Ersetzt die Felder Sicht, Wetter und Wolken im METAR.'},
+  {q:'Welche Schicht der Atmosphäre enthält die Ozonschicht?',opts:['Troposphäre','Mesosphäre','Stratosphäre','Thermosphäre'],c:2,w:'Die Ozonschicht befindet sich in der Stratosphäre, hauptsächlich zwischen 15 und 35 km Höhe. Sie absorbiert schädliche UV-B Strahlung. Die Stratosphäre reicht von der Tropopause (ca. 11 km) bis ca. 50 km. Temperatur steigt hier mit der Höhe (Inversion).'},
+  {q:'Was ist ein Microburst?',opts:['Ein kleines lokales Hochdruckgebiet','Ein intensiver Fallwind aus einem Gewitter, der am Boden aufprallt und sich ausbreitet','Eine schwache Gewitterzelle unter 2 km Durchmesser','Ein Windkanal zwischen zwei Bergketten'],c:1,w:'Ein Microburst ist ein intensiver Fallwind (Downdraft) aus einem Cb der am Boden aufprallt und sich horizontal ausbreitet. Extrem gefährlich beim Start und Landeanflug: erst starker Gegenwind (lift increase) dann plötzlich Rückenwind (lift loss) — kann zur Kollision mit dem Boden führen.'},
+  {q:'Welche Wolken gehören zur hohen Etage (über 6.000 m)?',opts:['Stratus, Nimbostratus','Altocumulus, Altostratus','Cirrus, Cirrocumulus, Cirrostratus','Cumulus, Cumulonimbus'],c:2,w:'Hohe Etage (über 6.000 m): Cirrus (Ci), Cirrocumulus (Cc), Cirrostratus (Cs) — bestehen fast ausschließlich aus Eiskristallen. Mittlere Etage (2.000–6.000 m): Altocumulus (Ac), Altostratus (As). Niedrige Etage (unter 2.000 m): Stratus (St), Stratocumulus (Sc), Nimbostratus (Ns).'},
+  {q:'Was bedeutet QNH?',opts:['Luftdruck auf Meereshöhe reduziert nach ISA-Bedingungen','Aktueller Stationsdruck am Flugplatz','Luftdruck reduziert auf Meereshöhe unter Berücksichtigung der tatsächlichen Temperatur','Standarddruck 1013.25 hPa'],c:2,w:'QNH ist der auf Meereshöhe (MSL) reduzierte Luftdruck unter Berücksichtigung der tatsächlichen Atmosphärenbedingungen. Mit QNH eingestellt zeigt das Höhenmesser die wahre Höhe über MSL. Wichtig: QNH variiert je nach Wetterlage und Ort.'},
+  {q:'Was ist Windscherung (Wind Shear) und warum ist sie gefährlich?',opts:['Gleichmäßige Windänderung über große Höhenbereiche','Plötzliche Änderung von Windgeschwindigkeit oder -richtung über kurze Distanz oder Zeit','Dauerhafter Rückenwind beim Landeanflug','Seitenwind über der Crosswind-Grenze des Flugzeugs'],c:1,w:'Windscherung ist eine abrupte Änderung von Windgeschwindigkeit und/oder -richtung über eine kurze Distanz (vertikal oder horizontal). Gefährlich besonders beim Start/Landung: plötzlicher Verlust von Auftrieb durch Windwechsel in geringer Höhe. Tritt auf bei Fronten, Gewittern, Inversionen und Bergwellen.'}
+];
+
+// Override the subject selection to support meteorology
+const ORIG_UNITS = window.UNITS || [];
+
+function showMetLearn() {
+  const pg = document.getElementById('page-learn');
+  if (!pg) return;
+  // Update sidebar for met
+  const lsbTag = document.querySelector('.lsb-tag');
+  const lsbTtl = document.querySelector('.lsb-ttl');
+  if (lsbTag) lsbTag.textContent = 'Subject 050';
+  if (lsbTtl) lsbTtl.textContent = 'Meteorologie';
+  
+  window._currentSubject = 'met';
+  window._metUnit = window._metUnit || 0;
+  renderMetNav();
+  renderMetUnit(window._metUnit);
+  
+  ['landing','auth','dashboard'].forEach(p => {
+    const e = document.getElementById('page-'+p);
+    if (e) e.classList.add('hidden');
+  });
+  pg.classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+function renderMetNav() {
+  const pct = Math.round((S.metDone||[]).length / MET_UNITS.length * 100);
+  const fill = document.getElementById('lsb-f');
+  const pctEl = document.getElementById('lsb-p');
+  if (fill) fill.style.width = pct + '%';
+  if (pctEl) pctEl.textContent = pct + ' % abgeschlossen';
+  
+  const nav = document.getElementById('lnav');
+  if (!nav) return;
+  nav.innerHTML = MET_UNITS.map((u,i) => {
+    const d = (S.metDone||[]).includes(i), a = (window._metUnit||0) === i;
+    return `<div class="lni ${a?'act':''} ${d?'done':''}" onclick="renderMetUnit(${i})">
+      <div class="lni-bub">${d?'✓':i+1}</div>
+      <div class="lni-txt">${u.title}</div>
+      <div class="lni-xp">+${u.xp}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderMetUnit(idx) {
+  window._metUnit = idx;
+  renderMetNav();
+  const u = MET_UNITS[idx];
+  const m = document.getElementById('lmain');
+  if (!m) return;
+  
+  if (u.type === 'metquiz') {
+    window._mqState = {i:0, sc:0, ans:false};
+    m.innerHTML = `<div class="lcrumb">Meteorologie <span>› Wissenscheck</span></div>
+      <h1 class="lunit-ttl">Wissenscheck Meteorologie</h1>
+      <div class="lmeta"><span class="lchip ch-bl">⏱ ~20 min</span><span class="lchip ch-bl">15 Fragen</span><span class="lchip ch-am">⚡ +150 XP</span></div>
+      <div id="qw"></div>`;
+    renderMetQ();
+    return;
+  }
+  
+  const done = (S.metDone||[]).includes(idx);
+  m.innerHTML = `<div class="lcrumb">Meteorologie <span>› ${u.title}</span></div>
+    <h1 class="lunit-ttl">${u.title}</h1>
+    <div class="lmeta">${u.meta.map(x=>`<span class="lchip ch-bl">⏱ ${x}</span>`).join('')}<span class="lchip ch-am">⚡ +${u.xp} XP</span></div>
+    ${getMetCon(u.type)}
+    <div class="uf">
+      ${idx>0?`<button class="btn btn-ghost" onclick="renderMetUnit(${idx-1})">← Zurück</button>`:''}
+      ${done
+        ? `<button class="btn btn-blue" onclick="renderMetUnit(${Math.min(idx+1,MET_UNITS.length-1)})">Weiter →</button><div class="done-badge">✓ Abgeschlossen</div>`
+        : `<button class="btn btn-primary" onclick="mkMetDone(${idx})">Verstanden — +${u.xp} XP →</button>`}
+    </div>`;
+  m.scrollTop=0; window.scrollTo(0,0);
+}
+
+function mkMetDone(idx) {
+  if (!S.metDone) S.metDone = [];
+  if (!S.metDone.includes(idx)) { S.metDone.push(idx); S.xp += MET_UNITS[idx].xp; save(); popXP('+'+MET_UNITS[idx].xp+' XP'); }
+  renderMetUnit(idx+1 < MET_UNITS.length ? idx+1 : idx);
+}
+
+function renderMetQ() {
+  const w = document.getElementById('qw'); if (!w) return;
+  const qs = window._mqState;
+  if (qs.i >= MET_QZ.length) {
+    const pct = Math.round(qs.sc/MET_QZ.length*100);
+    S.qa += MET_QZ.length; S.qc += qs.sc;
+    if (!S.metDone) S.metDone = [];
+    const li = MET_UNITS.length-1;
+    if (!S.metDone.includes(li)) { S.metDone.push(li); S.xp+=150; popXP('+150 XP'); }
+    save();
+    w.innerHTML = `<div class="qres">
+      <div class="qres-ring"><div class="qres-pct">${pct}%</div></div>
+      <div class="qres-ttl">${qs.sc} von ${MET_QZ.length} richtig</div>
+      <div class="qres-sub">${pct>=75?'Ausgezeichnet — Meteorologie abgeschlossen!':'Weiter üben — du schaffst das.'}</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-ghost" onclick="window._mqState={i:0,sc:0,ans:false};renderMetQ()">Nochmal</button>
+        <button class="btn btn-primary" onclick="goTo('dashboard')">Zum Dashboard →</button>
+      </div></div>`;
+    return;
+  }
+  const q = MET_QZ[qs.i]; qs.ans = false;
+  w.innerHTML = `<div class="qprog">${MET_QZ.map((_,i)=>`<div class="qpd ${i<qs.i?'dn':i===qs.i?'cr':''}"></div>`).join('')}</div>
+    <div class="qnum">Frage ${qs.i+1} von ${MET_QZ.length}</div>
+    <div class="qtxt">${q.q}</div>
+    <div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" id="mq${i}" onclick="ansMetQ(${i})">${o}</button>`).join('')}</div>
+    <div class="qexpl" id="qex"><strong>Erklärung:</strong> ${q.w}</div>`;
+}
+
+function ansMetQ(idx) {
+  const qs = window._mqState;
+  if (qs.ans) return; qs.ans = true;
+  const q = MET_QZ[qs.i];
+  document.querySelectorAll('.qopt').forEach(o=>o.disabled=true);
+  document.getElementById('mq'+idx).classList.add(idx===q.c?'correct':'wrong');
+  if (idx!==q.c) document.getElementById('mq'+q.c).classList.add('correct');
+  if (idx===q.c) qs.sc++;
+  document.getElementById('qex').classList.add('show');
+  const btn = document.createElement('button'); btn.className='btn btn-primary'; btn.style.marginTop='14px';
+  btn.textContent = qs.i < MET_QZ.length-1 ? 'Nächste Frage →' : 'Auswertung →';
+  btn.onclick = ()=>{ qs.i++; renderMetQ(); };
+  document.getElementById('qw').appendChild(btn);
+}
+
+function getMetCon(type) {
+  const c = {
+    atmo: `
+      <div class="prose">Die <strong>Atmosphäre</strong> ist die Gashülle der Erde, gehalten durch die Schwerkraft. Sie besteht zu 78% aus Stickstoff (N₂), 21% Sauerstoff (O₂) und 1% anderen Gasen (Argon, CO₂, Wasserdampf). Für Piloten ist die Struktur der Atmosphäre fundamental — sie bestimmt Wetter, Leistung und Sicherheit.</div>
+
+      <div class="h3-section">Die 5 Atmosphärenschichten</div>
+      <table class="dtbl">
+        <tr><th>Schicht</th><th>Höhe</th><th>Temperatur</th><th>Bedeutung für Piloten</th></tr>
+        <tr><td><strong>Troposphäre</strong></td><td>0 – 11 km (Pol: 8 km, Äquator: 16 km)</td><td>Nimmt ab: −6,5°C/km</td><td>Gesamtes Wettergeschehen, 75% der Luftmasse, alle kommerziellen Flüge</td></tr>
+        <tr><td><strong>Stratosphäre</strong></td><td>11 – 50 km</td><td>Nimmt zu (Ozon absorbiert UV)</td><td>Ozonschicht, ruhige Luft, Überschallflug (Concorde), kaum Wetter</td></tr>
+        <tr><td><strong>Mesosphäre</strong></td><td>50 – 85 km</td><td>Nimmt stark ab bis −90°C</td><td>Meteore verglühen hier, für Piloten kaum relevant</td></tr>
+        <tr><td><strong>Thermosphäre</strong></td><td>85 – 600 km</td><td>Steigt bis über 1000°C</td><td>Polarlichter, ISS, keine Luftfahrt</td></tr>
+        <tr><td><strong>Exosphäre</strong></td><td>über 600 km</td><td>Keine def. Temperatur</td><td>Satelliten, Übergang zum Weltraum</td></tr>
+      </table>
+      <div class="tip-box"><div class="tip-tag">Prüfungstipp</div><p>Die <strong>Tropopause</strong> (Grenze Troposphäre/Stratosphäre) liegt in mittleren Breiten bei ca. <strong>11 km / FL360</strong>. Am Äquator höher (16 km), an den Polen tiefer (8 km). Der Jetstream befindet sich direkt unterhalb der Tropopause.</p></div>
+
+      <div class="h3-section">ISA — International Standard Atmosphere</div>
+      <div class="def-box"><div class="def-tag">Definition ISA</div><p>Die ISA ist ein Modell der Standardatmosphäre als Referenz für Leistungsberechnungen und Höhenmessung. Standardwerte auf MSL: <strong>Temperatur: +15°C · Druck: 1013.25 hPa · Dichte: 1.225 kg/m³ · Temperaturabnahme: 1.98°C / 1000 ft</strong> (bis zur Tropopause, danach konstant −56.5°C)</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>ISA Temperaturabnahme (ELR):</strong> 2°C pro 1000 ft (genau: 1.98°C). Auf FL100 (10.000 ft): 15°C − (10 × 2°C) = <strong>−5°C</strong>. Auf FL360 (36.000 ft): 15°C − (36 × 2°C) = <strong>−57°C</strong>.</div></div>
+        <div class="ki"><div class="ki-ico">📊</div><div class="ki-body"><strong>ISA Deviation:</strong> Reale Temperatur minus ISA-Temperatur. ISA+10 bedeutet 10°C wärmer als Norm. Bei ISA+ ist die Luft weniger dicht → schlechtere Motorleistung, höhere V-Speeds, längere Startrollstrecke.</div></div>
+        <div class="ki"><div class="ki-ico">💨</div><div class="ki-body"><strong>Zusammensetzung der trockenen Luft:</strong> N₂ = 78.09%, O₂ = 20.95%, Argon = 0.93%, CO₂ = 0.03%. Wasserdampf variiert stark (0–4%) und ist nicht Teil der "trockenen Luft" Definition.</div></div>
+      </div>`,
+
+    temp: `
+      <div class="prose">Temperatur ist die wichtigste meteorologische Größe — sie beeinflusst Luftdichte, Motorleistung, Wolkenbildung, Vereisung und die Stabilität der Atmosphäre. Für Piloten entscheidend: der Unterschied zwischen <strong>Environmental Lapse Rate (ELR)</strong> und den adiabatischen Lapserates.</div>
+
+      <div class="h3-section">Lapserates — Temperaturabnahme mit der Höhe</div>
+      <table class="dtbl">
+        <tr><th>Bezeichnung</th><th>Wert</th><th>Bedeutung</th></tr>
+        <tr><td><strong>ISA ELR (Standard)</strong></td><td>1.98°C / 1000 ft</td><td>Durchschnittliche Abnahme in der Standardatmosphäre</td></tr>
+        <tr><td><strong>DALR — Dry Adiabatic Lapse Rate</strong></td><td>3°C / 1000 ft</td><td>Abnahme aufsteigender <em>trockener</em> Luft (keine Kondensation)</td></tr>
+        <tr><td><strong>SALR — Saturated Adiabatic Lapse Rate</strong></td><td>1.5°C / 1000 ft</td><td>Abnahme aufsteigender <em>gesättigter</em> Luft (mit Kondensation, latente Wärme)</td></tr>
+      </table>
+      <div class="tip-box"><div class="tip-tag">Merkhilfe</div><p><strong>DALR = 3, SALR = 1.5, ISA = 2</strong> (alle in °C/1000ft). DALR &gt; ISA: trockene Luft kühlt schneller als Umgebung → instabil. SALR &lt; ISA: gesättigte Luft kühlt langsamer → labile Luftschichtung möglich.</p></div>
+
+      <div class="h3-section">Atmosphärische Stabilität</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⬆️</div><div class="ki-body"><strong>Labile (instabile) Atmosphäre:</strong> ELR &gt; DALR (bzw. SALR). Aufsteigende Luft ist wärmer als Umgebung → steigt weiter auf. Führt zu: Cumulus-Entwicklung, Konvektionsgewitter, Turbulenz, gute Sicht in Schauerpausen.</div></div>
+        <div class="ki"><div class="ki-ico">➡️</div><div class="ki-body"><strong>Stabile Atmosphäre:</strong> ELR &lt; SALR. Aufsteigende Luft ist kälter als Umgebung → sinkt zurück. Führt zu: Schichtbewölkung (Stratus), Dunst, schlechte Sicht, kein Gewitter.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Inversion:</strong> Temperatur nimmt mit Höhe ZU (umgekehrt normal). Wirkt wie eine "Decke" — verhindert Konvektion, fängt Schadstoffe und Feuchtigkeit. Führt zu Dunst, Smog, Nebel. Häufig nachts durch Bodenabkühlung (Strahlungsinversion).</div></div>
+      </div>
+
+      <div class="h3-section">Konvektionsebene (Condensation Level)</div>
+      <div class="def-box"><div class="def-tag">Wolkenuntergrenze Berechnung</div><p>Die Höhe der Wolkenuntergrenze von Konvektionswolken kann näherungsweise berechnet werden:<br><strong>Höhe (ft) = (Temperatur − Taupunkt) × 400</strong><br>Beispiel: Temp = +20°C, Taupunkt = +10°C → (20−10) × 400 = <strong>4.000 ft AGL</strong></p></div>
+
+      <div class="h3-section">Temperaturmessung & Stationen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>OAT — Outside Air Temperature:</strong> Direkt am Flugzeug gemessen. Durch Kompressionserwärmung bei hohen Geschwindigkeiten zu hoch. Daher: <strong>SAT (Static Air Temperature)</strong> = wahre Umgebungstemperatur, <strong>TAT (Total Air Temperature)</strong> = SAT + Staudruckerwärmung.</div></div>
+        <div class="ki"><div class="ki-ico">📡</div><div class="ki-body"><strong>Radiosonde:</strong> Wetterballon mit Messinstrumenten, steigt bis 30 km. Misst Temperatur, Feuchte, Druck und Wind auf verschiedenen Höhen. Wird zweimal täglich weltweit gestartet — Basis für Wettervorhersagen.</div></div>
+      </div>`,
+
+    pressure: `
+      <div class="prose">Luftdruck ist das Gewicht der darüberliegenden Luftsäule. Er ist die Basis der <strong>barometrischen Höhenmessung</strong> — dem primären Höhenmesssystem in der Luftfahrt. Das korrekte Altimeter-Setting ist sicherheitskritisch: falsches QNH kann zur Kollision mit dem Boden (CFIT) führen.</div>
+
+      <div class="h3-section">Altimeter Settings</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📍</div><div class="ki-body"><strong>QNH</strong> — Luftdruck reduziert auf Meereshöhe (MSL) unter Berücksichtigung der tatsächlichen Temperatur. Mit QNH zeigt das Höhenmesser die <strong>wahre Höhe über MSL</strong>. Wird unterhalb der Transition Altitude verwendet.</div></div>
+        <div class="ki"><div class="ki-ico">🏁</div><div class="ki-body"><strong>QFE</strong> — Luftdruck am Flugplatz (auf Platzhöhe). Mit QFE zeigt das Höhenmesser die <strong>Höhe über dem Flugplatz (AGL)</strong>. Bei der Landung zeigt es dann "0". In Österreich wenig gebräuchlich.</div></div>
+        <div class="ki"><div class="ki-ico">✈️</div><div class="ki-body"><strong>QNE / Standard Setting</strong> — Standarddruck 1013.25 hPa. Wird <strong>oberhalb der Transition Altitude</strong> eingestellt. Alle Flugzeuge verwenden dieselbe Referenz → Separation gewährleistet. Höhen heißen dann "Flight Levels" (FL).</div></div>
+        <div class="ki"><div class="ki-ico">🌊</div><div class="ki-body"><strong>QFF</strong> — Luftdruck reduziert auf MSL unter Berücksichtigung tatsächlicher Temperatur UND Feuchtigkeit. Wird für meteorologische Karten verwendet, nicht für die Luftfahrt-Höhenmessung.</div></div>
+      </div>
+      <div class="tip-box"><div class="tip-tag">Merkhilfe Q-Codes</div><p><strong>QNH = Höhe über Meer (MSL), QFE = Höhe über Platz (AGL), QNE = Flight Level (Standard).</strong> Unter Transition Altitude: QNH. Über Transition Level: 1013 hPa (QNE). In Österreich: Transition Altitude = 10.000 ft AMSL.</p></div>
+
+      <div class="h3-section">Transition Altitude & Transition Level</div>
+      <table class="dtbl">
+        <tr><th>Begriff</th><th>Definition</th><th>Österreich</th></tr>
+        <tr><td><strong>Transition Altitude (TA)</strong></td><td>Höhe (AMSL) bis zu der QNH verwendet wird (steigend)</td><td>10.000 ft AMSL</td></tr>
+        <tr><td><strong>Transition Level (TL)</strong></td><td>Niedrigstes FL bei dem 1013 hPa verwendet wird (sinkend)</td><td>FL100 (oder höher bei hohem QNH)</td></tr>
+        <tr><td><strong>Transition Layer</strong></td><td>Schicht zwischen TA und TL — hier kein Flug in der Horizontalen</td><td>Zwischen 10.000ft und FL100</td></tr>
+      </table>
+
+      <div class="h3-section">Druckhöhe vs. Dichtehöhe</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">📏</div><div class="ki-body"><strong>Pressure Altitude (Druckhöhe):</strong> Höhe in der ISA wo derselbe Druck herrscht wie am aktuellen Standort. Relevant für Leistungsberechnungen.</div></div>
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>Density Altitude (Dichtehöhe):</strong> Druckhöhe korrigiert für Temperaturabweichung. <strong>Hohe Dichtehöhe = schlechtere Performance.</strong> Bei ISA+20 auf einem Hochgebirgsflugplatz (2000m MSL) kann die Dichtehöhe 4000m+ betragen — das Flugzeug "glaubt" es wäre auf 4000m Höhe.</div></div>
+        <div class="ki"><div class="ki-ico">⚠️</div><div class="ki-body"><strong>High Density Altitude Hazards:</strong> Längere Startrollstrecke, geringere Steigleistung, höhere True Airspeed (TAS) bei gleicher IAS, schlechtere Motorleistung. Besonders kritisch: heiße Sommertage auf Hochgebirgsflugplätzen.</div></div>
+      </div>`,
+
+    wind: `
+      <div class="prose">Wind entsteht durch <strong>Druckunterschiede</strong> in der Atmosphäre. Luft strömt vom Hochdruck zum Tiefdruck — modifiziert durch die Corioliskraft, Reibung und thermische Effekte. Für Piloten sind Windrichtung, -stärke und -veränderungen entscheidend für Navigation, Kraftstoffplanung und Sicherheit.</div>
+
+      <div class="h3-section">Entstehung von Wind</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⚖️</div><div class="ki-body"><strong>Druckgradientkraft:</strong> Treibende Kraft des Windes. Wirkt senkrecht zu den Isobaren vom Hoch zum Tief. Je enger die Isobaren, desto stärker der Wind.</div></div>
+        <div class="ki"><div class="ki-ico">🌀</div><div class="ki-body"><strong>Corioliskraft (Nordhalbkugel):</strong> Ablenkkraft durch Erdrotation. Lenkt Winde nach <strong>rechts</strong> ab (Südhalbkugel: links). Ergebnis: Wind weht nicht direkt vom Hoch zum Tief sondern parallel zu den Isobaren.</div></div>
+        <div class="ki"><div class="ki-ico">🌍</div><div class="ki-body"><strong>Buys-Ballot'sche Regel (Nordhalbkugel):</strong> Stehst du mit dem Rücken zum Wind, ist das Tief links und das Hoch rechts. Um ein Tief (Zyklone) weht der Wind gegen den Uhrzeigersinn, um ein Hoch (Antizyklone) mit dem Uhrzeigersinn.</div></div>
+      </div>
+
+      <div class="h3-section">Windtypen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌐</div><div class="ki-body"><strong>Geostrophischer Wind:</strong> Oberhalb der Reibungsschicht (~2000 ft AGL). Gleichgewicht zwischen Druckgradient- und Corioliskraft. Weht parallel zu den Isobaren. Basis für Windvorhersagen in großen Höhen.</div></div>
+        <div class="ki"><div class="ki-ico">🏔️</div><div class="ki-body"><strong>Gradient Wind:</strong> Berücksichtigt zusätzlich die Zentrifugalkraft bei gekrümmten Isobaren. Beim Tief: schwächer als geostrophisch. Beim Hoch: stärker.</div></div>
+        <div class="ki"><div class="ki-ico">🌊</div><div class="ki-body"><strong>Thermischer Wind:</strong> Entsteht durch horizontale Temperaturunterschiede (z.B. Land/See). Basis des Jet Streams.</div></div>
+        <div class="ki"><div class="ki-ico">🏄</div><div class="ki-body"><strong>See-Land-Wind:</strong> Tagsüber: Seewind (Meer → Land, Land wärmer). Nachts: Landwind (Land → Meer, Land kälter). Typisch in Küstenregionen, bis ca. 50 km ins Landesinnere.</div></div>
+        <div class="ki"><div class="ki-ico">⛰️</div><div class="ki-body"><strong>Föhn:</strong> Warmer, trockener Fallwind auf der Leeseite von Gebirgen. Österreich: Nordföhn (Wind aus N über Alpen) und Südföhn (Wind aus S, häufiger). Temperaturen steigen schnell, Sicht ausgezeichnet, Turbulenz möglich.</div></div>
+      </div>
+
+      <div class="h3-section">Jetstream</div>
+      <div class="def-box"><div class="def-tag">Definition Jetstream</div><p>Schmales Band sehr starker Winde (~100–300 kt) in der oberen Troposphäre / unteren Stratosphäre (FL250–FL400), direkt unterhalb der Tropopause. Entsteht durch starke horizontale Temperaturgradienten. Zwei Hauptjets: <strong>Polarer Jetstream</strong> (stärker, ~55°N) und <strong>Subtropischer Jetstream</strong> (~25–30°N).</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">✈️</div><div class="ki-body"><strong>Bedeutung für Langstreckenflüge:</strong> Flüge West→Ost nutzen Tailwind des Jets (kürzer, weniger Treibstoff). Flüge Ost→West meiden den Jetstream (Headwind). Transatlantisch kann der Jet 2+ Stunden Unterschied bedeuten.</div></div>
+        <div class="ki"><div class="ki-ico">⚡</div><div class="ki-body"><strong>Clear Air Turbulence (CAT):</strong> Turbulenz ohne sichtbare Wolken, häufig in Randbereich des Jetstreamkerns (Windscherung). Nicht vorhersagbar durch Radar. Gefährlichste Turbulenz für Passagiere und Crew.</div></div>
+      </div>`,
+
+    humidity: `
+      <div class="prose">Feuchtigkeit in der Atmosphäre ist der Antrieb für Wolken-, Niederschlags- und Gewitterbildung. Das Verständnis von Wasserdampf, relativem Feuchtigkeit und Taupunkt ist fundamental für die Einschätzung von Sicht, Vereisung und Wetterentwicklung.</div>
+
+      <div class="h3-section">Grundbegriffe Feuchtigkeit</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">💧</div><div class="ki-body"><strong>Absolute Feuchte:</strong> Masse Wasserdampf pro Volumen Luft (g/m³). Maximalwert bei gegebener Temperatur = Sättigungsfeuchte. Warme Luft kann mehr Wasserdampf aufnehmen als kalte.</div></div>
+        <div class="ki"><div class="ki-ico">📊</div><div class="ki-body"><strong>Relative Feuchte (RH):</strong> Verhältnis tatsächlicher Wasserdampfgehalt zu maximal möglichem (bei gegebener Temperatur). RH = 100% = gesättigte Luft = Kondensation beginnt. Wert aus METAR: z.B. Temp 20°C, Dewpoint 15°C → RH ~73%.</div></div>
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>Taupunkt (Dewpoint):</strong> Temperatur bei der die Luft gesättigt wäre (RH=100%). Kleiner Abstand Temp-Taupunkt = hohe Feuchte, Nebelgefahr. Faustregel: <strong>Spread &lt; 2°C</strong> → Nebelgefahr oder tief liegende Wolken.</div></div>
+        <div class="ki"><div class="ki-ico">❄️</div><div class="ki-body"><strong>Frost Point:</strong> Wie Taupunkt, aber bezogen auf Eis (unter 0°C). Relevant für Reifbildung auf Flugzeugoberflächen am Boden — muss vor dem Flug entfernt werden (even a thin layer of frost disrupts lift).</div></div>
+      </div>
+
+      <div class="h3-section">Niederschlagsarten</div>
+      <table class="dtbl">
+        <tr><th>Art</th><th>Symbol (METAR)</th><th>Beschreibung</th><th>Relevanz</th></tr>
+        <tr><td><strong>Regen</strong></td><td>RA</td><td>Tropfen &gt; 0.5mm, flüssig</td><td>Sicht, Aquaplaning</td></tr>
+        <tr><td><strong>Nieselregen</strong></td><td>DZ</td><td>Sehr kleine Tropfen &lt;0.5mm</td><td>Schlechte Sicht, Vereisung möglich</td></tr>
+        <tr><td><strong>Schnee</strong></td><td>SN</td><td>Eiskristalle, unter 0°C</td><td>Sicht, Startbahn, Vereisung</td></tr>
+        <tr><td><strong>Schneegriesel</strong></td><td>SG</td><td>Flache weiße Eisplättchen</td><td>Sicht</td></tr>
+        <tr><td><strong>Hagel</strong></td><td>GR (≥5mm) / GS (&lt;5mm)</td><td>Eiskugeln aus Cb</td><td>Strukturschäden, Triebwerke</td></tr>
+        <tr><td><strong>Gefrierender Regen</strong></td><td>FZRA</td><td>Unterkühlte Tropfen, gefrieren bei Aufprall</td><td>Starke Vereisung, extrem gefährlich</td></tr>
+        <tr><td><strong>Eisnadeln</strong></td><td>IC</td><td>Kleine Eiskristalle bei sehr tiefen Temp.</td><td>Sicht, leichte Vereisung</td></tr>
+      </table>
+      <div class="warn-box"><div class="warn-tag">Achtung Freezing Rain (FZRA)</div><p>Gefrierender Regen ist eine der gefährlichsten Wettererscheinungen in der Luftfahrt. Unterkühlte Regentropfen gefrieren sofort beim Aufprall auf Flugzeugoberflächen und bilden eine klare Eisschicht (Clear Ice / Glaze Ice). Extrem schwer zu entfernen, sehr starke Gewichtszunahme.</p></div>`,
+
+    clouds: `
+      <div class="prose">Wolken entstehen durch Kondensation von Wasserdampf an Kondensationskernen (Staubpartikel, Salzkristalle) wenn die Luft den Taupunkt erreicht. Die <strong>WMO-Klassifikation</strong> unterscheidet 10 Wolkengattungen in drei Etagen plus Sonderwolken.</div>
+
+      <div class="h3-section">Wolkengattungen nach Etagen</div>
+      <table class="dtbl">
+        <tr><th>Etage</th><th>Höhe</th><th>Gattung</th><th>Abk.</th><th>Charakteristik</th></tr>
+        <tr><td rowspan="3"><strong>Hoch</strong><br>&gt;6.000 m</td><td></td><td>Cirrus</td><td>Ci</td><td>Eiswolken, weiße Schlieren, kein Niederschlag, Vereisung möglich</td></tr>
+        <tr><td></td><td>Cirrocumulus</td><td>Cc</td><td>Kleine weiße Schäfchen, "Makrelenhimmel", selten</td></tr>
+        <tr><td></td><td>Cirrostratus</td><td>Cs</td><td>Dünner Eisschleier, Haloerscheinungen, kündigt Warmfront an</td></tr>
+        <tr><td rowspan="2"><strong>Mittel</strong><br>2.000–6.000 m</td><td></td><td>Altocumulus</td><td>Ac</td><td>Graue/weiße Schäfchen, mittelgroß, Turbulenz möglich</td></tr>
+        <tr><td></td><td>Altostratus</td><td>As</td><td>Grauer Schleier, Sonne durchscheinend, leichter Niederschlag</td></tr>
+        <tr><td rowspan="3"><strong>Tief</strong><br>&lt;2.000 m</td><td></td><td>Stratus</td><td>St</td><td>Graue gleichmäßige Schicht, Nieselregen, schlechte Sicht</td></tr>
+        <tr><td></td><td>Stratocumulus</td><td>Sc</td><td>Grau/weiße Schollen, häufigste Wolke weltweit</td></tr>
+        <tr><td></td><td>Nimbostratus</td><td>Ns</td><td>Dunkle Regendecke, anhaltender Niederschlag, sehr schlechte Sicht</td></tr>
+        <tr><td rowspan="2"><strong>Vertikal</strong></td><td></td><td>Cumulus</td><td>Cu</td><td>Quellwolke, schönes Wetter, Turbulenz unter Basis, Vorstufe zu Cb</td></tr>
+        <tr><td></td><td>Cumulonimbus</td><td>Cb</td><td>Gewitterwolke, Ambossform, extrem gefährlich</td></tr>
+      </table>
+
+      <div class="h3-section">Cumulonimbus — die gefährlichste Wolke</div>
+      <div class="warn-box"><div class="warn-tag">⚠️ Niemals Cb durchfliegen</div><p>Ein Cumulonimbus enthält alle gefährlichen Wetterphänomene gleichzeitig: Hagelschlag, Blitzschläge, extreme Turbulenz (Auf-/Abwinde bis 50 m/s), starke Vereisung, Windscherung, Microburst, schlechte Sicht. Mindestabstand: <strong>20 nm seitlich, 5.000 ft über Ambosskrone</strong>.</p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⬆️</div><div class="ki-body"><strong>Entwicklungsstadien eines Cb:</strong> 1. Cumulus-Stadium (Aufwinde dominieren), 2. Reifes Stadium (Auf- und Abwinde, Niederschlag, Blitz, Hagel — gefährlichste Phase), 3. Dissipations-Stadium (Abwinde dominieren, Ambosskrone, Wolke löst sich auf).</div></div>
+        <div class="ki"><div class="ki-ico">⚡</div><div class="ki-body"><strong>Embedded Cb (EMBD CB):</strong> In Schichtwolken versteckter Cb — besonders gefährlich weil nicht sichtbar und nicht mit Radar erkennbar wenn außerhalb des Cb. SIGMET und PIREPs beachten.</div></div>
+      </div>
+
+      <div class="h3-section">Wolkendecke — METAR Terminologie</div>
+      <table class="dtbl">
+        <tr><th>Begriff</th><th>Abdeckung</th><th>Oktas</th><th>METAR Beispiel</th></tr>
+        <tr><td>SKC / CLR</td><td>Wolkenlos</td><td>0</td><td>SKC</td></tr>
+        <tr><td>FEW</td><td>Wenig bewölkt</td><td>1–2</td><td>FEW015</td></tr>
+        <tr><td>SCT (Scattered)</td><td>Aufgelockert</td><td>3–4</td><td>SCT020</td></tr>
+        <tr><td>BKN (Broken)</td><td>Stark bewölkt</td><td>5–7</td><td>BKN008</td></tr>
+        <tr><td>OVC (Overcast)</td><td>Bedeckt</td><td>8</td><td>OVC005</td></tr>
+      </table>`,
+
+    fronts: `
+      <div class="prose"><strong>Luftmassen</strong> sind große Luftkörper mit einheitlichen Temperatur- und Feuchteeigenschaften. Wenn unterschiedliche Luftmassen aufeinandertreffen, entstehen <strong>Fronten</strong> — schmale Übergangszonen mit charakteristischen Wetterbedingungen.</div>
+
+      <div class="h3-section">Luftmassen-Klassifikation</div>
+      <table class="dtbl">
+        <tr><th>Kürzel</th><th>Herkunft</th><th>Eigenschaften</th><th>Wetter</th></tr>
+        <tr><td><strong>cA</strong></td><td>Kontinental Arktisch</td><td>Extrem kalt, trocken</td><td>Strenger Winter, Kälteeinbrüche</td></tr>
+        <tr><td><strong>cP</strong></td><td>Kontinental Polar</td><td>Kalt, trocken</td><td>Klarer Winterhimmel, Kälte</td></tr>
+        <tr><td><strong>mP</strong></td><td>Maritim Polar</td><td>Kühl, feucht</td><td>Bewölkt, Schauer</td></tr>
+        <tr><td><strong>mT</strong></td><td>Maritim Tropisch</td><td>Warm, feucht</td><td>Gewitterneigung, Schwüle</td></tr>
+        <tr><td><strong>cT</strong></td><td>Kontinental Tropisch</td><td>Sehr warm, trocken</td><td>Heiß, staubig, Saharaluft</td></tr>
+      </table>
+
+      <div class="h3-section">Die 4 Fronttypen</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🔴</div><div class="ki-body"><strong>Warmfront:</strong> Warme Luft schiebt sich langsam über kalte Luft (flache Gleitfläche 1:100). Wetter: Ci → Cs → As → Ns, anhaltender Regen/Schnee, schlechte Sicht, Deckenhöhe nimmt ab. Warnung schon 600–1000 km vor der Front durch Cirrus.</div></div>
+        <div class="ki"><div class="ki-ico">🔵</div><div class="ki-body"><strong>Kaltfront:</strong> Kalte Luft schiebt sich schnell unter warme Luft (steile Gleitfläche 1:50). Wetter: Cb, kurze heftige Schauer, Gewitter, starke Windböen, rasche Wetterbesserung nach Frontdurchgang. Kaltfront bewegt sich schneller als Warmfront.</div></div>
+        <div class="ki"><div class="ki-ico">🟣</div><div class="ki-body"><strong>Okklusion:</strong> Kaltfront holt Warmfront ein, hebt warme Luft vom Boden ab. Zwei Typen: Warm-Okklusion (Kaltfront kälter, schiebt sich unter Frontluft) und Kalt-Okklusion (Frontluft kälter). Wetter: Mischung aus Warm- und Kaltfrontcharakter.</div></div>
+        <div class="ki"><div class="ki-ico">⬛</div><div class="ki-body"><strong>Stationäre Front (Quasi-stationär):</strong> Front bewegt sich kaum. Kann tagelang schlechtes Wetter bringen. Entsteht wenn Druckgradient senkrecht zur Front schwach ist.</div></div>
+      </div>
+      <div class="tip-box"><div class="tip-tag">Frontvergleich für die Prüfung</div><p><strong>Warmfront:</strong> langsam, Schichtbewölkung, anhaltender Regen, weite Vorboten. <strong>Kaltfront:</strong> schnell, Konvektionsbewölkung (Cb), kurze heftige Schauer, rasche Besserung danach. Diese Unterschiede kommen sehr häufig im Examen.</p></div>`,
+
+    hazards: `
+      <div class="prose">Meteorologische Gefahren sind die häufigste Ursache für schwere Zwischenfälle in der Luftfahrt. Vereisung, Turbulenz und konvektive Aktivität müssen erkannt, eingeschätzt und vermieden werden.</div>
+
+      <div class="h3-section">Vereisung (Icing)</div>
+      <div class="warn-box"><div class="warn-tag">Kritisches Sicherheitsthema</div><p>Vereisung reduziert Auftrieb, erhöht Widerstand und Gewicht, kann Steuerflächen blockieren und Triebwerke beschädigen. Bereits dünne Eisschichten können aerodynamisch katastrophal sein.</p></div>
+      <table class="dtbl">
+        <tr><th>Eistyp</th><th>Entstehung</th><th>Charakteristik</th><th>Gefahr</th></tr>
+        <tr><td><strong>Clear Ice (Klareis)</strong></td><td>Gefrierender Regen, große supercooled droplets, 0°C bis −10°C</td><td>Klar, glatt, hart, schwer zu entfernen</td><td>Sehr hoch — größte Gewichtszunahme</td></tr>
+        <tr><td><strong>Rime Ice (Raueis)</strong></td><td>Kleine supercooled droplets, −10°C bis −20°C</td><td>Weiß, milchig, rau, spröde</td><td>Mittel — verändert Profil stark</td></tr>
+        <tr><td><strong>Mixed Ice</strong></td><td>Mischung aus beiden</td><td>Unregelmäßig, rau</td><td>Hoch</td></tr>
+        <tr><td><strong>Frost (Reif)</strong></td><td>Sublimation am Boden bei Temp unter 0°C</td><td>Weiße kristalline Schicht</td><td>Muss vor Abflug entfernt werden</td></tr>
+      </table>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌡️</div><div class="ki-body"><strong>Vereisungsbedingungen:</strong> Sichtbare Feuchtigkeit (Wolken, Niederschlag) + Temperatur zwischen 0°C und −20°C. Kein Eis möglich wenn: trocken, oder kälter als −40°C (Tropfen bereits vollständig gefroren).</div></div>
+        <div class="ki"><div class="ki-ico">🔧</div><div class="ki-body"><strong>Enteisung vs. Anti-Icing:</strong> De-icing = Eis entfernen (am Boden: Enteisungsflüssigkeit). Anti-icing = Eisbildung verhindern (im Flug: bleed air, elektrisch). Holdover Time = Zeit nach Bodenenteisung bis Schutz nachlässt.</div></div>
+      </div>
+
+      <div class="h3-section">Turbulenz</div>
+      <table class="dtbl">
+        <tr><th>Intensität</th><th>PIREP Code</th><th>Wirkung</th></tr>
+        <tr><td>Leicht</td><td>LGT TURB</td><td>Leichtes Schütteln, kein Kontrollverlust</td></tr>
+        <tr><td>Mäßig</td><td>MOD TURB</td><td>Anschnallen notwendig, Objekte fallen um</td></tr>
+        <tr><td>Stark</td><td>SEV TURB</td><td>Kurzzeitiger Kontrollverlust möglich, Verletzungsgefahr</td></tr>
+        <tr><td>Extrem</td><td>EXTRM TURB</td><td>Flugzeug unkontrollierbar, Strukturschäden möglich</td></tr>
+      </table>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌊</div><div class="ki-body"><strong>Konvektive Turbulenz:</strong> Unter und in Cumulus/Cb Wolken durch thermische Auf- und Abwinde. Vorhersagbar durch Wolkenbild. Vermeidung: Cb umfliegen, unter Basis ≥ 500 ft Abstand.</div></div>
+        <div class="ki"><div class="ki-ico">💨</div><div class="ki-body"><strong>CAT — Clear Air Turbulence:</strong> Im Bereich des Jetstreamrandes durch starke Windscherung. Nicht sichtbar, kein Radar. Vorhersage durch SIGMET, PIREPs. Häufig in FL300–FL400.</div></div>
+        <div class="ki"><div class="ki-ico">⛰️</div><div class="ki-body"><strong>Mountain Wave Turbulenz (Leewellen):</strong> Lee-seitig von Gebirgen bei starkem Wind senkrecht zum Gebirgszug. Kann bis FL500 reichen. Erkennbar an Linsenwolken (Altocumulus lenticularis). Extreme Auf- und Abwinde möglich.</div></div>
+      </div>
+
+      <div class="h3-section">Gewitter (Thunderstorm)</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⛈️</div><div class="ki-body"><strong>Voraussetzungen für Gewitterbildung (3 Faktoren):</strong> 1. Feuchtigkeit (ausreichend Wasserdampf), 2. Instabilität (labile Schichtung — ELR &gt; SALR), 3. Hebungsmechanismus (Kaltfront, Orographie, Konvektion).</div></div>
+        <div class="ki"><div class="ki-ico">📡</div><div class="ki-body"><strong>Wetterradar:</strong> Zeigt Niederschlagsintensität, nicht Wind oder Turbulenz. Radarschatten hinter intensivem Niederschlag = kein Signal dahinter. Niemals durch roten/lila Bereich fliegen.</div></div>
+        <div class="ki"><div class="ki-ico">📏</div><div class="ki-body"><strong>Mindestabstände zu Cb:</strong> Seitlich: 20 nm. Über Ambosskrone: 5.000 ft. Unter Basis: nicht unterschreiten wegen Microburst und Windscherung. Bei embedded Cb: Route vermeiden.</div></div>
+      </div>
+
+      <div class="h3-section">Sicht und Nebel</div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">🌫️</div><div class="ki-body"><strong>Nebel (FG):</strong> Sicht unter 1.000 m. Advektionsnebel: warme feuchte Luft über kalten Boden/Wasser. Strahlungsnebel: nächtliche Bodenabkühlung bei klarem Himmel und schwachem Wind. Verdunstungsnebel: kalte Luft über warmem Wasser.</div></div>
+        <div class="ki"><div class="ki-ico">🌁</div><div class="ki-body"><strong>Dunst (HZ) vs. Dunkel (BR):</strong> Mist (BR) = Sicht 1.000–5.000 m durch Wassertröpfchen. Haze (HZ) = trockene Partikel (Staub, Rauch), Sicht 1.000–5.000 m. Smoke (FU) = Rauch. Sand (SA) = Sandstaub.</div></div>
+      </div>`,
+
+    metar: `
+      <div class="prose">METAR (Meteorological Aerodrome Report) ist der standardisierte Wetterbericht für Flugplätze, der stündlich (oder halbstündlich) herausgegeben wird. TAF (Terminal Aerodrome Forecast) ist die entsprechende Wettervorhersage. Beide sind nach ICAO-Standard codiert und weltweit identisch aufgebaut.</div>
+
+      <div class="h3-section">METAR Aufbau</div>
+      <div class="def-box"><div class="def-tag">Beispiel METAR</div><p><strong>METAR LOWW 271020Z 27015KT 240V310 9999 FEW030CB SCT045 BKN080 15/08 Q1018 TEMPO 27025G40KT 5000 TSRA BKN010CB</strong></p></div>
+      <table class="dtbl">
+        <tr><th>Element</th><th>Beispiel</th><th>Bedeutung</th></tr>
+        <tr><td><strong>Typ</strong></td><td>METAR</td><td>Routinemäßiger Bericht (SPECI = Sondermeldung)</td></tr>
+        <tr><td><strong>ICAO-Code</strong></td><td>LOWW</td><td>Wien Schwechat</td></tr>
+        <tr><td><strong>Zeit</strong></td><td>271020Z</td><td>27. des Monats, 10:20 UTC</td></tr>
+        <tr><td><strong>Wind</strong></td><td>27015KT</td><td>270° / 15 Knoten. G = Böen (27025G40KT = 25kt mit Böen 40kt)</td></tr>
+        <tr><td><strong>Windvariation</strong></td><td>240V310</td><td>Wind variiert zwischen 240° und 310°</td></tr>
+        <tr><td><strong>Sicht</strong></td><td>9999</td><td>10 km oder mehr. 0000 = unter 50m. CAVOK ersetzt Sicht+Wolken+Wetter</td></tr>
+        <tr><td><strong>Wetter</strong></td><td>TSRA</td><td>Gewitter mit Regen (TS=Gewitter, RA=Regen, SN=Schnee, FG=Nebel)</td></tr>
+        <tr><td><strong>Wolken</strong></td><td>FEW030CB</td><td>FEW in 3000ft, Cumulonimbus. BKN080 = Broken in 8000ft</td></tr>
+        <tr><td><strong>Temp/Taupunkt</strong></td><td>15/08</td><td>Temperatur 15°C, Taupunkt 8°C</td></tr>
+        <tr><td><strong>QNH</strong></td><td>Q1018</td><td>QNH 1018 hPa (A = Altimeter in Inches, US-Format)</td></tr>
+        <tr><td><strong>Trends</strong></td><td>TEMPO</td><td>TEMPO=vorübergehend, BECMG=zunehmend/abnehmend, NOSIG=keine Änderung</td></tr>
+      </table>
+
+      <div class="h3-section">METAR Wetter-Qualifier</div>
+      <table class="dtbl">
+        <tr><th>Intensität</th><th>Symbol</th><th>Beispiel</th></tr>
+        <tr><td>Leicht</td><td>−</td><td>−RA = leichter Regen</td></tr>
+        <tr><td>Mäßig</td><td>(kein Symbol)</td><td>RA = mäßiger Regen</td></tr>
+        <tr><td>Stark</td><td>+</td><td>+TSRA = starkes Gewitter mit Regen</td></tr>
+        <tr><td>In der Nähe</td><td>VC</td><td>VCTS = Gewitter in der Nähe (8–16 km)</td></tr>
+        <tr><td>Gefrierend</td><td>FZ</td><td>FZRA = gefrierender Regen</td></tr>
+        <tr><td>Schauer</td><td>SH</td><td>SHRA = Regenschauer</td></tr>
+      </table>
+
+      <div class="h3-section">TAF — Terminal Aerodrome Forecast</div>
+      <div class="def-box"><div class="def-tag">Beispiel TAF</div><p><strong>TAF LOWW 271100Z 2712/2818 27012KT 9999 SCT030<br>BECMG 2714/2716 27020KT<br>TEMPO 2716/2720 27030G50KT 2000 +TSRA BKN008CB<br>BECMG 2720/2722 27015KT 9999 SCT040</strong></p></div>
+      <div class="key-list">
+        <div class="ki"><div class="ki-ico">⏰</div><div class="ki-body"><strong>Gültigkeitsdauer:</strong> Standard TAF = 24h, Extended TAF = 30h. Format: DDTT/DDTT (Tag+Stunde von/bis UTC). 2712/2818 = 27. um 12 UTC bis 28. um 18 UTC.</div></div>
+        <div class="ki"><div class="ki-ico">🔄</div><div class="ki-body"><strong>Änderungsgruppen:</strong> BECMG (becoming) = allmähliche Änderung. TEMPO = vorübergehend (&lt;60 min am Stück, &lt;50% des Zeitraums). PROB30/40 = Wahrscheinlichkeit 30%/40%.</div></div>
+      </div>
+
+      <div class="h3-section">Praxis: METAR lesen</div>
+      <div class="tip-box"><div class="tip-tag">Übungsbeispiel</div><p>Lies diesen METAR: <strong>EDDM 271350Z 33008KT 300V010 3000 BR BKN003 OVC010 08/07 Q1005 BECMG 4000 NSW BKN015</strong><br><br>→ München, 27. um 13:50 UTC, Wind 330°/8kt variierend 300-010°, Sicht 3000m Dunst, Broken 300ft, Overcast 1000ft, 8°C/7°C, QNH 1005 hPa, Besserung auf 4000m Sicht, kein signifikantes Wetter, Broken 1500ft.</p></div>`
+  };
+  return c[type] || '';
+}
+</script>
