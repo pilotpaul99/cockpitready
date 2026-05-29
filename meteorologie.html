@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meteorologie (050) — Cockpitready</title>
+  <meta name="description" content="ATPL Meteorologie 050 — vollständiges Lernmodul. Atmosphäre, Wolken, Wetterfronten, Icing, Gewitter. Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .formula-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 15px; }
+    .formula-box .formula-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Meteorologie 050</div>
+  <h1><span class="code">050 ·</span> Meteorologie</h1>
+  <p class="lead">Meteorologie ist das Subject, das Piloten am direktesten betrifft — im Training und im echten Flugbetrieb. Konzepte verstehen zahlt sich hier doppelt aus.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">050</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~65</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 4 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#atmosphaere">Die Atmosphäre</a>
+    <a href="#temperatur">Temperatur & Lapse Rate</a>
+    <a href="#druck">Luftdruck & Höhenmessung</a>
+    <a href="#wind">Wind & Zirkulation</a>
+    <a href="#wolken">Wolken</a>
+    <a href="#fronten">Wetterfronten</a>
+    <a href="#icing">Vereisung (Icing)</a>
+    <a href="#gewitter">Gewitter & CB</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 050 00 00 00</span>
+    <p>Meteorologie hat den Ruf, besonders abstrakt zu sein. Das täuscht. Die meisten Konzepte sind physikalisch logisch — wer die Grundprinzipien (Druck, Temperatur, Feuchtigkeit) versteht, kann vieles herleiten statt auswendig zu lernen.</p>
+    <p>Dieses Modul folgt den EASA Learning Objectives für 050. Besonderer Fokus liegt auf den Themen, die in Prüfungen und im echten Flugbetrieb gleichzeitig relevant sind: Icing, Gewitter, Fronten.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Meteorologie-Fragen sind oft szenariobasiert ("Ein Pilot fliegt durch..."). Lerne die Konzepte so, dass du sie auf neue Situationen anwenden kannst — nicht nur Definitionen auswendig.</p>
+    </div>
+
+    <h2 id="atmosphaere">Die Atmosphäre</h2>
+    <span class="lo-tag">LO 050 01 01 00</span>
+    <p>Die Erdatmosphäre ist in vertikale Schichten eingeteilt. Für die Luftfahrt relevant sind vor allem Troposphäre und Stratosphäre.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Schicht</th><th>Höhe (ca.)</th><th>Temperatur</th><th>Relevanz für Luftfahrt</th></tr>
+        <tr><td><strong>Troposphäre</strong></td><td>0–11 km (36 000 ft)</td><td>Nimmt ab: −6,5°C / 1 000 ft (ISA)</td><td>Aller kommerzielle Flugverkehr, Wetter, Turbulenzen</td></tr>
+        <tr><td><strong>Tropopause</strong></td><td>~11 km / FL360</td><td>Konstant ca. −56,5°C</td><td>Grenze — Jetstreams, CAT</td></tr>
+        <tr><td><strong>Stratosphäre</strong></td><td>11–50 km</td><td>Nimmt zu (Ozon)</td><td>Hochfliegende Flugzeuge (z. B. Concorde), Ozonschicht</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">ISA — International Standard Atmosphere</span>
+      <p>ISA-Standardbedingungen auf MSL: <strong>15°C, 1013,25 hPa, Dichte 1,225 kg/m³.</strong> Temperaturabnahme: −2°C / 1 000 ft bis FL110, dann konstant −56,5°C. Wichtig für alle Leistungsberechnungen.</p>
+    </div>
+
+    <h2 id="temperatur">Temperatur & Lapse Rate</h2>
+    <span class="lo-tag">LO 050 02 01 00</span>
+    <p>Die <strong>Lapse Rate</strong> beschreibt, wie schnell die Temperatur mit der Höhe abnimmt. Sie ist entscheidend für die Stabilität der Atmosphäre.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Begriff</th><th>Wert</th><th>Bedeutung</th></tr>
+        <tr><td><strong>DALR</strong> (Dry Adiabatic Lapse Rate)</td><td>3°C / 1 000 ft</td><td>Temperaturabnahme aufsteigender trockener Luft</td></tr>
+        <tr><td><strong>SALR</strong> (Saturated Adiabatic Lapse Rate)</td><td>1,5°C / 1 000 ft (variabel)</td><td>Temperaturabnahme gesättigter Luft (mit Kondensation) — geringer wegen Latenter Wärme</td></tr>
+        <tr><td><strong>ELR</strong> (Environmental Lapse Rate)</td><td>Variabel (ISA: 2°C / 1 000 ft)</td><td>Tatsächliche Temperaturabnahme der Umgebungsluft</td></tr>
+      </table>
+    </div>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Stabile Atmosphäre:</strong> ELR kleiner als DALR/SALR. Aufsteigende Luft kühlt schneller ab als Umgebung → wird schwerer → sinkt zurück. Keine Konvektion, kein starkes Wetter.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Stable atmosphere:</strong> ELR less than DALR/SALR. Rising air cools faster than surroundings → becomes denser → sinks back. Suppresses convection, favours stratiform cloud and fog.</p>
+      </div>
+    </div>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Instabile Atmosphäre:</strong> ELR größer als DALR. Aufsteigende Luft ist wärmer als Umgebung → steigt weiter auf. Starke Konvektion, Gewitter möglich.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Unstable atmosphere:</strong> ELR greater than DALR. Rising air remains warmer than surroundings → continues to rise. Promotes convection, cumuliform cloud, thunderstorms.</p>
+      </div>
+    </div>
+
+    <h2 id="druck">Luftdruck & Höhenmessung</h2>
+    <span class="lo-tag">LO 050 03 01 00</span>
+    <p>Der Höhenmesser misst nicht Höhe — er misst <strong>Druck</strong> und rechnet diesen in Höhe um. Das erklärt, warum die Einstellung (QNH, QFE, 1013) so wichtig ist.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Einstellung</th><th>Anzeige</th><th>Verwendung</th></tr>
+        <tr><td><strong>QNH</strong></td><td>Höhe über MSL (Meeresspiegel)</td><td>Abflug, Anflug, unterhalb Transition Altitude</td></tr>
+        <tr><td><strong>QFE</strong></td><td>Höhe über dem Flugplatz (AGL)</td><td>Manche Militärflugplätze, selten bei EASA</td></tr>
+        <tr><td><strong>1013 hPa (STD)</strong></td><td>Flight Level (FL)</td><td>Oberhalb Transition Level — alle Flugzeuge gleiche Basis</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Häufiger Fehler</span>
+      <p><strong>High to Low — Look Out Below.</strong> Wenn der Druck niedriger ist als die QNH-Einstellung, zeigt der Höhenmesser zu viel an — du bist tatsächlich tiefer als angezeigt. Merke: Vom Hochdruckgebiet ins Tiefdruckgebiet fliegen = Höhenmesser zeigt zu hoch.</p>
+    </div>
+
+    <h2 id="wind">Wind & Zirkulation</h2>
+    <span class="lo-tag">LO 050 04 01 00</span>
+    <p>Wind entsteht durch Druckunterschiede. Luft strömt vom Hoch- zum Tiefdruck — aber nicht direkt, weil die <strong>Corioliskraft</strong> sie ablenkt.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Auf der Nordhalbkugel dreht Corioliskraft den Wind nach rechts. Um ein Tief: <strong>zyklonal = gegen den Uhrzeigersinn</strong>. Um ein Hoch: <strong>antizyklonal = mit dem Uhrzeigersinn</strong>.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>In the Northern Hemisphere, Coriolis deflects wind to the right. Around a low: <strong>cyclonic = anticlockwise</strong>. Around a high: <strong>anticyclonic = clockwise</strong>. Reversed in Southern Hemisphere.</p>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Buys-Ballot-Gesetz</span>
+      <p>Stehe mit dem Rücken zum Wind (Nordhalbkugel): Das Tief ist links vor dir, das Hoch rechts hinter dir. Merkhilfe für schnelle Lagebeurteilung in der Prüfung.</p>
+    </div>
+
+    <h3>Jetstream</h3>
+    <p>Schmales Band starker Winde in der Nähe der Tropopause (ca. FL300–FL390). Westlich bis östlich orientiert. Stärke bis über 200 kt. Relevant für Routenplanung (Tailwind/Headwind) und CAT (Clear Air Turbulence).</p>
+
+    <h2 id="wolken">Wolken</h2>
+    <span class="lo-tag">LO 050 05 01 00</span>
+    <p>Wolken werden nach Form (Cumulo- = konvektiv, Strato- = schichtförmig, Cirro- = hoch) und Höhe klassifiziert.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Familie</th><th>Höhe (mittlere Breiten)</th><th>Wolkentypen</th><th>Wettercharakter</th></tr>
+        <tr><td><strong>Hohe Wolken</strong></td><td>FL200–FL450</td><td>Cirrus (Ci), Cirrostratus (Cs), Cirrocumulus (Cc)</td><td>Eis, kein Niederschlag direkt, Vorbote von Fronten</td></tr>
+        <tr><td><strong>Mittelhohe Wolken</strong></td><td>FL065–FL230</td><td>Altostratus (As), Altocumulus (Ac)</td><td>Regen/Schnee möglich, Icing</td></tr>
+        <tr><td><strong>Tiefe Wolken</strong></td><td>bis FL065</td><td>Stratus (St), Stratocumulus (Sc), Nimbostratus (Ns)</td><td>Nieselregen, Schnee, schlechte Sicht</td></tr>
+        <tr><td><strong>Vertikale Entwicklung</strong></td><td>Basis tief, Spitze hoch</td><td>Cumulus (Cu), Cumulonimbus (Cb)</td><td>Starke Turbulenzen, Gewitter, Hagel, Blitzschlag</td></tr>
+      </table>
+    </div>
+
+    <h2 id="fronten">Wetterfronten</h2>
+    <span class="lo-tag">LO 050 06 01 00</span>
+    <p>Eine Front ist die Grenzfläche zwischen zwei Luftmassen unterschiedlicher Temperatur und Feuchtigkeit. Das Wetter an Fronten ist die häufigste Ursache für operative Einschränkungen.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Fronttyp</th><th>Annäherungszeichen</th><th>Wolkensequenz</th><th>Niederschlag</th><th>Wetter danach</th></tr>
+        <tr><td><strong>Warmfront</strong></td><td>Cirrus → Cirrostratus → Altostratus → Nimbostratus, Druckabfall</td><td>Hoch → tief (über viele 100 km)</td><td>Ausdauernd, weiträumig</td><td>Wärmer, Sicht besser, Wind dreht</td></tr>
+        <tr><td><strong>Kaltfront</strong></td><td>Cumulonimbus, schneller Druckabfall, Winddrehung</td><td>CB, Cu, kurzer Streifen</td><td>Schauer, Gewitter, intensiv aber kurz</td><td>Kälter, Sicht sehr gut, Wind dreht (N-Halbkugel: auf W/NW)</td></tr>
+        <tr><td><strong>Okklusion</strong></td><td>Mischung aus beiden</td><td>Variabel</td><td>Variabel</td><td>Komplexes Muster</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Eselsbrücke Warmfront vs. Kaltfront</span>
+      <p><strong>Warmfront = langsam, weit, langweilig.</strong> Stundenlanger Dauerregen, Wolken über hunderte Kilometer. <strong>Kaltfront = schnell, eng, dramatisch.</strong> Kurze intensive Schauer, CB, dann blauer Himmel.</p>
+    </div>
+
+    <h2 id="icing">Vereisung (Icing)</h2>
+    <span class="lo-tag">LO 050 07 01 00</span>
+    <p>Vereisung entsteht wenn unterkühlte Wassertropfen beim Auftreffen auf die Flugzeugoberfläche gefrieren. Sie verändert das Profil des Tragflügels und erhöht den Widerstand — eine der gefährlichsten Wetterbedingungen.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Eistyp</th><th>Englisch</th><th>Entstehung</th><th>Charakteristik</th><th>Gefahr</th></tr>
+        <tr><td><strong>Klareis</strong></td><td>Clear / Glaze Ice</td><td>Große unterkühlte Tropfen, T: 0°C bis −10°C</td><td>Transparent, glatt, hart, schwer zu erkennen</td><td>Sehr hoch — schwer zu entfernen, starke Konturänderung</td></tr>
+        <tr><td><strong>Raueis</strong></td><td>Rime Ice</td><td>Kleine unterkühlte Tropfen, T: −10°C bis −20°C</td><td>Milchig, porös, rau, nach vorne wachsend</td><td>Mittel — brüchiger, leichter zu entfernen</td></tr>
+        <tr><td><strong>Mischeis</strong></td><td>Mixed Ice</td><td>Mischung aus beiden</td><td>Kombination aus Eigenschaften</td><td>Hoch</td></tr>
+      </table>
+    </div>
+
+    <div class="callout danger">
+      <span class="callout-label">Kritische Bereiche für Vereisung</span>
+      <p>Stärkste Vereisung: In Cumulus- und Cumulonimbus-Wolken, in der Nähe der Gefriergrenze (0°C Isotherm), in Nimbostratus bei Temperaturen 0°C bis −20°C. Unter −40°C: praktisch keine Vereisung mehr (zu wenig flüssiges Wasser).</p>
+    </div>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Vereisung vermeiden:</strong> Gefriergrenze umfliegen (höher oder tiefer), Enteisungsanlage aktivieren, Bereich verlassen wenn Vereisungsintensität zunimmt.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Icing avoidance:</strong> Climb above or descend below the freezing level, activate anti-ice/de-ice systems before entering icing conditions, exit the area if intensity increases.</p>
+      </div>
+    </div>
+
+    <h2 id="gewitter">Gewitter & Cumulonimbus</h2>
+    <span class="lo-tag">LO 050 08 01 00</span>
+    <p>Der Cumulonimbus (CB) ist das gefährlichste Wetterphänomen für die Luftfahrt. Er vereint alle bekannten Gefahren: Turbulenzen, Icing, Windscherung, Hagelschlag, Blitzschlag, Mikroburst.</p>
+
+    <h3>Lebensphasen eines Gewitters</h3>
+    <ul>
+      <li><strong>Aufbauphase (Cumulus Stage):</strong> Starke Aufwinde, keine Niederschläge außen. CB im Aufbau. Innen bereits Vereisung und Turbulenzen.</li>
+      <li><strong>Reifephase (Mature Stage):</strong> Gleichzeitig Auf- und Abwinde. Stärkste Turbulenzen, Hagelschlag, Blitzschlag, starker Niederschlag. Höchste Gefahr.</li>
+      <li><strong>Abbauphase (Dissipating Stage):</strong> Nur noch Abwinde. Nachlassende Turbulenzen, aber noch Niederschlag und Windscherung möglich.</li>
+    </ul>
+
+    <div class="callout danger">
+      <span class="callout-label">Absolutes No-Go</span>
+      <p>CB niemals durchfliegen — weder durch noch knapp darunter. Seitlicher Mindestabstand: <strong>20 NM</strong> (ICAO-Empfehlung). Unter dem Amboss (Anvil) sind Hagelwürfe weit außerhalb des sichtbaren CB möglich.</p>
+    </div>
+
+    <h3>Windscherung (Wind Shear)</h3>
+    <p>Plötzliche Änderung von Windrichtung und/oder -stärke über kurze Distanz. Besonders gefährlich in Startrolll und Endanflug. Ursachen: CB, Frontdurchgang, Jetstream, thermische Inversion.</p>
+
+    <div class="callout warn">
+      <span class="callout-label">Microburst</span>
+      <p>Intensiver lokaler Downburst aus CB. Reichweite &lt;4 km, Dauer 2–5 Minuten, Windänderungen bis 60+ kt. Im Anflug: zuerst Headwind-Zunahme (Fahrt erhöht sich), dann schnell Tailwind und Downburst. Ohne rechtzeitige Reaktion kritisch. GPWS/EGPWS und Windshear-Warnsysteme ansprechen lassen.</p>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in Meteorologie</h2>
+    <ul>
+      <li>Stabile und instabile Atmosphäre verwechseln — Stabilität hängt von ELR vs. DALR/SALR ab.</li>
+      <li>QNH und QFE vertauschen — QNH zeigt MSL-Höhe, QFE zeigt Platzhöhe.</li>
+      <li>Warm- und Kaltfront-Eigenschaften verwechseln — Kaltfront ist kurz und intensiv, Warmfront lang und ausdauernd.</li>
+      <li>Klareis als weniger gefährlich einschätzen als Raueis — Klareis ist tatsächlich gefährlicher.</li>
+      <li>CB-Abstand unterschätzen — 20 NM seitlich ist das Minimum, kein Richtwert.</li>
+      <li>Coriolis-Ablenkungsrichtung für Südhalbkugel vergessen (dort umgekehrt).</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Dieses Modul deckt die zentralen Meteorologie-Konzepte ab. Vollständige LO-Abdeckung, Übungsaufgaben und der Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>
