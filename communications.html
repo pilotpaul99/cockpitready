@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communications (090) — Cockpitready</title>
+  <meta name="description" content="ATPL Communications 090 — ICAO Phraseologie, Sprechfunkverfahren, Frequenzen, Lost Comms. Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    .phrase-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 13px; line-height: 2; }
+    .phrase-box .phrase-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .phrase-box .cmt { color: rgba(255,255,255,0.35); }
+    .alpha-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 1.5rem 0; }
+    .alpha-card { background: var(--gray-1); border: 1px solid var(--gray-2); border-radius: 8px; padding: 10px 12px; }
+    .alpha-card .letter { font-size: 18px; font-weight: 600; }
+    .alpha-card .word { font-size: 13px; color: var(--gray-3); margin-top: 2px; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } .alpha-grid { grid-template-columns: repeat(3,1fr); } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Communications 090</div>
+  <h1><span class="code">090 ·</span> Communications</h1>
+  <p class="lead">Funkkommunikation ist die Sprache des Luftraums. Präzise, standardisierte Phraseologie verhindert Missverständnisse — und Missverständnisse in der Luftfahrt können tödlich sein.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">090</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~45</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 2–3 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#grundlagen">Grundlagen VHF</a>
+    <a href="#alphabet">ICAO-Alphabet</a>
+    <a href="#zahlen">Zahlen & Aussprache</a>
+    <a href="#phraseologie">Standardphraseo­logie</a>
+    <a href="#readback">Readback & Hearback</a>
+    <a href="#frequenzen">Wichtige Frequenzen</a>
+    <a href="#lost-comms">Lost Communications</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+  <article class="lesson">
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 090 00 00 00</span>
+    <p>Communications ist das Subject, das im echten Betrieb am meisten auffällt — ein Pilot mit schlechter Phraseologie fällt sofort auf. Standardisierte Kommunikation reduziert Missverständnisse, spart Zeit und erhöht die Sicherheit.</p>
+    <p>ICAO Doc 9432 (Manual of Radiotelephony) ist die Referenz. EASA und Austro Control folgen dem ICAO-Standard.</p>
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Communications-Fragen testen oft genaue Phraseologie — welches Wort, in welcher Reihenfolge. Lerne Standardphrasen auswendig: Erstkontakt, Meldepunkte, Clearances, Notfallruf.</p>
+    </div>
+    <h2 id="grundlagen">Grundlagen VHF-Funk</h2>
+    <span class="lo-tag">LO 090 01 01 00</span>
+    <p>Zivilluftfahrt nutzt <strong>VHF (118.000–136.975 MHz)</strong> für Sprechfunk. VHF ist auf Sichtlinie beschränkt — Reichweite wächst mit Höhe.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Parameter</th><th>Wert</th></tr>
+        <tr><td><strong>Frequenzband</strong></td><td>118.000–136.975 MHz</td></tr>
+        <tr><td><strong>Kanalabstand</strong></td><td>25 kHz (Standard) / 8.33 kHz (Europa, RVSM)</td></tr>
+        <tr><td><strong>Modulationsart</strong></td><td>AM — ermöglicht simultanes Empfangen mehrerer Sender</td></tr>
+        <tr><td><strong>Ausbreitung</strong></td><td>Line of Sight: Reichweite ≈ √(ft) × 1.23 NM</td></tr>
+        <tr><td><strong>Notfrequenz</strong></td><td>121.5 MHz — immer überwacht</td></tr>
+      </table>
+    </div>
+    <div class="callout tip">
+      <span class="callout-label">Warum AM statt FM?</span>
+      <p>AM erlaubt simultanes Empfangen mehrerer Sender — beide Signale sind teilweise hörbar. Bei FM würde der stärkere Sender den schwächeren vollständig unterdrücken. Im Notfall könnte eine wichtige Durchsage verloren gehen.</p>
+    </div>
+    <h2 id="alphabet">ICAO-Phonetisches Alphabet</h2>
+    <span class="lo-tag">LO 090 02 01 00</span>
+    <p>Das phonetische Alphabet stellt eindeutige Verständlichkeit einzelner Buchstaben sicher — auch bei schlechter Verbindung oder Sprachbarrieren.</p>
+    <div class="alpha-grid">
+      <div class="alpha-card"><div class="letter">A</div><div class="word">Alpha</div></div>
+      <div class="alpha-card"><div class="letter">B</div><div class="word">Bravo</div></div>
+      <div class="alpha-card"><div class="letter">C</div><div class="word">Charlie</div></div>
+      <div class="alpha-card"><div class="letter">D</div><div class="word">Delta</div></div>
+      <div class="alpha-card"><div class="letter">E</div><div class="word">Echo</div></div>
+      <div class="alpha-card"><div class="letter">F</div><div class="word">Foxtrot</div></div>
+      <div class="alpha-card"><div class="letter">G</div><div class="word">Golf</div></div>
+      <div class="alpha-card"><div class="letter">H</div><div class="word">Hotel</div></div>
+      <div class="alpha-card"><div class="letter">I</div><div class="word">India</div></div>
+      <div class="alpha-card"><div class="letter">J</div><div class="word">Juliett</div></div>
+      <div class="alpha-card"><div class="letter">K</div><div class="word">Kilo</div></div>
+      <div class="alpha-card"><div class="letter">L</div><div class="word">Lima</div></div>
+      <div class="alpha-card"><div class="letter">M</div><div class="word">Mike</div></div>
+      <div class="alpha-card"><div class="letter">N</div><div class="word">November</div></div>
+      <div class="alpha-card"><div class="letter">O</div><div class="word">Oscar</div></div>
+      <div class="alpha-card"><div class="letter">P</div><div class="word">Papa</div></div>
+      <div class="alpha-card"><div class="letter">Q</div><div class="word">Quebec</div></div>
+      <div class="alpha-card"><div class="letter">R</div><div class="word">Romeo</div></div>
+      <div class="alpha-card"><div class="letter">S</div><div class="word">Sierra</div></div>
+      <div class="alpha-card"><div class="letter">T</div><div class="word">Tango</div></div>
+      <div class="alpha-card"><div class="letter">U</div><div class="word">Uniform</div></div>
+      <div class="alpha-card"><div class="letter">V</div><div class="word">Victor</div></div>
+      <div class="alpha-card"><div class="letter">W</div><div class="word">Whiskey</div></div>
+      <div class="alpha-card"><div class="letter">X</div><div class="word">X-ray</div></div>
+      <div class="alpha-card"><div class="letter">Y</div><div class="word">Yankee</div></div>
+      <div class="alpha-card"><div class="letter">Z</div><div class="word">Zulu</div></div>
+    </div>
+    <h2 id="zahlen">Zahlen &amp; Aussprache</h2>
+    <span class="lo-tag">LO 090 02 02 00</span>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Ziffer</th><th>Aussprache</th><th>Ziffer</th><th>Aussprache</th></tr>
+        <tr><td>0</td><td>ZE-ro</td><td>5</td><td>FIFE</td></tr>
+        <tr><td>1</td><td>WUN</td><td>6</td><td>SIX</td></tr>
+        <tr><td>2</td><td>TOO</td><td>7</td><td>SEV-en</td></tr>
+        <tr><td>3</td><td>TREE</td><td>8</td><td>AIT</td></tr>
+        <tr><td>4</td><td>FOW-er</td><td>9</td><td>NIN-er</td></tr>
+      </table>
+    </div>
+    <div class="callout tip">
+      <span class="callout-label">Sonderaussprache</span>
+      <p>Frequenz 118.5 = "WUN WUN AIT DECIMAL FIFE" · FL350 = "Flight Level TREE FIFE ZE-ro" · Kurs 270° = "TOO SEV-en ZE-ro" · 10 000 ft = "WUN ZE-ro TOUSAND".</p>
+    </div>
+    <h2 id="phraseologie">Standardphraseo­logie</h2>
+    <span class="lo-tag">LO 090 03 01 00</span>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Wort</th><th>Bedeutung</th></tr>
+        <tr><td><strong>AFFIRM</strong></td><td>Ja / bestätigt (nicht "Affirmative")</td></tr>
+        <tr><td><strong>NEGATIVE</strong></td><td>Nein / nicht korrekt</td></tr>
+        <tr><td><strong>ROGER</strong></td><td>Übertragung verstanden — kein Ja/Nein</td></tr>
+        <tr><td><strong>WILCO</strong></td><td>Werde Anweisung befolgen (impliziert Roger)</td></tr>
+        <tr><td><strong>SAY AGAIN</strong></td><td>Wiederhole letzte Übertragung (nicht "REPEAT")</td></tr>
+        <tr><td><strong>STANDBY</strong></td><td>Warte — werde dich bald kontaktieren</td></tr>
+        <tr><td><strong>CORRECTION</strong></td><td>Fehler gemacht — korrekte Version folgt</td></tr>
+        <tr><td><strong>CONFIRM</strong></td><td>Bestätige ob Information korrekt ist</td></tr>
+        <tr><td><strong>REPORT</strong></td><td>Teile folgende Information mit</td></tr>
+        <tr><td><strong>REQUEST</strong></td><td>Ich möchte Genehmigung / Information</td></tr>
+      </table>
+    </div>
+    <h3>Erstkontakt mit ATC</h3>
+    <div class="phrase-box">
+      <span class="phrase-label">Muster — IFR Abflug Clearance</span>
+      P: "Wien Delivery, Austrian 123, request IFR clearance,<br>
+      &nbsp;&nbsp;&nbsp;destination Frankfurt, information Bravo."<br><br>
+      ATC: "Austrian 123, cleared Frankfurt via TULPI 1A, squawk 2341."<br><br>
+      P: "Cleared Frankfurt, TULPI 1A, squawking 2341, Austrian 123."<br>
+      <span class="cmt">// vollständiger Readback der Clearance</span>
+    </div>
+    <h3>Position Report</h3>
+    <div class="phrase-box">
+      <span class="phrase-label">Muster — Meldepunkt-Rapport</span>
+      "Wien Radar, Austrian 123,<br>
+      &nbsp;position TULPI, time 45,<br>
+      &nbsp;flight level 280,<br>
+      &nbsp;estimating STEIN at 58."<br><br>
+      <span class="cmt">// Rufzeichen · Position · Zeit UTC · Höhe · Nächster Punkt + ETA</span>
+    </div>
+    <h2 id="readback">Readback &amp; Hearback</h2>
+    <span class="lo-tag">LO 090 04 01 00</span>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Readback:</strong> Pilot wiederholt sicherheitsrelevante Anweisungen wörtlich. ATC bestätigt oder korrigiert. Schließt den Kommunikationsloop.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Readback required for:</strong> ATC clearances, runway instructions, crossing clearances, squawk codes, level instructions, heading and speed assignments, frequency changes.</p>
+      </div>
+    </div>
+    <div class="callout warn">
+      <span class="callout-label">Hearback Error</span>
+      <p><strong>Hearback</strong> ist der ATC-seitige Fehler: ATC hört einen falschen Readback, erkennt ihn aber nicht und bestätigt ihn trotzdem. Klassisch: Pilot liest Runway 27 zurück, ATC hatte 28 freigegeben. Beide glauben, die Kommunikation war korrekt.</p>
+    </div>
+    <h2 id="frequenzen">Wichtige Frequenzen</h2>
+    <span class="lo-tag">LO 090 05 01 00</span>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Frequenz</th><th>Verwendung</th></tr>
+        <tr><td><strong>121.500 MHz</strong></td><td>International Distress & Emergency — immer überwacht</td></tr>
+        <tr><td><strong>123.450 MHz</strong></td><td>Air-to-Air (Piloten untereinander, keine ATC)</td></tr>
+        <tr><td><strong>243.000 MHz</strong></td><td>Military Emergency (UHF-Äquivalent von 121.5)</td></tr>
+      </table>
+    </div>
+    <h2 id="lost-comms">Lost Communications</h2>
+    <span class="lo-tag">LO 090 06 01 00</span>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Schritte:</strong> Squawk 7600 → andere Frequenzen versuchen → 121.5 → letzte Clearance / eingereichten Flugplan befolgen → Ziel anfliegen → AIP-Prozedur für Landezeit.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Lost comms:</strong> Squawk 7600 → try other frequencies → 121.5 → continue last clearance or filed route → proceed to destination → land at expected time per AIP. ATC will clear airspace at expected arrival.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="callout-label">Lichtzeichen als Backup</span>
+      <p>Tower kommuniziert bei Funkausfall mit Lichtsignalen. Pilot bestätigt Empfang: Tragflächen wackeln (im Flug) oder Landelicht einschalten (am Boden). Grün = freigegeben, Rot = stopp — vollständige Tabelle im Operational Procedures Modul.</p>
+    </div>
+    <h2 id="fehler">Typische Fehler in Communications</h2>
+    <ul>
+      <li>ROGER mit WILCO verwechseln — ROGER = verstanden, WILCO = werde ich tun.</li>
+      <li>SAY AGAIN statt REPEAT — REPEAT ist Artilleriebefehl, im Funk verboten.</li>
+      <li>Unvollständiger Readback — alle sicherheitsrelevanten Elemente readbacken.</li>
+      <li>Zahlenaussprache falsch — 9 = NINER, 5 = FIFE, 3 = TREE.</li>
+      <li>AFFIRM statt AFFIRMATIVE — AFFIRM ist korrekt, AFFIRMATIVE ist nicht standard.</li>
+      <li>Bei Funkausfall falscher Code — 7600 für Funk, nicht 7700 (Notfall).</li>
+    </ul>
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+  </article>
+</div>
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>

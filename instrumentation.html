@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instrumentation (022) — Cockpitready</title>
+  <meta name="description" content="ATPL Instrumentation 022 — Pitot-Statik, Gyros, Höhenmesser, Geschwindigkeitsmesser, EFIS, Autopilot. Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Instrumentation 022</div>
+  <h1><span class="code">022 ·</span> Instrumentation</h1>
+  <p class="lead">Instrumente sind die Sinne des Piloten im Blindflug. Wer versteht wie sie funktionieren, erkennt Fehlanzeigen sofort — und reagiert richtig statt in die Falle zu tappen.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">022</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~60</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 3–4 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#pitot">Pitot-Statik-System</a>
+    <a href="#hoehenmesser">Höhenmesser</a>
+    <a href="#fahrtmesser">Fahrtmesser</a>
+    <a href="#variometer">Variometer</a>
+    <a href="#gyro">Gyro-Instrumente</a>
+    <a href="#ahrs">AHRS & IRS</a>
+    <a href="#efis">EFIS & Glasscockpit</a>
+    <a href="#autopilot">Autopilot & FMS</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 022 00 00 00</span>
+    <p>Instrumentation erklärt das Wie hinter den Cockpitinstrumenten. Jede Fehlanzeige hat eine physikalische Ursache — wer das Messprinzip kennt, kann Fehler diagnostizieren und korrekte Daten von falschen unterscheiden.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Klassische Prüfungsfrage: "Pitot verstopft — was zeigt der Höhenmesser / Fahrtmesser / Variometer?" Arbeite die Fehlereffekte systematisch durch — für jeden Sensorausfall eine klare Antwort.</p>
+    </div>
+
+    <h2 id="pitot">Pitot-Statik-System</h2>
+    <span class="lo-tag">LO 022 01 01 00</span>
+    <p>Das Pitot-Statik-System liefert Gesamtdruck (Pitot) und statischen Druck (Statikport) — die Basis für Höhenmesser, Fahrtmesser und Variometer.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Gesamtdruck (Pitot):</strong> Staudruck + statischer Druck. Misst die gesamte Druckwirkung der anströmenden Luft. Zeigt nach vorne in Anströmrichtung.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Total (Pitot) pressure</strong> = dynamic pressure + static pressure. Faces into the airflow. Used only by the airspeed indicator (ASI) — combined with static to give dynamic pressure = IAS.</p>
+      </div>
+    </div>
+
+    <h3>Fehleranalyse — Pitot/Statik-Ausfälle</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Problem</th><th>Höhenmesser</th><th>Fahrtmesser (ASI)</th><th>Variometer (VSI)</th></tr>
+        <tr><td><strong>Pitot verstopft</strong></td><td>Normal</td><td>Bleibt auf letztem Wert eingefroren (kein Pitot-Druck-Änderung) — steigt scheinbar im Steigflug</td><td>Normal</td></tr>
+        <tr><td><strong>Pitot + Drain verstopft</strong></td><td>Normal</td><td>Verhält sich wie Höhenmesser — zeigt falsche Geschwindigkeit entsprechend der Höhenänderung</td><td>Normal</td></tr>
+        <tr><td><strong>Statikport verstopft</strong></td><td>Eingefroren auf Vereisunsghöhe</td><td>Zeigt falsche Werte (zu niedrig im Steigflug)</td><td>Zeigt 0 (keine Druckänderung)</td></tr>
+        <tr><td><strong>Alternate Static</strong></td><td>Leicht höher als tatsächlich</td><td>Leicht niedriger als tatsächlich</td><td>Kurzer Ausschlag, dann normal</td></tr>
+      </table>
+    </div>
+
+    <div class="callout danger">
+      <span class="callout-label">Pitot-Vereisung</span>
+      <p>Verstopfter Pitot durch Eis ist eine ernste Fehlerquelle — die Anzeige friert ein. <strong>Pitot Heat muss vor dem Einflug in Vereisungsbedingungen eingeschaltet werden</strong>, nicht danach. Mehrere Unfälle (Air France 447) hatten verstopfte Pitotrohre als Faktor.</p>
+    </div>
+
+    <h2 id="hoehenmesser">Höhenmesser</h2>
+    <span class="lo-tag">LO 022 02 01 00</span>
+    <p>Der Höhenmesser misst den statischen Druck und wandelt ihn über die ISA-Standardatmosphäre in Höhe um. Er ist ein Barometer — kein echter Höhenmesser.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Einstellung</th><th>Anzeige</th><th>Verwendung</th></tr>
+        <tr><td><strong>QNH</strong></td><td>Höhe über MSL</td><td>Unter Transition Altitude</td></tr>
+        <tr><td><strong>QFE</strong></td><td>Höhe über Platzniveau</td><td>Einige Militärplätze</td></tr>
+        <tr><td><strong>1013.25 hPa</strong></td><td>Flight Level (FL)</td><td>Oberhalb Transition Level</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Temperaturkorrekturfehler</span>
+      <p>Bei kalter Luft zeigt der Höhenmesser zu viel an — das Flugzeug ist tatsächlich tiefer als angezeigt. Merke: <strong>"Cold and High — Look Out Below."</strong> Bei sehr kaltem Wetter (ISA −15°C und mehr) muss die Anzeige korrigiert werden — besonders relevant für Mindesthöhen beim Anflug.</p>
+    </div>
+
+    <h2 id="fahrtmesser">Fahrtmesser (ASI)</h2>
+    <span class="lo-tag">LO 022 03 01 00</span>
+    <p>Der Fahrtmesser misst die Differenz zwischen Gesamtdruck (Pitot) und statischem Druck — das ergibt den dynamischen Druck, der der IAS entspricht.</p>
+
+    <h3>Farbkodierung des ASI</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Farbe</th><th>Bereich</th><th>Bedeutung</th></tr>
+        <tr><td><strong>Weißer Bogen</strong></td><td>VS0 bis VFE</td><td>Flaps-Extended-Bereich — Klappenflug erlaubt</td></tr>
+        <tr><td><strong>Grüner Bogen</strong></td><td>VS1 bis VNO</td><td>Normaler Betriebsbereich — sichere Dauerbetriebsgeschwindigkeit</td></tr>
+        <tr><td><strong>Gelber Bogen</strong></td><td>VNO bis VNE</td><td>Vorsichtsbereich — nur in ruhiger Luft erlaubt</td></tr>
+        <tr><td><strong>Roter Strich</strong></td><td>VNE</td><td>Never Exceed Speed — strukturelle Grenze</td></tr>
+      </table>
+    </div>
+
+    <h2 id="variometer">Variometer (VSI)</h2>
+    <span class="lo-tag">LO 022 04 01 00</span>
+    <p>Das Variometer (Vertical Speed Indicator / VSI) misst die Änderungsrate des statischen Drucks — also die Steig- oder Sinkrate in ft/min.</p>
+    <ul>
+      <li>Reagiert mit einer kurzen Verzögerung (~6–9 Sek) — da es auf Druckausgleich angewiesen ist.</li>
+      <li><strong>IVSI</strong> (Instantaneous VSI) hat Beschleunigungsmesser zur Sofortanzeige ohne Verzögerung.</li>
+      <li>Bei verstopftem Statikport: VSI zeigt konstant 0.</li>
+    </ul>
+
+    <h2 id="gyro">Gyro-Instrumente</h2>
+    <span class="lo-tag">LO 022 05 01 00</span>
+    <p>Kreisel (Gyros) nutzen die physikalischen Eigenschaften rotierender Massen: <strong>Rigidity in Space</strong> (Starrheit im Raum) und <strong>Precession</strong> (Präzession).</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Rigidity:</strong> Ein rotierender Kreisel behält seine Raumausrichtung unabhängig von der Bewegung des Rahmens. Grundlage für Künstlichen Horizont und Kurskreisel.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Rigidity in space:</strong> A spinning gyro maintains its orientation in space regardless of the frame movement. Used in attitude indicator (AI) and directional gyro (DI).</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Instrument</th><th>Gyro-Typ</th><th>Freiheitsgrade</th><th>Misst</th></tr>
+        <tr><td><strong>Künstlicher Horizont (AI)</strong></td><td>Earth gyro</td><td>3 Achsen</td><td>Pitch und Roll — Fluglage</td></tr>
+        <tr><td><strong>Kurskreisel (DI/HI)</strong></td><td>Space gyro</td><td>2 Achsen</td><td>Kurs — driftet, muss regelmäßig mit Kompass abgeglichen werden</td></tr>
+        <tr><td><strong>Wendezeiger (Turn Coordinator)</strong></td><td>Rate gyro</td><td>1 Achse</td><td>Gierrate und Roll — kein Lageindikator</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Gyro-Drift</span>
+      <p>Der Kurskreisel (DI) driftet durch Erdrotation und mechanische Unzulänglichkeiten — typisch 3°/Stunde. Er muss regelmäßig (alle 10–15 Minuten) mit dem magnetischen Kompass abgeglichen werden. Vergisst ein Pilot das, kann der DI erheblich vom tatsächlichen Kurs abweichen.</p>
+    </div>
+
+    <h2 id="ahrs">AHRS &amp; IRS</h2>
+    <span class="lo-tag">LO 022 06 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>System</th><th>Vollname</th><th>Funktion</th><th>Vorteil</th></tr>
+        <tr><td><strong>AHRS</strong></td><td>Attitude & Heading Reference System</td><td>Ersetzt mechanische Gyros durch MEMS-Sensoren + Algorithmen</td><td>Leichter, günstiger, wartungsärmer</td></tr>
+        <tr><td><strong>IRS / INS</strong></td><td>Inertial Reference / Navigation System</td><td>Misst Beschleunigungen → berechnet Position, Geschwindigkeit, Lage ohne externe Referenz</td><td>Vollständig autonom, keine GPS-Abhängigkeit</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">IRS Alignment</span>
+      <p>Das IRS braucht vor dem Flug eine Ausrichtungsphase (Alignment) von ca. 10 Minuten am Boden. In dieser Zeit wird die Erdrotation gemessen um die geographische Nord-Ausrichtung zu bestimmen. Das Flugzeug darf sich während der Ausrichtung nicht bewegen.</p>
+    </div>
+
+    <h2 id="efis">EFIS &amp; Glasscockpit</h2>
+    <span class="lo-tag">LO 022 07 01 00</span>
+    <p>Moderne Airliner nutzen <strong>EFIS</strong> (Electronic Flight Instrument System) — digitale Bildschirme statt mechanischer Instrumente.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Display</th><th>Abkürzung</th><th>Zeigt</th></tr>
+        <tr><td><strong>Primary Flight Display</strong></td><td>PFD</td><td>Künstlicher Horizont, Fahrtmesser, Höhenmesser, Variometer, Kurs — alle primären Fluginstrumente</td></tr>
+        <tr><td><strong>Navigation Display</strong></td><td>ND</td><td>Karte, Route, Wetter (optional), TCAS, Navraids</td></tr>
+        <tr><td><strong>Engine/Warning Display</strong></td><td>ECAM/EICAS</td><td>Triebwerksparameter, Systemstatus, Warnungen</td></tr>
+      </table>
+    </div>
+
+    <h2 id="autopilot">Autopilot &amp; FMS</h2>
+    <span class="lo-tag">LO 022 08 01 00</span>
+    <p>Der Autopilot führt das Flugzeug anhand vorgegebener Parameter — er ersetzt nicht den Piloten, sondern entlastet ihn für wichtigere Aufgaben.</p>
+
+    <h3>Autopilot-Modi</h3>
+    <ul>
+      <li><strong>Heading Mode:</strong> Hält vorgegebenen Magnetkurs.</li>
+      <li><strong>Altitude Hold:</strong> Hält aktuelle Höhe.</li>
+      <li><strong>Vertical Speed Mode:</strong> Steigt/sinkt mit vorgegebener Rate.</li>
+      <li><strong>ILS Approach (LOC + GS):</strong> Folgt Localizer und Glide Slope automatisch.</li>
+      <li><strong>LNAV/VNAV:</strong> Folgt lateralem/vertikalem FMS-Profil.</li>
+    </ul>
+
+    <div class="callout warn">
+      <span class="callout-label">Automation Complacency</span>
+      <p>Ein häufiger Fehler moderner Cockpits: Piloten vertrauen dem Autopiloten blind und verlieren das Situationsbewusstsein. Der PIC bleibt immer verantwortlich — Autopilot überwachen, nicht schlafen. <strong>Automation Surprise</strong>: unerwartet anderes Verhalten des Autopiloten führt zu Desorientierung.</p>
+    </div>
+
+    <h3>FMS — Flight Management System</h3>
+    <p>Das FMS kombiniert Navigation (IRS/GPS), Leistungsoptimierung und Routenplanung in einem System. Es berechnet den optimalen Weg und versorgt Autopilot und VNAV mit Führungsgrößen.</p>
+
+    <h2 id="fehler">Typische Fehler in Instrumentation</h2>
+    <ul>
+      <li>Pitot-Statik-Fehlereffekte verwechseln — bei verstopftem Pitot friert der Fahrtmesser ein, der Höhenmesser bleibt normal.</li>
+      <li>Höhenmesser-Temperaturkorrektur vergessen — bei kaltem Wetter ist man tiefer als angezeigt.</li>
+      <li>Gyro-Drift übersehen — DI muss regelmäßig mit Kompass abgeglichen werden.</li>
+      <li>AI und DI verwechseln — AI zeigt Lage (Pitch/Roll), DI zeigt Kurs.</li>
+      <li>VSI-Verzögerung missverstehen — VSI reagiert mit Verzögerung, nicht sofort.</li>
+      <li>AHRS und IRS gleichsetzen — IRS ist umfangreicher, kann Position und Navigationsparameter liefern.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>

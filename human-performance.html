@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Performance (040) — Cockpitready</title>
+  <meta name="description" content="ATPL Human Performance 040 — Wahrnehmung, Entscheidungsfindung, Crew Resource Management, Stress, Hypoxie. Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Human Performance 040</div>
+  <h1><span class="code">040 ·</span> Human Performance &amp; Limitations</h1>
+  <p class="lead">Die meisten Unfälle haben keine technische Ursache — sie haben eine menschliche. Human Performance ist das Subject, das erklärt warum Menschen Fehler machen, und wie man sie vermeidet.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">040</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~55</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 3 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#hypoxie">Hypoxie & Höhe</a>
+    <a href="#vision">Vision & Wahrnehmung</a>
+    <a href="#stress">Stress & Arousal</a>
+    <a href="#ermuedung">Ermüdung & Schlaf</a>
+    <a href="#entscheidung">Entscheidungsfindung</a>
+    <a href="#fehlermodelle">Fehlermodelle</a>
+    <a href="#crm">CRM & Teamwork</a>
+    <a href="#situational">Situational Awareness</a>
+    <a href="#fehler">Typische Prüfungsfehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 040 00 00 00</span>
+    <p>Human Performance & Limitations analysiert den Menschen als System-Komponente in der Luftfahrt. Über 70% der Flugunfälle haben Human Factors als primäre Ursache. Das Verstehen dieser Mechanismen ist keine Theorie — es ist Überlebenswissen.</p>
+    <p>Dieses Subject verbindet Physiologie, Psychologie und Organisationstheorie. Die Prüfung testet Konzeptverständnis, nicht Auswendiglernen.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Viele Fragen sind szenariobasiert: "Ein Pilot bemerkt X — was ist die wahrscheinlichste Ursache?" Verstehe die Konzepte so gut, dass du sie auf unbekannte Situationen anwenden kannst.</p>
+    </div>
+
+    <h2 id="hypoxie">Hypoxie &amp; Höhenphysiologie</h2>
+    <span class="lo-tag">LO 040 01 01 00</span>
+    <p><strong>Hypoxie</strong> entsteht wenn das Gehirn zu wenig Sauerstoff erhält. In der Luftfahrt ist sie eine der gefährlichsten physiologischen Risiken — weil sie sich schleichend entwickelt und der Betroffene sie oft nicht selbst bemerkt.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Höhe</th><th>Symptome</th><th>Time of Useful Consciousness (TUC)</th></tr>
+        <tr><td>0–10 000 ft</td><td>Keine signifikanten Symptome bei gesunden Personen</td><td>Unbegrenzt</td></tr>
+        <tr><td>10 000–15 000 ft</td><td>Leichte Beeinträchtigung, Euphorie möglich, reduzierte Nachtsicht</td><td>30 min+</td></tr>
+        <tr><td>18 000 ft</td><td>Deutliche Leistungsminderung, Urteilsvermögen gestört</td><td>20–30 min</td></tr>
+        <tr><td>25 000 ft</td><td>Starke Beeinträchtigung, Bewusstlosigkeit möglich</td><td>3–5 min</td></tr>
+        <tr><td>40 000 ft</td><td>Bewusstlosigkeit in Sekunden</td><td>15–20 Sek</td></tr>
+      </table>
+    </div>
+
+    <div class="callout danger">
+      <span class="callout-label">Trügerische Symptome</span>
+      <p>Hypoxie verursacht oft <strong>Euphorie und Wohlgefühl</strong> — der Betroffene fühlt sich gut und erkennt die Gefahr nicht. Das macht sie so gefährlich. Erste Symptome: Kribbeln in Fingern, blaue Lippen (Zyanose), Sehstörungen. Behandlung: sofort Sauerstoff, Sinkflug.</p>
+    </div>
+
+    <h3>Weitere Höhenphysiologie</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Phänomen</th><th>Ursache</th><th>Symptome</th><th>Vermeidung</th></tr>
+        <tr><td><strong>Hyperventilation</strong></td><td>Zu schnelles Atmen → CO₂-Verlust</td><td>Kribbeln, Schwindel, Krämpfe — ähnlich wie Hypoxie</td><td>Bewusst langsam atmen, in Tüte atmen</td></tr>
+        <tr><td><strong>Decompression Sickness</strong></td><td>Stickstoffblasen bei schnellem Druckabfall</td><td>Gelenk- und Muskelschmerzen ("the bends")</td><td>Kein Tauchen vor Flügen in große Höhen</td></tr>
+        <tr><td><strong>Barotrauma</strong></td><td>Druckausgleich in Körperhöhlen (Ohren, Nasennebenhöhlen)</td><td>Ohrenschmerzen, ggf. Trommelfellriss</td><td>Valsalva-Manöver, nicht fliegen bei Erkältung</td></tr>
+        <tr><td><strong>Gasausdehnung</strong></td><td>Boyle'sches Gesetz: Volumen ↑ bei Druck ↓</td><td>Blähungen, Zahnschmerzen bei undichten Füllungen</td><td>Kohlenhydrate vor Flug reduzieren</td></tr>
+      </table>
+    </div>
+
+    <h2 id="vision">Vision &amp; Wahrnehmung</h2>
+    <span class="lo-tag">LO 040 02 01 00</span>
+    <p>Das Auge ist das wichtigste Sinnesorgan des Piloten — aber es hat bekannte Schwächen die im Cockpit gefährlich werden können.</p>
+
+    <h3>Zentral- vs. peripheres Sehen</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Zentrales Sehen (Fovea):</strong> Hohe Auflösung, Farbsehen, benötigt ausreichend Licht. <strong>Peripheres Sehen:</strong> Bewegungsdetektion, schwaches Licht (Stäbchen), kein Farbsehen.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Central vision (fovea):</strong> High acuity, colour, needs light. <strong>Peripheral vision:</strong> Motion detection, low light (rods), no colour. At night: look slightly off-centre to use rods — the "off-centre viewing technique".</p>
+      </div>
+    </div>
+
+    <h3>Visuelle Illusionen im Anflug</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Illusion</th><th>Situation</th><th>Effekt auf Pilot</th><th>Gegenmassnahme</th></tr>
+        <tr><td><strong>Schmale Piste</strong></td><td>Piste schmaler als gewohnt</td><td>Fühlt sich zu hoch an → zu tief anfliegen</td><td>Instrumenten vertrauen</td></tr>
+        <tr><td><strong>Breite Piste</strong></td><td>Piste breiter als gewohnt</td><td>Fühlt sich zu tief an → zu hoch anfliegen</td><td>Instrumenten vertrauen</td></tr>
+        <tr><td><strong>Ansteigendes Gelände</strong></td><td>Gelände steigt zur Piste an</td><td>Fühlt sich zu hoch an → zu tief anfliegen</td><td>PAPI / Glide Path beachten</td></tr>
+        <tr><td><strong>Black Hole</strong></td><td>Kein Terrain sichtbar (Nacht/Wasser)</td><td>Illusion der Höhe → unkontrollierter Sinkflug</td><td>ILS / PAPI zwingend nutzen</td></tr>
+      </table>
+    </div>
+
+    <h2 id="stress">Stress &amp; Arousal</h2>
+    <span class="lo-tag">LO 040 03 01 00</span>
+    <p>Stress ist nicht per se negativ — ein gewisses Aktivierungsniveau verbessert die Leistung. Zu viel oder zu wenig ist das Problem.</p>
+
+    <div class="callout tip">
+      <span class="callout-label">Yerkes-Dodson-Kurve</span>
+      <p>Die Performance folgt einer umgekehrten U-Kurve bezüglich Arousal (Aktivierung). <strong>Zu wenig Arousal</strong> (z. B. Langeweile im Cruise) → Fehler durch Unachtsamkeit. <strong>Optimales Arousal</strong> → beste Leistung. <strong>Zu viel Arousal</strong> (z. B. Notfall) → Tunnelblick, Denkblockaden, Fehler.</p>
+    </div>
+
+    <h3>Stressoren in der Luftfahrt</h3>
+    <ul>
+      <li><strong>Akuter Stress:</strong> Notfall, Systemausfall, Zeitdruck — kurz, intensiv, aktivierend.</li>
+      <li><strong>Chronischer Stress:</strong> Schichtarbeit, Privatleben, finanzielle Sorgen — wirkt langfristig, schwächt Entscheidungsfindung.</li>
+      <li><strong>Organisationsstress:</strong> Druck von Airline, Zeitpläne, Passagiererwartungen — führt zu "get-there-itis".</li>
+    </ul>
+
+    <h2 id="ermuedung">Ermüdung &amp; Schlaf</h2>
+    <span class="lo-tag">LO 040 04 01 00</span>
+    <p>Schlafentzug ist in der Auswirkung auf kognitive Leistung vergleichbar mit Alkohol. 17 Stunden ohne Schlaf entsprechen etwa 0,05% BAC — 24 Stunden etwa 0,10% BAC.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Begriff</th><th>Definition</th></tr>
+        <tr><td><strong>Circadian Rhythm</strong></td><td>24h-Körperuhr — steuert Schlaf-Wach-Rhythmus, Körpertemperatur, Hormonausschüttung. Low Points: 02:00–06:00 Uhr und 14:00–16:00 Uhr.</td></tr>
+        <tr><td><strong>Jet Lag</strong></td><td>Desynchronisation der inneren Uhr nach Zeitzonenwechsel. Erholung ca. 1 Tag pro Zeitzone.</td></tr>
+        <tr><td><strong>Microsleep</strong></td><td>Unkontrollierbare Schlaf-Episoden von 2–30 Sekunden — besonders gefährlich weil unbewusst.</td></tr>
+        <tr><td><strong>Sleep Inertia</strong></td><td>Desorientierung und reduzierte Leistung direkt nach dem Aufwachen — bis zu 30 Minuten.</td></tr>
+        <tr><td><strong>Cumulative Fatigue</strong></td><td>Aufbauende Erschöpfung über mehrere Tage — kann nicht durch eine Nacht Schlaf vollständig ausgeglichen werden.</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Gefährlichste Zeitfenster</span>
+      <p>Das circadiane Tief zwischen <strong>02:00 und 06:00 Uhr</strong> ist die Zeit der niedrigsten Wachheit und schlechtesten Reaktionsfähigkeit. Viele Nachtunfälle fallen in dieses Fenster. Gegenmassnahme: strategische Kurzpausen vor kritischen Phasen (nicht direkt davor — Sleep Inertia).</p>
+    </div>
+
+    <h2 id="entscheidung">Entscheidungsfindung</h2>
+    <span class="lo-tag">LO 040 05 01 00</span>
+    <p>Piloten treffen Entscheidungen unter Zeitdruck, Unsicherheit und mit begrenzter Information. Das Verstehen von Entscheidungsmodellen hilft, Fehler zu antizipieren.</p>
+
+    <h3>FORDEC-Modell</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Buchstabe</th><th>Schritt</th><th>Frage</th></tr>
+        <tr><td><strong>F</strong></td><td>Facts</td><td>Was ist passiert? Was weiß ich sicher?</td></tr>
+        <tr><td><strong>O</strong></td><td>Options</td><td>Welche Optionen habe ich?</td></tr>
+        <tr><td><strong>R</strong></td><td>Risks &amp; Benefits</td><td>Was sind die Risiken und Vorteile jeder Option?</td></tr>
+        <tr><td><strong>D</strong></td><td>Decision</td><td>Welche Option wähle ich?</td></tr>
+        <tr><td><strong>E</strong></td><td>Execution</td><td>Entscheidung umsetzen.</td></tr>
+        <tr><td><strong>C</strong></td><td>Check</td><td>Hat die Entscheidung das gewünschte Ergebnis gebracht?</td></tr>
+      </table>
+    </div>
+
+    <h2 id="fehlermodelle">Fehlermodelle</h2>
+    <span class="lo-tag">LO 040 06 01 00</span>
+
+    <h3>SHELL-Modell</h3>
+    <p>Das SHELL-Modell beschreibt die Schnittstellen zwischen dem Menschen (Liveware) und seinem Arbeitsumfeld.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Komponente</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td><strong>S</strong>oftware</td><td>Verfahren, Checklisten, Regeln</td><td>SOP nicht befolgt</td></tr>
+        <tr><td><strong>H</strong>ardware</td><td>Cockpit, Instrumente, Ausrüstung</td><td>Schlecht positionierter Schalter</td></tr>
+        <tr><td><strong>E</strong>nvironment</td><td>Physische und soziale Umgebung</td><td>Lärm, Druck, Schichtarbeit</td></tr>
+        <tr><td><strong>L</strong>iveware (other)</td><td>Andere Menschen — Crew, ATC, Techniker</td><td>Kommunikationsfehler</td></tr>
+        <tr><td><strong>L</strong>iveware (self)</td><td>Der Mensch selbst — Fähigkeiten, Grenzen</td><td>Müdigkeit, Wissenslücke</td></tr>
+      </table>
+    </div>
+
+    <h3>Reason's Swiss Cheese Model</h3>
+    <p>Unfälle entstehen selten durch einen einzelnen Fehler — sie entstehen wenn mehrere Schutzschichten gleichzeitig versagen (die "Löcher im Schweizer Käse" richten sich aus). Jede Barriere hat Schwächen — erst wenn alle gleichzeitig versagen, kommt es zum Unfall.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Latente Fehler (Organisationsebene) + aktive Fehler (Piloten/Crew) + versagende Barrieren = Unfall. Sicherheit bedeutet, die Löcher klein zu halten und viele Schichten zu haben.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>Latent failures (organisational) + active failures (crew) + failed defences = accident. Safety systems work by maintaining many layers with small holes — never relying on a single defence.</p>
+      </div>
+    </div>
+
+    <h2 id="crm">CRM &amp; Teamwork</h2>
+    <span class="lo-tag">LO 040 07 01 00</span>
+    <p><strong>Crew Resource Management (CRM)</strong> ist die effektive Nutzung aller verfügbaren Ressourcen — Menschen, Information, Ausrüstung — zur sicheren und effizienten Durchführung eines Fluges.</p>
+
+    <h3>Wichtige CRM-Konzepte</h3>
+    <ul>
+      <li><strong>Assertiveness:</strong> Bereitschaft, Bedenken klar zu äußern — auch gegenüber dem Kapitän. Fehlendes Assertiveness ist eine häufige Unfallursache.</li>
+      <li><strong>Authority Gradient:</strong> Zu steile Hierarchie hemmt Kommunikation. Zu flache Hierarchie führt zu Konfusion. Optimal: respektvolle, offene Kommunikation.</li>
+      <li><strong>Briefings:</strong> Vor jeder Flugphase — was passiert, wer macht was, was sind die Limits?</li>
+      <li><strong>Closed-Loop Communication:</strong> Sender → Empfänger → Readback → Bestätigung. Verhindert Missverständnisse.</li>
+      <li><strong>Workload Management:</strong> Aufgaben priorisieren, delegieren, antizipieren. "Aviate, Navigate, Communicate."</li>
+    </ul>
+
+    <div class="callout warn">
+      <span class="callout-label">Get-There-Itis</span>
+      <p>Auch <strong>Continuation Bias</strong> — die Tendenz, einen begonnenen Plan fortzusetzen auch wenn neue Informationen dagegen sprechen. Klassisch: Weiterfliegen trotz sich verschlechterndem Wetter weil "wir sind schon so weit geflogen". Gegenmassnahme: vorab definierte Go/No-Go Kriterien.</p>
+    </div>
+
+    <h2 id="situational">Situational Awareness</h2>
+    <span class="lo-tag">LO 040 08 01 00</span>
+    <p><strong>Situational Awareness (SA)</strong> nach Endsley beschreibt das Bewusstsein über die aktuelle Lage, ihr Verständnis und die Vorhersage künftiger Zustände.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Level</th><th>Beschreibung</th><th>Beispiel</th></tr>
+        <tr><td><strong>Level 1</strong></td><td>Wahrnehmung (Perception)</td><td>Kraftstoffanzeige zeigt niedrigen Stand</td></tr>
+        <tr><td><strong>Level 2</strong></td><td>Verständnis (Comprehension)</td><td>Kraftstoff reicht nicht bis zum Ziel</td></tr>
+        <tr><td><strong>Level 3</strong></td><td>Vorhersage (Projection)</td><td>Ausweichflugplatz muss in 20 Minuten angeflogen werden</td></tr>
+      </table>
+    </div>
+
+    <div class="callout danger">
+      <span class="callout-label">SA-Verlust (Loss of SA)</span>
+      <p>Passiert wenn ein Pilot auf Level 1 oder 2 bleibt und Level 3 verliert — er reagiert, statt zu antizipieren. Warnsignale: Unklarheit über aktuelle Position, Zeit oder Systemzustand. Sofortmaßnahme: "Step back" — Autopilot einschalten, Workload reduzieren, Lage neu beurteilen.</p>
+    </div>
+
+    <h2 id="fehler">Typische Prüfungsfehler in Human Performance</h2>
+    <ul>
+      <li>Hypoxie und Hyperventilation verwechseln — beide haben ähnliche Symptome, aber gegensätzliche Ursachen.</li>
+      <li>Euphorie bei Hypoxie vergessen — Betroffene fühlen sich oft gut.</li>
+      <li>Yerkes-Dodson falsch anwenden — zu wenig UND zu viel Arousal verschlechtern Leistung.</li>
+      <li>SHELL-Komponenten durcheinanderbringen — Software = Verfahren, nicht Hardware.</li>
+      <li>Circadianes Tief falsch lokalisieren — 02:00–06:00 Uhr, nicht Mitternacht.</li>
+      <li>Get-There-Itis nicht als CRM-Problem erkennen — es ist Continuation Bias.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>

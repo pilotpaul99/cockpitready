@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aircraft General Knowledge (021) — Cockpitready</title>
+  <meta name="description" content="ATPL Aircraft General Knowledge 021 — Triebwerke, Hydraulik, Druckkabine, Kraftstoffsysteme, Elektrik. Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .formula-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.9; }
+    .formula-box .formula-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Aircraft General Knowledge 021</div>
+  <h1><span class="code">021 ·</span> Aircraft General Knowledge</h1>
+  <p class="lead">AGK ist das breiteste Subject im ATPL — es umfasst alles vom Triebwerk bis zur Elektrik. Wer technisch denkt, hat hier einen klaren Vorteil: Die meisten Konzepte lassen sich aus der Physik herleiten.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">021</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~80</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 5 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#triebwerk">Triebwerke</a>
+    <a href="#turbine">Turbinentriebwerk</a>
+    <a href="#kraftstoff">Kraftstoffsystem</a>
+    <a href="#hydraulik">Hydrauliksystem</a>
+    <a href="#druckkabine">Druckkabine</a>
+    <a href="#elektrik">Elektrisches System</a>
+    <a href="#fahrwerk">Fahrwerk & Bremsen</a>
+    <a href="#ice">Enteisungssysteme</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 021 00 00 00</span>
+    <p>Aircraft General Knowledge ist mit Abstand das umfangreichste ATPL-Subject. Es deckt die gesamte Flugzeugtechnik ab — von Triebwerksthermodynamik bis Bremsensystemen. Der Schlüssel: Systeme verstehen, nicht auswendig lernen. Wer weiß wie ein Hydrauliksystem funktioniert, kann alle Fragen zu Hydraulikausfällen logisch beantworten.</p>
+
+    <div class="callout">
+      <span class="callout-label">Lernstrategie</span>
+      <p>AGK in Blöcke aufteilen: 1) Triebwerk & Kraftstoff, 2) Hydraulik & Pneumatik, 3) Elektrisch & Avionik, 4) Strukturen & Systeme. Jeden Block separat durcharbeiten — nicht alles auf einmal.</p>
+    </div>
+
+    <h2 id="triebwerk">Triebwerkstypen im Überblick</h2>
+    <span class="lo-tag">LO 021 01 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Typ</th><th>Funktionsprinzip</th><th>Anwendung</th><th>Effizienz</th></tr>
+        <tr><td><strong>Kolbenmotor</strong></td><td>4-Takt Otto/Diesel, Propeller</td><td>Kleinflugzeuge, Trainer</td><td>Gut bei niedrigen Geschwindigkeiten</td></tr>
+        <tr><td><strong>Turboprop</strong></td><td>Gasturbine treibt Getriebe + Propeller</td><td>Regionalflugzeuge (ATR, Q400)</td><td>Gut bis ~400 kt / FL250</td></tr>
+        <tr><td><strong>Turbofan</strong></td><td>Gasturbine + Großraumgebläse (Fan)</td><td>Airliner (A320, B737)</td><td>Optimal bei Hochgeschwindigkeit</td></tr>
+        <tr><td><strong>Turbojet</strong></td><td>Reiner Strahlantrieb ohne Fan</td><td>Militär, Concorde (historisch)</td><td>Hoch bei Überschall, ineffizient bei niedrigen Geschwindigkeiten</td></tr>
+      </table>
+    </div>
+
+    <h2 id="turbine">Turbinentriebwerk — Aufbau & Funktion</h2>
+    <span class="lo-tag">LO 021 01 02 00</span>
+    <p>Das Gasturbinentriebwerk folgt dem Brayton-Kreisprozess: Ansaugen → Verdichten → Verbrennen → Expandieren → Ausstoßen.</p>
+
+    <div class="formula-box">
+      <span class="formula-label">Brayton-Kreisprozess — Komponenten</span>
+      1. Intake (Einlass)       → Luft ansaugen, vorkomprimieren<br>
+      2. Compressor (Verdichter) → Luft komprimieren (Druckerhöhung)<br>
+      3. Combustion Chamber      → Kraftstoff einspritzen, verbrennen<br>
+      4. Turbine                 → Heißgas expandiert, Turbine antreiben<br>
+      5. Exhaust (Schubdüse)     → Restgas ausstoßen → Schub
+    </div>
+
+    <h3>Bypass Ratio (Turbofan)</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Bypass Ratio</strong> = Verhältnis des am Kern vorbeigeführten Luftstroms zum durch den Kern fließenden Luftstrom. Hoher Bypass (z. B. 12:1 bei modernen Triebwerken) → ruhiger, effizienter, leiser. Niedriger Bypass (z. B. 0.5:1) → schneller, lauter, weniger effizient.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Bypass Ratio</strong> = mass of air bypassing the core / mass through the core. High bypass (10:1+) = efficient, quiet, used in modern airliners. Low bypass = high speed, military jets. Higher bypass = lower specific fuel consumption at subsonic speeds.</p>
+      </div>
+    </div>
+
+    <h3>Triebwerkskenngrößen</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Parameter</th><th>Abkürzung</th><th>Bedeutung</th></tr>
+        <tr><td><strong>Engine Pressure Ratio</strong></td><td>EPR</td><td>Verhältnis Auslassdruck / Einlassdruck — Schubindikator bei Turbofans</td></tr>
+        <tr><td><strong>Exhaust Gas Temperature</strong></td><td>EGT</td><td>Temperatur der Abgase — Limitierung: Turbinenschaufeltemperatur</td></tr>
+        <tr><td><strong>N1</strong></td><td>Fan/LP-Compressor RPM</td><td>Drehzahl des Niederdruckverdichters — primärer Schubanzeiger bei vielen Triebwerken</td></tr>
+        <tr><td><strong>N2</strong></td><td>HP-Compressor RPM</td><td>Drehzahl des Hochdruckverdichters</td></tr>
+        <tr><td><strong>Fuel Flow</strong></td><td>FF</td><td>Kraftstoffdurchfluss [kg/h] — Überwachung des Verbrauchs</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">EGT-Limit</span>
+      <p>EGT ist die kritischste Triebwerkstemperatur — sie limitiert den Start- und Steigschub. Beim Start wird oft nicht voller Schub verwendet (<strong>Flex/TOGA Derate</strong>) um EGT zu schonen und Triebwerksverschleiß zu reduzieren. Überschreitung des EGT-Limits muss gemeldet werden.</p>
+    </div>
+
+    <h2 id="kraftstoff">Kraftstoffsystem</h2>
+    <span class="lo-tag">LO 021 02 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Kraftstofftyp</th><th>Verwendung</th><th>Eigenschaft</th></tr>
+        <tr><td><strong>Jet A-1</strong></td><td>Internationale Airliner</td><td>Kerosin, Gefrierpunkt −47°C, meistverwendet weltweit</td></tr>
+        <tr><td><strong>Jet A</strong></td><td>USA hauptsächlich</td><td>Kerosin, Gefrierpunkt −40°C</td></tr>
+        <tr><td><strong>Jet B</strong></td><td>Arktische Regionen</td><td>Kerosin/Benzin-Gemisch, niedrigerer Gefrierpunkt</td></tr>
+        <tr><td><strong>AVGAS 100LL</strong></td><td>Kolbenmotoren (GA)</td><td>Verbleites Benzin, blau eingefärbt</td></tr>
+      </table>
+    </div>
+
+    <div class="callout danger">
+      <span class="callout-label">Kraftstoffverwechslung</span>
+      <p>AVGAS in ein Turbinentriebwerk oder Jet Fuel in einen Kolbenmotor ist ein kritischer Fehler. AVGAS hat viel höheren Bleigehalt — schadet Turbinen massiv. Jet Fuel in Kolbenmotoren: zu niedriger Oktanwert → Klopfen → Motorschaden. Immer Kraftstoffbezeichnung vor dem Tanken prüfen.</p>
+    </div>
+
+    <h3>Kraftstofftanklayout</h3>
+    <ul>
+      <li><strong>Wing Tanks:</strong> Haupttanks, strukturell vorteilhaft (reduzieren Biegemoment).</li>
+      <li><strong>Centre Tank:</strong> Großer Zusatztank im Rumpf. Wird oft zuerst verbraucht.</li>
+      <li><strong>Trim Tank:</strong> Hinterer Tank (z. B. A330) zur CG-Optimierung im Reiseflug.</li>
+      <li><strong>Crossfeed:</strong> Ermöglicht Versorgung eines Triebwerks aus dem gegenüberliegenden Tank.</li>
+    </ul>
+
+    <h2 id="hydraulik">Hydrauliksystem</h2>
+    <span class="lo-tag">LO 021 03 01 00</span>
+    <p>Hydraulik überträgt große Kräfte über inkompressible Flüssigkeit. Typischer Systemdruck bei modernen Airlinern: <strong>3 000 psi</strong> (neue Generation: 5 000 psi).</p>
+
+    <h3>Hydraulisch betriebene Systeme</h3>
+    <ul>
+      <li>Flugsteuerung (Ruder, Spoiler, Höhenruder)</li>
+      <li>Fahrwerk (Einfahren/Ausfahren)</li>
+      <li>Bremsen (Normal + Emergency)</li>
+      <li>Klappen und Vorflügel (Slats)</li>
+      <li>Schubumkehrer (Thrust Reverser)</li>
+      <li>Lenkung (Nose Wheel Steering)</li>
+    </ul>
+
+    <div class="callout tip">
+      <span class="callout-label">Redundanz</span>
+      <p>Moderne Airliner haben <strong>3 unabhängige Hydrauliksysteme</strong> (z. B. A320: Green, Blue, Yellow). Jedes kann die kritischen Steuerflächen allein versorgen. Bei totalem Hydraulikausfall: RAM Air Turbine (RAT) stellt Nothydraulik und Strom bereit.</p>
+    </div>
+
+    <h2 id="druckkabine">Druckkabine & Klimaanlage</h2>
+    <span class="lo-tag">LO 021 04 01 00</span>
+    <p>Die Druckkabine hält den Kabinenluftdruck auf einem für Passagiere erträglichen Niveau — typisch äquivalent zu <strong>6 000–8 000 ft</strong> Kabinenhöhe auf Reiseflughöhe.</p>
+
+    <div class="formula-box">
+      <span class="formula-label">Druckdifferenz (Differential Pressure)</span>
+      ΔP = P_cabin − P_outside<br><br>
+      Typisch bei FL350: ΔP ≈ 8.0–8.6 psi<br>
+      Max. structural ΔP (safety valve öffnet): ~9.0–9.5 psi
+    </div>
+
+    <h3>Bleed Air System</h3>
+    <p>Zapfluft (Bleed Air) wird aus dem Triebwerksverdichter entnommen um die Kabine zu versorgen, Enteisungssysteme zu betreiben und Hydraulik-Reservoirsdruck aufrechtzuerhalten.</p>
+
+    <div class="callout warn">
+      <span class="callout-label">Rapid Decompression</span>
+      <p>Bei plötzlichem Kabinendruckverlust: Sauerstoffmasken fallen herab (automatisch bei Kabinenhöhe >14 000 ft). Sofortmassnahme PIC: Sinkflug auf ≤10 000 ft (oder niedrigste sichere Höhe). Dauer der nutzbaren Bewusstseinszeit bei FL350 ohne Sauerstoff: 30–60 Sekunden.</p>
+    </div>
+
+    <h2 id="elektrik">Elektrisches System</h2>
+    <span class="lo-tag">LO 021 05 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Quelle</th><th>Typ</th><th>Verwendung</th></tr>
+        <tr><td><strong>IDG</strong> (Integrated Drive Generator)</td><td>AC 115V / 400Hz</td><td>Hauptstromversorgung — triebwerksgetrieben</td></tr>
+        <tr><td><strong>APU Generator</strong></td><td>AC</td><td>Am Boden und als Backup im Flug</td></tr>
+        <tr><td><strong>External Power</strong></td><td>AC</td><td>Am Gate vom Boden</td></tr>
+        <tr><td><strong>TR Unit</strong> (Transformer-Rectifier)</td><td>DC 28V</td><td>Wandelt AC in DC für Batterien und DC-Verbraucher</td></tr>
+        <tr><td><strong>Battery</strong></td><td>DC</td><td>Notversorgung bei totalem Generatorausfall — typisch 30 min</td></tr>
+        <tr><td><strong>RAT</strong> (Ram Air Turbine)</td><td>AC/DC</td><td>Notfallgenerator bei totalem Stromausfall — windgetrieben</td></tr>
+      </table>
+    </div>
+
+    <h2 id="fahrwerk">Fahrwerk &amp; Bremsen</h2>
+    <span class="lo-tag">LO 021 06 01 00</span>
+
+    <h3>Antiblockiersystem (Anti-Skid)</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Anti-Skid</strong> verhindert das Blockieren der Räder beim Bremsen. Überwacht Raddrehzahl — erkennt drohenden Blockierer → reduziert Bremsdruck momentan → optimale Bremswirkung bei kürzester Strecke.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Anti-skid</strong> prevents wheel lock-up during braking. Wheel speed sensors detect deceleration — if lock-up is imminent, brake pressure is reduced momentarily. Gives optimal deceleration on any surface, including wet or icy runways.</p>
+      </div>
+    </div>
+
+    <h3>Autobrake</h3>
+    <p>Automatisches Bremssystem das nach dem Aufsetzen eine vordefinierte Verzögerungsrate einhält. Stufen: LO / MED / HI (Landung) und RTO (Rejected Take-Off). Bei RTO: maximale Bremskraft automatisch bei V1.</p>
+
+    <h2 id="ice">Enteisungssysteme</h2>
+    <span class="lo-tag">LO 021 07 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>System</th><th>Typ</th><th>Wirkprinzip</th><th>Anwendung</th></tr>
+        <tr><td><strong>Bleed Air (Thermal)</strong></td><td>Anti-Ice</td><td>Heißluft aus Triebwerk erwärmt Vorderkante — verhindert Eisbildung</td><td>Flügelvorderkante (Slats), Triebwerkseinlauf</td></tr>
+        <tr><td><strong>Elektrisch</strong></td><td>Anti-Ice / De-Ice</td><td>Heizmatten oder -drähte erwärmen Oberfläche</td><td>Windschutzscheibe, Pitot-Rohre, statische Ports</td></tr>
+        <tr><td><strong>Pneumatisch (Boots)</strong></td><td>De-Ice</td><td>Aufblasbare Gummis an der Vorderkante brechen Eis auf</td><td>Propellerflugzeuge, ältere Typen</td></tr>
+        <tr><td><strong>Liquid (TKS)</strong></td><td>De-Ice</td><td>Enteisungsflüssigkeit durch poröse Paneele</td><td>Kleinflugzeuge</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Anti-Ice vs. De-Ice</span>
+      <p><strong>Anti-Ice:</strong> Verhindert Eisbildung — muss vor dem Einflug in Vereisungsbedingungen aktiviert werden. <strong>De-Ice:</strong> Entfernt bereits gebildetes Eis. Bei modernen Airlinern: Anti-Ice System einschalten bevor Icing auftritt.</p>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in AGK</h2>
+    <ul>
+      <li>Bypass Ratio verwechseln — höherer Bypass = effizienter und leiser, nicht schneller.</li>
+      <li>EGT-Limit Bedeutung missverstehen — begrenzt Schub beim Start, nicht die Reisegeschwindigkeit.</li>
+      <li>Kraftstofftypen mischen — Jet A-1 und AVGAS nie verwechseln.</li>
+      <li>Hydraulikdruck falsch — 3 000 psi Standard, nicht 300 oder 30 000.</li>
+      <li>Kabinenhöhe und Druckhöhe verwechseln — Kabine bei FL350 entspricht ca. 7 000–8 000 ft.</li>
+      <li>Anti-Ice und De-Ice verwechseln — Anti-Ice verhindert, De-Ice entfernt.</li>
+      <li>RAT-Funktion vergessen — wird bei totalem Stromausfall automatisch ausgefahren, windgetrieben.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>
