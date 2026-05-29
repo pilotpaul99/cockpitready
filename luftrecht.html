@@ -3,158 +3,296 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Air Law (010) — ClearSkies ATPL</title>
-  <meta name="description" content="ATPL Air Law / Luftrecht — strukturiertes Lernmodul entlang der EASA Learning Objectives. Deutsch & Englisch." />
+  <title>Air Law (010) — Cockpitready</title>
+  <meta name="description" content="ATPL Air Law / Luftrecht 010 — vollständiges Lernmodul. Chicago-Konvention, Freiheiten der Luft, Rules of the Air. Deutsch & Englisch." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
-  <!-- ============ HEADER ============ -->
-  <header class="site-header">
-    <div class="wrap nav">
-      <a href="index.html" class="brand">ClearSkies<span class="tag">ATPL</span></a>
-      <nav class="nav-links">
-        <a href="index.html#subjects">Subjects</a>
-        <a href="index.html#ablauf">Ablauf</a>
-        <a href="index.html#waitlist" class="btn btn--amber" style="padding:.55rem 1rem;">Auf die Warteliste</a>
-      </nav>
-      <button class="nav-toggle" aria-label="Menü">MENÜ</button>
-    </div>
-  </header>
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
 
-  <!-- ============ MODULE HERO ============ -->
-  <section class="module-hero">
-    <div class="wrap">
-      <div class="crumbs"><a href="index.html">Start</a> &nbsp;/&nbsp; <a href="index.html#subjects">Subjects</a> &nbsp;/&nbsp; Air Law 010</div>
-      <h1><span class="subj-code">010 ·</span> Air Law &amp; ATC Procedures</h1>
-      <p class="lead">Viel Stoff, aber großteils Memorisierung — das ideale Einstiegs-Subject. Hier baust du das Fundament für alles, was rechtlich auf der Prüfung gefragt wird.</p>
-      <div class="module-meta">
-        <div class="m"><span class="l">Subject-Code</span><span class="v">010</span></div>
-        <div class="m"><span class="l">Konzepte</span><span class="v">~50</span></div>
-        <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 3 Wochen</span></div>
-        <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
-        <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Air Law 010</div>
+  <h1><span class="code">010 ·</span> Air Law &amp; ATC Procedures</h1>
+  <p class="lead">Viel Stoff, aber großteils Memorisierung — das ideale Einstiegs-Subject. Wer die Struktur kennt, kann systematisch vorgehen statt blind auswendig zu lernen.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">010</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~50</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 3 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#chicago">Chicago-Konvention</a>
+    <a href="#freedoms">Freiheiten der Luft</a>
+    <a href="#annexe">Die 19 Annexe</a>
+    <a href="#rules">Rules of the Air</a>
+    <a href="#row">Right of Way</a>
+    <a href="#luftraum">Luftraumklassen</a>
+    <a href="#lizenzen">Lizenzen & Zertifikate</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 010 00 00 00</span>
+    <p>Air Law ist das Subject, das die meisten Kandidaten zuerst ablegen — und das ist kein Zufall. Der Stoff ist umfangreich, aber konzeptionell selten schwierig. Es geht primär ums saubere Auswendiglernen von Regelwerken, Definitionen und Zuständigkeiten.</p>
+    <p>Der Schlüssel: Lerne die <strong>Struktur</strong>, nicht nur die Fakten. Wer weiß, wie ICAO, EASA und nationale Behörden zusammenhängen, kann vieles logisch herleiten.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Bei Air Law zählt Präzision der Begriffe. Viele Distraktoren unterscheiden sich nur durch ein einziges Wort — z. B. "shall" vs. "may" oder "controlled" vs. "uncontrolled". Lies jede Frage zweimal.</p>
+    </div>
+
+    <h2 id="chicago">Die Chicago-Konvention</h2>
+    <span class="lo-tag">LO 010 01 01 00</span>
+    <p>Die <strong>Konvention über die Internationale Zivilluftfahrt</strong> von 1944 ist das Fundament des gesamten internationalen Luftrechts. Sie begründete die ICAO und legte die Grundprinzipien der Zivilluftfahrt fest.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Jeder Vertragsstaat hat die <strong>vollständige und ausschließliche Hoheit</strong> über den Luftraum oberhalb seines Staatsgebiets.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>Every State has <strong>complete and exclusive sovereignty</strong> over the airspace above its territory.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ============ MODULE BODY ============ -->
-  <section class="section">
-    <div class="wrap module-body">
+    <h3>Eckdaten</h3>
+    <ul>
+      <li>Unterzeichnet am <strong>7. Dezember 1944</strong> in Chicago.</li>
+      <li>In Kraft getreten am <strong>4. April 1947</strong>.</li>
+      <li>Begründet die <strong>ICAO</strong> (International Civil Aviation Organization) mit Sitz in <strong>Montreal</strong>.</li>
+      <li>Aktuell über <strong>190 Vertragsstaaten</strong>.</li>
+    </ul>
 
-      <!-- TOC -->
-      <aside class="toc">
-        <span class="mono">Inhalt</span>
-        <a href="#intro" class="active">Einführung</a>
-        <a href="#chicago">Chicago-Konvention</a>
-        <a href="#freedoms">Freiheiten der Luft</a>
-        <a href="#rules">Rules of the Air</a>
-        <a href="#row">Right of Way</a>
-        <a href="#fehler">Typische Fehler</a>
-      </aside>
+    <h2 id="freedoms">Die Freiheiten der Luft</h2>
+    <span class="lo-tag">LO 010 01 02 00</span>
+    <p>Die "Freedoms of the Air" definieren, welche kommerziellen Verkehrsrechte Staaten einander gewähren. Für die Prüfung sind die ersten fünf relevant.</p>
 
-      <!-- LESSON -->
-      <article class="lesson">
-
-        <h2 id="intro">Einführung</h2>
-        <span class="lo-tag">LO 010 00 00 00</span>
-        <p>Air Law ist das Subject, das die meisten Kandidaten zuerst ablegen. Der Stoff ist umfangreich, aber selten konzeptionell schwierig — es geht primär ums saubere Auswendiglernen von Regelwerken, Definitionen und Zuständigkeiten. Genau deshalb ist es flashcard-perfekt.</p>
-        <p>Dieses Modul folgt den EASA Learning Objectives. Jeder Abschnitt beginnt mit der einfachen Erklärung, gefolgt von der prüfungsrelevanten Definition und den Stellen, an denen Kandidaten typischerweise Punkte verlieren.</p>
-
-        <div class="callout">
-          <span class="mono">Prüfungsstrategie</span>
-          <p>Bei Air Law zählt Präzision der Begriffe, nicht Verständnis von Zusammenhängen. Lies jede Frage zweimal — viele Distraktoren unterscheiden sich nur durch ein einziges Wort (z. B. „shall" vs. „may").</p>
-        </div>
-
-        <h2 id="chicago">Die Chicago-Konvention</h2>
-        <span class="lo-tag">LO 010 01 01 00</span>
-        <p>Die Konvention über die Internationale Zivilluftfahrt von 1944 ist das Fundament des gesamten internationalen Luftrechts. Sie begründete die ICAO und legte fest, dass jeder Staat die vollständige und ausschließliche Lufthoheit über seinem Territorium besitzt.</p>
-
-        <div class="bilingual">
-          <div>
-            <div class="lang">Deutsch</div>
-            <p>Jeder Vertragsstaat hat die vollständige und ausschließliche Hoheit über den Luftraum oberhalb seines Staatsgebiets.</p>
-          </div>
-          <div>
-            <div class="lang">English (exam)</div>
-            <p>Every State has complete and exclusive sovereignty over the airspace above its territory.</p>
-          </div>
-        </div>
-
-        <h3>Was du dir merken musst</h3>
-        <ul class="bullets">
-          <li>Unterzeichnet 1944 in Chicago, in Kraft seit 1947.</li>
-          <li>Begründet die ICAO mit Sitz in Montreal.</li>
-          <li>Die 19 Annexe regeln technische Standards (z. B. Annex 2 — Rules of the Air).</li>
-        </ul>
-
-        <h2 id="freedoms">Die Freiheiten der Luft</h2>
-        <span class="lo-tag">LO 010 01 02 00</span>
-        <p>Die „Freedoms of the Air" definieren, welche kommerziellen Verkehrsrechte ein Staat einem anderen gewährt. Für die Prüfung sind besonders die ersten fünf relevant.</p>
-
-        <div class="callout">
-          <span class="mono">Eselsbrücke</span>
-          <p>1. &amp; 2. Freiheit = nur Überflug und technische Landung (keine Passagiere). Ab der 3. Freiheit geht es um das kommerzielle Absetzen und Aufnehmen von Passagieren.</p>
-        </div>
-
-        <h2 id="rules">Rules of the Air (Annex 2)</h2>
-        <span class="lo-tag">LO 010 04 00 00</span>
-        <p>Annex 2 regelt das Verhalten im Luftraum — von Flughöhen über Lichterführung bis zu Ausweichregeln. Dieser Abschnitt überschneidet sich stark mit Operational Procedures, lohnt also doppelt.</p>
-
-        <h2 id="row">Right of Way — Ausweichregeln</h2>
-        <span class="lo-tag">LO 010 04 02 00</span>
-        <p>Ein klassischer Prüfungsfallstrick. Die Regel: Wer rechts ist, hat Vorrang — aber es gibt klare Hierarchien je nach Flugzeugtyp.</p>
-        <ul class="bullets">
-          <li><strong>Ballone</strong> haben Vorrang vor allem anderen.</li>
-          <li><strong>Segelflugzeuge</strong> vor motorisierten Flugzeugen.</li>
-          <li><strong>Schleppverbände</strong> vor Einzelflugzeugen.</li>
-        </ul>
-
-        <div class="callout">
-          <span class="mono">Häufiger Fehler</span>
-          <p>Right-of-Way-Szenarien werden zu schnell gelesen. Skizziere die Situation auf Papier, bevor du antwortest — wer kommt von wo, wer weicht aus.</p>
-        </div>
-
-        <h2 id="fehler">Typische Fehler in Air Law</h2>
-        <ul class="bullets">
-          <li>Begriffe verwechseln, die sich nur durch ein Wort unterscheiden („controlled" vs. „uncontrolled").</li>
-          <li>Annexe und ihre Themen durcheinanderbringen — lerne sie als feste Liste.</li>
-          <li>Right-of-Way-Hierarchie nicht sicher beherrschen.</li>
-        </ul>
-
-        <div class="callout" style="border-left-color:var(--ink); margin-top:2.5rem;">
-          <span class="mono" style="color:var(--ink);">Hinweis</span>
-          <p>Dies ist ein Strukturbeispiel des Lernmoduls. Die vollständigen Inhalte, Grafiken und der Quiz-Modus folgen mit dem Launch. <a href="index.html#waitlist" style="color:var(--amber-deep); font-weight:600;">Auf die Warteliste →</a></p>
-        </div>
-
-      </article>
+    <div class="table-wrap">
+      <table>
+        <tr><th>#</th><th>Freiheit</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td><strong>1.</strong></td><td>Überflugrecht</td><td>Fremdes Staatsgebiet überfliegen ohne zu landen</td><td>Österreich → UK nonstop über Deutschland</td></tr>
+        <tr><td><strong>2.</strong></td><td>Technische Landung</td><td>Im fremden Staat landen (nur technisch, keine Passagiere)</td><td>Tankstopp in Deutschland</td></tr>
+        <tr><td><strong>3.</strong></td><td>Passagiere absetzen</td><td>Passagiere aus Heimatstaat im Ausland absetzen</td><td>AUA fliegt Wien → London, setzt Passagiere ab</td></tr>
+        <tr><td><strong>4.</strong></td><td>Passagiere aufnehmen</td><td>Passagiere im Ausland aufnehmen, in Heimatstaat bringen</td><td>AUA fliegt London → Wien, nimmt Passagiere auf</td></tr>
+        <tr><td><strong>5.</strong></td><td>Zwischen zwei Drittstaaten</td><td>Passagiere zwischen zwei fremden Staaten transportieren</td><td>AUA fliegt London → Madrid (nicht Heimatstaat Österreich)</td></tr>
+      </table>
     </div>
-  </section>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="foot-grid">
-        <div>
-          <a href="index.html" class="brand">ClearSkies<span class="tag">ATPL</span></a>
-          <p style="color:var(--ink-faint); font-size:.9rem; margin-top:.6rem; max-width:34ch;">ATPL-Theorie-Vorbereitung für CPL/ATPL-Kandidaten in Europa.</p>
-        </div>
-        <nav class="foot-links">
-          <a href="index.html#ansatz">Ansatz</a>
-          <a href="index.html#subjects">Subjects</a>
-          <a href="index.html#ablauf">Ablauf</a>
-          <a href="index.html#waitlist">Warteliste</a>
-        </nav>
+    <div class="callout tip">
+      <span class="callout-label">Eselsbrücke</span>
+      <p><strong>1 &amp; 2 = kein kommerzieller Verkehr</strong> (nur Überflug / Tankstop). <strong>Ab 3 = Passagiere</strong>. Freiheit 3 &amp; 4 sind gespiegelt: 3 = absetzen, 4 = aufnehmen.</p>
+    </div>
+
+    <h2 id="annexe">Die 19 Annexe</h2>
+    <span class="lo-tag">LO 010 01 03 00</span>
+    <p>Die Chicago-Konvention wird durch 19 technische Annexe konkretisiert. Jeder Annex regelt einen spezifischen Bereich — die wichtigsten musst du kennen.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Annex</th><th>Thema</th></tr>
+        <tr><td><strong>1</strong></td><td>Personnel Licensing — Lizenzen für Piloten, Fluglotsen etc.</td></tr>
+        <tr><td><strong>2</strong></td><td>Rules of the Air — Ausweichregeln, Lichterführung, Signale</td></tr>
+        <tr><td><strong>6</strong></td><td>Operation of Aircraft — Betrieb von Luftfahrzeugen</td></tr>
+        <tr><td><strong>8</strong></td><td>Airworthiness — Lufttüchtigkeit</td></tr>
+        <tr><td><strong>11</strong></td><td>Air Traffic Services — ATC, FIS, Alerting Service</td></tr>
+        <tr><td><strong>14</strong></td><td>Aerodromes — Flugplatzstandards</td></tr>
+        <tr><td><strong>15</strong></td><td>Aeronautical Information Services — AIP, NOTAMs</td></tr>
+      </table>
+    </div>
+
+    <h2 id="rules">Rules of the Air (Annex 2)</h2>
+    <span class="lo-tag">LO 010 04 00 00</span>
+    <p>Annex 2 regelt das Verhalten im Luftraum. Dieser Abschnitt überschneidet sich stark mit Operational Procedures — lohnt sich doppelt.</p>
+
+    <h3>VFR vs. IFR</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>VFR</strong> (Sichtflugregeln): Pilot navigiert anhand äußerer Sichtbedingungen. Mindestsichtweiten und Wolkenabstände je nach Luftraumklasse.</p>
       </div>
-      <div class="foot-bottom">
-        <span>© <span id="year"></span> ClearSkies ATPL</span>
-        <span>Kein offizielles EASA- oder Austro-Control-Produkt</span>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>VFR</strong> (Visual Flight Rules): Pilot navigates by visual reference to the ground. Minimum visibility and cloud clearance requirements vary by airspace class.</p>
       </div>
     </div>
-  </footer>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>IFR</strong> (Instrumentenflugregeln): Pilot fliegt nach Instrumenten. ATC-Freigabe erforderlich in kontrollierten Lufträumen. Keine Mindestsicht vorgeschrieben.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>IFR</strong> (Instrument Flight Rules): Pilot navigates solely by instruments. ATC clearance required in controlled airspace. No minimum visibility prescribed for the pilot.</p>
+      </div>
+    </div>
 
-  <script src="js/main.js"></script>
+    <h2 id="row">Right of Way — Ausweichregeln</h2>
+    <span class="lo-tag">LO 010 04 02 00</span>
+    <p>Die Ausweichregeln legen fest, welches Luftfahrzeug Vorrang hat. Die Hierarchie gilt absolut — kein Ermessensspielraum.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Rang</th><th>Luftfahrzeugtyp</th><th>Merkhilfe</th></tr>
+        <tr><td><strong>1 (höchster Vorrang)</strong></td><td>Luftfahrzeuge in Not (Distress)</td><td>Notfall geht immer vor</td></tr>
+        <tr><td><strong>2</strong></td><td>Ballone</td><td>Kein Motor, kaum manövrierfähig</td></tr>
+        <tr><td><strong>3</strong></td><td>Segelflugzeuge</td><td>Kein Motor</td></tr>
+        <tr><td><strong>4</strong></td><td>Luftschiffe (Airships)</td><td>Schwer manövrierfähig</td></tr>
+        <tr><td><strong>5</strong></td><td>Schleppverbände (Towing)</td><td>Eingeschränkte Manövrierbarkeit</td></tr>
+        <tr><td><strong>6</strong></td><td>Motorflugzeuge</td><td>Weichen allen obigen aus</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Häufiger Fehler</span>
+      <p>Right-of-Way-Szenarien zu schnell lesen. Skizziere immer kurz auf Papier: wer kommt von wo, welche Kategorie, wer weicht aus. Die Antwort folgt dann automatisch aus der Hierarchie.</p>
+    </div>
+
+    <h3>Gleiche Kategorie: Wer weicht aus?</h3>
+    <ul>
+      <li><strong>Gegenverkehr (head-on):</strong> Beide drehen nach rechts.</li>
+      <li><strong>Sich kreuzend:</strong> Wer das andere Luftfahrzeug <em>rechts</em> hat, weicht aus.</li>
+      <li><strong>Überholen:</strong> Der Überholende weicht aus — immer nach rechts.</li>
+      <li><strong>Landende Luftfahrzeuge:</strong> Haben Vorrang vor allen anderen im Flug.</li>
+    </ul>
+
+    <h2 id="luftraum">Luftraumklassen</h2>
+    <span class="lo-tag">LO 010 05 01 00</span>
+    <p>ICAO definiert sieben Luftraumklassen (A–G). Die Klassen unterscheiden sich in Zugangsregeln, ATC-Service und Separation.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Klasse</th><th>Typ</th><th>IFR</th><th>VFR</th><th>ATC-Service</th></tr>
+        <tr><td><strong>A</strong></td><td>Kontrolliert</td><td>✓ Freigabe nötig</td><td>✗ Nicht erlaubt</td><td>Separation IFR/IFR</td></tr>
+        <tr><td><strong>B</strong></td><td>Kontrolliert</td><td>✓</td><td>✓ Freigabe nötig</td><td>Separation alle</td></tr>
+        <tr><td><strong>C</strong></td><td>Kontrolliert</td><td>✓</td><td>✓ Freigabe nötig</td><td>Separation IFR/IFR + IFR/VFR</td></tr>
+        <tr><td><strong>D</strong></td><td>Kontrolliert</td><td>✓</td><td>✓ Freigabe nötig</td><td>Separation IFR/IFR, VFR Info</td></tr>
+        <tr><td><strong>E</strong></td><td>Kontrolliert</td><td>✓</td><td>✓ Keine Freigabe</td><td>Separation IFR/IFR</td></tr>
+        <tr><td><strong>F</strong></td><td>Unkontrolliert (advisory)</td><td>✓</td><td>✓</td><td>Advisory wenn möglich</td></tr>
+        <tr><td><strong>G</strong></td><td>Unkontrolliert</td><td>✓</td><td>✓</td><td>Kein ATC-Service</td></tr>
+      </table>
+    </div>
+
+    <h2 id="lizenzen">Lizenzen &amp; Zertifikate</h2>
+    <span class="lo-tag">LO 010 02 01 00</span>
+    <p>ICAO Annex 1 und EASA Part-FCL regeln, welche Lizenzen Piloten benötigen. Für die ATPL-Prüfung relevant: Unterschiede PPL/CPL/ATPL und die Medical-Klassen.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Lizenz</th><th>Berechtigt zu</th><th>Medical</th></tr>
+        <tr><td><strong>PPL</strong></td><td>Privatflüge, keine Vergütung</td><td>Klasse 2</td></tr>
+        <tr><td><strong>CPL</strong></td><td>Vergütete Flüge als PIC (unter MTOM-Limits), Co-Pilot</td><td>Klasse 1</td></tr>
+        <tr><td><strong>ATPL</strong></td><td>PIC auf kommerziellen Flügen aller Gewichtsklassen</td><td>Klasse 1</td></tr>
+        <tr><td><strong>Frozen ATPL</strong></td><td>Co-Pilot auf Multi-Pilot-Flugzeugen — ATPL-Theorie bestanden, Praxis noch nicht erfüllt</td><td>Klasse 1</td></tr>
+      </table>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in Air Law</h2>
+    <ul>
+      <li>Begriffe verwechseln die sich nur durch ein Wort unterscheiden ("controlled" vs. "uncontrolled", "shall" vs. "may").</li>
+      <li>Annexe und ihre Themen durcheinanderbringen — lerne sie als feste Liste, Annex 2 = Rules of the Air.</li>
+      <li>Right-of-Way-Hierarchie nicht sicher sitzen — Ballone vor Segelflugzeuge vor Schleppverbände vor Motorflugzeuge.</li>
+      <li>Freiheiten der Luft ab der 3. verwechseln — 3 = absetzen, 4 = aufnehmen (gespiegelt).</li>
+      <li>Luftraumklasse A und G verwechseln — A ist am restriktivsten (nur IFR), G am offensten.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Dieses Modul deckt die zentralen Air Law Konzepte ab. Vollständige LO-Abdeckung, Übungsaufgaben und der Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
 </body>
 </html>
