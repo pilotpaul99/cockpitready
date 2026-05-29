@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mass &amp; Balance (031) — Cockpitready</title>
+  <meta name="description" content="ATPL Mass & Balance 031 — Schwerpunktberechnung, Envelope, Gewichtsgrenzen. Vollständiges Lernmodul Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .formula-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.8; }
+    .formula-box .formula-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    .example-box { background: var(--gray-1); border: 1px solid var(--gray-2); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; }
+    .example-box .ex-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .example-box table { font-size: 13px; }
+    .example-box th { font-size: 11px; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Mass &amp; Balance 031</div>
+  <h1><span class="code">031 ·</span> Mass &amp; Balance</h1>
+  <p class="lead">Wer Mass & Balance versteht, versteht Hebelkräfte und Momente — reine Physik. Die Berechnungen sind systematisch und lernbar, wenn man das Prinzip einmal durchdrungen hat.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">031</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~40</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 2–3 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#grundbegriffe">Grundbegriffe</a>
+    <a href="#gewichte">Gewichtsdefinitionen</a>
+    <a href="#schwerpunkt">Schwerpunktberechnung</a>
+    <a href="#index">Index-Methode</a>
+    <a href="#envelope">CG Envelope</a>
+    <a href="#auswirkungen">CG-Auswirkungen</a>
+    <a href="#fuel">Treibstoff & CG</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 031 00 00 00</span>
+    <p>Mass & Balance stellt sicher, dass ein Flugzeug innerhalb seiner zertifizierten Gewichts- und Schwerpunktgrenzen betrieben wird. Ein Flugzeug außerhalb dieser Grenzen kann strukturell überlastet sein oder flugunfähig werden.</p>
+    <p>Das Subject ist rechnerisch — aber die Berechnungen folgen immer demselben Prinzip: <strong>Moment = Masse × Arm</strong>. Wer das einmal verinnerlicht hat, kann alle Aufgaben lösen.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Mass & Balance Aufgaben sind oft Rechenaufgaben. Lege dir eine saubere Tabelle an (Masse, Arm, Moment), rechne systematisch und überprüfe das Ergebnis gegen die Envelope. Schreibe keine Abkürzungen — der Fehler sitzt meistens in einer vergessenen Zeile.</p>
+    </div>
+
+    <h2 id="grundbegriffe">Grundbegriffe</h2>
+    <span class="lo-tag">LO 031 01 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Begriff (EN)</th><th>Begriff (DE)</th><th>Definition</th></tr>
+        <tr><td><strong>Mass</strong></td><td>Masse</td><td>Gewicht der Komponente [kg]</td></tr>
+        <tr><td><strong>Arm</strong></td><td>Hebelarm</td><td>Horizontaler Abstand vom Datum-Referenzpunkt [m oder inches]</td></tr>
+        <tr><td><strong>Moment</strong></td><td>Moment</td><td>Masse × Arm [kg·m] — beschreibt die Drehwirkung um das Datum</td></tr>
+        <tr><td><strong>Datum</strong></td><td>Bezugspunkt</td><td>Fixer Referenzpunkt des Flugzeugs (oft Nase oder Propellerflansch)</td></tr>
+        <tr><td><strong>Centre of Gravity (CG)</strong></td><td>Schwerpunkt</td><td>Punkt, an dem das Gesamtmoment = 0. Angriffspunkt der Gewichtskraft.</td></tr>
+        <tr><td><strong>CG Envelope</strong></td><td>Schwerpunkthüllkurve</td><td>Zertifizierter Bereich für zulässige CG-Lagen in Abhängigkeit vom Gewicht</td></tr>
+        <tr><td><strong>MAC</strong></td><td>Mittlere aerodynamische Flügeltiefe</td><td>Referenzlänge für CG-Angabe in % MAC (typisch bei Airlinern)</td></tr>
+      </table>
+    </div>
+
+    <div class="formula-box">
+      <span class="formula-label">Grundformel</span>
+      Moment = Masse × Arm<br><br>
+      CG = Gesamtmoment / Gesamtmasse<br><br>
+      CG (% MAC) = (CG-Position − LEMAC) / MAC × 100
+    </div>
+
+    <h2 id="gewichte">Gewichtsdefinitionen</h2>
+    <span class="lo-tag">LO 031 02 01 00</span>
+    <p>Die Gewichtsdefinitionen bauen aufeinander auf — jede Stufe fügt eine Komponente hinzu. Diese Hierarchie muss sitzen.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Abkürzung</th><th>Deutsch</strong></th><th>Definition</th><th>Grenzwert</th></tr>
+        <tr><td><strong>BEM</strong></td><td>Basic Empty Mass</td><td>Flugzeug leer inkl. festeingebauter Ausrüstung, Betriebsmittel, aber ohne Treibstoff und Nutzlast</td><td>Fix (Flugzeugdokument)</td></tr>
+        <tr><td><strong>DOM</strong></td><td>Dry Operating Mass</td><td>BEM + Besatzung + Bordausrüstung + Catering (ohne Treibstoff und Passagiere)</td><td>Flugzeug- und Operator-spezifisch</td></tr>
+        <tr><td><strong>ZFM / ZFW</strong></td><td>Zero Fuel Mass</td><td>DOM + Nutzlast (Passagiere + Gepäck + Cargo) — ohne Treibstoff</td><td>MZFM (strukturelle Grenze)</td></tr>
+        <tr><td><strong>TOM / TOW</strong></td><td>Take-Off Mass</td><td>ZFM + Start-Treibstoff (inkl. Taxi, Trip, Reserven)</td><td>MTOM</td></tr>
+        <tr><td><strong>LM / LW</strong></td><td>Landing Mass</td><td>TOM − Trip Fuel (verbrauchter Reiseflug-Treibstoff)</td><td>MLM</td></tr>
+        <tr><td><strong>Payload</strong></td><td>Nutzlast</td><td>ZFM − DOM = Passagiere + Gepäck + Cargo</td><td>Max Payload = MZFM − DOM</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Merkreihenfolge</span>
+      <p><strong>BEM → DOM → ZFM → TOM → LM.</strong> Jede Stufe + eine Komponente. ZFM ist die strukturell kritische Grenze für den Flügel — deshalb gibt es MZFM. Das Gewicht wird nach dem Abbrennen des Treibstoffs nicht leichter als MZFM (wäre ja ZFM).</p>
+    </div>
+
+    <h2 id="schwerpunkt">Schwerpunktberechnung</h2>
+    <span class="lo-tag">LO 031 03 01 00</span>
+    <p>Die Schwerpunktberechnung erfolgt systematisch in einer Tabelle: Für jede Masse wird das Moment berechnet, dann wird der CG als Quotient aus Gesamtmoment und Gesamtmasse ermittelt.</p>
+
+    <div class="example-box">
+      <span class="ex-label">Beispielrechnung — Schwerpunktermittlung</span>
+      <table>
+        <tr><th>Komponente</th><th>Masse (kg)</th><th>Arm (m)</th><th>Moment (kg·m)</th></tr>
+        <tr><td>Basic Empty Mass</td><td>42 000</td><td>18.50</td><td>777 000</td></tr>
+        <tr><td>Besatzung (4 × 85 kg)</td><td>340</td><td>4.20</td><td>1 428</td></tr>
+        <tr><td>Passagiere (150 × 95 kg)</td><td>14 250</td><td>20.80</td><td>296 400</td></tr>
+        <tr><td>Gepäck</td><td>3 200</td><td>24.10</td><td>77 120</td></tr>
+        <tr><td>Treibstoff</td><td>12 500</td><td>19.40</td><td>242 500</td></tr>
+        <tr><td><strong>TOTAL (TOM)</strong></td><td><strong>72 290</strong></td><td>—</td><td><strong>1 394 448</strong></td></tr>
+      </table>
+      <p style="margin-top:12px; font-size:14px; color:var(--gray-3);">CG = 1 394 448 / 72 290 = <strong>19.29 m</strong> vom Datum → gegen Envelope prüfen</p>
+    </div>
+
+    <h2 id="index">Index-Methode</h2>
+    <span class="lo-tag">LO 031 03 02 00</span>
+    <p>Bei großen Momenten werden sogenannte <strong>Reduced Indexes</strong> verwendet um die Zahlen handhabbar zu machen. Das Prinzip ist identisch — nur die Skalierung ändert sich.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Index = (Moment − Konstante) / Divisor. Der Divisor wird so gewählt, dass die Index-Werte im Bereich 0–100 liegen. Auf dem Ladeplan-Chart wird der Index gegen die Masse aufgetragen.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>Reduced index = (Moment − C) / K. Chosen so that values fall in a manageable range. The loading chart plots index against mass — the resulting point must fall within the CG envelope.</p>
+      </div>
+    </div>
+
+    <h2 id="envelope">CG Envelope</h2>
+    <span class="lo-tag">LO 031 04 01 00</span>
+    <p>Die CG Envelope (Schwerpunkthüllkurve) definiert den zulässigen Bereich für den Schwerpunkt in Abhängigkeit vom Gewicht. Der berechnete CG muss für jede Flugphase innerhalb dieser Grenzen liegen.</p>
+
+    <div class="callout danger">
+      <span class="callout-label">Außerhalb der Envelope</span>
+      <p>Betrieb außerhalb der CG Envelope ist verboten. Ein zu weit vorne liegender CG erhöht den Trimmwiderstand und kann die Pilotensteuerbarkeit einschränken. Ein zu weit hinten liegender CG reduziert die Längsstabilität bis hin zur Instabilität — das Flugzeug kann unkontrollierbar werden.</p>
+    </div>
+
+    <h3>Forward CG Limit (vordere Grenze)</h3>
+    <ul>
+      <li>Strukturell: Grenze der Trimmkraft des Höhenleitwerks.</li>
+      <li>Operationell: Höhere Stallgeschwindigkeit, mehr Trimmwiderstand.</li>
+      <li>Positiv: Mehr Längsstabilität.</li>
+    </ul>
+
+    <h3>Aft CG Limit (hintere Grenze)</h3>
+    <ul>
+      <li>Strukturell: Nahe am Neutralpunkt — Stabilitätsreserve schwindet.</li>
+      <li>Operationell: Weniger Trimmwiderstand (effizienter), aber weniger stabil.</li>
+      <li>Negativ: Kann instabil werden — Pilot muss aktiv stabilisieren.</li>
+    </ul>
+
+    <h2 id="auswirkungen">Auswirkungen der CG-Lage</h2>
+    <span class="lo-tag">LO 031 04 02 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Parameter</th><th>CG vorne</th><th>CG hinten</th></tr>
+        <tr><td>Längsstabilität</td><td>Hoch (stabiler)</td><td>Niedrig (weniger stabil)</td></tr>
+        <tr><td>Stallgeschwindigkeit</td><td>Höher</td><td>Niedriger</td></tr>
+        <tr><td>Trimmwiderstand</td><td>Höher (mehr Treibstoff)</td><td>Niedriger (effizienter)</td></tr>
+        <tr><td>Steuerbarkeit</td><td>Schwerer zu manövrieren</td><td>Leichter anzusprechen</td></tr>
+        <tr><td>Sicherheit</td><td>Sicherer</td><td>Gefährlicher bei Fehler</td></tr>
+      </table>
+    </div>
+
+    <h2 id="fuel">Treibstoff & CG-Verschiebung</h2>
+    <span class="lo-tag">LO 031 05 01 00</span>
+    <p>Beim Treibstoffverbrauch während des Fluges verändert sich der Schwerpunkt — weil der Treibstoff an unterschiedlichen Positionen entnommen wird. Die CG-Lage muss für Start, Reiseflug und Landung innerhalb der Envelope liegen.</p>
+
+    <div class="callout warn">
+      <span class="callout-label">Treibstoff-CG-Shift</span>
+      <p>Wenn Treibstoff vor dem Gesamt-CG liegt, verschiebt sich der CG beim Verbrauch nach hinten — und umgekehrt. Bei manchen Flugzeugtypen (z. B. A330) wird Treibstoff aktiv umgepumpt um den CG zu optimieren. Das muss in der Planung berücksichtigt werden.</p>
+    </div>
+
+    <h3>Standardgewichte für Passagiere (EASA)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Kategorie</th><th>Standardgewicht (inkl. Handgepäck)</th></tr>
+        <tr><td>Erwachsener (Sommer)</td><td>84 kg</td></tr>
+        <tr><td>Erwachsener (Winter, Winterkleidung)</td><td>87 kg</td></tr>
+        <tr><td>Kind (2–12 Jahre)</td><td>35 kg</td></tr>
+        <tr><td>Infant (unter 2 Jahre)</td><td>0 kg (auf Schoß) / 35 kg (eigener Sitz)</td></tr>
+        <tr><td>Aufgegebenes Gepäck</td><td>13 kg pro Stück (wenn kein Einzelgewicht bekannt)</td></tr>
+      </table>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in Mass &amp; Balance</h2>
+    <ul>
+      <li>Gewichtsdefinitionen verwechseln — ZFM enthält keinen Treibstoff, TOM enthält alles.</li>
+      <li>Moment falsch berechnet — immer Masse × Arm, nicht Masse + Arm.</li>
+      <li>CG nur für Start geprüft, nicht für Landung — nach Treibstoffverbrauch kann CG aus der Envelope rutschen.</li>
+      <li>Forward und Aft CG Auswirkungen vertauscht — vorne = stabiler aber ineffizienter.</li>
+      <li>MZFM vergessen — strukturell kritischste Grenze für den Flügel.</li>
+      <li>Standardgewichte für Sommer/Winter unterscheiden — im Winter schwerer.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung, Rechenbeispiele mit Charts und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>

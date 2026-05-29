@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Principles of Flight (081) — Cockpitready</title>
+  <meta name="description" content="ATPL Principles of Flight 081 — Auftrieb, Widerstand, Stabilität, Stall, Hochauftriebshilfen. Vollständiges Lernmodul Deutsch & Englisch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .formula-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.8; }
+    .formula-box .formula-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Principles of Flight 081</div>
+  <h1><span class="code">081 ·</span> Principles of Flight</h1>
+  <p class="lead">Aerodynamik ist das Herzstück des Fliegens. Wer die Physik hinter Auftrieb, Widerstand und Stabilität versteht, muss wenig auswendig lernen — und hat einen klaren Vorteil gegenüber Kandidaten, die nur Formeln memorieren.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">081</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~55</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 4 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#auftrieb">Auftrieb & Bernoulli</a>
+    <a href="#widerstand">Widerstand</a>
+    <a href="#polardiagramm">Polardiagramm</a>
+    <a href="#stall">Stall & kritischer AoA</a>
+    <a href="#stabilitaet">Stabilität</a>
+    <a href="#steuerflaechen">Steuerflächen</a>
+    <a href="#hochauftrieb">Hochauftriebshilfen</a>
+    <a href="#besondere">Besondere Flugzustände</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 081 00 00 00</span>
+    <p>Principles of Flight basiert auf Physik — konkret auf Strömungslehre und Newtonscher Mechanik. Das Schöne daran: Wer die Grundprinzipien wirklich versteht, kann die meisten Prüfungsfragen logisch herleiten, ohne sie auswendig gelernt zu haben.</p>
+    <p>Dieses Modul erklärt zuerst das Warum, dann die Definition — nicht umgekehrt. Jede Formel wird aus der Physik hergeleitet.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>081-Fragen sind oft qualitativ: "Was passiert wenn...?" Visualisiere die Situation immer zuerst. Wer die Physik versteht, eliminiert falsche Antworten schnell.</p>
+    </div>
+
+    <h2 id="auftrieb">Auftrieb & Bernoulli</h2>
+    <span class="lo-tag">LO 081 01 01 00</span>
+    <p>Auftrieb entsteht durch die Druckdifferenz zwischen Ober- und Unterseite des Tragflügels. Die Erklärung über das <strong>Bernoulli-Prinzip</strong> ist bekannt — aber unvollständig. Tatsächlich trägt auch die Ablenkung des Luftstroms nach unten (Newtonsches Reaktionsprinzip) wesentlich zum Auftrieb bei.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Bernoulli:</strong> Höhere Strömungsgeschwindigkeit an der Profiloberseite → niedrigerer statischer Druck → Druckdifferenz erzeugt Auftrieb.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Bernoulli:</strong> Higher flow velocity over the upper surface → lower static pressure → pressure differential creates lift.</p>
+      </div>
+    </div>
+
+    <div class="formula-box">
+      <span class="formula-label">Auftriebsformel</span>
+      L = CL × ½ρv² × S<br><br>
+      L = Lift (Auftrieb) [N]<br>
+      CL = Lift Coefficient (auftriebsabhängig von AoA und Profil)<br>
+      ρ = Luftdichte [kg/m³]<br>
+      v = Geschwindigkeit (TAS) [m/s]<br>
+      S = Flügelfläche [m²]
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Was das bedeutet</span>
+      <p>Auftrieb ist proportional zu <strong>v²</strong> — verdopple die Geschwindigkeit, vervierfache den Auftrieb. Das erklärt, warum Stall-Geschwindigkeit mit dem Gewicht steigt: mehr Gewicht → mehr Auftrieb nötig → höhere Mindestgeschwindigkeit.</p>
+    </div>
+
+    <h3>Anstellwinkel (Angle of Attack — AoA)</h3>
+    <p>Der <strong>Anstellwinkel</strong> ist der Winkel zwischen der Profilsehne und dem anströmenden Luftstrom. Er ist der wichtigste Parameter für den Auftriebsbeiwert CL.</p>
+    <ul>
+      <li>CL steigt mit zunehmendem AoA — bis zum <strong>kritischen AoA</strong> (~15°).</li>
+      <li>Danach: Strömungsabriss (Stall) — CL fällt abrupt.</li>
+      <li>AoA ist <strong>unabhängig von der Fluglage</strong> — ein Flugzeug kann bei jeder Geschwindigkeit und Lage strallen.</li>
+    </ul>
+
+    <h2 id="widerstand">Widerstand</h2>
+    <span class="lo-tag">LO 081 02 01 00</span>
+    <p>Widerstand ist die aerodynamische Kraft, die parallel zur Anströmrichtung wirkt und der Bewegung entgegenwirkt. Es gibt zwei grundlegende Arten.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Typ</th><th>Deutsch</th><th>Ursache</th><th>Verhalten mit Geschwindigkeit</th></tr>
+        <tr><td><strong>Induced Drag</strong></td><td>Induzierter Widerstand</td><td>Entsteht als Nebenprodukt des Auftriebs — Wirbelbildung an den Flügelspitzen</td><td>Nimmt mit steigender Geschwindigkeit <em>ab</em> (1/v²)</td></tr>
+        <tr><td><strong>Parasite Drag</strong></td><td>Schädlicher Widerstand</td><td>Form-, Reibungs- und Interferenzwiderstand des Flugzeugrumpfes</td><td>Nimmt mit steigender Geschwindigkeit <em>zu</em> (v²)</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Minimum Total Drag</span>
+      <p>Die Summe aus Induced und Parasite Drag ergibt ein Minimum bei einer bestimmten Geschwindigkeit — das ist die <strong>beste Gleitzahl</strong> (Best L/D Ratio). Hier fliegt das Flugzeug am effizientesten. Diese Geschwindigkeit entspricht im Langsamflug ungefähr VMD (Minimum Drag Speed).</p>
+    </div>
+
+    <h3>Induzierter Widerstand im Detail</h3>
+    <p>An den Flügelspitzen strömt Luft von der Hoch- zur Niederdruckseite um — das erzeugt <strong>Wirbelschleppen (Wake Turbulence)</strong>. Bei großen Flugzeugen (Heavy) sind diese Wirbel für nachfolgende kleinere Flugzeuge gefährlich.</p>
+    <ul>
+      <li>Winglets reduzieren induzierte Widerstand durch Unterbrechung der Wirbelbildung.</li>
+      <li>Großes Seitenverhältnis (Aspect Ratio = Spannweite²/Fläche) reduziert induzierten Widerstand — daher lange, schmale Flügel bei Segelflugzeugen.</li>
+    </ul>
+
+    <h2 id="polardiagramm">Polardiagramm & Gleitzahl</h2>
+    <span class="lo-tag">LO 081 02 03 00</span>
+    <p>Das <strong>Polardiagramm</strong> stellt CL über CD dar und zeigt alle möglichen Flugzustände eines Profils. Die Tangente vom Ursprung an die Polare gibt die beste Gleitzahl.</p>
+
+    <div class="formula-box">
+      <span class="formula-label">Gleitzahl</span>
+      Gleitzahl (Glide Ratio) = L/D = CL/CD<br><br>
+      Beispiel Airliner: L/D ≈ 15–18 → 15–18 NM Gleitweite pro 1 NM Höhenverlust<br>
+      Segelflugzeug: L/D bis 60+
+    </div>
+
+    <h2 id="stall">Stall & kritischer Anstellwinkel</h2>
+    <span class="lo-tag">LO 081 03 01 00</span>
+    <p>Ein Stall tritt auf, wenn der <strong>kritische Anstellwinkel</strong> überschritten wird. Die Strömung reißt von der Profiloberseite ab — CL fällt, CD steigt stark an. Das Flugzeug verliert Auftrieb.</p>
+
+    <div class="callout danger">
+      <span class="callout-label">Kritisch zu verstehen</span>
+      <p>Stall hat <strong>nichts mit der Geschwindigkeit</strong> zu tun — er ist ausschließlich vom Anstellwinkel abhängig. Ein Flugzeug kann bei hoher Geschwindigkeit strallen (z. B. beim Abfangen aus dem Sturzflug). Stall-Geschwindigkeit (VS) ist lediglich die Geschwindigkeit, bei der bei 1g der kritische AoA erreicht wird.</p>
+    </div>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Stall-Geschwindigkeit nimmt zu mit: höherem Gewicht, steilerer Kurve (Load Factor), Flaps eingefahren, Eis am Flügel, Hinterholmlage des Schwerpunkts.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>Stall speed increases with: higher weight, steeper bank (higher load factor), flaps retracted, ice contamination, aft CG, and higher altitude (TAS increases but IAS indication stays same).</p>
+      </div>
+    </div>
+
+    <h3>Load Factor & Stall in der Kurve</h3>
+    <div class="formula-box">
+      <span class="formula-label">Load Factor in der Kurve</span>
+      n = 1 / cos(φ)   [φ = Querneigungswinkel]<br><br>
+      30° Bank → n = 1.15 → VS × √1.15 = +7%<br>
+      45° Bank → n = 1.41 → VS × √1.41 = +19%<br>
+      60° Bank → n = 2.00 → VS × √2.00 = +41%
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Häufiger Fehler</span>
+      <p>Viele verwechseln "höhere Stall-Geschwindigkeit in der Kurve" mit "höherem AoA". Beides stimmt — aber der Grund ist der erhöhte Load Factor, nicht die Kurve selbst. Bei 60° Querneigung braucht das Flugzeug doppelt so viel Auftrieb wie im Geradeausflug.</p>
+    </div>
+
+    <h2 id="stabilitaet">Stabilität</h2>
+    <span class="lo-tag">LO 081 04 01 00</span>
+    <p>Stabilität beschreibt die Tendenz eines Flugzeugs, nach einer Störung in die ursprüngliche Fluglage zurückzukehren.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Typ</th><th>Statisch</th><th>Dynamisch</th><th>Verhalten</th></tr>
+        <tr><td><strong>Positiv stabil</strong></td><td>Rückstellkraft vorhanden</td><td>Gedämpfte Schwingung</td><td>Kehrt selbst in Ausgangslage zurück</td></tr>
+        <tr><td><strong>Neutral stabil</strong></td><td>Keine Kraft</td><td>Konstante Schwingung</td><td>Bleibt in neuer Lage</td></tr>
+        <tr><td><strong>Negativ stabil</strong></td><td>Wegdrückende Kraft</td><td>Aufschaukelnde Schwingung</td><td>Entfernt sich von Ausgangslage</td></tr>
+      </table>
+    </div>
+
+    <h3>Längs-, Quer- und Richtungsstabilität</h3>
+    <ul>
+      <li><strong>Längsstabilität (Pitch):</strong> Durch Höhenleitwerk. Schwerpunkt (CG) muss vor dem Neutralpunkt liegen. CG vorne = mehr stabil, mehr Trimmwiderstand. CG hinten = weniger stabil, weniger Widerstand.</li>
+      <li><strong>Querstabilität (Roll):</strong> Durch Diederwinkel (Dihedral), Pfeilung und hohe Flügellage. Wenn ein Flügel absackt, entsteht Auftriebsdifferenz → Rückstellmoment.</li>
+      <li><strong>Richtungsstabilität (Yaw):</strong> Durch Seitenleitwerk — wie eine Wetterfahne. Nase dreht in den Wind.</li>
+    </ul>
+
+    <div class="callout">
+      <span class="callout-label">Dutch Roll</span>
+      <p>Gekoppelte Roll-Gier-Schwingung bei Flugzeugen mit starker Pfeilung und wenig Dihedral (typisch Airliner). Dämpfung durch den <strong>Yaw Damper</strong> automatisch. Bei Ausfall: charakteristisches "Wackeln" — Pilot muss mit Seitenruder gegensteuern.</p>
+    </div>
+
+    <h2 id="steuerflaechen">Steuerflächen</h2>
+    <span class="lo-tag">LO 081 05 01 00</span>
+    <p>Die drei Primärsteuerflächen erzeugen Momente um die drei Achsen des Flugzeugs.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Steuerfläche</th><th>Achse</th><th>Bewegung</th><th>Sekundäreffekt</th></tr>
+        <tr><td><strong>Höhenruder (Elevator)</strong></td><td>Querachse</td><td>Nicken (Pitch)</td><td>—</td></tr>
+        <tr><td><strong>Querruder (Ailerons)</strong></td><td>Längsachse</td><td>Rollen (Roll)</td><td>Adverse Yaw — Nase dreht entgegen der Rollrichtung</td></tr>
+        <tr><td><strong>Seitenruder (Rudder)</strong></td><td>Hochachse</td><td>Gieren (Yaw)</td><td>Rollneigung in Gierrichtung</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Adverse Yaw</span>
+      <p>Das nach unten ausgeschlagene Querruder erzeugt mehr induzierten Widerstand — die Nase dreht gegen die beabsichtigte Rollrichtung. Gegensteuern mit Seitenruder in Rollrichtung. Frise-Querruder und Differentialquerruder reduzieren diesen Effekt.</p>
+    </div>
+
+    <h2 id="hochauftrieb">Hochauftriebshilfen</h2>
+    <span class="lo-tag">LO 081 06 01 00</span>
+    <p>Hochauftriebshilfen erhöhen CL max und ermöglichen niedrigere Start- und Landegeschwindigkeiten. Sie verändern die Profilgeometrie.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Typ</th><th>Wirkung</th><th>Auftrieb</th><th>Widerstand</th><th>Verwendung</th></tr>
+        <tr><td><strong>Einfachklappe (Plain Flap)</strong></td><td>Profilwölbung erhöht</td><td>↑</td><td>↑↑</td><td>Leichte GA-Flugzeuge</td></tr>
+        <tr><td><strong>Fowler-Klappe</strong></td><td>Fläche + Wölbung erhöht</td><td>↑↑↑</td><td>↑</td><td>Airliner — beste Effizienz</td></tr>
+        <tr><td><strong>Vorflügel / Slats</strong></td><td>Kritischen AoA erhöht</td><td>↑ (bei höherem AoA)</td><td>↑</td><td>Airliner Vorderkante</td></tr>
+        <tr><td><strong>Spoiler</strong></td><td>Auftrieb reduziert</td><td>↓↓</td><td>↑↑↑</td><td>Speed Brakes, Rollunterstützung</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Asymmetrische Klappen</span>
+      <p>Asymmetrisch ausgefahrene Klappen (eine Seite) erzeugen starkes Rollmoment — sofortiger Rollausgleich mit Querruder nötig. Nächstgelegener Flugplatz anfliegen.</p>
+    </div>
+
+    <h2 id="besondere">Besondere Flugzustände</h2>
+    <span class="lo-tag">LO 081 07 01 00</span>
+
+    <h3>Spiralsturzflug (Spiral Dive)</h3>
+    <p>Unkontrollierter Sinkflug bei steiler Querneigung — Fahrt nimmt stark zu, Load Factor steigt. Kein Stall. Auflösung: zuerst Querneigung reduzieren, dann Nase heben.</p>
+
+    <h3>Überzogener Flugzustand (Deep Stall)</h3>
+    <p>Bei T-Leitwerk (z. B. A380-ähnliche Konfigurationen): Höhenleitwerk gerät im tiefen Stall in den Totwasser-Bereich hinter dem Flügel → kein Nickmoment mehr möglich → keine Auflösung ohne externe Kraft.</p>
+
+    <h3>Mach-Effekte</h3>
+    <p>Ab etwa <strong>Mach 0.7–0.8</strong> entstehen lokale Überschallbereiche auf dem Tragflügel. Stoßwellen verursachen Wellenströmungswiderstand und Buffeting. <strong>MMO</strong> (Maximum Operating Mach) begrenzt den Reiseflug.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Mach Tuck:</strong> Bei hohen Machzahlen verschiebt sich der Druckmittelpunkt nach hinten → Nickmoment nach vorne → Flugzeug taucht ab. Automatische Trimmung (Mach Trim) kompensiert.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Mach Tuck:</strong> At high Mach numbers, the centre of pressure shifts aft → nose-down pitching moment → aircraft pitches down. Mach trim system compensates automatically.</p>
+      </div>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in Principles of Flight</h2>
+    <ul>
+      <li>Stall mit zu niedriger Geschwindigkeit gleichsetzen — Stall ist immer AoA-abhängig, nicht geschwindigkeitsabhängig.</li>
+      <li>Induzierten und parasitären Widerstand in der Geschwindigkeitsabhängigkeit verwechseln — Induced Drag sinkt mit Geschwindigkeit, Parasite steigt.</li>
+      <li>Load Factor in der Kurve vergessen — 60° Querneigung = doppeltes Gewicht effektiv.</li>
+      <li>Statische und dynamische Stabilität verwechseln — statisch beschreibt die sofortige Reaktion, dynamisch das Verhalten über Zeit.</li>
+      <li>Adverse Yaw Richtung verwechseln — Nase dreht immer entgegen der Rollrichtung.</li>
+      <li>Mach Tuck Richtung falsch — bei hohem Mach taucht die Nase <em>ab</em> (nose-down), nicht hoch.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung, Übungsaufgaben und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>
