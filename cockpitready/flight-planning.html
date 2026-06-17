@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Planning (033) — Cockpitready</title>
+  <meta name="description" content="ATPL Flight Planning 033 — ICAO Flugplan, ATC Procedures, Treibstoffplanung, ETOPS. Deutsch & Englisch." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .formula-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.9; }
+    .formula-box .formula-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    .fp-field { background: var(--gray-1); border: 1px solid var(--gray-2); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; }
+    .fp-field .fp-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 14px; display: block; }
+    .fp-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+    .fp-box { background: var(--white); border: 1px solid var(--gray-2); border-radius: 6px; padding: 8px 12px; font-family: 'SF Mono', ui-monospace, monospace; font-size: 12px; }
+    .fp-box .fn { font-size: 10px; color: var(--gray-3); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Flight Planning 033</div>
+  <h1><span class="code">033 ·</span> Flight Planning &amp; Monitoring</h1>
+  <p class="lead">Flight Planning ist das Subject, das alle anderen zusammenführt — Wetter, Performance, Navigation, Treibstoff. Ein vollständiger Flugplan ist die Summe aller anderen Fächer.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">033</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~45</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 3 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#icao-flugplan">ICAO Flugplan</a>
+    <a href="#felder">Felder im Detail</a>
+    <a href="#treibstoff">Treibstoffplanung</a>
+    <a href="#ofp">Operational Flight Plan</a>
+    <a href="#notam">NOTAM & AIP</a>
+    <a href="#atc">ATC Clearances</a>
+    <a href="#monitoring">Flight Monitoring</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 033 00 00 00</span>
+    <p>Flight Planning & Monitoring ist das Bindeglied zwischen Theorie und Praxis. Die Kenntnis des ICAO-Flugplanformats, der Treibstoffberechnung und der ATC-Verfahren ist nicht nur prüfungsrelevant — sie ist die tägliche Basis jedes Berufsfliegers.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>ICAO-Flugplanfelder sind häufige Prüfungsfragen. Lerne die Feldnummern und Inhalte auswendig — besonders Feld 15 (Route) und Feld 18 (Other Information). Diese sind detailreich und fehleranfällig.</p>
+    </div>
+
+    <h2 id="icao-flugplan">ICAO Flugplan (Form ICAO Doc 4444)</h2>
+    <span class="lo-tag">LO 033 01 01 00</span>
+    <p>Der ICAO-Flugplan ist das standardisierte internationale Dokument zur Ankündigung eines Fluges bei ATC. Er muss in der Regel <strong>30–60 Minuten vor dem geplanten Abflug</strong> einreicht werden.</p>
+
+    <div class="fp-field">
+      <span class="fp-label">ICAO Flugplan — Übersicht der wichtigsten Felder</span>
+      <div class="fp-row">
+        <div class="fp-box"><span class="fn">Field 7</span>Aircraft ID</div>
+        <div class="fp-box"><span class="fn">Field 8</span>Flight Rules / Type</div>
+        <div class="fp-box"><span class="fn">Field 9</span>Aircraft Type / Wake</div>
+        <div class="fp-box"><span class="fn">Field 10</span>Equipment</div>
+      </div>
+      <div class="fp-row">
+        <div class="fp-box"><span class="fn">Field 13</span>Departure / Time</div>
+        <div class="fp-box"><span class="fn">Field 15</span>Route</div>
+        <div class="fp-box"><span class="fn">Field 16</span>Destination / Alternate</div>
+        <div class="fp-box"><span class="fn">Field 18</span>Other Info</div>
+        <div class="fp-box"><span class="fn">Field 19</span>Supplementary Info</div>
+      </div>
+    </div>
+
+    <h2 id="felder">Wichtige Felder im Detail</h2>
+    <span class="lo-tag">LO 033 01 02 00</span>
+
+    <h3>Feld 8 — Flight Rules & Type of Flight</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Code</th><th>Bedeutung</th></tr>
+        <tr><td><strong>I</strong></td><td>IFR</td></tr>
+        <tr><td><strong>V</strong></td><td>VFR</td></tr>
+        <tr><td><strong>Y</strong></td><td>IFR first, dann VFR</td></tr>
+        <tr><td><strong>Z</strong></td><td>VFR first, dann IFR</td></tr>
+        <tr><td><strong>S</strong></td><td>Scheduled Air Service</td></tr>
+        <tr><td><strong>N</strong></td><td>Non-Scheduled Air Service</td></tr>
+        <tr><td><strong>G</strong></td><td>General Aviation</td></tr>
+        <tr><td><strong>M</strong></td><td>Military</td></tr>
+      </table>
+    </div>
+
+    <h3>Feld 9 — Flugzeugtyp & Wirbelschleppenkategorie</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Code</th><th>Kategorie</th><th>MTOW</th><th>Beispiele</th></tr>
+        <tr><td><strong>J</strong></td><td>Super Heavy</td><td>&gt;560 000 kg</td><td>A380</td></tr>
+        <tr><td><strong>H</strong></td><td>Heavy</td><td>&gt;136 000 kg</td><td>B747, B777, A330</td></tr>
+        <tr><td><strong>M</strong></td><td>Medium</td><td>7 000–136 000 kg</td><td>A320, B737, E190</td></tr>
+        <tr><td><strong>L</strong></td><td>Light</td><td>&lt;7 000 kg</td><td>C172, DA42</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Wirbelschleppenstaffelung</span>
+      <p>Wirbelschleppen-Abstände gelten immer für das <strong>nachfolgende</strong> Flugzeug — nicht das vorausfliegende. Light hinter Heavy: max. Abstand. Same category: geringere Abstände. Wirbelschleppen sinken und driften mit dem Wind — bei Seitenwind kann die Wirbelspur auf die parallele Piste driften.</p>
+    </div>
+
+    <h3>Feld 15 — Route</h3>
+    <p>Das Route-Feld beschreibt die Strecke vom Abflug bis zum Ziel. Es folgt einem definierten Format.</p>
+
+    <div class="formula-box">
+      <span class="formula-label">Route-Format (Field 15)</span>
+      N0450F350 DCT TULPI UM726 STEIN DCT<br><br>
+      N0450  = True Airspeed 450 kt<br>
+      F350   = Flight Level 350<br>
+      DCT    = Direct (kein ATS-Streckencode)<br>
+      TULPI  = Waypoint Name<br>
+      UM726  = Upper Airway M726
+    </div>
+
+    <h3>Feld 18 — Other Information</h3>
+    <p>Feld 18 enthält zusätzliche Informationen die in anderen Feldern keinen Platz haben. Wichtige Codes:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Code</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td><strong>STS/</strong></td><td>Special handling</td><td>STS/HOSP (medizinischer Flug)</td></tr>
+        <tr><td><strong>PBN/</strong></td><td>Performance Based Navigation</td><td>PBN/B2 (RNP APCH)</td></tr>
+        <tr><td><strong>DOF/</strong></td><td>Date of flight</td><td>DOF/260529</td></tr>
+        <tr><td><strong>REG/</strong></td><td>Kennzeichen wenn anders als Field 7</td><td>REG/OELVE</td></tr>
+        <tr><td><strong>EET/</strong></td><td>Estimated elapsed time to FIR boundary</td><td>EET/LOVV0045</td></tr>
+        <tr><td><strong>DEST/</strong></td><td>Alternativer Zielname wenn ICAO-Code nicht eindeutig</td><td>—</td></tr>
+      </table>
+    </div>
+
+    <h2 id="treibstoff">Treibstoffplanung</h2>
+    <span class="lo-tag">LO 033 02 01 00</span>
+    <p>Die Treibstoffplanung folgt einer klar definierten Hierarchie. Jede Komponente hat eine Mindestmenge — das Unterschreiten ist verboten.</p>
+
+    <div class="formula-box">
+      <span class="formula-label">Treibstoffhierarchie (IFR, EASA)</span>
+      Trip Fuel             (Strecke A → B)<br>
+      + Contingency Fuel    (5% von Trip Fuel, min. 5 min)<br>
+      + Alternate Fuel      (B → Alternate)<br>
+      + Final Reserve       (Jets: 30 min, Props: 45 min bei 1500 ft ISA)<br>
+      + Additional Fuel     (nach PIC-Ermessen / besondere Bedingungen)<br>
+      ─────────────────────────────────────<br>
+      = Minimum Take-Off Fuel<br>
+      + Taxi Fuel<br>
+      ─────────────────────────────────────<br>
+      = Block Fuel (gesamter Treibstoff an Bord beim Abflug)
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Final Reserve ist unantastbar</span>
+      <p>Final Reserve darf unter keinen Umständen verplant werden — er ist die absolute Untergrenze. Ein Flugzeug das Final Reserve unterschreitet hat eine Notlage (Urgency — PAN PAN). Landet ein Flugzeug mit weniger als Final Reserve, muss ein Incident Report erstattet werden.</p>
+    </div>
+
+    <h3>Wann ist kein Destination Alternate nötig?</h3>
+    <ul>
+      <li>Flugdauer unter 6 Stunden <strong>und</strong> zwei unabhängige Instrumentenanflüge verfügbar <strong>und</strong> Wetter am Ziel für 1h vor bis 1h nach ETA besser als: Ceiling ≥ 2 000 ft, Sicht ≥ 5 km.</li>
+      <li><strong>Isolated Aerodrome:</strong> Kein Alternate in der Reichweite — dann zusätzlicher "Holding Fuel" für 2h über dem Ziel erforderlich.</li>
+    </ul>
+
+    <h2 id="ofp">Operational Flight Plan (OFP)</h2>
+    <span class="lo-tag">LO 033 03 01 00</span>
+    <p>Der <strong>Operational Flight Plan (OFP)</strong> ist das interne Dokument der Airline — detaillierter als der ICAO-Flugplan. Er enthält Treibstoffberechnungen, Wetterminima, Streckenalternativen und wird vom Dispatcher erstellt und vom PIC unterzeichnet.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Der PIC kann vom OFP abweichen, wenn die Sicherheit es erfordert — muss dies aber dokumentieren und ATC informieren. Der PIC hat immer das letzte Wort in Sicherheitsfragen.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>The PIC may deviate from the OFP if safety requires — but must document deviations and inform ATC. The PIC has final authority on safety decisions, overriding company operational guidance.</p>
+      </div>
+    </div>
+
+    <h2 id="notam">NOTAM &amp; AIP</h2>
+    <span class="lo-tag">LO 033 04 01 00</span>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Dokument</th><th>Inhalt</th><th>Gültigkeit</th></tr>
+        <tr><td><strong>AIP</strong> (Aeronautical Information Publication)</td><td>Permanente Informationen: Flugplätze, Lufträume, Verfahren, Regeln</td><td>Dauerhaft, AIRAC-Zyklen (28 Tage)</td></tr>
+        <tr><td><strong>AIP SUP</strong> (Supplement)</td><td>Temporäre Änderungen mit langer Vorlaufzeit</td><td>Befristet</td></tr>
+        <tr><td><strong>NOTAM</strong> (Notice to Air Missions)</td><td>Kurzfristige Informationen: Pistensperren, Nav-Aid-Ausfall, Übungsgebiete</td><td>Meist kurzfristig</td></tr>
+        <tr><td><strong>SNOWTAM</strong></td><td>Pistenbelag-Zustand im Winter</td><td>Max. 24h</td></tr>
+        <tr><td><strong>ASHTAM</strong></td><td>Vulkanasche-Warnungen</td><td>Ereignisbezogen</td></tr>
+      </table>
+    </div>
+
+    <h2 id="atc">ATC Clearances &amp; Procedures</h2>
+    <span class="lo-tag">LO 033 05 01 00</span>
+
+    <h3>ATIS — Automatic Terminal Information Service</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>ATIS sendet automatisch aktuelle Wetterinformationen und Anflugprozeduren für einen Flugplatz. Pilot bestätigt beim Erstkontakt: "Information X received" — damit weiß ATC dass der Pilot die aktuelle Information hat.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>ATIS broadcasts current airport weather and operational information on a dedicated frequency. Pilots confirm receipt on first ATC contact: "Information X received." Updated each hour or when conditions change significantly.</p>
+      </div>
+    </div>
+
+    <h3>Cleared As Filed vs. Specific Clearance</h3>
+    <ul>
+      <li><strong>Cleared As Filed:</strong> ATC übernimmt den eingereichten Flugplan ohne Änderungen.</li>
+      <li><strong>Specific Route Clearance:</strong> ATC gibt einen abweichenden Kurs vor — Pilot muss readback.</li>
+      <li><strong>PDC (Pre-Departure Clearance):</strong> Digitale Freigabe via Datalink — spart Sprechfunk, besonders an großen Flughäfen.</li>
+    </ul>
+
+    <h2 id="monitoring">Flight Monitoring</h2>
+    <span class="lo-tag">LO 033 06 01 00</span>
+    <p>Nach dem Abflug wird der Flugplan kontinuierlich überwacht — Position, Treibstoff, Wetter. Abweichungen müssen ATC gemeldet werden.</p>
+
+    <h3>Position Reporting</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>In nicht-radarkontrollierten Gebieten muss die Position an jedem Meldepunkt berichtet werden: Rufzeichen, Position, Zeit, Flughöhe, nächster Meldepunkt, ETA.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>Position report format: callsign, position, time, level, next waypoint and ETA, following waypoint. Required at compulsory reporting points (solid triangle on charts) and on request.</p>
+      </div>
+    </div>
+
+    <h3>ETA-Änderungen</h3>
+    <ul>
+      <li>Wenn ETA mehr als <strong>3 Minuten</strong> vom eingereichten Flugplan abweicht → ATC informieren.</li>
+      <li>Wenn Treibstoff-Situation sich kritisch ändert → sofort ATC informieren.</li>
+    </ul>
+
+    <h2 id="fehler">Typische Fehler in Flight Planning</h2>
+    <ul>
+      <li>ICAO-Flugplanfelder verwechseln — Feld 16 enthält Ziel und Total EET, Feld 18 sonstige Infos.</li>
+      <li>Wirbelschleppenkategorien falsch — Super (J) ist höher als Heavy (H), Medium (M) ist die mittlere Kategorie.</li>
+      <li>Contingency Fuel Berechnung — 5% von Trip Fuel, mindestens 5 Minuten.</li>
+      <li>Final Reserve verwechseln — 30 min für Jets, 45 min für Props (bei 1 500 ft ISA).</li>
+      <li>NOTAM-Gültigkeit überschätzen — NOTAMs sind zeitbegrenzt, AIP ist dauerhaft.</li>
+      <li>ETA-Meldepflicht vergessen — ab 3 Minuten Abweichung muss ATC informiert werden.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

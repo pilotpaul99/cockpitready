@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operational Procedures (070) — Cockpitready</title>
+  <meta name="description" content="ATPL Operational Procedures 070 — SOPs, Emergency Procedures, ICAO Phraseology, Special Operations. Deutsch & Englisch." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout.danger { border-color: #ef4444; background: #fef2f2; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout.danger .callout-label { color: #dc2626; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    .phrase-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 14px; line-height: 2; }
+    .phrase-box .phrase-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .phrase-box .comment { color: rgba(255,255,255,0.4); font-size: 12px; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / Operational Procedures 070</div>
+  <h1><span class="code">070 ·</span> Operational Procedures</h1>
+  <p class="lead">Operational Procedures verbindet alle anderen Subjects — es regelt wie Flüge tatsächlich durchgeführt werden, von der Planung bis zum Abschluss. Wer die Zusammenhänge kennt, lernt auch die anderen Fächer besser.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">070</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~50</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 3 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#flugvorbereitung">Flugvorbereitung</a>
+    <a href="#minima">Minima & Wettergrenzen</a>
+    <a href="#notfall">Notfallverfahren</a>
+    <a href="#signale">Signale & Phraseologie</a>
+    <a href="#spezial">Spezialoperationen</a>
+    <a href="#gefahr">Gefahrgut</a>
+    <a href="#sicherheit">Sicherheit am Boden</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 070 00 00 00</span>
+    <p>Operational Procedures ist das Subject, das die tägliche Praxis des Flugbetriebs beschreibt. Es überschneidet sich stark mit Air Law (Regeln) und Performance (Limits) — lerne es als das verbindende Element.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Viele Fragen testen, ob du weißt wer für was zuständig ist — PIC, Operator, Behörde. Die Hierarchie der Verantwortung ist ein Kernthema.</p>
+    </div>
+
+    <h2 id="flugvorbereitung">Flugvorbereitung</h2>
+    <span class="lo-tag">LO 070 01 01 00</span>
+    <p>Der <strong>Pilot in Command (PIC)</strong> ist für die sichere Durchführung des Fluges verantwortlich — und damit auch für die vollständige Flugvorbereitung.</p>
+
+    <h3>Pflichten des PIC vor dem Flug</h3>
+    <ul>
+      <li>Flugplan einreichen (wenn erforderlich).</li>
+      <li>Wetterminima überprüfen für Abflug, Route und Ziel.</li>
+      <li>NOTAMs für alle relevanten Flugplätze und Strecken prüfen.</li>
+      <li>Treibstoffplanung: Trip Fuel + Reserve + Alternate + Extra.</li>
+      <li>Mass & Balance berechnen und innerhalb der Limits bestätigen.</li>
+      <li>Performance-Check: Start und Landung innerhalb verfügbarer Distanzen.</li>
+    </ul>
+
+    <div class="callout tip">
+      <span class="callout-label">Treibstoffhierarchie</span>
+      <p><strong>Trip Fuel</strong> (Strecke) + <strong>Contingency Fuel</strong> (5% oder min. 5 min) + <strong>Alternate Fuel</strong> (zum Ausweichflugplatz) + <strong>Final Reserve</strong> (45 min Props / 30 min Jets) + <strong>Additional</strong> (nach Ermessen) = <strong>Minimum Take-Off Fuel</strong>. Dazu Taxi Fuel für Block Fuel.</p>
+    </div>
+
+    <h3>Ausweichflugplatz (Alternate)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Typ</th><th>Wann erforderlich</th></tr>
+        <tr><td><strong>Take-Off Alternate</strong></td><td>Wenn Abflugflugplatz unter Minima oder kein geeigneter Flugplatz in 1h Flugzeit (OEI)</td></tr>
+        <tr><td><strong>En-Route Alternate</strong></td><td>Für ETOPS oder Langstrecken über unwegsamem Gelände</td></tr>
+        <tr><td><strong>Destination Alternate</strong></td><td>Wenn Zielwetter unsicher — standardmäßig 1 Alternate, unter bestimmten Bedingungen 2</td></tr>
+      </table>
+    </div>
+
+    <h2 id="minima">Minima &amp; Wettergrenzen</h2>
+    <span class="lo-tag">LO 070 02 01 00</span>
+    <p>Wettergrenzen definieren die Mindestbedingungen für den Flugbetrieb. Sie gelten für Start, Anflug und Landung separat.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Begriff</th><th>Definition</th></tr>
+        <tr><td><strong>DH</strong> (Decision Height)</td><td>Höhe über Touchdown in der ILS-Anflug — Entscheidung: landen oder durchstarten. Gemessen mit Radio-Altimeter.</td></tr>
+        <tr><td><strong>DA</strong> (Decision Altitude)</td><td>Wie DH, aber bezogen auf MSL (barometrisch). Für Non-Precision Approaches.</td></tr>
+        <tr><td><strong>MDA</strong> (Minimum Descent Altitude)</td><td>Tiefste Höhe im Non-Precision Approach ohne Bodensicht — dort bleiben bis Piste sichtbar oder Missed Approach.</td></tr>
+        <tr><td><strong>RVR</strong> (Runway Visual Range)</td><td>Sichtweite entlang der Piste — gemessen durch Transmissometer. Wichtiger als allgemeine Sichtweite für Starts und Landungen.</td></tr>
+        <tr><td><strong>CAT I</strong></td><td>DH ≥ 200 ft, RVR ≥ 550 m</td></tr>
+        <tr><td><strong>CAT II</strong></td><td>DH 100–200 ft, RVR ≥ 350 m</td></tr>
+        <tr><td><strong>CAT IIIA</strong></td><td>DH &lt;100 ft, RVR ≥ 200 m</td></tr>
+        <tr><td><strong>CAT IIIB</strong></td><td>DH &lt;50 ft, RVR 50–200 m</td></tr>
+        <tr><td><strong>CAT IIIC</strong></td><td>Kein DH, kein RVR Minimum (theoretisch — praktisch nicht operationell)</td></tr>
+      </table>
+    </div>
+
+    <h2 id="notfall">Notfallverfahren</h2>
+    <span class="lo-tag">LO 070 03 01 00</span>
+    <p>Notfallverfahren folgen einer klaren Priorität — Abweichen von dieser Reihenfolge ist eine häufige Fehlerquelle.</p>
+
+    <div class="callout danger">
+      <span class="callout-label">Priorität im Notfall</span>
+      <p><strong>1. Aviate</strong> — Flugzeug fliegen, Kontrolle behalten.<br>
+      <strong>2. Navigate</strong> — Kurs und Position klären.<br>
+      <strong>3. Communicate</strong> — ATC informieren.<br>
+      Nie in umgekehrter Reihenfolge.</p>
+    </div>
+
+    <h3>Notfallstufen und Phraseologie</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Stufe</th><th>Keyword</th><th>Situation</th><th>Frequenz</th></tr>
+        <tr><td><strong>Distress</strong></td><td>MAYDAY MAYDAY MAYDAY</td><td>Unmittelbare ernste Gefahr — Triebwerksfeuer, Druckabfall, Strukturversagen</td><td>121.5 MHz (Notfrequenz) oder aktuelle ATC-Frequenz</td></tr>
+        <tr><td><strong>Urgency</strong></td><td>PAN PAN PAN PAN PAN PAN</td><td>Dringende Situation ohne unmittelbare Gefahr — medizinischer Notfall, Treibstoffmangel</td><td>Aktuelle ATC-Frequenz</td></tr>
+      </table>
+    </div>
+
+    <div class="phrase-box">
+      <span class="phrase-label">MAYDAY-Beispielruf (Muster)</span>
+      MAYDAY MAYDAY MAYDAY<br>
+      Wien Radar, Austrian 123<br>
+      <span class="comment">// Wer du bist</span>
+      Triebwerksausfall rechts, 2 POB, FL180<br>
+      <span class="comment">// Was passiert, Besatzung, Höhe</span>
+      Position 30 NM östlich Wien, Heading 270<br>
+      <span class="comment">// Position und Kurs</span>
+      Declaring emergency, request priority landing Vienna
+      <span class="comment">// Was du brauchst</span>
+    </div>
+
+    <h3>Transponder-Codes</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Code</th><th>Bedeutung</th></tr>
+        <tr><td><strong>7700</strong></td><td>General Emergency</td></tr>
+        <tr><td><strong>7600</strong></td><td>Radio Failure (Lost Comms)</td></tr>
+        <tr><td><strong>7500</strong></td><td>Unlawful Interference (Hijacking)</td></tr>
+        <tr><td><strong>2000</strong></td><td>No ATC Clearance (unkontrollierter Luftraum)</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Merkhilfe Transponder</span>
+      <p><strong>75 = Sticks Up</strong> (Hijack), <strong>76 = Radio Gone</strong>, <strong>77 = Going to Heaven</strong> (Emergency). Klassische ATPL-Merkhilfe.</p>
+    </div>
+
+    <h2 id="signale">Signale &amp; Phraseologie</h2>
+    <span class="lo-tag">LO 070 04 01 00</span>
+
+    <h3>Lichtzeichen vom Tower</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Signal</th><th>Im Flug</th><th>Am Boden</th></tr>
+        <tr><td>Grünes Dauerlicht</td><td>Zur Landung freigegeben</td><td>Zum Start freigegeben</td></tr>
+        <tr><td>Rotes Dauerlicht</td><td>Platz frei machen — anderer Verkehr hat Vorrang</td><td>Stehen bleiben</td></tr>
+        <tr><td>Grünes Blinklicht</td><td>Rückkehr zur Landung (noch nicht freigegeben)</td><td>Zum Rollen freigegeben</td></tr>
+        <tr><td>Rotes Blinklicht</td><td>Platz nicht benutzen</td><td>Rollbahn frei machen</td></tr>
+        <tr><td>Weißes Blinklicht</td><td>Landet auf diesem Flugplatz — weist zur Startbahn</td><td>Zurück zum Ausgangspunkt</td></tr>
+        <tr><td>Rotes und grünes Blinklicht alternierend</td><td colspan="2">Vorsicht — gefährliche Situation</td></tr>
+      </table>
+    </div>
+
+    <h2 id="spezial">Spezialoperationen</h2>
+    <span class="lo-tag">LO 070 05 01 00</span>
+
+    <h3>RVSM — Reduced Vertical Separation Minima</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Im RVSM-Luftraum (FL290–FL410) beträgt die vertikale Staffelung nur <strong>1 000 ft</strong> statt 2 000 ft. Erfordert zugelassene Flugzeugausrüstung und Piloten-Zulassung.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>RVSM airspace (FL290–FL410): vertical separation reduced to <strong>1 000 ft</strong>. Requires approved equipment (accurate altimetry) and operator/crew approval. Loss of RVSM approval → report to ATC immediately.</p>
+      </div>
+    </div>
+
+    <h3>ETOPS — Extended Operations</h3>
+    <p>ETOPS erlaubt Zweimotoren-Airlinern, weiter vom Ausweichflugplatz entfernt zu fliegen als die klassische 60-Minuten-Regel. ETOPS 120 = max. 120 Minuten (OEI) vom nächsten geeigneten Flugplatz entfernt.</p>
+
+    <h3>Low Visibility Operations (LVO)</h3>
+    <p>Für CAT II/III Betrieb gelten besondere Anforderungen: spezielle Flugzeugausrüstung, besondere Qualifikation der Besatzung, spezielle Bodenausrüstung am Flugplatz, Low Visibility Procedures (LVP) in Kraft.</p>
+
+    <h2 id="gefahr">Gefahrgut</h2>
+    <span class="lo-tag">LO 070 06 01 00</span>
+    <p>Der Transport von Gefahrgut in Luftfahrzeugen ist durch ICAO Technical Instructions und IATA Dangerous Goods Regulations streng geregelt.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Klasse</th><th>Typ</th><th>Beispiele</th></tr>
+        <tr><td><strong>1</strong></td><td>Explosives</td><td>Munition, Feuerwerkskörper</td></tr>
+        <tr><td><strong>2</strong></td><td>Gases</td><td>Sauerstoff, Aerosole, Treibgas</td></tr>
+        <tr><td><strong>3</strong></td><td>Flammable Liquids</strong></td><td>Benzin, Alkohol</td></tr>
+        <tr><td><strong>4</strong></td><td>Flammable Solids</td><td>Streichhölzer, Lithium-Metall</td></tr>
+        <tr><td><strong>6</strong></td><td>Toxic &amp; Infectious</td><td>Pestizide, medizinische Proben</td></tr>
+        <tr><td><strong>7</strong></td><td>Radioactive</td><td>Medizinische Isotope</td></tr>
+        <tr><td><strong>8</strong></td><td>Corrosives</td><td>Batteriesäure, Reinigungsmittel</td></tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Lithium-Batterien</span>
+      <p>Lithium-Batterien sind prüfungsrelevant: Im Handgepäck erlaubt (bis bestimmte Wattstunden), im aufgegebenem Gepäck eingeschränkt, lose Batterien immer im Handgepäck. Beschädigte oder defekte Lithiumbatterien dürfen nicht mitgeführt werden.</p>
+    </div>
+
+    <h2 id="sicherheit">Sicherheit am Boden</h2>
+    <span class="lo-tag">LO 070 07 01 00</span>
+
+    <h3>Runway Incursion</h3>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Runway Incursion:</strong> Unbefugtes Eindringen in den geschützten Bereich einer aktiven Piste durch ein Flugzeug, Fahrzeug oder Person. Eine der häufigsten Unfallursachen am Boden.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Runway Incursion:</strong> Any occurrence at an aerodrome involving the incorrect presence of an aircraft, vehicle or person on the protected area of a surface designated for landing and take-off.</p>
+      </div>
+    </div>
+
+    <h3>FOD — Foreign Object Debris</h3>
+    <p>Fremdkörper auf Rollbahnen und Pisten können Triebwerke beschädigen oder Reifen zum Platzen bringen. Jeder am Flugplatz ist verpflichtet, FOD zu melden und zu entfernen.</p>
+
+    <h2 id="fehler">Typische Fehler in Operational Procedures</h2>
+    <ul>
+      <li>Treibstoff-Reihenfolge verwechseln — Final Reserve ist nie anrührbar, Contingency kommt vor Alternate.</li>
+      <li>DH und MDA verwechseln — DH für Precision Approaches (ILS), MDA für Non-Precision.</li>
+      <li>Transponder-Codes falsch zuordnen — 7500/7600/7700 auswendig lernen.</li>
+      <li>MAYDAY und PAN PAN Priorität falsch — MAYDAY = unmittelbare Gefahr, PAN = dringlich aber nicht unmittelbar.</li>
+      <li>RVSM-Höhenbänder falsch — FL290 bis FL410, nicht darunter.</li>
+      <li>Lichtzeichen am Boden und im Flug vertauschen — grünes Dauerlicht bedeutet je nach Kontext Unterschiedliches.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Vollständige LO-Abdeckung und Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Navigation (061) — Cockpitready</title>
+  <meta name="description" content="ATPL General Navigation 061 — vollständiges Lernmodul. Alle wichtigen Konzepte erklärt auf Deutsch & Englisch. Für die ATPL-Theorieprüfung." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .formula-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 15px; }
+    .formula-box .formula-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / General Navigation 061</div>
+  <h1><span class="code">061 ·</span> General Navigation</h1>
+  <p class="lead">Navigation ist das mathematisch anspruchsvollste ATPL-Subject — und gleichzeitig eines der logischsten. Wer die Formeln versteht statt sie auswendig zu lernen, hat einen klaren Vorteil.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">061</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~60</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 4 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#erde">Die Erde als Navigationsgrundlage</a>
+    <a href="#magnetismus">Magnetismus & Missweisung</a>
+    <a href="#kurse">Kurse & Richtungen</a>
+    <a href="#wind">Wind & Drift</a>
+    <a href="#geschwindigkeit">Geschwindigkeiten</a>
+    <a href="#zeit">Zeit & Zeitberechnung</a>
+    <a href="#mercator">Kartenkunde</a>
+    <a href="#dr">Dead Reckoning</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 061 00 00 00</span>
+    <p>General Navigation ist das Subject, das die meisten Kandidaten unterschätzen. Es ist nicht schwierig — es ist komplex. Wer die Grundlagen (Erde, Magnetismus, Kurse, Wind) sauber versteht, kann die meisten Aufgaben logisch herleiten, ohne stur zu memorieren.</p>
+    <p>Dieses Modul folgt den EASA Learning Objectives für 061. Jede Formel wird zuerst erklärt, dann definiert — nicht umgekehrt.</p>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Navigation-Fragen sind oft Rechenaufgaben. Bringe immer einen zugelassenen Taschenrechner mit. Übe die Formeln bis sie sitzen — dann spare Prüfungszeit für die Interpretation der Ergebnisse.</p>
+    </div>
+
+    <h2 id="erde">Die Erde als Navigationsgrundlage</h2>
+    <span class="lo-tag">LO 061 01 01 00</span>
+    <p>Die Erde ist keine perfekte Kugel, sondern ein <strong>Geoid</strong> — an den Polen leicht abgeflacht. Für die Navigation vereinfachen wir auf eine Kugel mit einem mittleren Radius von ca. 6 371 km.</p>
+
+    <h3>Große Kreise und Loxodromen</h3>
+    <p>Das Verständnis dieser beiden Konzepte ist fundamental für alle Kartenfragen.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Großkreis:</strong> Kürzeste Verbindung zweier Punkte auf der Erdkugel. Die Schnittlinie einer durch den Erdmittelpunkt verlaufenden Ebene mit der Erdoberfläche. Kurs ändert sich ständig.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Great Circle:</strong> The shortest distance between two points on the surface of a sphere. Intersection of a plane through the centre of the Earth. Course constantly changes.</p>
+      </div>
+    </div>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Loxodrome (Rhumb Line):</strong> Linie, die alle Meridiane unter gleichem Winkel schneidet. Kurs bleibt konstant — daher praktisch für Navigation, aber längerer Weg als Großkreis.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Rhumb Line:</strong> A line crossing all meridians at the same angle. Constant course/heading throughout — practical for navigation but longer than a great circle route.</p>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Eselsbrücke</span>
+      <p><strong>Großkreis = Kürzester Weg, wechselnder Kurs.</strong> Loxodrome = Konstanter Kurs, längerer Weg. Merkregel: Wer "gerade" fliegt (konstanter Kurs), fliegt den längeren Weg.</p>
+    </div>
+
+    <h3>Breitengrade und Längengrade</h3>
+    <ul>
+      <li><strong>Breitengrad (Latitude):</strong> Abstand vom Äquator in Grad (0°–90° N/S). 1° Breitengrad = 60 NM.</li>
+      <li><strong>Längengrad (Longitude):</strong> Abstand vom Nullmeridian (Greenwich) in Grad (0°–180° E/W). 1° Längengrad variiert — am Äquator 60 NM, an den Polen 0 NM.</li>
+      <li><strong>1 Nautical Mile (NM):</strong> 1 Bogenminute auf einem Großkreis = 1 852 m.</li>
+    </ul>
+
+    <h2 id="magnetismus">Magnetismus & Missweisung</h2>
+    <span class="lo-tag">LO 061 02 01 00</span>
+    <p>Der magnetische Nordpol stimmt nicht mit dem geographischen Nordpol überein. Dieser Unterschied heißt <strong>Missweisung (Variation)</strong> und muss bei der Navigation berücksichtigt werden.</p>
+
+    <div class="formula-box">
+      <span class="formula-label">Grundformel Magnetismus</span>
+      True Heading (TH) ± Variation = Magnetic Heading (MH)<br>
+      Magnetic Heading (MH) ± Deviation = Compass Heading (CH)<br><br>
+      <span style="color:rgba(255,255,255,0.5); font-size:13px;">Variation East → subtract &nbsp;|&nbsp; Variation West → add</span>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Eselsbrücke</span>
+      <p><strong>TVMDC:</strong> True → Variation → Magnetic → Deviation → Compass. Oder: <em>"True Virgins Make Dull Companions"</em> — klassische ATPL-Merkhilfe für die Reihenfolge der Korrekturen.</p>
+    </div>
+
+    <h3>Variation vs. Deviation</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Begriff</th><th>Deutsch</th><th>Ursache</th><th>Darstellung</th></tr>
+        <tr><td><strong>Variation</strong></td><td>Missweisung</td><td>Unterschied geogr. / magn. Nordpol</td><td>Isogonen auf Karte (z. B. 3°W)</td></tr>
+        <tr><td><strong>Deviation</strong></td><td>Ablenkung</td><td>Magnetisches Material im Flugzeug</td><td>Deviationstabelle im Cockpit</td></tr>
+        <tr><td><strong>Magnetic Dip</strong></td><td>Inklination</td><td>Vertikale Komponente des Erdmagnetfeldes</td><td>Neigung der Kompassnadel</td></tr>
+      </table>
+    </div>
+
+    <h2 id="kurse">Kurse & Richtungen</h2>
+    <span class="lo-tag">LO 061 03 01 00</span>
+    <p>In der Navigation wird streng zwischen verschiedenen Kurs- und Richtungsbegriffen unterschieden. Verwechslungen kosten Punkte.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Begriff (EN)</th><th>Begriff (DE)</th><th>Definition</th></tr>
+        <tr><td><strong>True North (TN)</strong></td><td>Geographischer Nord</td><td>Richtung zum geographischen Nordpol</td></tr>
+        <tr><td><strong>Magnetic North (MN)</strong></td><td>Magnetischer Nord</td><td>Richtung zum magnetischen Nordpol</td></tr>
+        <tr><td><strong>True Track (TT)</strong></td><td>Rechtweisender Kurs</td><td>Kurs über Grund bezogen auf TN</td></tr>
+        <tr><td><strong>Magnetic Track (MT)</strong></td><td>Missweisender Kurs</td><td>Kurs über Grund bezogen auf MN</td></tr>
+        <tr><td><strong>True Heading (TH)</strong></td><td>Rechtweisender Steuerkurs</td><td>Richtung der Längsachse bezogen auf TN</td></tr>
+        <tr><td><strong>Magnetic Heading (MH)</strong></td><td>Missweisender Steuerkurs</td><td>Richtung der Längsachse bezogen auf MN</td></tr>
+        <tr><td><strong>Compass Heading (CH)</strong></td><td>Kompasskurs</td><td>Kursanzeige im Flugzeugkompass (MH ± Deviation)</td></tr>
+      </table>
+    </div>
+
+    <h2 id="wind">Wind & Drift</h2>
+    <span class="lo-tag">LO 061 04 01 00</span>
+    <p>Wind ist der entscheidende Faktor zwischen dem, wohin das Flugzeug zeigt (Heading) und wohin es tatsächlich fliegt (Track). Die Differenz heißt <strong>Drift</strong>.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Windrichtung</strong> ist immer die Richtung, <em>aus der</em> der Wind kommt. Ein Wind aus 270° kommt aus West.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Wind direction</strong> is always the direction <em>from which</em> the wind blows. Wind 270° is a westerly wind.</p>
+      </div>
+    </div>
+
+    <div class="formula-box">
+      <span class="formula-label">Wind Triangle — Grundformel</span>
+      Track + Drift = Heading &nbsp;(bei Windversatz)<br><br>
+      Groundspeed (GS) = TAS ± Windkomponente<br><br>
+      <span style="color:rgba(255,255,255,0.5); font-size:13px;">Headwind → GS kleiner als TAS &nbsp;|&nbsp; Tailwind → GS größer als TAS</span>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Häufiger Fehler</span>
+      <p>Windrichtung und Windkomponente verwechseln. Der Wind kommt <em>aus</em> seiner Richtung — ein 360°-Wind (Nordwind) drückt dich nach Süden. Skizziere immer das Wind-Triangle auf Papier bevor du rechnest.</p>
+    </div>
+
+    <h2 id="geschwindigkeit">Geschwindigkeiten</h2>
+    <span class="lo-tag">LO 061 05 01 00</span>
+    <p>Die Navigation kennt mehrere Geschwindigkeitsbegriffe die streng unterschieden werden müssen.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Abkürzung</th><th>Deutsch</th><th>Definition</th></tr>
+        <tr><td><strong>IAS</strong></td><td>Angezeigte Fluggeschwindigkeit</td><td>Anzeige des Fahrtmessers — unkorrekt für Positionsfehler und Kompressibilität</td></tr>
+        <tr><td><strong>CAS</strong></td><td>Kalibrierte Fluggeschwindigkeit</td><td>IAS korrigiert für Positionsfehler des Pitot-Rohres</td></tr>
+        <tr><td><strong>EAS</strong></td><td>Äquivalente Fluggeschwindigkeit</td><td>CAS korrigiert für Kompressibilitätsfehler (relevant ab ~300 kt / FL200)</td></tr>
+        <tr><td><strong>TAS</strong></td><td>Wahre Fluggeschwindigkeit</td><td>EAS korrigiert für Luftdichte — tatsächliche Geschwindigkeit durch die Luft</td></tr>
+        <tr><td><strong>GS</strong></td><td>Grundgeschwindigkeit</td><td>TAS ± Wind — tatsächliche Geschwindigkeit über Grund</td></tr>
+        <tr><td><strong>Mach</strong></td><td>Machzahl</td><td>TAS / Schallgeschwindigkeit in der jeweiligen Luftschicht</td></tr>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">Merkreihenfolge</span>
+      <p><strong>IAS → CAS → EAS → TAS → GS.</strong> Jede Korrektur macht die Zahl etwas genauer. TAS ist immer größer als IAS in Reiseflughöhe (dünnere Luft).</p>
+    </div>
+
+    <h2 id="zeit">Zeit & Zeitberechnung</h2>
+    <span class="lo-tag">LO 061 06 01 00</span>
+    <p>Zeitberechnungen sind häufige Rechenaufgaben in der Prüfung. Grundlage ist die koordinierte Weltzeit <strong>UTC</strong>.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>UTC</strong> (Coordinated Universal Time) ist die Referenzzeit für die Luftfahrt. Lokale Zeit = UTC ± Zonenoffset. Österreich: UTC+1 (Winter), UTC+2 (Sommer/CEST).</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>UTC</strong> is the reference time for aviation worldwide. All flight plans, ATC, and NOTAMs use UTC. Local time = UTC ± zone offset.</p>
+      </div>
+    </div>
+
+    <div class="formula-box">
+      <span class="formula-label">Zeitberechnungen</span>
+      ETA = ATD + Flight Time (in UTC)<br><br>
+      Flight Time = Distance / Groundspeed<br><br>
+      <span style="color:rgba(255,255,255,0.5); font-size:13px;">Immer zuerst auf UTC umrechnen, dann rechnen</span>
+    </div>
+
+    <h2 id="mercator">Kartenkunde</h2>
+    <span class="lo-tag">LO 061 07 01 00</span>
+    <p>Karten verzerren immer — keine Projektion kann eine Kugel verzerrungsfrei auf einer Ebene darstellen. Für die Prüfung sind drei Projektionen relevant.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Projektion</th><th>Eigenschaft</th><th>Verwendung</th><th>Großkreis dargestellt als</th></tr>
+        <tr><td><strong>Mercator</strong></td><td>Winkelgetreu (konform), Loxodrome = gerade Linie</td><td>Seekarten, Äquatorgebiet</td><td>Gekrümmte Linie</td></tr>
+        <tr><td><strong>Lambert Conformal</strong></td><td>Winkelgetreu, Großkreis ≈ gerade Linie</td><td>ICAO-Luftfahrtkarten, mittlere Breiten</td><td>Nahezu gerade Linie</td></tr>
+        <tr><td><strong>Polar Stereographic</strong></td><td>Winkelgetreu, Großkreis = gerade Linie (am Pol)</td><td>Polargebiete, Polflüge</td><td>Gerade Linie</td></tr>
+      </table>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Prüfungsrelevant</span>
+      <p>Die Lambert-Projektion ist die meistgefragte. Merke: Auf Lambert-Karten konvergieren die Meridiane — der Kurs ändert sich leicht entlang einer Route. Der mittlere Kurs gilt für die Routenplanung.</p>
+    </div>
+
+    <h2 id="dr">Dead Reckoning</h2>
+    <span class="lo-tag">LO 061 08 01 00</span>
+    <p><strong>Dead Reckoning (DR)</strong> ist die Positionsbestimmung durch Berechnung — ausgehend von einer bekannten Position, mit Kurs, Geschwindigkeit und Zeit. Keine externe Referenz nötig.</p>
+
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>DR-Position = Letzte bekannte Position + (Steuerkurs × TAS × Zeit) ± Windverschiebung. Der Fehler akkumuliert sich mit der Zeit.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>DR position = Last known position + (heading × TAS × time) ± wind displacement. Errors accumulate over time — the longer since the last fix, the less reliable the DR position.</p>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-label">1-in-60-Regel</span>
+      <p>Klassische Navigationsregel: Bei 1° Kursfehler beträgt die seitliche Abweichung nach 60 NM genau 1 NM. Nach 120 NM = 2 NM. Formel: <strong>Abweichung (NM) = Kursfeher (°) × Distanz (NM) / 60</strong></p>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in Navigation</h2>
+    <ul>
+      <li>Variation falsch angewendet (East subtract, West add — nicht umgekehrt).</li>
+      <li>IAS mit TAS verwechseln — immer klären welche Geschwindigkeit gefragt ist.</li>
+      <li>Windrichtung als "wohin" statt "woher" interpretiert.</li>
+      <li>Großkreis und Loxodrome vertauscht — Großkreis ist immer der kürzere Weg.</li>
+      <li>UTC-Umrechnung vergessen — alle Prüfungszeiten in UTC angeben.</li>
+      <li>Auf Lambert-Karten den konvergierenden Meridian ignorieren.</li>
+    </ul>
+
+    <div class="callout" style="border-color:#1d1d1f; background:var(--gray-1); margin-top:3rem;">
+      <span class="callout-label" style="color:var(--black);">Hinweis</span>
+      <p>Dieses Modul deckt die zentralen Navigation-Konzepte ab. Vollständige LO-Abdeckung, Übungsaufgaben und der Quiz-Modus folgen mit dem nächsten Update. <a href="index.html#faecher" style="color:var(--accent);">Zurück zur Fächerübersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

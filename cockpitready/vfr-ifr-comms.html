@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VFR/IFR Communications (091) — Cockpitready</title>
+  <meta name="description" content="ATPL VFR/IFR Communications 091 — ATC Services, Anflugverfahren, Holding, ATIS, Missed Approach. Deutsch & Englisch." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; height: 52px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px,5vw); }
+    .nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--gray-3); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 20px; font-weight: 500 !important; font-size: 13px !important; }
+    .mod-hero { padding: clamp(48px,8vw,96px) max(24px,5vw) clamp(40px,6vw,72px); background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+    .crumbs { font-size: 13px; color: var(--gray-3); margin-bottom: 20px; }
+    .crumbs a { color: var(--accent); }
+    .mod-hero h1 { font-size: clamp(32px,5vw,56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; }
+    .mod-hero h1 .code { color: var(--accent); }
+    .mod-hero .lead { font-size: 18px; font-weight: 300; color: var(--gray-3); max-width: 60ch; margin-top: 16px; line-height: 1.55; }
+    .mod-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--gray-2); }
+    .mod-meta .m .l { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-3); display: block; }
+    .mod-meta .m .v { font-size: 15px; font-weight: 500; }
+    .mod-body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem,5vw,5rem); max-width: 1100px; margin: 0 auto; padding: clamp(48px,6vw,80px) max(24px,5vw); align-items: start; }
+    .toc { position: sticky; top: 68px; }
+    .toc .toc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-3); margin-bottom: 12px; display: block; }
+    .toc a { display: block; font-size: 13px; color: var(--gray-3); padding: 5px 0 5px 12px; border-left: 2px solid var(--gray-2); transition: all 0.15s; line-height: 1.4; }
+    .toc a:hover, .toc a.active { color: var(--black); border-left-color: var(--accent); }
+    .lesson { min-width: 0; }
+    .lesson h2 { font-size: clamp(24px,3.5vw,34px); font-weight: 600; letter-spacing: -0.025em; margin: 3rem 0 1rem; scroll-margin-top: 72px; padding-bottom: .6rem; border-bottom: 1px solid var(--gray-2); }
+    .lesson h2:first-child { margin-top: 0; }
+    .lesson h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin: 2rem 0 .7rem; }
+    .lesson p { font-size: 16px; font-weight: 300; color: var(--gray-4); margin-bottom: 1rem; max-width: 68ch; line-height: 1.7; }
+    .lesson strong { font-weight: 500; color: var(--black); }
+    .lesson ul { margin: 0 0 1.2rem 0; }
+    .lesson ul li { font-size: 16px; font-weight: 300; color: var(--gray-4); padding: 4px 0 4px 20px; position: relative; line-height: 1.6; }
+    .lesson ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 6px; }
+    .lo-tag { display: inline-block; font-size: 11px; font-weight: 500; font-family: 'SF Mono', ui-monospace, monospace; background: var(--gray-1); border: 1px solid var(--gray-2); padding: 3px 8px; border-radius: 6px; color: var(--gray-3); margin-bottom: 12px; letter-spacing: 0.04em; }
+    .callout { border-left: 3px solid var(--accent); background: #f0f7ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .callout.warn { border-color: #f59e0b; background: #fffbeb; }
+    .callout.tip { border-color: #10b981; background: #f0fdf4; }
+    .callout .callout-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; display: block; }
+    .callout.warn .callout-label { color: #d97706; }
+    .callout.tip .callout-label { color: #059669; }
+    .callout p { font-size: 15px; margin: 0; color: var(--gray-4); max-width: none; }
+    .bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-2); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; border: 1px solid var(--gray-2); }
+    .bilingual > div { background: var(--white); padding: 16px 20px; }
+    .bilingual .lang { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: block; }
+    .bilingual p { font-size: 15px; margin: 0; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--gray-2); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--gray-1); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-3); border-bottom: 1px solid var(--gray-2); }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--gray-2); color: var(--gray-4); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    .phrase-box { background: var(--black); color: var(--white); border-radius: 12px; padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', ui-monospace, monospace; font-size: 13px; line-height: 2; }
+    .phrase-box .phrase-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 10px; display: block; }
+    .phrase-box .cmt { color: rgba(255,255,255,0.35); }
+    footer { padding: 32px max(24px,5vw); border-top: 1px solid var(--gray-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    footer .brand { font-size: 15px; font-weight: 600; }
+    footer p { font-size: 13px; color: var(--gray-3); }
+    @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Cockpitready</a>
+  <div class="nav-links">
+    <a href="index.html#faecher">Fächer</a>
+    <a href="index.html#start" class="nav-cta">Alle Fächer</a>
+  </div>
+</nav>
+<div class="mod-hero">
+  <div class="crumbs"><a href="index.html">Start</a> / <a href="index.html#faecher">Fächer</a> / VFR/IFR Communications 091</div>
+  <h1><span class="code">091 ·</span> VFR / IFR Communications</h1>
+  <p class="lead">091 vertieft die Kommunikation in konkreten Flugphasen — vom Abflug bis zum Anflug, im Holding, beim Go-Around. Das Subject verbindet Phraseologie mit dem Verständnis der ATC-Services.</p>
+  <div class="mod-meta">
+    <div class="m"><span class="l">Subject-Code</span><span class="v">091</span></div>
+    <div class="m"><span class="l">Konzepte</span><span class="v">~40</span></div>
+    <div class="m"><span class="l">Lernzeit</span><span class="v">≈ 2 Wochen</span></div>
+    <div class="m"><span class="l">Sprache</span><span class="v">DE + EN</span></div>
+    <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
+  </div>
+</div>
+<div class="mod-body">
+  <aside class="toc">
+    <span class="toc-label">Inhalt</span>
+    <a href="#intro" class="active">Einführung</a>
+    <a href="#atc-services">ATC Services</a>
+    <a href="#ablauf">IFR Flugablauf</a>
+    <a href="#atis">ATIS</a>
+    <a href="#ifr-anflug">IFR Anflug</a>
+    <a href="#holding">Holding</a>
+    <a href="#go-around">Missed Approach</a>
+    <a href="#vfr">VFR-spezifisch</a>
+    <a href="#fehler">Typische Fehler</a>
+  </aside>
+  <article class="lesson">
+
+    <h2 id="intro">Einführung</h2>
+    <span class="lo-tag">LO 091 00 00 00</span>
+    <p>091 ist die angewandte Erweiterung von 090 — weniger Theorie, mehr konkrete Verfahren. Prüfungsfragen testen den genauen Ablauf einer Kommunikationssequenz in einer bestimmten Flugphase. Der Schlüssel: den typischen IFR-Flugablauf von Clearance bis Gate auswendig kennen.</p>
+    <div class="callout">
+      <span class="callout-label">Prüfungsstrategie</span>
+      <p>Lerne den Kommunikationsablauf eines IFR-Fluges phasenweise: Clearance → Taxi → Start → Departure → Cruise → Descent → Approach → Landung. Jede Phase hat eine andere Frequenz und eine andere ATC-Einheit.</p>
+    </div>
+
+    <h2 id="atc-services">ATC Services</h2>
+    <span class="lo-tag">LO 091 01 01 00</span>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Service</th><th>Aufgabe</th><th>Verantwortung</th></tr>
+        <tr><td><strong>Area Control (ACC)</strong></td><td>En-Route-Kontrolle im kontrollierten Luftraum</td><td>Separation IFR/IFR in Reiseflughöhe</td></tr>
+        <tr><td><strong>Approach Control (APP)</strong></td><td>An- und Abflugkontrolle</td><td>Sequenzierung im TMA</td></tr>
+        <tr><td><strong>Aerodrome Control (TWR)</strong></td><td>Piste, Rollbahnen, Platzrunde</td><td>Verkehr auf und um den Flugplatz</td></tr>
+        <tr><td><strong>FIS</strong></td><td>Fluginformationsdienst — unkontrollierter Luftraum</td><td>Information, keine Freigaben</td></tr>
+      </table>
+    </div>
+    <div class="callout tip">
+      <span class="callout-label">FIS ist kein ATC</span>
+      <p>FIS erteilt keine Freigaben — er gibt Informationen. Im unkontrollierten Luftraum (Klasse G) bleibt der Pilot selbst für die Separation verantwortlich. "Traffic information" von FIS ist ein Hinweis, keine Anweisung.</p>
+    </div>
+
+    <h2 id="ablauf">Typischer IFR-Flugablauf</h2>
+    <span class="lo-tag">LO 091 02 01 00</span>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Phase</th><th>ATC-Einheit</th><th>Was passiert</th></tr>
+        <tr><td>Clearance</td><td>Delivery</td><td>IFR-Freigabe, Squawk, SID</td></tr>
+        <tr><td>Taxi</td><td>Ground</td><td>Taxifreigabe zur Piste</td></tr>
+        <tr><td>Start</td><td>Tower (TWR)</td><td>Startfreigabe</td></tr>
+        <tr><td>Abflug</td><td>Departure (DEP)</td><td>Climb-Freigaben, SID-Überwachung</td></tr>
+        <tr><td>Reiseflug</td><td>Area Control (ACC)</td><td>Level changes, Route-Freigaben</td></tr>
+        <tr><td>Descent</td><td>Approach (APP)</td><td>Descent-Freigaben, Sequenzierung</td></tr>
+        <tr><td>Anflug</td><td>Approach / Radar</td><td>ILS-Freigabe, Vectors</td></tr>
+        <tr><td>Landung</td><td>Tower (TWR)</td><td>Landefreigabe</td></tr>
+        <tr><td>Rollen</td><td>Ground</td><td>Taxi zum Gate</td></tr>
+      </table>
+    </div>
+
+    <h2 id="atis">ATIS</h2>
+    <span class="lo-tag">LO 091 03 01 00</span>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>ATIS sendet aktuelle Flugplatzinformationen automatisch auf dedizierter Frequenz. Stündlich oder bei wesentlicher Änderung aktualisiert — jede Version erhält Buchstaben (Alpha, Bravo...). Pilot bestätigt beim Erstkontakt: "Information Bravo received."</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>ATIS broadcasts current aerodrome weather and ops info. Updated hourly or on significant change. Phonetic letter designator per update. Pilot confirms on first ATC contact: "Information [letter] received." Failure to confirm = ATC will ask.</p>
+      </div>
+    </div>
+    <h3>ATIS enthält typischerweise</h3>
+    <ul>
+      <li>Flugplatz-Kennung und ATIS-Buchstabe · Zeitstempel UTC</li>
+      <li>Aktive Piste(n) · Anflugverfahren</li>
+      <li>Wind (Richtung / Stärke / Böen) · Sichtweite · Wetter</li>
+      <li>Wolken und Ceiling · Temperatur / Taupunkt · QNH</li>
+    </ul>
+
+    <h2 id="ifr-anflug">IFR Anflug-Kommunikation</h2>
+    <span class="lo-tag">LO 091 04 01 00</span>
+    <div class="phrase-box">
+      <span class="phrase-label">Muster — ILS Anflug vollständig</span>
+      APP: "Austrian 123, descend 3000 ft QNH 1018,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector ILS runway 29, speed 180 kt."<br>
+      P:   "Descend 3000 QNH 1018, vectoring ILS 29, 180 kt, AUA123."<br><br>
+      APP: "Austrian 123, turn left heading 260,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cleared ILS approach runway 29."<br>
+      P:   "Left 260, cleared ILS 29, AUA123."<br><br>
+      APP: "Austrian 123, contact Wien Tower 118.4."<br>
+      P:   "118.4, AUA123."<br><br>
+      TWR: "Austrian 123, runway 29, cleared to land,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind 270 degrees 12 knots."<br>
+      P:   "Cleared to land runway 29, AUA123."
+    </div>
+
+    <h2 id="holding">Holding</h2>
+    <span class="lo-tag">LO 091 05 01 00</span>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p><strong>Holding-Muster:</strong> Rechtsrunden-Rechteck über dem Fix. Standard: 1-Minuten-Schenkel (ab FL140: 1.5 min). Eintritt: direkt, parallel oder versetzt — abhängig vom Anflugkurs relativ zur Holding-Achse.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p><strong>Standard hold:</strong> right-hand turns, 1-min legs (1.5 min above FL140). Entry: direct entry (within 70° of holding course), parallel entry (within 110° opposite side), offset entry (remaining sector). ATC specifies inbound track and expect-approach time.</p>
+      </div>
+    </div>
+    <div class="phrase-box">
+      <span class="phrase-label">Muster — Holding-Freigabe</span>
+      ATC: "Austrian 123, hold at TULPI,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inbound track 090, right-hand turns,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect approach at 1435."<br>
+      P:   "Hold TULPI, inbound 090, right turns,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;expect approach 1435, AUA123."
+    </div>
+
+    <h2 id="go-around">Missed Approach / Go-Around</h2>
+    <span class="lo-tag">LO 091 06 01 00</span>
+    <div class="bilingual">
+      <div>
+        <span class="lang">Deutsch</span>
+        <p>Go-Around = Entscheidung an DH/MDA oder ATC-Anweisung. Sofort: Vollschub, positiver Steigflug, veröffentlichte Missed Approach Procedure, ATC informieren.</p>
+      </div>
+      <div>
+        <span class="lang">English (exam)</span>
+        <p>Missed approach: initiated at DH/MDA or per ATC instruction. Immediately fly published MAP procedure. Report to ATC. ATC will then give further instructions — vectors for new approach or hold.</p>
+      </div>
+    </div>
+    <div class="phrase-box">
+      <span class="phrase-label">Muster — Go-Around</span>
+      P:   "Austrian 123, going around."<br><br>
+      TWR: "Austrian 123, roger, climb 3000 ft,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fly runway heading, contact Approach 119.4."<br>
+      P:   "Climbing 3000, runway heading, 119.4, AUA123."
+    </div>
+
+    <h2 id="vfr">VFR-spezifische Kommunikation</h2>
+    <span class="lo-tag">LO 091 07 01 00</span>
+    <div class="phrase-box">
+      <span class="phrase-label">Muster — VFR Einflug Kontrollzone</span>
+      P:   "Wien Tower, OE-LVE, Cessna 172, 2 POB, VFR,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;position Klosterneuburg, altitude 2500 ft QNH 1018,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;request entry controlled zone, destination Schwechat."<br><br>
+      TWR: "OE-LVE, enter CTR not above 2000 ft,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;squawk 0421, report overhead Aspern."<br>
+      P:   "Enter CTR not above 2000, squawking 0421,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;will report Aspern, OE-LVE."
+    </div>
+    <div class="callout warn">
+      <span class="callout-label">CTR ohne Freigabe</span>
+      <p>Den kontrollierten Luftraum (CTR, TMA, CTA) niemals ohne Freigabe betreten — auch nicht wenn die Freigabe "nur kurz" fehlt. Im Zweifel außerhalb bleiben und warten.</p>
+    </div>
+
+    <h2 id="fehler">Typische Fehler in VFR/IFR Communications</h2>
+    <ul>
+      <li>ATIS-Bestätigung vergessen — immer "Information X received" beim Erstkontakt.</li>
+      <li>Holding-Eintritt falsch berechnet — Eintrittsmethode hängt vom Anflugkurs ab.</li>
+      <li>Veröffentlichte MAP nicht geflogen — immer MAP fliegen außer ATC weist anders an.</li>
+      <li>FIS mit ATC verwechseln — FIS gibt keine Freigaben.</li>
+      <li>CTR ohne Freigabe betreten — immer Clearance einholen.</li>
+      <li>Frequenzwechsel ohne Bestätigung — immer readback der neuen Frequenz.</li>
+    </ul>
+
+    <div class="callout" style="border-color:var(--accent); background:#f0f7ff; margin-top:3rem;">
+      <span class="callout-label">Alle 14 Fächer abgeschlossen ✈</span>
+      <p>Du hast alle ATPL-Subjects durchgearbeitet. <a href="index.html#faecher" style="color:var(--accent); font-weight:500;">Zurück zur Übersicht →</a></p>
+    </div>
+
+  </article>
+</div>
+<footer>
+  <span class="brand">Cockpitready</span>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
