@@ -6,9 +6,6 @@
   <title>Impressum — Cockpitready</title>
   <meta name="description" content="Impressum und Offenlegung gemäß § 5 ECG und § 25 MedienG." />
   <meta name="robots" content="noindex" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
@@ -34,6 +31,7 @@
     footer p { font-size: 13px; color: var(--gray-3); }
     footer a { color: var(--accent); }
   </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
 </head>
 <body>
 
@@ -60,7 +58,7 @@
   </p>
 
   <h2>Unternehmensgegenstand</h2>
-  <p>Bereitstellung von Lerninhalten zur theoretischen Vorbereitung auf die ATPL-Prüfung. Cockpitready ist ein privates, nicht-amtliches Bildungsangebot und steht in keiner Verbindung zu EASA oder Austro Control.</p>
+  <p>Bereitstellung von Lerninhalten zur theoretischen Vorbereitung auf die ATPL-Prüfung. Cockpitready ist ein privates, unabhängiges Bildungsangebot und steht in keiner Verbindung zu Prüfungsorganisationen oder Flugschulen.</p>
 
   <h2>Grundlegende Richtung gemäß § 25 MedienG</h2>
   <p>Cockpitready bietet redaktionell aufbereitete, deutschsprachige Lernmodule zur ATPL-Theorie. Die Inhalte dienen ausschließlich der Lernunterstützung und ersetzen keine offiziellen Prüfungsunterlagen oder behördlichen Auskünfte.</p>
@@ -81,8 +79,9 @@
 
 <footer>
   <span class="brand">Cockpitready</span>
-  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
 </footer>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

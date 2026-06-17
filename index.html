@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cockpitready — ATPL Theorie. Verstehen statt auswendig lernen.</title>
-  <meta name="description" content="Strukturierte ATPL-Lernmodule für alle 14 Subjects. Auf Deutsch. Für Austro Control & EASA." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta name="description" content="Strukturierte ATPL-Lernmodule für die ATPL-Theorie, Fach für Fach. Auf Deutsch. Für die ATPL-Theorieprüfung." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; --accent-hover: #0077ed; }
@@ -51,6 +48,9 @@
     .subj-row .name { flex: 1; font-size: 15px; font-weight: 400; color: var(--gray-4); transition: color 0.15s; }
     .badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
     .badge-live { background: var(--accent); color: var(--white); }
+    .badge-wip { background: #fff3e0; color: #b25e00; }
+    .badge-plan { background: var(--gray-2); color: var(--gray-3); }
+    .subj-row.disabled { opacity: 0.6; }
     .how-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; margin-top: 72px; max-width: 960px; }
     .how-step .num { font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 16px; }
     .how-step h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
@@ -66,6 +66,7 @@
     footer p { font-size: 13px; color: var(--gray-3); }
     @media (max-width: 768px) { .nav-links { display: none; } .why-grid, .how-steps, .subjects-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
 </head>
 <body>
 
@@ -80,12 +81,11 @@
 </nav>
 
 <section class="hero">
-  <span class="hero-tag">ATPL Theorie · Austro Control · ECQB 2026</span>
+  <span class="hero-tag">ATPL Theorie · ECQB 2026</span>
   <h1>Verstehen.<br>Nicht auswendig<br><em>lernen.</em></h1>
   <p>Alle 14 ATPL-Subjects als strukturierte Lernmodule — erklärt mit dem Warum. Auf Deutsch.</p>
   <div class="hero-actions">
-    <!-- TODO: echte URL der Lern-App eintragen, sobald sie deployt ist -->
-    <a href="https://app.cockpitready.at" class="btn-primary">Jetzt kostenlos starten</a>
+    <a href="meteorologie.html" class="btn-primary">Mit Meteorologie starten</a>
     <a href="#warum" class="btn-ghost">Mehr erfahren ›</a>
   </div>
   <div class="hero-scroll">
@@ -107,24 +107,24 @@
 </section>
 
 <section class="subjects-section" id="faecher">
-  <span class="section-tag">Alle 14 Fächer</span>
-  <h2 class="section-title">Alle Subjects. Alle live.</h2>
-  <p class="section-sub">Von Air Law bis Radio Navigation — jedes Fach vollständig ausgearbeitet.</p>
+  <span class="section-tag">Die 14 ATPL-Fächer</span>
+  <h2 class="section-title">Meteorologie ist komplett. Der Rest wächst.</h2>
+  <p class="section-sub">Meteorologie steht vollständig ausgearbeitet. Die übrigen Fächer entstehen Schritt für Schritt — in derselben Tiefe.</p>
   <div class="subjects-grid">
-    <a href="luftrecht.html"               class="subj-row"><span class="code">010</span><span class="name">Air Law / Luftrecht</span><span class="badge badge-live">Live</span></a>
-    <a href="aircraft-general-knowledge.html" class="subj-row"><span class="code">021</span><span class="name">Aircraft General Knowledge</span><span class="badge badge-live">Live</span></a>
-    <a href="instrumentation.html"         class="subj-row"><span class="code">022</span><span class="name">Instrumentation</span><span class="badge badge-live">Live</span></a>
-    <a href="mass-and-balance.html"        class="subj-row"><span class="code">031</span><span class="name">Mass &amp; Balance</span><span class="badge badge-live">Live</span></a>
-    <a href="performance.html"             class="subj-row"><span class="code">032</span><span class="name">Performance</span><span class="badge badge-live">Live</span></a>
-    <a href="flight-planning.html"         class="subj-row"><span class="code">033</span><span class="name">Flight Planning</span><span class="badge badge-live">Live</span></a>
-    <a href="human-performance.html"       class="subj-row"><span class="code">040</span><span class="name">Human Performance</span><span class="badge badge-live">Live</span></a>
-    <a href="meteorologie.html"            class="subj-row"><span class="code">050</span><span class="name">Meteorologie</span><span class="badge badge-live">Live</span></a>
-    <a href="navigation.html"              class="subj-row"><span class="code">061</span><span class="name">General Navigation</span><span class="badge badge-live">Live</span></a>
-    <a href="radio-navigation.html"        class="subj-row"><span class="code">062</span><span class="name">Radio Navigation</span><span class="badge badge-live">Live</span></a>
-    <a href="operational-procedures.html"  class="subj-row"><span class="code">070</span><span class="name">Operational Procedures</span><span class="badge badge-live">Live</span></a>
-    <a href="principles-of-flight.html"    class="subj-row"><span class="code">081</span><span class="name">Principles of Flight</span><span class="badge badge-live">Live</span></a>
-    <a href="communications.html"          class="subj-row"><span class="code">090</span><span class="name">Communications</span><span class="badge badge-live">Live</span></a>
-    <a href="vfr-ifr-comms.html"           class="subj-row"><span class="code">091</span><span class="name">VFR / IFR Communications</span><span class="badge badge-live">Live</span></a>
+    <div class="subj-row disabled"><span class="code">010</span><span class="name">Air Law / Luftrecht</span><span class="badge badge-plan">Geplant</span></div>
+    <div class="subj-row disabled"><span class="code">021</span><span class="name">Aircraft General Knowledge</span><span class="badge badge-plan">Geplant</span></div>
+    <a href="instrumentation.html" class="subj-row"><span class="code">022</span><span class="name">Instrumentation</span><span class="badge badge-wip">In Arbeit</span></a>
+    <div class="subj-row disabled"><span class="code">031</span><span class="name">Mass &amp; Balance</span><span class="badge badge-plan">Geplant</span></div>
+    <div class="subj-row disabled"><span class="code">032</span><span class="name">Performance</span><span class="badge badge-plan">Geplant</span></div>
+    <div class="subj-row disabled"><span class="code">033</span><span class="name">Flight Planning</span><span class="badge badge-plan">Geplant</span></div>
+    <a href="human-performance.html" class="subj-row"><span class="code">040</span><span class="name">Human Performance</span><span class="badge badge-wip">In Arbeit</span></a>
+    <a href="meteorologie.html" class="subj-row"><span class="code">050</span><span class="name">Meteorologie</span><span class="badge badge-live">Komplett</span></a>
+    <div class="subj-row disabled"><span class="code">061</span><span class="name">General Navigation</span><span class="badge badge-plan">Geplant</span></div>
+    <div class="subj-row disabled"><span class="code">062</span><span class="name">Radio Navigation</span><span class="badge badge-plan">Geplant</span></div>
+    <div class="subj-row disabled"><span class="code">070</span><span class="name">Operational Procedures</span><span class="badge badge-plan">Geplant</span></div>
+    <a href="principles-of-flight.html" class="subj-row"><span class="code">081</span><span class="name">Principles of Flight</span><span class="badge badge-wip">In Arbeit</span></a>
+    <div class="subj-row disabled"><span class="code">090</span><span class="name">Communications</span><span class="badge badge-plan">Geplant</span></div>
+    <div class="subj-row disabled"><span class="code">091</span><span class="name">VFR / IFR Communications</span><span class="badge badge-plan">Geplant</span></div>
   </div>
 </section>
 
@@ -142,15 +142,28 @@
   <div class="cta-block">
     <span class="section-tag">Jetzt starten</span>
     <h2 class="section-title">Bereit für dein ATPL?</h2>
-    <p class="section-sub">Starte jetzt kostenlos — alle 14 Fächer warten auf dich.</p>
-    <a href="https://app.cockpitready.at" class="btn-primary">Jetzt lernen →</a>
+    <p class="section-sub">Starte jetzt kostenlos mit dem vollständigen Meteorologie-Modul.</p>
+    <a href="meteorologie.html" class="btn-primary">Jetzt lernen →</a>
   </div>
 </div>
 
+<section id="unterstuetzen" style="background:var(--white);padding:clamp(60px,9vw,100px) max(24px,5vw);">
+  <div style="max-width:680px;margin:0 auto;text-align:center;border:1px solid var(--gray-2);border-radius:28px;padding:clamp(40px,6vw,64px) clamp(28px,5vw,56px);background:linear-gradient(180deg,var(--gray-1),var(--white));">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" style="margin:0 auto 20px;display:block;"><path d="M3 11.5 21 3l-8.5 18-2.5-7.5L3 11.5Z" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span class="section-tag">Unterstützen</span>
+    <h2 class="section-title">Kostenlos. Und das soll so bleiben.</h2>
+    <p class="section-sub" style="margin:16px auto 0;">Cockpitready ist und bleibt gratis. Server, Domain und der nächtliche Kaffee kosten trotzdem etwas. Wenn dir die Plattform beim Lernen hilft, kannst du ihr freiwillig Rückenwind geben — kein Abo, kein Druck. Jeder Beitrag hält die Triebwerke am Laufen.</p>
+    <!-- TODO: Spendenlink eintragen (z. B. Ko-fi, Buy Me a Coffee oder PayPal.me) -->
+    <a href="#" class="btn-primary" style="margin-top:36px;">✈&nbsp;&nbsp;Rückenwind geben</a>
+    <p style="font-size:13px;font-weight:300;color:var(--gray-3);margin-top:18px;">Einmalig und freiwillig. Danke, dass du das hier möglich machst.</p>
+  </div>
+</section>
+
 <footer>
   <span class="brand">Cockpitready</span>
-  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
 </footer>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Operational Procedures (070) — Cockpitready</title>
   <meta name="description" content="ATPL Operational Procedures 070 — SOPs, Emergency Procedures, ICAO Phraseology, Special Operations. Deutsch & Englisch." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
@@ -70,6 +67,7 @@
     footer p { font-size: 13px; color: var(--gray-3); }
     @media (max-width: 768px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } .bilingual { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
 </head>
 <body>
 
@@ -314,7 +312,7 @@
 
 <footer>
   <span class="brand">Cockpitready</span>
-  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html" style="color:var(--accent)">Impressum</a> · <a href="datenschutz.html" style="color:var(--accent)">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
 </footer>
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
@@ -327,5 +325,6 @@ if (sections.length) {
   sections.forEach(s => obs.observe(s));
 }
 </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

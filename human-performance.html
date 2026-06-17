@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Human Performance (040) — Cockpitready</title>
   <meta name="description" content="ATPL Human Performance 040 — vollständiges Lernmodul mit 5 Lektionen, 5 Diagrammen und 15 Übungsfragen. Deutsch, ECQB 2026." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
@@ -68,6 +65,7 @@
     footer a { color: var(--accent); }
     @media (max-width: 860px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } }
   </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
 </head>
 <body>
 
@@ -75,7 +73,7 @@
   <a href="index.html" class="nav-brand">Cockpitready</a>
   <div class="nav-links">
     <a href="index.html#faecher">Fächer</a>
-    <a href="https://app.cockpitready.at" class="nav-cta">Zur Lern-App</a>
+    <a href="meteorologie.html" class="nav-cta">Jetzt lernen</a>
   </div>
 </nav>
 
@@ -424,7 +422,7 @@
 
 <footer>
   <span class="brand">Cockpitready</span>
-  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
 </footer>
 
 <script>
@@ -458,5 +456,6 @@
     });
   });
 </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

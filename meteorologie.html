@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meteorologie (050) — Cockpitready</title>
   <meta name="description" content="ATPL Meteorologie 050 — vollständiges Lernmodul mit 64 Lektionen, 61 Diagrammen und 323 Übungsfragen. Deutsch, ECQB 2026." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #0a0a0a; --white: #ffffff; --gray-1: #f5f5f7; --gray-2: #e8e8ed; --gray-3: #6e6e73; --gray-4: #1d1d1f; --accent: #0071e3; }
@@ -68,6 +65,7 @@
     footer a { color: var(--accent); }
     @media (max-width: 860px) { .nav-links { display: none; } .mod-body { grid-template-columns: 1fr; } .toc { display: none; } }
   </style>
+  <link rel="stylesheet" href="fonts/inter.css" />
 </head>
 <body>
 
@@ -75,7 +73,7 @@
   <a href="index.html" class="nav-brand">Cockpitready</a>
   <div class="nav-links">
     <a href="index.html#faecher">Fächer</a>
-    <a href="https://app.cockpitready.at" class="nav-cta">Zur Lern-App</a>
+    <a href="meteorologie.html" class="nav-cta">Jetzt lernen</a>
   </div>
 </nav>
 
@@ -92,6 +90,21 @@
     <div class="m"><span class="l">Stand</span><span class="v">ECQB 2026</span></div>
   </div>
 </div>
+
+<section style="max-width:1100px;margin:0 auto;padding:4px max(24px,5vw) 0;">
+  <div style="border:1px solid var(--gray-2);border-radius:14px;padding:20px 24px;background:var(--gray-1);">
+    <h2 style="font-size:18px;font-weight:600;letter-spacing:-0.01em;margin:0 0 10px;">Lernziele dieses Fachs</h2>
+    <p style="font-size:14.5px;font-weight:300;color:var(--gray-4);line-height:1.7;margin:0 0 10px;">Nach diesem Modul kannst du:</p>
+    <ul style="margin:0;padding-left:1.1rem;font-size:14px;font-weight:300;color:var(--gray-4);line-height:1.75;">
+      <li>den Aufbau der Atmosphäre und die Temperaturschichtung erklären,</li>
+      <li>Luftdruck, Höhenmessung und Wind physikalisch einordnen,</li>
+      <li>Drucksysteme, Luftmassen und Fronten lesen und ihre Wettererscheinungen ableiten,</li>
+      <li>Wolken, Niederschlag, Vereisung und Gewitter als Flugwettergefahren einschätzen,</li>
+      <li>meteorologische Meldungen und Karten (METAR, TAF, Signifikant-Wetter) für die Flugplanung nutzen.</li>
+    </ul>
+    <p style="font-size:13px;font-weight:300;color:var(--gray-3);line-height:1.6;margin:12px 0 0;">Jede Lektion schließt mit einem „Merken"-Block als Kurzzusammenfassung und mit Übungsfragen.</p>
+  </div>
+</section>
 
 <div class="mod-body">
   <aside class="toc">
@@ -5390,7 +5403,8 @@
 
 <footer>
   <span class="brand">Cockpitready</span>
-  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Kein offizielles EASA- oder Austro-Control-Produkt</p>
+  <p>© <span id="yr"></span> Cockpitready · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Unabhängiges Lernangebot, kein Ersatz für eine zugelassene Theorieausbildung</p>
+  <p style="font-size:12px;color:var(--gray-3);margin-top:6px;">Fachliche Grundlage: Lehrunterlagen der ENAC (enac.fr) und des Institut Mermoz.</p>
 </footer>
 
 <script>
@@ -5424,5 +5438,6 @@
     });
   });
 </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
